@@ -39,7 +39,7 @@ public class RunAction extends Action {
 
 		IEditorPart ep = page.getActiveEditor();
 
-		WorkflowDiagramEditor wde = ((WorkflowDiagramEditor) ep);
+		final WorkflowDiagramEditor wde = ((WorkflowDiagramEditor) ep);
 
 		AbstractEMFOperation emfOp = new AbstractEMFOperation(wde.getEditingDomain(), "Recolor Datasources") {
 

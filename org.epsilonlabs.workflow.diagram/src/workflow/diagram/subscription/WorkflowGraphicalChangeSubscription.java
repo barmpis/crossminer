@@ -99,7 +99,7 @@ public class WorkflowGraphicalChangeSubscription {
 	}
 
 	public static void executionEnded() {
-		for (DiagramDocumentEditor d : subscribers) {
+		for (final DiagramDocumentEditor d : subscribers) {
 			d.showBusy(false);
 
 			Job j = new Job("saving diagram resource") {
