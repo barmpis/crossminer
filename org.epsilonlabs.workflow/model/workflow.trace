@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trace:TraceModel
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:trace="http://www.eclipse.org/gmf/2006/Trace">
+  <nodeTraces
+      visualID="2001"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Github') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+    <nodeLabelTraces
+        visualID="5001"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2002"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'GithubBigQuery') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+    <nodeLabelTraces
+        visualID="5002"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2003"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'GHTorrent') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+    <nodeLabelTraces
+        visualID="5003"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2004"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Commits') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+    <nodeLabelTraces
+        visualID="5004"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2005"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Authors') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+    <nodeLabelTraces
+        visualID="5005"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2006"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Files') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+    <nodeLabelTraces
+        visualID="5006"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2007"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'DataAggregation') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+    <nodeLabelTraces
+        visualID="5007"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2008"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'DataFiltering') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+    <nodeLabelTraces
+        visualID="5008"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2009"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'CustomScript') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+    <nodeLabelTraces
+        visualID="5009"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2010"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'DataManipulation') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+    <nodeLabelTraces
+        visualID="5010"
+        queryText="true"/>
+  </nodeTraces>
+  <linkTraces
+      visualID="4001"
+      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'DataSource') and _feature_.name = 'retrievals')">
+    <linkLabelTraces
+        visualID="6001"
+        queryText="true"/>
+  </linkTraces>
+  <linkTraces
+      visualID="4002"
+      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'DataRetrieval') and _feature_.name = 'sources')">
+    <linkLabelTraces
+        visualID="6002"
+        queryText="true"/>
+  </linkTraces>
+  <linkTraces
+      visualID="4003"
+      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'DataManipulation') and _feature_.name = 'sources')">
+    <linkLabelTraces
+        visualID="6003"
+        queryText="true"/>
+  </linkTraces>
+</trace:TraceModel>

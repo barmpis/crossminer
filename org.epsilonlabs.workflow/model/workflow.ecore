@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="workflow" nsURI="http://workflow" nsPrefix="wf">
+  <eClassifiers xsi:type="ecore:EClass" name="Workflow">
+    <eAnnotations source="gmf.diagram">
+      <details key="onefile" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="startingPoints" lowerBound="1"
+        upperBound="-1" eType="#//DataSource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="endPoints" lowerBound="1"
+        upperBound="-1" eType="#//DataSource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contents" upperBound="-1"
+        eType="#//Element" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Element" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataSource" abstract="true" eSuperTypes="#//Element">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="url"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="retrievals" lowerBound="1"
+        upperBound="-1" eType="#//DataRetrieval" eOpposite="#//DataRetrieval/sources">
+      <eAnnotations source="gmf.link"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="offersPartialData" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Github" eSuperTypes="#//DataSource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="un" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pw" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GithubBigQuery" eSuperTypes="#//DataSource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="un" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pw" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GHTorrent" eSuperTypes="#//DataSource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="publicKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataRetrieval" abstract="true" eSuperTypes="#//Element">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="repoPatterns"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sources" lowerBound="1"
+        upperBound="-1" eType="#//DataSource" eOpposite="#//DataSource/retrievals">
+      <eAnnotations source="gmf.link"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="acceptsPartialData" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="repoPatterns" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Commits" eSuperTypes="#//DataRetrieval">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patterns" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Authors" eSuperTypes="#//DataRetrieval">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patterns" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Files" eSuperTypes="#//DataRetrieval">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="patterns" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataManipulation" eSuperTypes="#//Element">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="temp"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="temp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sources" lowerBound="1"
+        upperBound="-1" eType="#//DataRetrieval">
+      <eAnnotations source="gmf.link"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataAggregation" eSuperTypes="#//DataManipulation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataFiltering" eSuperTypes="#//DataManipulation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomScript" eSuperTypes="#//DataManipulation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

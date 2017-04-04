@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="ASCII"?>
+<gmfgraph:Canvas xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition" name="workflow">
+  <figures name="Default">
+    <descriptors name="GithubFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="GithubFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="GithubLabelFigure" text="Github"/>
+      </actualFigure>
+      <accessors accessor="getFigureGithubLabelFigure" figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="GithubBigQueryFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="GithubBigQueryFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="GithubBigQueryLabelFigure" text="GithubBigQuery"/>
+      </actualFigure>
+      <accessors accessor="getFigureGithubBigQueryLabelFigure" figure="//@figures.0/@descriptors.1/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="GHTorrentFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="GHTorrentFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="GHTorrentLabelFigure" text="GHTorrent"/>
+      </actualFigure>
+      <accessors accessor="getFigureGHTorrentLabelFigure" figure="//@figures.0/@descriptors.2/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="CommitsFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="CommitsFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="CommitsLabelFigure" text="Commits"/>
+      </actualFigure>
+      <accessors accessor="getFigureCommitsLabelFigure" figure="//@figures.0/@descriptors.3/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="AuthorsFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="AuthorsFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="AuthorsLabelFigure" text="Authors"/>
+      </actualFigure>
+      <accessors accessor="getFigureAuthorsLabelFigure" figure="//@figures.0/@descriptors.4/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="FilesFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="FilesFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="FilesLabelFigure" text="Files"/>
+      </actualFigure>
+      <accessors accessor="getFigureFilesLabelFigure" figure="//@figures.0/@descriptors.5/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="DataManipulationFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="DataManipulationFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="DataManipulationLabelFigure" text="DataManipulation"/>
+      </actualFigure>
+      <accessors accessor="getFigureDataManipulationLabelFigure" figure="//@figures.0/@descriptors.6/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="DataAggregationFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="DataAggregationFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="DataAggregationLabelFigure" text="DataAggregation"/>
+      </actualFigure>
+      <accessors accessor="getFigureDataAggregationLabelFigure" figure="//@figures.0/@descriptors.7/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="DataFilteringFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="DataFilteringFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="DataFilteringLabelFigure" text="DataFiltering"/>
+      </actualFigure>
+      <accessors accessor="getFigureDataFilteringLabelFigure" figure="//@figures.0/@descriptors.8/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="CustomScriptFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="CustomScriptFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="CustomScriptLabelFigure" text="CustomScript"/>
+      </actualFigure>
+      <accessors accessor="getFigureCustomScriptLabelFigure" figure="//@figures.0/@descriptors.9/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="DataSourceRetrievalsFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="DataSourceRetrievalsFigure"/>
+    </descriptors>
+    <descriptors name="DataSourceRetrievalsExternalLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="DataSourceRetrievalsExternalLabel"/>
+    </descriptors>
+    <descriptors name="DataRetrievalSourcesFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="DataRetrievalSourcesFigure"/>
+    </descriptors>
+    <descriptors name="DataRetrievalSourcesExternalLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="DataRetrievalSourcesExternalLabel"/>
+    </descriptors>
+    <descriptors name="DataManipulationSourcesFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="DataManipulationSourcesFigure"/>
+    </descriptors>
+    <descriptors name="DataManipulationSourcesExternalLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="DataManipulationSourcesExternalLabel"/>
+    </descriptors>
+  </figures>
+  <nodes name="Github" figure="GithubFigure"/>
+  <nodes name="GithubBigQuery" figure="GithubBigQueryFigure"/>
+  <nodes name="GHTorrent" figure="GHTorrentFigure"/>
+  <nodes name="Commits" figure="CommitsFigure"/>
+  <nodes name="Authors" figure="AuthorsFigure"/>
+  <nodes name="Files" figure="FilesFigure"/>
+  <nodes name="DataManipulation" figure="DataManipulationFigure"/>
+  <nodes name="DataAggregation" figure="DataAggregationFigure"/>
+  <nodes name="DataFiltering" figure="DataFilteringFigure"/>
+  <nodes name="CustomScript" figure="CustomScriptFigure"/>
+  <connections name="DataSourceRetrievals" figure="DataSourceRetrievalsFigure"/>
+  <connections name="DataRetrievalSources" figure="DataRetrievalSourcesFigure"/>
+  <connections name="DataManipulationSources" figure="DataManipulationSourcesFigure"/>
+  <labels name="GithubLabel" figure="GithubFigure" accessor="//@figures.0/@descriptors.0/@accessors.0"/>
+  <labels name="GithubBigQueryLabel" figure="GithubBigQueryFigure" accessor="//@figures.0/@descriptors.1/@accessors.0"/>
+  <labels name="GHTorrentLabel" figure="GHTorrentFigure" accessor="//@figures.0/@descriptors.2/@accessors.0"/>
+  <labels name="CommitsLabel" figure="CommitsFigure" accessor="//@figures.0/@descriptors.3/@accessors.0"/>
+  <labels name="AuthorsLabel" figure="AuthorsFigure" accessor="//@figures.0/@descriptors.4/@accessors.0"/>
+  <labels name="FilesLabel" figure="FilesFigure" accessor="//@figures.0/@descriptors.5/@accessors.0"/>
+  <labels name="DataManipulationLabel" figure="DataManipulationFigure" accessor="//@figures.0/@descriptors.6/@accessors.0"/>
+  <labels name="DataAggregationLabel" figure="DataAggregationFigure" accessor="//@figures.0/@descriptors.7/@accessors.0"/>
+  <labels name="DataFilteringLabel" figure="DataFilteringFigure" accessor="//@figures.0/@descriptors.8/@accessors.0"/>
+  <labels name="CustomScriptLabel" figure="CustomScriptFigure" accessor="//@figures.0/@descriptors.9/@accessors.0"/>
+  <labels name="DataSourceRetrievalsExternalLabel" figure="DataSourceRetrievalsExternalLabelFigure" elementIcon="false"/>
+  <labels name="DataRetrievalSourcesExternalLabel" figure="DataRetrievalSourcesExternalLabelFigure" elementIcon="false"/>
+  <labels name="DataManipulationSourcesExternalLabel" figure="DataManipulationSourcesExternalLabelFigure" elementIcon="false"/>
+</gmfgraph:Canvas>

@@ -1,0 +1,76 @@
+@namespace(uri="http://workflow", prefix="wf")
+package workflow;
+
+@gmf.diagram(onefile="true")
+class Workflow {
+  ref DataSource[+] startingPoints;
+  ref DataSource[+] endPoints;
+  val Element[*] contents;
+}
+
+abstract class Element {
+
+}
+
+@gmf.node(label="url")
+abstract class DataSource extends Element{
+  @gmf.link
+  ref DataRetrieval[+]#sources retrievals;
+  attr String url;
+  attr boolean offersPartialData;
+}
+
+class Github extends DataSource {
+  attr String un;
+  attr String pw;
+}
+
+class GithubBigQuery extends DataSource {
+  attr String un;
+  attr String pw;
+}
+
+class GHTorrent extends DataSource {
+  attr String publicKey;
+}
+
+@gmf.node(label="repoPatterns")
+abstract class DataRetrieval extends Element{
+  @gmf.link
+  ref DataSource[+]#retrievals sources;
+  attr boolean acceptsPartialData;
+  attr String repoPatterns;
+}
+
+class Commits extends DataRetrieval {
+  attr String patterns;
+  attr EDate startDate;
+  attr EDate endDate;
+}
+
+class Authors extends DataRetrieval {
+  attr String patterns;
+}
+
+class Files extends DataRetrieval {
+  attr String patterns;
+}
+
+@gmf.node(label="temp")
+class DataManipulation extends Element{
+  attr String temp;
+  @gmf.link
+  ref DataRetrieval[+] sources;
+}
+
+class DataAggregation extends DataManipulation {
+}
+
+class DataFiltering extends DataManipulation {
+}
+
+class CustomScript extends DataManipulation {
+  attr String language;
+  attr String code;
+}
+

@@ -1,0 +1,7 @@
+# Tracing options for the org.epsilonlabs.workflow.diagram plug-in
+
+# Common issues
+org.epsilonlabs.workflow.diagram/debug=false
+
+# Visual IDs
+org.epsilonlabs.workflow.diagram/debug/visualID=false
