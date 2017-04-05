@@ -61,9 +61,9 @@ import org.eclipse.ui.navigator.resources.ProjectExplorer;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
+import org.epsilonlabs.workflow.execution.subscription.WorkflowGraphicalChangeSubscription;
 
 import workflow.diagram.navigator.WorkflowNavigatorItem;
-import workflow.diagram.subscription.WorkflowGraphicalChangeSubscription;
 
 /**
  * @generated

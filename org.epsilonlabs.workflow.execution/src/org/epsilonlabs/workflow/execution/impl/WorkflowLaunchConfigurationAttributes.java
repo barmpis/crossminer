@@ -1,4 +1,4 @@
-package org.epsilonlabs.workflow.execution;
+package org.epsilonlabs.workflow.execution.impl;
 
 public interface WorkflowLaunchConfigurationAttributes {
 

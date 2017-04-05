@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Execution
-Bundle-SymbolicName: org.epsilonlabs.workflow.execution;singleton:=true
+Bundle-Name: Subscription
+Bundle-SymbolicName: org.epsilonlabs.workflow.subscription;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.equinox.registry,
@@ -16,4 +16,4 @@ Require-Bundle: org.eclipse.equinox.registry,
  org.eclipse.epsilon.common.dt,
  org.eclipse.debug.ui,
  org.eclipse.swt
-Export-Package: org.epsilonlabs.workflow.execution.impl
+Export-Package: org.epsilonlabs.workflow.execution.subscription

@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension
-         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
-      <launchConfigurationTabGroup
-            class="org.epsilonlabs.workflow.execution.LaunchConfigurationTabGroupImpl"
-            id="org.epsilonlabs.workflow.execution.launchConfigurationTabGroup2"
-            type="org.epsilonlabs.workflow.execution.workflowExecutionType">
-      </launchConfigurationTabGroup>
-   </extension>
-   <extension
-         point="org.eclipse.debug.core.launchConfigurationTypes">
-      <launchConfigurationType
-            delegate="org.epsilonlabs.workflow.execution.LaunchConfigurationDelegateImpl"
-            modes="run, debug"
-            delegateDescription="Executes the chosen workflow."
-            delegateName="Workflow Execution"
-            id="org.epsilonlabs.workflow.execution.workflowExecutionType"
-            name="Workflow Execution Configuration"
-            public="true">
-      </launchConfigurationType>
-   </extension>
 
-<extension
-        point="org.eclipse.debug.ui.launchConfigurationTypeImages">
-    <launchConfigurationTypeImage
-            id="com.example.ui.launch.launchconfigurationtypeimage"
-            configTypeID="org.epsilonlabs.workflow.execution.workflowExecutionType"
-            icon="icons/Go-small.png">
-    </launchConfigurationTypeImage>
-</extension>
 
 </plugin>

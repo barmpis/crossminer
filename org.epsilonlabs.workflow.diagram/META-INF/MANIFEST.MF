@@ -9,8 +9,7 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: workflow.diagram.edit.parts,
  workflow.diagram.part,
- workflow.diagram.providers,
- workflow.diagram.subscription
+ workflow.diagram.providers
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.core.expressions,
@@ -40,6 +39,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.epsilonlabs.workflow;visibility:=reexport,
  org.epsilonlabs.workflow.edit;visibility:=reexport,
  org.eclipse.emf.validation;visibility:=reexport,
- org.eclipse.gef;visibility:=reexport
+ org.eclipse.gef;visibility:=reexport,
+ org.epsilonlabs.workflow.subscription;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
