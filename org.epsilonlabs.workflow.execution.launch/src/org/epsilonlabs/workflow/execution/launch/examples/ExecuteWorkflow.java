@@ -22,7 +22,7 @@ import workflow.DataSource;
  */
 public class ExecuteWorkflow extends Job {
 
-	private static Resource resource = null;
+	private Resource resource = null;
 
 	public ExecuteWorkflow(Resource r) {
 		super("workflow execution job");
@@ -57,7 +57,7 @@ public class ExecuteWorkflow extends Job {
 		System.out.println("Running execution...");
 
 		// FIXME execution stub
-		WorkflowGraphicalChangeSubscription.executionStarted();
+		WorkflowGraphicalChangeSubscription.getinstance().executionStarted();
 
 		TreeIterator<EObject> children = resource.getAllContents();
 		List<DataSource> sources = new LinkedList<>();
@@ -82,7 +82,7 @@ public class ExecuteWorkflow extends Job {
 
 			// setInProgressState(child);
 			System.out.println("data retrieval in progress");
-			WorkflowGraphicalChangeSubscription.elementInProgress(d);
+			WorkflowGraphicalChangeSubscription.getinstance().elementInProgress(d);
 			Thread.sleep(500);
 			m.worked(1);
 
@@ -92,7 +92,7 @@ public class ExecuteWorkflow extends Job {
 
 			// setBlockedState(child);
 			System.err.println("data retrieval blocked!");
-			WorkflowGraphicalChangeSubscription.elementBlocked(d);
+			WorkflowGraphicalChangeSubscription.getinstance().elementBlocked(d);
 			Thread.sleep(500);
 			m.worked(1);
 
@@ -102,12 +102,12 @@ public class ExecuteWorkflow extends Job {
 
 			// setComletedState(child);
 			System.out.println("data retrieval complete");
-			WorkflowGraphicalChangeSubscription.elementComplete(d);
+			WorkflowGraphicalChangeSubscription.getinstance().elementComplete(d);
 			Thread.sleep(500);
 			m.worked(1);
 		}
 
-		WorkflowGraphicalChangeSubscription.executionEnded();
+		WorkflowGraphicalChangeSubscription.getinstance().executionEnded();
 
 		// if (wde != null && false) {
 		//

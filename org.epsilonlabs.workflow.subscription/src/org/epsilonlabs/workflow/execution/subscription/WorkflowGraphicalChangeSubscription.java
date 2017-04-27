@@ -28,15 +28,29 @@ import org.eclipse.gmf.runtime.notation.View;
  */
 public class WorkflowGraphicalChangeSubscription {
 
-	private static Set<DiagramDocumentEditor> subscribers = new HashSet<DiagramDocumentEditor>();
+	private static WorkflowGraphicalChangeSubscription singleton = null;
 
-	private static Map<EObject, ShapeNodeEditPart> elementCache = new HashMap<>();
+	private Set<DiagramDocumentEditor> subscribers = new HashSet<DiagramDocumentEditor>();
 
-	public static boolean subscribeToGraphicalChanges(DiagramDocumentEditor e) {
+	private Map<EObject, ShapeNodeEditPart> elementCache = new HashMap<>();
+
+	public static WorkflowGraphicalChangeSubscription getinstance() {
+
+		if (singleton == null)
+			singleton = new WorkflowGraphicalChangeSubscription();
+
+		return singleton;
+
+	}
+
+	protected WorkflowGraphicalChangeSubscription() {
+	}
+
+	public boolean subscribeToGraphicalChanges(DiagramDocumentEditor e) {
 		return subscribers.add(e);
 	}
 
-	public static void elementInProgress(EObject e) {
+	public void elementInProgress(EObject e) {
 
 		for (DiagramDocumentEditor d : subscribers) {
 			try {
@@ -52,13 +66,12 @@ public class WorkflowGraphicalChangeSubscription {
 
 				}
 			} catch (Exception ex) {
-				// editor not fully initialised
+				// ignore as the editor may be initializing and throw npe
 			}
 		}
-
 	}
 
-	public static void elementBlocked(EObject e) {
+	public void elementBlocked(EObject e) {
 
 		for (DiagramDocumentEditor d : subscribers) {
 			try {
@@ -74,13 +87,13 @@ public class WorkflowGraphicalChangeSubscription {
 
 				}
 			} catch (Exception ex) {
-				// editor not fully initialised
+				// ignore as the editor may be initializing and throw npe
 			}
 		}
 
 	}
 
-	public static void elementComplete(EObject e) {
+	public void elementComplete(EObject e) {
 
 		for (DiagramDocumentEditor d : subscribers) {
 			try {
@@ -96,19 +109,19 @@ public class WorkflowGraphicalChangeSubscription {
 
 				}
 			} catch (Exception ex) {
-				// editor not fully initialised
+				// ignore as the editor may be initializing and throw npe
 			}
 		}
 
 	}
 
-	public static void executionStarted() {
+	public void executionStarted() {
 		for (DiagramDocumentEditor d : subscribers)
 			d.showBusy(true);
 
 	}
 
-	public static void executionEnded() {
+	public void executionEnded() {
 		for (final DiagramDocumentEditor d : subscribers) {
 			d.showBusy(false);
 
@@ -124,11 +137,11 @@ public class WorkflowGraphicalChangeSubscription {
 		}
 	}
 
-	public static void cancelSubscription(DiagramDocumentEditor wde) {
+	public void cancelSubscription(DiagramDocumentEditor wde) {
 		subscribers.remove(wde);
 	}
 
-	private static ShapeNodeEditPart getVisibleElementFromCache(DiagramDocumentEditor d, EObject e) {
+	private ShapeNodeEditPart getVisibleElementFromCache(DiagramDocumentEditor d, EObject e) {
 
 		ShapeNodeEditPart ret = elementCache.get(e);
 
@@ -136,22 +149,19 @@ public class WorkflowGraphicalChangeSubscription {
 
 			IDiagramGraphicalViewer viewer = (IDiagramGraphicalViewer) d.getDiagramEditPart().getViewer();
 			Collection<EditPart> editParts;
+			Diagram diag = d.getDiagram();
 
-			for (Iterator<?> it = d.getDiagram().eAllContents(); it.hasNext();) {
+			for (Iterator<?> it = diag.eAllContents(); it.hasNext();) {
 
 				Object next = it.next();
 
 				if (next instanceof View) {
 
 					View n = (View) next;
+					EObject viewElement = n.getElement();
 
-					EObject elem = n.getElement();
-
-					String elemid = elem.eResource().getURIFragment(elem);
-
-					String sourceid = e.eResource().getURIFragment(e);
-
-					if (elem != null && elemid.equals(sourceid)) {
+					if (viewElement != null && viewElement.eResource().getURIFragment(viewElement)
+							.equals(e.eResource().getURIFragment(e))) {
 
 						Object reg = viewer.getEditPartRegistry().get(n);
 

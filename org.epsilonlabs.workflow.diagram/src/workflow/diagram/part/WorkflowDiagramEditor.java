@@ -92,7 +92,7 @@ public class WorkflowDiagramEditor extends DiagramDocumentEditor implements IGot
 		super(true);
 		
 		System.out.println("WorkflowDiagramEditor subscribing to graphical changes.");
-		WorkflowGraphicalChangeSubscription.subscribeToGraphicalChanges(this);		
+		WorkflowGraphicalChangeSubscription.getinstance().subscribeToGraphicalChanges(this);		
 		
 	}
 
@@ -357,7 +357,7 @@ public class WorkflowDiagramEditor extends DiagramDocumentEditor implements IGot
 		shutDownLastClickPositionProvider();
 		
 		System.out.println("Removing editor from change subscription.");
-		WorkflowGraphicalChangeSubscription.cancelSubscription(this);
+		WorkflowGraphicalChangeSubscription.getinstance().cancelSubscription(this);
 		
 		super.dispose();
 	}
