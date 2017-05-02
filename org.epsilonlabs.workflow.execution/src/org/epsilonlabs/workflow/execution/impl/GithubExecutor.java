@@ -7,6 +7,9 @@ import org.epsilonlabs.workflow.execution.EventualDataset;
 
 public class GithubExecutor implements DataSourceExecutor {
 
+	protected EventualDataset ds = new GithubEventualDataset();
+	protected Map<Object, Object> parameters;
+
 	public GithubExecutor() {
 
 		// ...
@@ -18,16 +21,17 @@ public class GithubExecutor implements DataSourceExecutor {
 		// TODO Initialises the resilient github client and returns a pointer to
 		// an eventual dataset responsible for updating clients on its progress
 		// in obtaining the data
-		return new GithubEventualDataset();
+		return ds;
 	}
 
 	@Override
-	public void setExecutionParameters(Map<String, String> params) {
+	public void setExecutionParameters(Map<Object, Object> params) {
+		parameters = params;
 	}
 
 	@Override
-	public Map<String, String> getExecutionParameters() {
-		return null;
+	public Map<Object, Object> getExecutionParameters() {
+		return parameters;
 	}
 
 }

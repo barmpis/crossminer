@@ -1,0 +1,27 @@
+var extensions = Sequence{"ecore", "uml", ...};
+var gitub = new GitHub(...);
+var repos : Set(Repo);
+var files : Set(File);
+
+for (extension in extensions) {
+	var snippets = github.search(extension); // Distributed
+	repo.add(snippets.repo);
+}
+
+for (extension in extensions) {
+	for (repo in repos) {
+		var snippets = repo.search(extension); // Distributed
+		for (snippet in snippets) {
+			files.add(snippet.file);
+		}
+	}
+}
+
+// Should be able to persist the list of files here
+
+for (file in files) {
+	var commits : file.getCommits(); // Distributed
+	for (commit in commits) {
+		commit.author;
+	}
+}

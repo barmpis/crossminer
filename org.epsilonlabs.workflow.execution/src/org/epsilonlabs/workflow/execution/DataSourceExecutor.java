@@ -11,8 +11,8 @@ import java.util.Map;
  */
 public interface DataSourceExecutor extends EventualDataProvider {
 
-	public Map<String, String> getExecutionParameters();
+	public Map<Object, Object> getExecutionParameters();
 
-	public void setExecutionParameters(Map<String, String> params);
+	public void setExecutionParameters(Map<Object, Object> params);
 
 }

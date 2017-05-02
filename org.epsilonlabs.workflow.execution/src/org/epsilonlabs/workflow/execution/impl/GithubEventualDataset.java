@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.epsilonlabs.workflow.execution.EventualDataConsumer;
 import org.epsilonlabs.workflow.execution.StreamedDataset;
+import org.epsilonlabs.workflow.execution.StreamedEventualDataConsumer;
 
 /**
  * A dataset representing data which will be collected at some point, and notify
@@ -30,6 +31,9 @@ public class GithubEventualDataset implements StreamedDataset {
 	}
 
 	public void notifySuccess() {
+		for (EventualDataConsumer c : subscribers)
+			if (c instanceof StreamedEventualDataConsumer)
+				((StreamedEventualDataConsumer) c).endOfStream();
 	}
 
 }
