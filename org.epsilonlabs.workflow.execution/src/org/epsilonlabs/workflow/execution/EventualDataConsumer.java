@@ -16,7 +16,8 @@ public interface EventualDataConsumer {
 
 	/**
 	 * Called by the EventualData instance, when its data is available
+	 * @param o 
 	 */
-	public void consumeData();
+	public void consumeData(Object o);
 
 }

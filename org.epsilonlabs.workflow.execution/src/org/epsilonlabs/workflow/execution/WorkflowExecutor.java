@@ -8,8 +8,13 @@ package org.epsilonlabs.workflow.execution;
  */
 public interface WorkflowExecutor {
 
-	public void executeWorkflow();
+	public void executeWorkflow() throws Exception;
 
+	/**
+	 * graphical editors subscribe here for visual updates
+	 * 
+	 * @param o
+	 */
 	public void subscribe(Object o);
 
 	public void unSubscribe(Object o);

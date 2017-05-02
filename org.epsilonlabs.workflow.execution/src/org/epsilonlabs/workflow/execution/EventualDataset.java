@@ -1,7 +1,5 @@
 package org.epsilonlabs.workflow.execution;
 
-import java.util.Collection;
-
 /**
  * A dataset representing data which will be collected at some point, and notify
  * relevant parties when this is done.
@@ -9,15 +7,16 @@ import java.util.Collection;
  * @author kb
  *
  */
-public interface EventualDataset extends Collection<Object> {
+public interface EventualDataset {
 
 	public void subscribe(EventualDataConsumer c);
 
 	/**
 	 * When this collection is fully populated, its coordinator calls this
 	 * method to notify subscribers and provide them with this data
+	 * @param newData 
 	 */
-	public void notifyAndProvideData();
+	public void notifyAndProvideData(Object newData);
 
 	public void notifyFailure();
 

@@ -15,18 +15,18 @@ public class GithubExecutor implements DataSourceExecutor {
 
 	@Override
 	public EventualDataset execute() {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO Initialises the resilient github client and returns a pointer to
+		// an eventual dataset responsible for updating clients on its progress
+		// in obtaining the data
+		return new GithubEventualDataset();
 	}
 
 	@Override
 	public void setExecutionParameters(Map<String, String> params) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public Map<String, String> getExecutionParameters() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
