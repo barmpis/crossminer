@@ -16,4 +16,5 @@ Require-Bundle: org.eclipse.equinox.registry,
  org.eclipse.epsilon.common.dt,
  org.eclipse.debug.ui,
  org.eclipse.swt
-Export-Package: org.epsilonlabs.workflow.execution.impl
+Export-Package: org.epsilonlabs.workflow.execution,
+ org.epsilonlabs.workflow.execution.impl

@@ -2,7 +2,7 @@ package org.epsilonlabs.workflow.execution.impl;
 
 import org.epsilonlabs.workflow.execution.StreamedDataset;
 
-public class MDEStubGithubExecutor extends GithubExecutor {
+public class StubMDEGithubExecutor extends GithubExecutor {
 
 	public void addDataStubs() throws Exception {
 		for (Object o : ((Iterable<?>) getExecutionParameters().get("fileExtensions"))) {

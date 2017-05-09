@@ -18,18 +18,18 @@ public class GithubMapper extends GithubExecutor implements StreamedEventualData
 		System.out.println("(GithubMapper) consuming data: " + o);
 
 		Map<Object, Object> ep = getExecutionParameters();
-		String mapFrom = (String) ep.get("mapFrom");
-		String mapTo = (String) ep.get("mapTo");
+		String mapFrom = (String) ep.get(MAPFROM);
+		String mapTo = (String) ep.get(MAPTO);
 
 		// find any filtering parameters for mapping to
 		for (Filters s : Filters.values()) {
 			if (ep.containsKey(s)) {
 
 				switch (s) {
-				case filterByExt:
-					performMappingUsingExtfilter(o, ep.get(Filters.filterByExt));
+				case FILETBYFILEEXTENSION:
+					performMappingUsingExtfilter(o, ep.get(Filters.FILETBYFILEEXTENSION));
 					break;
-				case filterByName:
+				case FILTERBYFILENAME:
 					// ...
 					break;
 

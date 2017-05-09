@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.epsilonlabs.workflow.execution.EventualDataConsumer;
+import org.epsilonlabs.workflow.execution.EventualDataMapper;
 import org.epsilonlabs.workflow.execution.EventualDataProvider;
 import org.epsilonlabs.workflow.execution.EventualDataset;
 import org.epsilonlabs.workflow.execution.WorkflowExecutor;
@@ -19,7 +20,7 @@ import org.epsilonlabs.workflow.execution.WorkflowExecutor;
 public class ExampleWorkflowExecutor implements WorkflowExecutor {
 
 	public static void main(String... args) throws Exception {
-		//new ExampleWorkflowExecutor().executeWorkflow();
+		// new ExampleWorkflowExecutor().executeWorkflow();
 		new ExampleWorkflowExecutor().executeMDEPopularitySearchStub();
 	}
 
@@ -44,6 +45,7 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 	}
 
 	public void subscribe(Object o) {
+		//TODO graphical editor subscriptions
 	}
 
 	public void unSubscribe(Object o) {
@@ -51,27 +53,33 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 
 	private void executeMDEPopularitySearchStub() throws Exception {
 
+		// define file extensions we are interested in
 		List<String> exts = new LinkedList<String>();
 		exts.add("ecore");
 		exts.add("uml");
 
-		MDEStubGithubExecutor source = new MDEStubGithubExecutor();
+		// find repositories in github by file extension
+		StubMDEGithubExecutor source = new StubMDEGithubExecutor();
 		Map<Object, Object> params = new HashMap<Object, Object>();
-		params.put("fileExtensions", exts);
+		params.put(EventualDataProvider.Filters.FILETBYFILEEXTENSION, exts);
 		source.setExecutionParameters(params);
 
 		EventualDataset repoData = source.execute();
 
+		// from the repositories obtained in the previous step, retrieve the
+		// files with the extensions we are interested in
 		GithubMapper mapper = new GithubMapper();
 		params = new HashMap<Object, Object>();
-		params.put("mapFrom", "repositories");
-		params.put(EventualDataProvider.Filters.filterByExt,exts);
-		params.put("mapTo", "files");
+		params.put(EventualDataMapper.MAPFROM, EventualDataProvider.DATATYPES.REPOSITORIES);
+		params.put(EventualDataProvider.Filters.FILETBYFILEEXTENSION, exts);
+		params.put(EventualDataMapper.MAPTO, EventualDataProvider.DATATYPES.FILES);
 		mapper.setExecutionParameters(params);
+		//
 		mapper.addDataset(repoData);
 
 		EventualDataset fileData = mapper.execute();
 
+		// print these files
 		ConsoleOutput out = new ConsoleOutput();
 		out.addDataset(fileData);
 
