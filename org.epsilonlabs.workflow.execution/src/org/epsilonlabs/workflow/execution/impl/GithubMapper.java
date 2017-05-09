@@ -11,30 +11,65 @@ import org.epsilonlabs.workflow.execution.StreamedEventualDataMapper;
 
 public class GithubMapper extends GithubExecutor implements StreamedEventualDataMapper {
 
+	Map<Object, Object> ep;
+
 	@Override
 	public void consumeData(Object o) {
 
-		// map data from incoming dataset to the new dataset
-		System.out.println("(GithubMapper) consuming data: " + o);
+		if (o instanceof Iterable<?>) {
+			for (Object oo : (Iterable<?>) o)
+				consumeData(oo);
+		}
 
-		Map<Object, Object> ep = getExecutionParameters();
-		String mapFrom = (String) ep.get(MAPFROM);
-		String mapTo = (String) ep.get(MAPTO);
+		else {
 
-		// find any filtering parameters for mapping to
-		for (Filters s : Filters.values()) {
-			if (ep.containsKey(s)) {
+			// map data from incoming dataset to the new dataset
+			System.out.println("(GithubMapper) consuming data: " + o);
+
+			ep = getExecutionParameters();
+
+			DATATYPES mapFrom = (DATATYPES) ep.get(MAPFROM);
+
+			for (DATATYPES s : DATATYPES.values()) {
+				if (mapFrom.equals(s)) {
+
+					switch (s) {
+					case REPOSITORIES:
+						mapFromRepositories(o);
+						break;
+					case FILES:
+						mapFromFiles(o);
+						break;
+					case AUTHORS:
+						// mapFromAuthors(o);
+						break;
+
+					}
+				}
+			}
+		}
+
+	}
+
+	private void mapFromRepositories(Object o) {
+
+		DATATYPES mapTo = (DATATYPES) ep.get(MAPTO);
+
+		for (DATATYPES s : DATATYPES.values()) {
+			if (mapTo.equals(s)) {
 
 				switch (s) {
-				case FILETBYFILEEXTENSION:
-					performMappingUsingExtfilter(o, ep.get(Filters.FILETBYFILEEXTENSION));
+
+				case FILES:
+					mapToFiles(DATATYPES.REPOSITORIES, o);
 					break;
-				case FILTERBYFILENAME:
-					// ...
+				case AUTHORS:
+					// mapToAuthors(DATATYPES.REPOSITORIES, o);
+					break;
+				case REPOSITORIES:
+					// mapToRepositories(DATATYPES.REPOSITORIES, o);
 					break;
 
-				default:
-					break;
 				}
 
 			}
@@ -42,18 +77,65 @@ public class GithubMapper extends GithubExecutor implements StreamedEventualData
 
 	}
 
-	private void performMappingUsingExtfilter(Object o, Object object) {
+	private void mapFromFiles(Object o) {
 
-		// STUB 
+		DATATYPES mapTo = (DATATYPES) ep.get(MAPTO);
 
-		Collection<String> ext = (Collection<String>) object;
-		// ...
+		for (DATATYPES s : DATATYPES.values()) {
+			if (mapTo.equals(s)) {
+
+				switch (s) {
+
+				case FILES:
+					mapToFiles(DATATYPES.REPOSITORIES, o);
+					break;
+				case AUTHORS:
+					mapToAuthors(DATATYPES.REPOSITORIES, o);
+					break;
+				case REPOSITORIES:
+					// mapToRepositories(DATATYPES.REPOSITORIES, o);
+					break;
+
+				}
+
+			}
+		}
+
+	}
+
+	private void mapToFiles(DATATYPES source, Object o) {
+
+		// find if any relevant filters for the target datatype (in this case
+		// files) are defined
+		Collection<String> ext = (Collection<String>) ep.get(FILTERS.FILETBYFILEEXTENSION);
+		Collection<String> names = (Collection<String>) ep.get(FILTERS.FILTERBYNAME);
 
 		List<String> newData = new LinkedList<String>();
 
-		newData.add("file1 from repository: " + o + ", with extension " + ext);
-		newData.add("file2 from repository: " + o + ", with extension " + ext);
+		// STUB (would use info on name or extension here to guide the search)
 
+		newData.add("file1 [repo: " + o + "], extf: " + ext + ", namef: " + names);
+		newData.add("file2 [repo: " + o + "], extf: " + ext + ", namef: " + names);
+
+		//
+		ds.notifyAndProvideData(newData);
+
+	}
+
+	private void mapToAuthors(DATATYPES source, Object o) {
+
+		// find if any relevant filters for the target datatype (in this case
+		// files) are defined
+		Collection<String> names = (Collection<String>) ep.get(FILTERS.FILTERBYNAME);
+
+		List<String> newData = new LinkedList<String>();
+
+		// STUB (would use info on name or extension here to guide the search)
+
+		newData.add("author1 [file: " + o + "], namef: " + names);
+		newData.add("author2 [file: " + o + "], namef: " + names);
+
+		//
 		ds.notifyAndProvideData(newData);
 
 	}

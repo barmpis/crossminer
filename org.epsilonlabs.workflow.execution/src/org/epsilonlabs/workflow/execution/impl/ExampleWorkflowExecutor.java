@@ -45,7 +45,7 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 	}
 
 	public void subscribe(Object o) {
-		//TODO graphical editor subscriptions
+		// TODO graphical editor subscriptions
 	}
 
 	public void unSubscribe(Object o) {
@@ -61,7 +61,7 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 		// find repositories in github by file extension
 		StubMDEGithubExecutor source = new StubMDEGithubExecutor();
 		Map<Object, Object> params = new HashMap<Object, Object>();
-		params.put(EventualDataProvider.Filters.FILETBYFILEEXTENSION, exts);
+		params.put(EventualDataProvider.FILTERS.FILETBYFILEEXTENSION, exts);
 		source.setExecutionParameters(params);
 
 		EventualDataset repoData = source.execute();
@@ -71,7 +71,7 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 		GithubMapper mapper = new GithubMapper();
 		params = new HashMap<Object, Object>();
 		params.put(EventualDataMapper.MAPFROM, EventualDataProvider.DATATYPES.REPOSITORIES);
-		params.put(EventualDataProvider.Filters.FILETBYFILEEXTENSION, exts);
+		params.put(EventualDataProvider.FILTERS.FILETBYFILEEXTENSION, exts);
 		params.put(EventualDataMapper.MAPTO, EventualDataProvider.DATATYPES.FILES);
 		mapper.setExecutionParameters(params);
 		//
@@ -79,9 +79,21 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 
 		EventualDataset fileData = mapper.execute();
 
+		// from the files obtained in the previous step, retrieve the authors
+		// (using no filters)
+		GithubMapper mapper2 = new GithubMapper();
+		params = new HashMap<Object, Object>();
+		params.put(EventualDataMapper.MAPFROM, EventualDataProvider.DATATYPES.FILES);
+		params.put(EventualDataMapper.MAPTO, EventualDataProvider.DATATYPES.AUTHORS);
+		mapper2.setExecutionParameters(params);
+		//
+		mapper2.addDataset(fileData);
+
+		EventualDataset authorData = mapper2.execute();
+
 		// print these files
 		ConsoleOutput out = new ConsoleOutput();
-		out.addDataset(fileData);
+		out.addDataset(authorData);
 
 		//
 

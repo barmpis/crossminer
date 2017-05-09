@@ -2,8 +2,8 @@ package org.epsilonlabs.workflow.execution;
 
 public interface EventualDataProvider {
 
-	enum Filters {
-		FILETBYFILEEXTENSION, FILTERBYFILENAME
+	enum FILTERS {
+		FILETBYFILEEXTENSION, FILTERBYNAME
 	}
 
 	enum DATATYPES {
