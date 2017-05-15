@@ -114,8 +114,8 @@ public class GithubMapper extends GithubExecutor implements StreamedEventualData
 
 		// STUB (would use info on name or extension here to guide the search)
 
-		newData.add("file1 [repo: " + o + "], extf: " + ext + ", namef: " + names);
-		newData.add("file2 [repo: " + o + "], extf: " + ext + ", namef: " + names);
+		newData.add(new StubResilientGithubWrapper().provideFileDataStubs(o.toString()));
+		newData.add(new StubResilientGithubWrapper().provideFileDataStubs(o.toString()));
 
 		//
 		ds.notifyAndProvideData(newData);
@@ -132,8 +132,8 @@ public class GithubMapper extends GithubExecutor implements StreamedEventualData
 
 		// STUB (would use info on name or extension here to guide the search)
 
-		newData.add("author1 [file: " + o + "], namef: " + names);
-		newData.add("author2 [file: " + o + "], namef: " + names);
+		newData.add(new StubResilientGithubWrapper().provideAuthorDataStubs(o.toString()));
+		newData.add(new StubResilientGithubWrapper().provideAuthorDataStubs(o.toString()));
 
 		//
 		ds.notifyAndProvideData(newData);

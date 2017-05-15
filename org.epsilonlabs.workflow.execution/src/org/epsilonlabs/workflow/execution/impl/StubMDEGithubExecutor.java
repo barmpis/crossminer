@@ -4,15 +4,32 @@ import org.epsilonlabs.workflow.execution.StreamedDataset;
 
 public class StubMDEGithubExecutor extends GithubExecutor {
 
-	public void addDataStubs() throws Exception {
+	public void addRepoDataStubs() throws Exception {
 		for (Object o : ((Iterable<?>) getExecutionParameters().get(FILTERS.FILETBYFILEEXTENSION))) {
-			System.out.println(
-					"(MDEStubGithubExecutor) providing repository info for repos containing 1+ " + o + " files...");
-			ds.notifyAndProvideData("repositoryOf:" + o);
+			ds.notifyAndProvideData(new StubResilientGithubWrapper().provideRepoDataStubs(o.toString()));
 		}
 		if (ds instanceof StreamedDataset)
 			((StreamedDataset) ds).notifySuccess();
 
 	}
 
+	public void addAuthorDataStubs() throws Exception {
+		for (Object o : ((Iterable<?>) getExecutionParameters().get(FILTERS.FILTERBYNAME))) {
+			ds.notifyAndProvideData(new StubResilientGithubWrapper().provideRepoDataStubs(o.toString()));
+		}
+		if (ds instanceof StreamedDataset)
+			((StreamedDataset) ds).notifySuccess();
+
+	}
+	
+	public void addFileDataStubs() throws Exception {
+		for (Object o : ((Iterable<?>) getExecutionParameters().get(FILTERS.FILETBYFILEEXTENSION))) {
+			ds.notifyAndProvideData(new StubResilientGithubWrapper().provideRepoDataStubs(o.toString()));
+		}
+		if (ds instanceof StreamedDataset)
+			((StreamedDataset) ds).notifySuccess();
+
+	}
+	
 }
+

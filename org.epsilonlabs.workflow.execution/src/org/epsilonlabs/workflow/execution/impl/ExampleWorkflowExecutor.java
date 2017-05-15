@@ -97,7 +97,7 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 
 		//
 
-		source.addDataStubs();
+		source.addRepoDataStubs();
 
 		//
 
