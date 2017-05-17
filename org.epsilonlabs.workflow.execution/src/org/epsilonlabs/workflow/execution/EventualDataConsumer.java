@@ -1,23 +1,15 @@
 package org.epsilonlabs.workflow.execution;
 
+import io.reactivex.Observer;
+
 /**
  * Consumer of EventualData
  * 
  * @author kb
  *
  */
-public interface EventualDataConsumer {
+public interface EventualDataConsumer extends Observer<Object> {
 
-	/**
-	 * Adds the Dataset to the datasets this consumer is interested in 
-	 * @param e
-	 */
-	public void addDataset(EventualDataset e);
-
-	/**
-	 * Called by the EventualData instance, when its data is available
-	 * @param o 
-	 */
-	public void consumeData(Object o);
+	// TODO no currently identified methods available to all consumers
 
 }

@@ -1,24 +1,48 @@
 package org.epsilonlabs.workflow.execution.impl;
 
 import java.util.Collection;
-import java.util.LinkedList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import org.epsilonlabs.workflow.execution.EventualDataMapper;
 import org.epsilonlabs.workflow.execution.EventualDataset;
-import org.epsilonlabs.workflow.execution.StreamedDataset;
-import org.epsilonlabs.workflow.execution.StreamedEventualDataMapper;
 
-public class GithubMapper extends GithubExecutor implements StreamedEventualDataMapper {
+import io.reactivex.disposables.Disposable;
 
-	Map<Object, Object> ep;
+public class GithubMapper extends GithubExecutor implements EventualDataMapper {
+
+	private DATATYPES to;
+
+	private HashMap<FILTERS, Object> ep = new HashMap<>();
+
+	public EventualDataset getRepositoriesByFileExtension(List<String> _unused) {
+
+		to = DATATYPES.REPOSITORIES;
+		return super.getRepositoriesByFileExtension(_unused);
+	}
+
+	public EventualDataset getFilesWithFileExtension(String _unused, List<String> exts) {
+
+		to = DATATYPES.FILES;
+		ep.put(FILTERS.FILETBYFILEEXTENSION, exts);
+		// TODO dataset likely specific to return type (in this case dataset of
+		// files?)
+		return super.getFilesWithFileExtension(_unused, exts);
+	}
+
+	public EventualDataset getAuthors(String _unused) {
+		// TODO dataset likely specific to return type (in this case dataset of
+		// authors?)
+		to = DATATYPES.AUTHORS;
+		return super.getAuthors(_unused);
+	}
 
 	@Override
-	public void consumeData(Object o) {
+	public void onNext(Object o) {
 
 		if (o instanceof Iterable<?>) {
 			for (Object oo : (Iterable<?>) o)
-				consumeData(oo);
+				onNext(oo);
 		}
 
 		else {
@@ -26,26 +50,21 @@ public class GithubMapper extends GithubExecutor implements StreamedEventualData
 			// map data from incoming dataset to the new dataset
 			System.out.println("(GithubMapper) consuming data: " + o);
 
-			ep = getExecutionParameters();
+			// TODO based on the type of incoming data we chose what to map from
+			// -- this will use the java type of the object eventually
+			DATATYPES from = getDatatypeFromObject(o);
 
-			DATATYPES mapFrom = (DATATYPES) ep.get(MAPFROM);
+			switch (from) {
+			case REPOSITORIES:
+				mapFromRepositories(o);
+				break;
+			case FILES:
+				mapFromFiles(o);
+				break;
+			case AUTHORS:
+				// mapFromAuthors(o);
+				break;
 
-			for (DATATYPES s : DATATYPES.values()) {
-				if (mapFrom.equals(s)) {
-
-					switch (s) {
-					case REPOSITORIES:
-						mapFromRepositories(o);
-						break;
-					case FILES:
-						mapFromFiles(o);
-						break;
-					case AUTHORS:
-						// mapFromAuthors(o);
-						break;
-
-					}
-				}
 			}
 		}
 
@@ -53,52 +72,36 @@ public class GithubMapper extends GithubExecutor implements StreamedEventualData
 
 	private void mapFromRepositories(Object o) {
 
-		DATATYPES mapTo = (DATATYPES) ep.get(MAPTO);
+		switch (to) {
 
-		for (DATATYPES s : DATATYPES.values()) {
-			if (mapTo.equals(s)) {
+		case FILES:
+			mapToFiles(DATATYPES.REPOSITORIES, o);
+			break;
+		case AUTHORS:
+			// mapToAuthors(DATATYPES.REPOSITORIES, o);
+			break;
+		case REPOSITORIES:
+			// mapToRepositories(DATATYPES.REPOSITORIES, o);
+			break;
 
-				switch (s) {
-
-				case FILES:
-					mapToFiles(DATATYPES.REPOSITORIES, o);
-					break;
-				case AUTHORS:
-					// mapToAuthors(DATATYPES.REPOSITORIES, o);
-					break;
-				case REPOSITORIES:
-					// mapToRepositories(DATATYPES.REPOSITORIES, o);
-					break;
-
-				}
-
-			}
 		}
 
 	}
 
 	private void mapFromFiles(Object o) {
 
-		DATATYPES mapTo = (DATATYPES) ep.get(MAPTO);
+		switch (to) {
 
-		for (DATATYPES s : DATATYPES.values()) {
-			if (mapTo.equals(s)) {
+		case FILES:
+			mapToFiles(DATATYPES.REPOSITORIES, o);
+			break;
+		case AUTHORS:
+			mapToAuthors(DATATYPES.REPOSITORIES, o);
+			break;
+		case REPOSITORIES:
+			// mapToRepositories(DATATYPES.REPOSITORIES, o);
+			break;
 
-				switch (s) {
-
-				case FILES:
-					mapToFiles(DATATYPES.REPOSITORIES, o);
-					break;
-				case AUTHORS:
-					mapToAuthors(DATATYPES.REPOSITORIES, o);
-					break;
-				case REPOSITORIES:
-					// mapToRepositories(DATATYPES.REPOSITORIES, o);
-					break;
-
-				}
-
-			}
 		}
 
 	}
@@ -110,45 +113,61 @@ public class GithubMapper extends GithubExecutor implements StreamedEventualData
 		Collection<String> ext = (Collection<String>) ep.get(FILTERS.FILETBYFILEEXTENSION);
 		Collection<String> names = (Collection<String>) ep.get(FILTERS.FILTERBYNAME);
 
-		List<String> newData = new LinkedList<String>();
-
 		// STUB (would use info on name or extension here to guide the search)
-
-		newData.add(new StubResilientGithubWrapper().provideFileDataStubs(o.toString()));
-		newData.add(new StubResilientGithubWrapper().provideFileDataStubs(o.toString()));
-
-		//
-		ds.notifyAndProvideData(newData);
+		stubRetrieveFilesInRepo(o.toString());
+		// TODO find a way to pass the new object to the github wrapper
 
 	}
 
 	private void mapToAuthors(DATATYPES source, Object o) {
 
 		// find if any relevant filters for the target datatype (in this case
-		// files) are defined
+		// authors) are defined
 		Collection<String> names = (Collection<String>) ep.get(FILTERS.FILTERBYNAME);
 
-		List<String> newData = new LinkedList<String>();
-
 		// STUB (would use info on name or extension here to guide the search)
-
-		newData.add(new StubResilientGithubWrapper().provideAuthorDataStubs(o.toString()));
-		newData.add(new StubResilientGithubWrapper().provideAuthorDataStubs(o.toString()));
-
-		//
-		ds.notifyAndProvideData(newData);
+		stubRetrieveAuthorFromFile(o.toString());
+		// TODO find a way to pass the new object to the github wrapper
 
 	}
 
 	@Override
-	public void addDataset(EventualDataset e) {
-		e.subscribe(this);
+	public void onSubscribe(Disposable d) {
+		// TODO
+
 	}
 
 	@Override
-	public void endOfStream() {
-		if (ds instanceof StreamedDataset)
-			((StreamedDataset) ds).notifySuccess();
+	public void onError(Throwable e) {
+		// TODO
+
+	}
+
+	@Override
+	public void onComplete() {
+		ds.notifySuccess();
+
+	}
+
+	private DATATYPES getDatatypeFromObject(Object o) {
+
+		String object = o.toString();
+
+		String type = object.substring(0, object.indexOf(":"));
+
+		switch (type) {
+		case "repoOf":
+			return DATATYPES.REPOSITORIES;
+		case "fileOf":
+			return DATATYPES.FILES;
+
+		case "authorOf":
+			return DATATYPES.AUTHORS;
+
+		default:
+			return null;
+		}
+
 	}
 
 }

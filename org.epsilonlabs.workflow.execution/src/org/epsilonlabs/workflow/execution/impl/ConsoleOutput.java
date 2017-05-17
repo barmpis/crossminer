@@ -1,7 +1,8 @@
 package org.epsilonlabs.workflow.execution.impl;
 
-import org.epsilonlabs.workflow.execution.EventualDataset;
-import org.epsilonlabs.workflow.execution.StreamedEventualDataConsumer;
+import org.epsilonlabs.workflow.execution.EventualDataConsumer;
+
+import io.reactivex.disposables.Disposable;
 
 /**
  * Consumer of EventualData
@@ -9,25 +10,42 @@ import org.epsilonlabs.workflow.execution.StreamedEventualDataConsumer;
  * @author kb
  *
  */
-public class ConsoleOutput implements StreamedEventualDataConsumer {
+public class ConsoleOutput implements EventualDataConsumer {
 
-	public void addDataset(EventualDataset e) {
-		e.subscribe(this);
+	@Override
+	public void onSubscribe(Disposable d) {
+		// TODO
+
 	}
 
-	public void consumeData(Object o) {
+	@Override
+	public void onNext(Object o) {
 
 		if (o instanceof Iterable<?>)
 			for (Object oo : (Iterable<?>) o) {
 				System.out.println(">>> " + oo);
+				
 			}
-		else
+		else {
 			System.out.println(">>> " + o);
+			
+		}
 	}
 
 	@Override
-	public void endOfStream() {
+	public void onError(Throwable e) {
+
+		System.err.println(e);
+		
+
+	}
+
+	@Override
+	public void onComplete() {
+
 		System.out.println("DATA STREAM ENDED");
+		
+
 	}
 
 }

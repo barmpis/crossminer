@@ -20,27 +20,51 @@ import org.epsilonlabs.workflow.execution.WorkflowExecutor;
 public class ExampleWorkflowExecutor implements WorkflowExecutor {
 
 	public static void main(String... args) throws Exception {
-		// new ExampleWorkflowExecutor().executeWorkflow();
-		new ExampleWorkflowExecutor().executeMDEPopularitySearchStub();
+		new ExampleWorkflowExecutor().executeWorkflow();
 	}
 
 	public void executeWorkflow() throws Exception {
 
-		StubGithubExecutor source = new StubGithubExecutor();
-		EventualDataset data = source.execute();
-		EventualDataConsumer output = new ConsoleOutput();
-		output.addDataset(data);
+		System.out.println("executing workflow...");
 
-		// execution stub, without this there are no blocking calls in this
-		// method...
+		// define file extensions we are interested in
+		List<String> exts = new LinkedList<String>();
+		exts.add("ecore");
+		exts.add("uml");
 
-		Thread.sleep(2000);
+		// find repositories in github by file extension
+		GithubExecutor source = new GithubExecutor();
 
-		source.addDataStub1();
+		EventualDataset repoData = source.getRepositoriesByFileExtension(exts);
 
-		Thread.sleep(2000);
+		// from the repositories obtained in the previous step, retrieve the
+		// files with the extensions we are interested in
+		GithubMapper mapper = new GithubMapper();
+		repoData.subscribe(mapper);
+		EventualDataset fileData = mapper.getFilesWithFileExtension(null, exts);
 
-		source.addDataStub2();
+		// from the files obtained in the previous step, retrieve the authors
+		// (using no filters)
+		GithubMapper mapper2 = new GithubMapper();
+		fileData.subscribe(mapper2);
+
+		EventualDataset authorData = mapper2.getAuthors(null);
+
+		// print these files
+		ConsoleOutput out = new ConsoleOutput();
+		authorData.subscribe(out);
+
+		//
+		// STUB EXECUTION OF DATA RETRIEVAL
+		for (String ext : exts) {
+			source.stubRetrieveRepositoriesByFileExtension(ext);
+			System.out.println("RATE LIMIT REACHED! waiting 59minutes...");
+
+			Thread.sleep(2000);
+		}
+		//
+
+		System.out.println("workflow executed.");
 
 	}
 
@@ -49,57 +73,5 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 	}
 
 	public void unSubscribe(Object o) {
-	}
-
-	private void executeMDEPopularitySearchStub() throws Exception {
-
-		// define file extensions we are interested in
-		List<String> exts = new LinkedList<String>();
-		exts.add("ecore");
-		exts.add("uml");
-
-		// find repositories in github by file extension
-		StubMDEGithubExecutor source = new StubMDEGithubExecutor();
-		Map<Object, Object> params = new HashMap<Object, Object>();
-		params.put(EventualDataProvider.FILTERS.FILETBYFILEEXTENSION, exts);
-		source.setExecutionParameters(params);
-
-		EventualDataset repoData = source.execute();
-
-		// from the repositories obtained in the previous step, retrieve the
-		// files with the extensions we are interested in
-		GithubMapper mapper = new GithubMapper();
-		params = new HashMap<Object, Object>();
-		params.put(EventualDataMapper.MAPFROM, EventualDataProvider.DATATYPES.REPOSITORIES);
-		params.put(EventualDataProvider.FILTERS.FILETBYFILEEXTENSION, exts);
-		params.put(EventualDataMapper.MAPTO, EventualDataProvider.DATATYPES.FILES);
-		mapper.setExecutionParameters(params);
-		//
-		mapper.addDataset(repoData);
-
-		EventualDataset fileData = mapper.execute();
-
-		// from the files obtained in the previous step, retrieve the authors
-		// (using no filters)
-		GithubMapper mapper2 = new GithubMapper();
-		params = new HashMap<Object, Object>();
-		params.put(EventualDataMapper.MAPFROM, EventualDataProvider.DATATYPES.FILES);
-		params.put(EventualDataMapper.MAPTO, EventualDataProvider.DATATYPES.AUTHORS);
-		mapper2.setExecutionParameters(params);
-		//
-		mapper2.addDataset(fileData);
-
-		EventualDataset authorData = mapper2.execute();
-
-		// print these files
-		ConsoleOutput out = new ConsoleOutput();
-		out.addDataset(authorData);
-
-		//
-
-		source.addRepoDataStubs();
-
-		//
-
 	}
 }

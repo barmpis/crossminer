@@ -6,6 +6,8 @@ package org.epsilonlabs.workflow.execution;
  * @author kb
  *
  */
-public interface StreamedParallelDataset extends StreamedDataset {
+public abstract class ParallelEventualDataset extends EventualDataset {
 
+	//TODO to be investigated later on
+	
 }

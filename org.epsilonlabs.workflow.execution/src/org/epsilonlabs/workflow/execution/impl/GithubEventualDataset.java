@@ -4,8 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.epsilonlabs.workflow.execution.EventualDataConsumer;
-import org.epsilonlabs.workflow.execution.StreamedDataset;
-import org.epsilonlabs.workflow.execution.StreamedEventualDataConsumer;
+import org.epsilonlabs.workflow.execution.EventualDataset;
+
+import io.reactivex.Observer;
 
 /**
  * A dataset representing data which will be collected at some point, and notify
@@ -14,26 +15,34 @@ import org.epsilonlabs.workflow.execution.StreamedEventualDataConsumer;
  * @author kb
  *
  */
-public class GithubEventualDataset implements StreamedDataset {
+public class GithubEventualDataset extends EventualDataset {
 
-	private List<EventualDataConsumer> subscribers = new LinkedList<EventualDataConsumer>();
+	List<Observer<? super Object>> subscribers = new LinkedList<Observer<? super Object>>();
 
-	public void subscribe(EventualDataConsumer c) {
-		subscribers.add(c);
+	@Override
+	protected void subscribeActual(Observer<? super Object> observer) {
+
+		// initialise subscription -- maybe provide initial metadata?
+		subscribers.add(observer);
+
 	}
 
+	@Override
 	public void notifyAndProvideData(Object o) {
-		for (EventualDataConsumer c : subscribers)
-			c.consumeData(o);
+		for (Observer<? super Object> c : subscribers)
+			c.onNext(o);
 	}
 
+	@Override
 	public void notifyFailure() {
 	}
 
+	@Override
 	public void notifySuccess() {
-		for (EventualDataConsumer c : subscribers)
-			if (c instanceof StreamedEventualDataConsumer)
-				((StreamedEventualDataConsumer) c).endOfStream();
+		for (Observer<? super Object> c : subscribers)
+			c.onComplete();
 	}
+
+	//
 
 }
