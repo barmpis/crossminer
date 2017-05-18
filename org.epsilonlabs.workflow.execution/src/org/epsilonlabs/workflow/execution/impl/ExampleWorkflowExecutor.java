@@ -36,14 +36,14 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 		// files with the extensions we are interested in
 		GithubMapper mapper = new GithubMapper();
 		repoData.subscribe(mapper);
-		EventualDataset fileData = mapper.getFilesWithFileExtension(null, exts);
+		EventualDataset fileData = mapper.getFilesWithFileExtension(exts);
 
 		// from the files obtained in the previous step, retrieve the authors
 		// (using no filters)
 		GithubMapper mapper2 = new GithubMapper();
 		fileData.subscribe(mapper2);
 
-		EventualDataset authorData = mapper2.getAuthors(null);
+		EventualDataset authorData = mapper2.getAuthors();
 
 		// print these files
 		ConsoleOutput out = new ConsoleOutput();

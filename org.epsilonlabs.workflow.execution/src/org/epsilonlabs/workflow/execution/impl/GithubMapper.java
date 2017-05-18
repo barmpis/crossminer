@@ -15,26 +15,26 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 
 	private HashMap<FILTERS, Object> ep = new HashMap<>();
 
-	public EventualDataset getRepositoriesByFileExtension(List<String> _unused) {
+	public EventualDataset getRepositoriesByFileExtension() {
 
 		to = DATATYPES.REPOSITORIES;
-		return super.getRepositoriesByFileExtension(_unused);
+		return super.getRepositoriesByFileExtension(null);
 	}
 
-	public EventualDataset getFilesWithFileExtension(String _unused, List<String> exts) {
+	public EventualDataset getFilesWithFileExtension(List<String> exts) {
 
 		to = DATATYPES.FILES;
 		ep.put(FILTERS.FILETBYFILEEXTENSION, exts);
 		// TODO dataset likely specific to return type (in this case dataset of
 		// files?)
-		return super.getFilesWithFileExtension(_unused, exts);
+		return super.getFilesWithFileExtension(null, exts);
 	}
 
-	public EventualDataset getAuthors(String _unused) {
+	public EventualDataset getAuthors() {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// authors?)
 		to = DATATYPES.AUTHORS;
-		return super.getAuthors(_unused);
+		return super.getAuthors(null);
 	}
 
 	@Override
