@@ -133,22 +133,22 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 
 	@Override
 	public void onSubscribe(Disposable d) {
-		// TODO
-
+		System.out.println("disposing of:" + d + " as it is unsubscribing.");
+		d.dispose();
 	}
 
 	@Override
 	public void onError(Throwable e) {
-		// TODO
-
+		e.printStackTrace();
 	}
 
 	@Override
 	public void onComplete() {
 		ds.notifySuccess();
-
 	}
 
+	// TODO to be replaced by typing the objects to appropriate java types
+	// (repo/file/author etc.)
 	private DATATYPES getDatatypeFromObject(Object o) {
 
 		String object = o.toString();

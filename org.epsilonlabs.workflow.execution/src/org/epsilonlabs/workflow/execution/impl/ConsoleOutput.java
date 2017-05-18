@@ -24,11 +24,11 @@ public class ConsoleOutput implements EventualDataConsumer {
 		if (o instanceof Iterable<?>)
 			for (Object oo : (Iterable<?>) o) {
 				System.out.println(">>> " + oo);
-				
+
 			}
 		else {
 			System.out.println(">>> " + o);
-			
+
 		}
 	}
 
@@ -36,16 +36,12 @@ public class ConsoleOutput implements EventualDataConsumer {
 	public void onError(Throwable e) {
 
 		System.err.println(e);
-		
 
 	}
 
 	@Override
 	public void onComplete() {
-
 		System.out.println("DATA STREAM ENDED");
-		
-
 	}
 
 }

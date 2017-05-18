@@ -3,7 +3,6 @@ package org.epsilonlabs.workflow.execution.impl;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.epsilonlabs.workflow.execution.EventualDataConsumer;
 import org.epsilonlabs.workflow.execution.EventualDataset;
 
 import io.reactivex.Observer;

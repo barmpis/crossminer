@@ -1,13 +1,8 @@
 package org.epsilonlabs.workflow.execution.impl;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
-import org.epsilonlabs.workflow.execution.EventualDataConsumer;
-import org.epsilonlabs.workflow.execution.EventualDataMapper;
-import org.epsilonlabs.workflow.execution.EventualDataProvider;
 import org.epsilonlabs.workflow.execution.EventualDataset;
 import org.epsilonlabs.workflow.execution.WorkflowExecutor;
 
@@ -62,6 +57,8 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 
 			Thread.sleep(2000);
 		}
+		//
+		source.stubDenoteCompletion();
 		//
 
 		System.out.println("workflow executed.");
