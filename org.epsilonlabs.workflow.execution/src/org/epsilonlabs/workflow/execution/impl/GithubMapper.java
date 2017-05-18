@@ -38,6 +38,21 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 	}
 
 	@Override
+	public EventualDataset getRepositoriesByFileExtension(List<String> exts) {
+		return getRepositoriesByFileExtension();
+	}
+
+	@Override
+	public EventualDataset getFilesWithFileExtension(String repo, List<String> exts) {
+		return getFilesWithFileExtension(exts);
+	}
+
+	@Override
+	public EventualDataset getAuthors(String file) {
+		return getAuthors();
+	}
+
+	@Override
 	public void onNext(Object o) {
 
 		if (o instanceof Iterable<?>) {
