@@ -20,10 +20,6 @@ import io.reactivex.subjects.PublishSubject;
 
 public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 
-	// this observable will only emit items provided by other observables upon
-	// running a fetch operation (which it subscribes to).
-	private PublishSubject<Object> out = null;
-
 	private DATATYPES to;
 
 	private HashMap<FILTERS, Object> config = new HashMap<>();
@@ -31,8 +27,8 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 	public PublishSubject<Object> getRepositoriesByFileExtension() {
 
 		to = DATATYPES.REPOSITORIES;
-		out = super.getRepositoriesByFileExtension(null);
-		return out;
+		super.getRepositoriesByFileExtension(null);
+		return ds;
 	}
 
 	public PublishSubject<Object> getFilesWithFileExtension(Iterable<String> exts) {
@@ -41,16 +37,16 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 		config.put(FILTERS.FILETBYFILEEXTENSION, exts);
 		// TODO dataset likely specific to return type (in this case dataset of
 		// files?)
-		out = super.getFilesWithFileExtension(null, exts);
-		return out;
+		super.getFilesWithFileExtension(null, exts);
+		return ds;
 	}
 
 	public PublishSubject<Object> getAuthors() {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// authors?)
 		to = DATATYPES.AUTHORS;
-		out = super.getAuthors(null);
-		return out;
+		super.getAuthors(null);
+		return ds;
 	}
 
 	@Override
@@ -148,7 +144,7 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 		GithubExecutor ex = new GithubExecutor();
 		Observable<Object> files = ex.getFilesWithFileExtension(o.toString(), ext);
 
-		files.subscribe(out);
+		files.subscribe(ds);
 
 		// STUB (would use info on name or extension here to guide the search)
 		ex.stubRetrieveFilesInRepo(o.toString());
@@ -165,7 +161,7 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 		GithubExecutor ex = new GithubExecutor();
 		Observable<Object> authors = ex.getAuthors(o.toString());
 
-		authors.subscribe(out);
+		authors.subscribe(ds);
 
 		// STUB (would use info on name or extension here to guide the search)
 		ex.stubRetrieveAuthorFromFile(o.toString());
