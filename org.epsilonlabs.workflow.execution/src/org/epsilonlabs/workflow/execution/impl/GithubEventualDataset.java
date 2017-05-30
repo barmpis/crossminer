@@ -1,11 +1,16 @@
+/*******************************************************************************
+ * Copyright (c) 2017 The University of York.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Konstantinos Barmpis - initial API and implementation
+ ******************************************************************************/
 package org.epsilonlabs.workflow.execution.impl;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import org.epsilonlabs.workflow.execution.EventualDataset;
-
-import io.reactivex.Observer;
 
 /**
  * A dataset representing data which will be collected at some point, and notify
@@ -14,34 +19,9 @@ import io.reactivex.Observer;
  * @author kb
  *
  */
-public class GithubEventualDataset extends EventualDataset {
+public class GithubEventualDataset<T> extends EventualDataset<T> {
 
-	List<Observer<? super Object>> subscribers = new LinkedList<Observer<? super Object>>();
-
-	@Override
-	protected void subscribeActual(Observer<? super Object> observer) {
-
-		// initialise subscription -- maybe provide initial metadata?
-		subscribers.add(observer);
-
-	}
-
-	@Override
-	public void notifyAndProvideData(Object o) {
-		for (Observer<? super Object> c : subscribers)
-			c.onNext(o);
-	}
-
-	@Override
-	public void notifyFailure() {
-	}
-
-	@Override
-	public void notifySuccess() {
-		for (Observer<? super Object> c : subscribers)
-			c.onComplete();
-	}
-
-	//
+	// XXX all methods currently implemented in superclass (override here if
+	// needed)
 
 }

@@ -1,10 +1,29 @@
+/*******************************************************************************
+ * Copyright (c) 2017 The University of York.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Konstantinos Barmpis - initial API and implementation
+ ******************************************************************************/
 package org.epsilonlabs.workflow.execution.impl;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.epsilonlabs.workflow.execution.EventualDataProvider;
 import org.epsilonlabs.workflow.execution.EventualDataset;
 
+/**
+ * Coordinator of a @GithubEventualDataset observable, providing the appropriate
+ * one on request and emiting relevant data when it receives it from Github. A
+ * new @GithubExecutor should be created for each call as it only manages
+ * one @GithubEventualDataset at a time.
+ * 
+ * @author kb
+ *
+ */
 public class GithubExecutor implements EventualDataProvider {
 
 	enum FILTERS {
@@ -15,7 +34,7 @@ public class GithubExecutor implements EventualDataProvider {
 		REPOSITORIES, FILES, AUTHORS
 	}
 
-	protected EventualDataset ds;
+	protected EventualDataset<Object> ds;
 
 	public GithubExecutor() {
 
@@ -23,29 +42,29 @@ public class GithubExecutor implements EventualDataProvider {
 
 	}
 
-	public EventualDataset getRepositoriesByFileExtension(List<String> exts) {
+	public EventualDataset<Object> getRepositoriesByFileExtension(Collection<String> exts) {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// repos?)
-		return ds = new GithubEventualDataset();
+		return ds = new GithubEventualDataset<Object>();
 	}
 
-	public EventualDataset getFilesWithFileExtension(String repo, List<String> exts) {
+	public EventualDataset<Object> getFilesWithFileExtension(String repo, Collection<String> exts) {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// files?)
-		return ds = new GithubEventualDataset();
+		return ds = new GithubEventualDataset<Object>();
 	}
 
-	public EventualDataset getAuthors(String file) {
+	public EventualDataset<Object> getAuthors(String file) {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// authors?)
-		return ds = new GithubEventualDataset();
+		return ds = new GithubEventualDataset<Object>();
 	}
 
 	//
 	public void stubRetrieveRepositoriesByFileExtension(String ext) {
 		System.out.println("(StubResilientGithubWrapper) providing repository containing " + ext + " files...");
 
-		ds.notifyAndProvideData("repoOf:" + ext);
+		ds.notifyAndProvideData(((Object) ("repoOf:" + ext)));
 	}
 
 	//
@@ -61,7 +80,7 @@ public class GithubExecutor implements EventualDataProvider {
 		System.out.println("(StubResilientGithubWrapper) providing actual files of " + repo + " repository...");
 
 		ds.notifyAndProvideData("fileOf:" + repo);
- 
+
 	}
 
 	//

@@ -1,10 +1,21 @@
+/*******************************************************************************
+ * Copyright (c) 2017 The University of York.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Konstantinos Barmpis - initial API and implementation
+ ******************************************************************************/
 package org.epsilonlabs.workflow.execution.impl;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import org.epsilonlabs.workflow.execution.EventualDataset;
 import org.epsilonlabs.workflow.execution.WorkflowExecutor;
+
+import io.reactivex.Observable;
 
 /**
  * Responsible for coordinating the execution of a workflow
@@ -30,20 +41,20 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 		// find repositories in github by file extension
 		GithubExecutor source = new GithubExecutor();
 
-		EventualDataset repoData = source.getRepositoriesByFileExtension(exts);
+		Observable<?> repoData = source.getRepositoriesByFileExtension(exts);
 
 		// from the repositories obtained in the previous step, retrieve the
 		// files with the extensions we are interested in
 		GithubMapper mapper = new GithubMapper();
 		repoData.subscribe(mapper);
-		EventualDataset fileData = mapper.getFilesWithFileExtension(exts);
+		Observable<?> fileData = mapper.getFilesWithFileExtension(exts);
 
 		// from the files obtained in the previous step, retrieve the authors
 		// (using no filters)
 		GithubMapper mapper2 = new GithubMapper();
 		fileData.subscribe(mapper2);
 
-		EventualDataset authorData = mapper2.getAuthors();
+		Observable<?> authorData = mapper2.getAuthors();
 
 		// print these files
 		ConsoleOutput out = new ConsoleOutput();

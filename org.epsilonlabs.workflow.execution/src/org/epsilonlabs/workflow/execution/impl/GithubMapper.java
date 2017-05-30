@@ -1,8 +1,17 @@
+/*******************************************************************************
+ * Copyright (c) 2017 The University of York.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Konstantinos Barmpis - initial API and implementation
+ ******************************************************************************/
 package org.epsilonlabs.workflow.execution.impl;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 
 import org.epsilonlabs.workflow.execution.EventualDataMapper;
 import org.epsilonlabs.workflow.execution.EventualDataset;
@@ -11,44 +20,51 @@ import io.reactivex.disposables.Disposable;
 
 public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 
+	// this observable will never emit any items, it is merged lazily with the
+	// observables created by the mapping operations
+	private EventualDataset<Object> out = null;
+
 	private DATATYPES to;
 
-	private HashMap<FILTERS, Object> ep = new HashMap<>();
+	private HashMap<FILTERS, Object> config = new HashMap<>();
 
-	public EventualDataset getRepositoriesByFileExtension() {
+	public EventualDataset<Object> getRepositoriesByFileExtension() {
 
 		to = DATATYPES.REPOSITORIES;
-		return super.getRepositoriesByFileExtension(null);
+		out = super.getRepositoriesByFileExtension(null);
+		return out;
 	}
 
-	public EventualDataset getFilesWithFileExtension(List<String> exts) {
+	public EventualDataset<Object> getFilesWithFileExtension(Collection<String> exts) {
 
 		to = DATATYPES.FILES;
-		ep.put(FILTERS.FILETBYFILEEXTENSION, exts);
+		config.put(FILTERS.FILETBYFILEEXTENSION, exts);
 		// TODO dataset likely specific to return type (in this case dataset of
 		// files?)
-		return super.getFilesWithFileExtension(null, exts);
+		out = super.getFilesWithFileExtension(null, exts);
+		return out;
 	}
 
-	public EventualDataset getAuthors() {
+	public EventualDataset<Object> getAuthors() {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// authors?)
 		to = DATATYPES.AUTHORS;
-		return super.getAuthors(null);
+		out = super.getAuthors(null);
+		return out;
 	}
 
 	@Override
-	public EventualDataset getRepositoriesByFileExtension(List<String> exts) {
+	public EventualDataset<Object> getRepositoriesByFileExtension(Collection<String> exts) {
 		return getRepositoriesByFileExtension();
 	}
 
 	@Override
-	public EventualDataset getFilesWithFileExtension(String repo, List<String> exts) {
+	public EventualDataset<Object> getFilesWithFileExtension(String repo, Collection<String> exts) {
 		return getFilesWithFileExtension(exts);
 	}
 
 	@Override
-	public EventualDataset getAuthors(String file) {
+	public EventualDataset<Object> getAuthors(String file) {
 		return getAuthors();
 	}
 
@@ -125,12 +141,18 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 
 		// find if any relevant filters for the target datatype (in this case
 		// files) are defined
-		Collection<String> ext = (Collection<String>) ep.get(FILTERS.FILETBYFILEEXTENSION);
-		Collection<String> names = (Collection<String>) ep.get(FILTERS.FILTERBYNAME);
+		Collection<String> ext = (Collection<String>) config.get(FILTERS.FILETBYFILEEXTENSION);
+		Collection<String> names = (Collection<String>) config.get(FILTERS.FILTERBYNAME);
+
+		//
+		GithubExecutor ex = new GithubExecutor();
+		EventualDataset<Object> files = ex.getFilesWithFileExtension(o.toString(), ext);
+
+		files.mergeStateful(out);
+		out = files;
 
 		// STUB (would use info on name or extension here to guide the search)
-		stubRetrieveFilesInRepo(o.toString());
-		// TODO find a way to pass the new object to the github wrapper
+		ex.stubRetrieveFilesInRepo(o.toString());
 
 	}
 
@@ -138,11 +160,17 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 
 		// find if any relevant filters for the target datatype (in this case
 		// authors) are defined
-		Collection<String> names = (Collection<String>) ep.get(FILTERS.FILTERBYNAME);
+		Collection<String> names = (Collection<String>) config.get(FILTERS.FILTERBYNAME);
+
+		//
+		GithubExecutor ex = new GithubExecutor();
+		EventualDataset<Object> authors = ex.getAuthors(o.toString());
+
+		authors.mergeStateful(out);
+		out = authors;
 
 		// STUB (would use info on name or extension here to guide the search)
-		stubRetrieveAuthorFromFile(o.toString());
-		// TODO find a way to pass the new object to the github wrapper
+		ex.stubRetrieveAuthorFromFile(o.toString());
 
 	}
 
