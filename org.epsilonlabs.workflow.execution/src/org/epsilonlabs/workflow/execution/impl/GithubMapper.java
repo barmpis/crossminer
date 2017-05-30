@@ -10,32 +10,32 @@
  ******************************************************************************/
 package org.epsilonlabs.workflow.execution.impl;
 
-import java.util.Collection;
 import java.util.HashMap;
 
 import org.epsilonlabs.workflow.execution.EventualDataMapper;
-import org.epsilonlabs.workflow.execution.EventualDataset;
 
+import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.subjects.PublishSubject;
 
 public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 
-	// this observable will never emit any items, it is merged lazily with the
-	// observables created by the mapping operations
-	private EventualDataset<Object> out = null;
+	// this observable will only emit items provided by other observables upon
+	// running a fetch operation (which it subscribes to).
+	private PublishSubject<Object> out = null;
 
 	private DATATYPES to;
 
 	private HashMap<FILTERS, Object> config = new HashMap<>();
 
-	public EventualDataset<Object> getRepositoriesByFileExtension() {
+	public PublishSubject<Object> getRepositoriesByFileExtension() {
 
 		to = DATATYPES.REPOSITORIES;
 		out = super.getRepositoriesByFileExtension(null);
 		return out;
 	}
 
-	public EventualDataset<Object> getFilesWithFileExtension(Collection<String> exts) {
+	public PublishSubject<Object> getFilesWithFileExtension(Iterable<String> exts) {
 
 		to = DATATYPES.FILES;
 		config.put(FILTERS.FILETBYFILEEXTENSION, exts);
@@ -45,7 +45,7 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 		return out;
 	}
 
-	public EventualDataset<Object> getAuthors() {
+	public PublishSubject<Object> getAuthors() {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// authors?)
 		to = DATATYPES.AUTHORS;
@@ -54,17 +54,17 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 	}
 
 	@Override
-	public EventualDataset<Object> getRepositoriesByFileExtension(Collection<String> exts) {
+	public PublishSubject<Object> getRepositoriesByFileExtension(Iterable<String> exts) {
 		return getRepositoriesByFileExtension();
 	}
 
 	@Override
-	public EventualDataset<Object> getFilesWithFileExtension(String repo, Collection<String> exts) {
+	public PublishSubject<Object> getFilesWithFileExtension(String repo, Iterable<String> exts) {
 		return getFilesWithFileExtension(exts);
 	}
 
 	@Override
-	public EventualDataset<Object> getAuthors(String file) {
+	public PublishSubject<Object> getAuthors(String file) {
 		return getAuthors();
 	}
 
@@ -141,15 +141,14 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 
 		// find if any relevant filters for the target datatype (in this case
 		// files) are defined
-		Collection<String> ext = (Collection<String>) config.get(FILTERS.FILETBYFILEEXTENSION);
-		Collection<String> names = (Collection<String>) config.get(FILTERS.FILTERBYNAME);
+		Iterable<String> ext = (Iterable<String>) config.get(FILTERS.FILETBYFILEEXTENSION);
+		Iterable<String> names = (Iterable<String>) config.get(FILTERS.FILTERBYNAME);
 
 		//
 		GithubExecutor ex = new GithubExecutor();
-		EventualDataset<Object> files = ex.getFilesWithFileExtension(o.toString(), ext);
+		Observable<Object> files = ex.getFilesWithFileExtension(o.toString(), ext);
 
-		files.mergeStateful(out);
-		out = files;
+		files.subscribe(out);
 
 		// STUB (would use info on name or extension here to guide the search)
 		ex.stubRetrieveFilesInRepo(o.toString());
@@ -160,14 +159,13 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 
 		// find if any relevant filters for the target datatype (in this case
 		// authors) are defined
-		Collection<String> names = (Collection<String>) config.get(FILTERS.FILTERBYNAME);
+		Iterable<String> names = (Iterable<String>) config.get(FILTERS.FILTERBYNAME);
 
 		//
 		GithubExecutor ex = new GithubExecutor();
-		EventualDataset<Object> authors = ex.getAuthors(o.toString());
+		Observable<Object> authors = ex.getAuthors(o.toString());
 
-		authors.mergeStateful(out);
-		out = authors;
+		authors.subscribe(out);
 
 		// STUB (would use info on name or extension here to guide the search)
 		ex.stubRetrieveAuthorFromFile(o.toString());
@@ -176,8 +174,7 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 
 	@Override
 	public void onSubscribe(Disposable d) {
-		System.out.println("disposing of:" + d + " as it is unsubscribing.");
-		d.dispose();
+		//
 	}
 
 	@Override
@@ -187,7 +184,7 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 
 	@Override
 	public void onComplete() {
-		ds.notifySuccess();
+		ds.onComplete();
 	}
 
 	// TODO to be replaced by typing the objects to appropriate java types

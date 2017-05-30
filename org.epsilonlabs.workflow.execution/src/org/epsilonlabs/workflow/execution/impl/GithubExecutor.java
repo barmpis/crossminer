@@ -10,10 +10,9 @@
  ******************************************************************************/
 package org.epsilonlabs.workflow.execution.impl;
 
-import java.util.Collection;
-
 import org.epsilonlabs.workflow.execution.EventualDataProvider;
-import org.epsilonlabs.workflow.execution.EventualDataset;
+
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * Coordinator of a @GithubEventualDataset observable, providing the appropriate
@@ -34,7 +33,7 @@ public class GithubExecutor implements EventualDataProvider {
 		REPOSITORIES, FILES, AUTHORS
 	}
 
-	protected EventualDataset<Object> ds;
+	protected PublishSubject<Object> ds;
 
 	public GithubExecutor() {
 
@@ -42,36 +41,36 @@ public class GithubExecutor implements EventualDataProvider {
 
 	}
 
-	public EventualDataset<Object> getRepositoriesByFileExtension(Collection<String> exts) {
+	public PublishSubject<Object> getRepositoriesByFileExtension(Iterable<String> exts) {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// repos?)
-		return ds = new GithubEventualDataset<Object>();
+		return ds = PublishSubject.create();
 	}
 
-	public EventualDataset<Object> getFilesWithFileExtension(String repo, Collection<String> exts) {
+	public PublishSubject<Object> getFilesWithFileExtension(String repo, Iterable<String> exts) {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// files?)
-		return ds = new GithubEventualDataset<Object>();
+		return ds = PublishSubject.create();
 	}
 
-	public EventualDataset<Object> getAuthors(String file) {
+	public PublishSubject<Object> getAuthors(String file) {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// authors?)
-		return ds = new GithubEventualDataset<Object>();
+		return ds = PublishSubject.create();
 	}
 
 	//
 	public void stubRetrieveRepositoriesByFileExtension(String ext) {
 		System.out.println("(StubResilientGithubWrapper) providing repository containing " + ext + " files...");
 
-		ds.notifyAndProvideData(((Object) ("repoOf:" + ext)));
+		ds.onNext("repoOf:" + ext);
 	}
 
 	//
 	public void stubRetrieveAuthorFromFile(String file) {
 		System.out.println("(StubResilientGithubWrapper) providing author of " + file + " files...");
 
-		ds.notifyAndProvideData("authorOf:" + file);
+		ds.onNext("authorOf:" + file);
 
 	}
 
@@ -79,13 +78,13 @@ public class GithubExecutor implements EventualDataProvider {
 	public void stubRetrieveFilesInRepo(String repo) {
 		System.out.println("(StubResilientGithubWrapper) providing actual files of " + repo + " repository...");
 
-		ds.notifyAndProvideData("fileOf:" + repo);
+		ds.onNext("fileOf:" + repo);
 
 	}
 
 	//
 	public void stubDenoteCompletion() {
-		ds.notifySuccess();
+		ds.onComplete();
 	}
 
 }
