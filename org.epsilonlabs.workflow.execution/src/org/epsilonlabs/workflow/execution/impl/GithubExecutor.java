@@ -33,7 +33,7 @@ public class GithubExecutor implements WorkflowProviderNode {
 		REPOSITORIES, FILES, AUTHORS
 	}
 
-	protected PublishSubject<Object> ds;
+	protected PublishSubject<Object> ds = null;
 
 	public GithubExecutor() {
 
@@ -44,19 +44,34 @@ public class GithubExecutor implements WorkflowProviderNode {
 	public PublishSubject<Object> getRepositoriesByFileExtension(Iterable<String> exts) throws Exception {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// repos?)
-		return ds = PublishSubject.create();
+		if (ds == null) {
+
+			return ds = PublishSubject.create();
+
+		} else
+			throw new Exception("Tried to get repos but this executor has already been initialised");
 	}
 
 	public PublishSubject<Object> getFilesWithFileExtension(String repo, Iterable<String> exts) throws Exception {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// files?)
-		return ds = PublishSubject.create();
+		if (ds == null) {
+
+			return ds = PublishSubject.create();
+
+		} else
+			throw new Exception("Tried to get files but this executor has already been initialised");
 	}
 
 	public PublishSubject<Object> getAuthors(String file) throws Exception {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// authors?)
-		return ds = PublishSubject.create();
+		if (ds == null) {
+
+			return ds = PublishSubject.create();
+
+		} else
+			throw new Exception("Tried to get authors but this executor has already been initialised");
 	}
 
 	//
