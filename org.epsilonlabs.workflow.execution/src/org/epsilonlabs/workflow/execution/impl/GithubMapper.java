@@ -12,55 +12,73 @@ package org.epsilonlabs.workflow.execution.impl;
 
 import java.util.HashMap;
 
-import org.epsilonlabs.workflow.execution.EventualDataMapper;
+import org.epsilonlabs.workflow.execution.WorkflowMapperNode;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.subjects.PublishSubject;
 
-public class GithubMapper extends GithubExecutor implements EventualDataMapper {
+/**
+ * A node responsible for producing output of a specific type (defined in
+ * {@link GithubExecutor.DATATYPES}) using heterogeneous input
+ * 
+ * @author kb
+ *
+ */
+public class GithubMapper extends GithubExecutor implements WorkflowMapperNode {
 
-	private DATATYPES to;
+	private DATATYPES to = null;
 
 	private HashMap<FILTERS, Object> config = new HashMap<>();
 
-	public PublishSubject<Object> getRepositoriesByFileExtension() {
+	public PublishSubject<Object> getRepositoriesByFileExtension() throws Exception {
 
-		to = DATATYPES.REPOSITORIES;
-		super.getRepositoriesByFileExtension(null);
-		return ds;
+		if (to == null) {
+			to = DATATYPES.REPOSITORIES;
+			super.getRepositoriesByFileExtension(null);
+			return ds;
+		} else
+			throw new Exception("Tried to get repos but this executor has already been set to return: " + to);
+
 	}
 
-	public PublishSubject<Object> getFilesWithFileExtension(Iterable<String> exts) {
+	public PublishSubject<Object> getFilesWithFileExtension(Iterable<String> exts) throws Exception {
 
-		to = DATATYPES.FILES;
-		config.put(FILTERS.FILETBYFILEEXTENSION, exts);
-		// TODO dataset likely specific to return type (in this case dataset of
-		// files?)
-		super.getFilesWithFileExtension(null, exts);
-		return ds;
+		if (to == null) {
+			to = DATATYPES.FILES;
+			config.put(FILTERS.FILETBYFILEEXTENSION, exts);
+			// TODO dataset likely specific to return type (in this case dataset
+			// of
+			// files?)
+			super.getFilesWithFileExtension(null, exts);
+			return ds;
+		} else
+			throw new Exception("Tried to get files but this executor has already been set to return: " + to);
 	}
 
-	public PublishSubject<Object> getAuthors() {
+	public PublishSubject<Object> getAuthors() throws Exception {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// authors?)
-		to = DATATYPES.AUTHORS;
-		super.getAuthors(null);
-		return ds;
+		if (to == null) {
+			to = DATATYPES.AUTHORS;
+			super.getAuthors(null);
+			return ds;
+		} else
+			throw new Exception("Tried to get authors but this executor has already been set to return: " + to);
 	}
 
 	@Override
-	public PublishSubject<Object> getRepositoriesByFileExtension(Iterable<String> exts) {
+	public PublishSubject<Object> getRepositoriesByFileExtension(Iterable<String> exts) throws Exception {
 		return getRepositoriesByFileExtension();
 	}
 
 	@Override
-	public PublishSubject<Object> getFilesWithFileExtension(String repo, Iterable<String> exts) {
+	public PublishSubject<Object> getFilesWithFileExtension(String repo, Iterable<String> exts) throws Exception {
 		return getFilesWithFileExtension(exts);
 	}
 
 	@Override
-	public PublishSubject<Object> getAuthors(String file) {
+	public PublishSubject<Object> getAuthors(String file) throws Exception {
 		return getAuthors();
 	}
 
@@ -74,30 +92,39 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 
 		else {
 
-			// map data from incoming dataset to the new dataset
-			System.out.println("(GithubMapper) consuming data: " + o);
+			try {
 
-			// TODO based on the type of incoming data we chose what to map from
-			// -- this will use the java type of the object eventually
-			DATATYPES from = getDatatypeFromObject(o);
+				// map data from incoming dataset to the new dataset
+				System.out.println("(GithubMapper) consuming data: " + o);
 
-			switch (from) {
-			case REPOSITORIES:
-				mapFromRepositories(o);
-				break;
-			case FILES:
-				mapFromFiles(o);
-				break;
-			case AUTHORS:
-				// mapFromAuthors(o);
-				break;
+				// TODO based on the type of incoming data we chose what to map
+				// from
+				// -- this will use the java type of the object eventually
+				DATATYPES from = getDatatypeFromObject(o);
 
+				switch (from) {
+				case REPOSITORIES:
+					mapFromRepositories(o);
+					break;
+				case FILES:
+					mapFromFiles(o);
+					break;
+				case AUTHORS:
+					// mapFromAuthors(o);
+					break;
+
+				}
+
+			} catch (Exception e) {
+				System.out.println("Error in onNext() of GithubMapper:");
+				e.printStackTrace();
 			}
+
 		}
 
 	}
 
-	private void mapFromRepositories(Object o) {
+	private void mapFromRepositories(Object o) throws Exception {
 
 		switch (to) {
 
@@ -115,7 +142,7 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 
 	}
 
-	private void mapFromFiles(Object o) {
+	private void mapFromFiles(Object o) throws Exception {
 
 		switch (to) {
 
@@ -133,7 +160,7 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 
 	}
 
-	private void mapToFiles(DATATYPES source, Object o) {
+	private void mapToFiles(DATATYPES source, Object o) throws Exception {
 
 		// find if any relevant filters for the target datatype (in this case
 		// files) are defined
@@ -151,7 +178,7 @@ public class GithubMapper extends GithubExecutor implements EventualDataMapper {
 
 	}
 
-	private void mapToAuthors(DATATYPES source, Object o) {
+	private void mapToAuthors(DATATYPES source, Object o) throws Exception {
 
 		// find if any relevant filters for the target datatype (in this case
 		// authors) are defined

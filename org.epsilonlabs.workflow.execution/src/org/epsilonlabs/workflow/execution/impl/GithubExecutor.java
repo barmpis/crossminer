@@ -10,20 +10,20 @@
  ******************************************************************************/
 package org.epsilonlabs.workflow.execution.impl;
 
-import org.epsilonlabs.workflow.execution.EventualDataProvider;
+import org.epsilonlabs.workflow.execution.WorkflowProviderNode;
 
 import io.reactivex.subjects.PublishSubject;
 
 /**
- * Coordinator of a @GithubEventualDataset observable, providing the appropriate
+ * Coordinator of a {@link PublishSubject} observable, providing the appropriate
  * one on request and emiting relevant data when it receives it from Github. A
- * new @GithubExecutor should be created for each call as it only manages
- * one @GithubEventualDataset at a time.
+ * new {@link GithubExecutor} should be created for each call as it only manages
+ * one {@link PublishSubject} at a time.
  * 
  * @author kb
  *
  */
-public class GithubExecutor implements EventualDataProvider {
+public class GithubExecutor implements WorkflowProviderNode {
 
 	enum FILTERS {
 		FILETBYFILEEXTENSION, FILTERBYNAME
@@ -41,19 +41,19 @@ public class GithubExecutor implements EventualDataProvider {
 
 	}
 
-	public PublishSubject<Object> getRepositoriesByFileExtension(Iterable<String> exts) {
+	public PublishSubject<Object> getRepositoriesByFileExtension(Iterable<String> exts) throws Exception {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// repos?)
 		return ds = PublishSubject.create();
 	}
 
-	public PublishSubject<Object> getFilesWithFileExtension(String repo, Iterable<String> exts) {
+	public PublishSubject<Object> getFilesWithFileExtension(String repo, Iterable<String> exts) throws Exception {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// files?)
 		return ds = PublishSubject.create();
 	}
 
-	public PublishSubject<Object> getAuthors(String file) {
+	public PublishSubject<Object> getAuthors(String file) throws Exception {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// authors?)
 		return ds = PublishSubject.create();

@@ -12,7 +12,7 @@ package org.epsilonlabs.workflow.execution;
 
 import io.reactivex.Observer;
 
-public interface EventualDataConsumer extends Observer<Object> {
+public interface WorkflowConsumerNode extends Observer<Object> {
 
 	// TODO no currently identified methods available to all consumers
 

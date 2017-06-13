@@ -10,7 +10,7 @@
  ******************************************************************************/
 package org.epsilonlabs.workflow.execution;
 
-public interface EventualDataMapper extends EventualDataProvider, EventualDataConsumer {
+public interface WorkflowMapperNode extends WorkflowProviderNode, WorkflowConsumerNode {
 
 	// TODO no currently identified methods available to all mappers
 

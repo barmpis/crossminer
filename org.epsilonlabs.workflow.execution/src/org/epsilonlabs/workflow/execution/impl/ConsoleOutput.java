@@ -10,17 +10,17 @@
  ******************************************************************************/
 package org.epsilonlabs.workflow.execution.impl;
 
-import org.epsilonlabs.workflow.execution.EventualDataConsumer;
+import org.epsilonlabs.workflow.execution.WorkflowConsumerNode;
 
 import io.reactivex.disposables.Disposable;
 
 /**
- * Consumer of EventualData
+ * Trivial data consumer, printing to console
  * 
  * @author kb
  *
  */
-public class ConsoleOutput implements EventualDataConsumer {
+public class ConsoleOutput implements WorkflowConsumerNode {
 
 	@Override
 	public void onSubscribe(Disposable d) {
