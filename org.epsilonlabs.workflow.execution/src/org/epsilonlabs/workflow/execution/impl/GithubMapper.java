@@ -10,11 +10,14 @@
  ******************************************************************************/
 package org.epsilonlabs.workflow.execution.impl;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 import org.epsilonlabs.workflow.execution.WorkflowMapperNode;
 
 import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.subjects.PublishSubject;
 
@@ -26,6 +29,8 @@ import io.reactivex.subjects.PublishSubject;
  *
  */
 public class GithubMapper extends GithubExecutor implements WorkflowMapperNode {
+
+	private Collection<Observer<? super Object>> subscribers = new LinkedList<>();
 
 	private DATATYPES to = null;
 
@@ -82,6 +87,10 @@ public class GithubMapper extends GithubExecutor implements WorkflowMapperNode {
 		return getAuthors();
 	}
 
+	private int current = 0;
+
+	private int period = 10;
+
 	@Override
 	public void onNext(Object o) {
 
@@ -116,11 +125,15 @@ public class GithubMapper extends GithubExecutor implements WorkflowMapperNode {
 				}
 
 			} catch (Exception e) {
-				System.out.println("Error in onNext() of GithubMapper:");
+				System.err.println("Error in onNext() of GithubMapper:");
 				e.printStackTrace();
 			}
 
 		}
+
+		current++;
+		if (current % period == 0)
+			notifyObserversOfStatusChange("processed " + current + " elements");
 
 	}
 
@@ -203,11 +216,13 @@ public class GithubMapper extends GithubExecutor implements WorkflowMapperNode {
 	@Override
 	public void onError(Throwable e) {
 		e.printStackTrace();
+		notifyObserversOfStatusChange("task error:\n" + e.getStackTrace());
 	}
 
 	@Override
 	public void onComplete() {
 		ds.onComplete();
+		notifyObserversOfStatusChange("task complete");
 	}
 
 	// TODO to be replaced by typing the objects to appropriate java types
@@ -216,21 +231,26 @@ public class GithubMapper extends GithubExecutor implements WorkflowMapperNode {
 
 		String object = o.toString();
 
-		String type = object.substring(0, object.indexOf(":"));
+		String type = object.substring(0, object.indexOf("#")).substring(0, object.indexOf("~"));
 
 		switch (type) {
-		case "repoOf":
+		case "repo":
 			return DATATYPES.REPOSITORIES;
-		case "fileOf":
+		case "file":
 			return DATATYPES.FILES;
 
-		case "authorOf":
+		case "author":
 			return DATATYPES.AUTHORS;
 
 		default:
 			return null;
 		}
 
+	}
+
+	@Override
+	public Collection<Observer<? super Object>> getSubscribers() {
+		return subscribers;
 	}
 
 }

@@ -10,23 +10,35 @@
  ******************************************************************************/
 package org.epsilonlabs.workflow.execution;
 
+import java.util.Collection;
+
+import io.reactivex.ObservableSource;
+import io.reactivex.Observer;
+
 /**
- * Responsible for coordinating the execution of a workflow
+ * Responsible for coordinating the execution of a workflow. It can provide
+ * status change notifications to interested parties to inform them of its
+ * progress (extends ObservableSource).
  * 
  * @author kb
  *
  */
-public interface WorkflowExecutor {
+public interface WorkflowExecutor extends ObservableSource<Object> {
 
 	public void executeWorkflow() throws Exception;
 
 	/**
-	 * graphical editors subscribe here for visual updates
-	 * 
-	 * @param o
+	 * subscription of editors or other interested parties for progress updates
 	 */
-	public void subscribe(Object o);
+	default public void subscribe(Observer<? super Object> observer) {
+		getSubscribers().add(observer);
+	}
 
-	public void unSubscribe(Object o);
+	default public void notifyObserversOfStatusChange(String status) {
+		for (Observer<Object> o : getSubscribers())
+			o.onNext(status);
+	}
+
+	public Collection<Observer<? super Object>> getSubscribers();
 
 }

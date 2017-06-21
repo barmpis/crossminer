@@ -8,13 +8,13 @@
  * Contributors:
  *     Konstantinos Barmpis - initial API and implementation
  ******************************************************************************/
-package org.epsilonlabs.workflow.execution.impl;
+package org.epsilonlabs.workflow.execution.tests.util;
 
 import java.util.Collection;
 import java.util.LinkedList;
 
 import org.epsilonlabs.workflow.execution.WorkflowProviderNode;
-import org.epsilonlabs.workflow.execution.impl.StubGithubData.Repo;
+import org.epsilonlabs.workflow.execution.tests.util.StubGithubData2.Repo;
 
 import io.reactivex.Observer;
 import io.reactivex.subjects.PublishSubject;
@@ -22,13 +22,13 @@ import io.reactivex.subjects.PublishSubject;
 /**
  * Coordinator of a {@link PublishSubject} observable, providing the appropriate
  * one on request and emiting relevant data when it receives it from Github. A
- * new {@link GithubExecutor} should be created for each call as it only manages
- * one {@link PublishSubject} at a time.
+ * new {@link GithubExecutor2} should be created for each call as it only
+ * manages one {@link PublishSubject} at a time.
  * 
  * @author kb
  *
  */
-public class GithubExecutor implements WorkflowProviderNode {
+public class GithubExecutor2 implements WorkflowProviderNode {
 
 	enum FILTERS {
 		FILETBYFILEEXTENSION, FILTERBYNAME
@@ -42,7 +42,7 @@ public class GithubExecutor implements WorkflowProviderNode {
 
 	protected PublishSubject<Object> ds = null;
 
-	public GithubExecutor() {
+	public GithubExecutor2() {
 
 		// ...
 
@@ -97,7 +97,7 @@ public class GithubExecutor implements WorkflowProviderNode {
 	public void stubRetrieveRepositoriesByFileExtension(String ext) {
 		System.out.println("(StubResilientGithubWrapper) providing repository containing " + ext + " files...");
 
-		LinkedList<Repo> data = StubGithubData.getData();
+		LinkedList<Repo> data = StubGithubData2.getData();
 
 		for (Repo repo : data)
 			if (repo.getType().equals(ext))
@@ -108,7 +108,7 @@ public class GithubExecutor implements WorkflowProviderNode {
 	public void stubRetrieveAuthorFromFile(String file) {
 		System.out.println("(StubResilientGithubWrapper) providing author of " + file + " files...");
 
-		LinkedList<Repo> data = StubGithubData.getData();
+		LinkedList<Repo> data = StubGithubData2.getData();
 
 		for (Repo repo : data)
 			for (String f : repo.getFiles())
@@ -121,7 +121,7 @@ public class GithubExecutor implements WorkflowProviderNode {
 	public void stubRetrieveFilesInRepo(String repo) {
 		System.out.println("(StubResilientGithubWrapper) providing actual files of " + repo + " repository...");
 
-		LinkedList<Repo> data = StubGithubData.getData();
+		LinkedList<Repo> data = StubGithubData2.getData();
 
 		for (Repo r : data)
 			if (r.getName().equals(repo.substring(0, repo.indexOf("#"))))

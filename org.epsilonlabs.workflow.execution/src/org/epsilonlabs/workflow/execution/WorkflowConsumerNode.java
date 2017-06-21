@@ -10,10 +10,33 @@
  ******************************************************************************/
 package org.epsilonlabs.workflow.execution;
 
+import java.util.Collection;
+
+import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 
-public interface WorkflowConsumerNode extends Observer<Object> {
+/**
+ * Represents a node that consumes data (extends Observer). This node can
+ * provide status change notifications to interested parties to inform them of
+ * its progress (extends ObservableSource).
+ * 
+ * @author kb
+ *
+ */
+public interface WorkflowConsumerNode extends Observer<Object>, ObservableSource<Object> {
 
-	// TODO no currently identified methods available to all consumers
+	/**
+	 * subscription of editors or other interested parties for progress updates
+	 */
+	default public void subscribe(Observer<? super Object> observer) {
+		getSubscribers().add(observer);
+	}
+
+	default public void notifyObserversOfStatusChange(String status) {
+		for (Observer<Object> o : getSubscribers())
+			o.onNext(status);
+	}
+
+	public Collection<Observer<? super Object>> getSubscribers();
 
 }

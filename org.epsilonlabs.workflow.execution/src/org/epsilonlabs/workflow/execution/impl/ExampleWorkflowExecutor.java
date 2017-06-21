@@ -10,12 +10,14 @@
  ******************************************************************************/
 package org.epsilonlabs.workflow.execution.impl;
 
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.epsilonlabs.workflow.execution.WorkflowExecutor;
 
 import io.reactivex.Observable;
+import io.reactivex.Observer;
 
 /**
  * Responsible for coordinating the execution of a workflow
@@ -24,6 +26,8 @@ import io.reactivex.Observable;
  *
  */
 public class ExampleWorkflowExecutor implements WorkflowExecutor {
+
+	private Collection<Observer<? super Object>> subscribers = new LinkedList<>();
 
 	public static void main(String... args) throws Exception {
 		new ExampleWorkflowExecutor().executeWorkflow();
@@ -35,7 +39,7 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 
 		// define file extensions we are interested in
 		List<String> exts = new LinkedList<String>();
-		exts.add("ecore");
+		exts.add("xmi");
 		exts.add("uml");
 
 		// find repositories in github by file extension
@@ -62,6 +66,7 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 
 		//
 		// STUB EXECUTION OF DATA RETRIEVAL
+		StubGithubData.addStubGithubData(2);
 		for (String ext : exts) {
 			source.stubRetrieveRepositoriesByFileExtension(ext);
 			System.out.println("RATE LIMIT REACHED! waiting 59minutes...");
@@ -76,10 +81,9 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 
 	}
 
-	public void subscribe(Object o) {
-		// TODO graphical editor subscriptions
+	@Override
+	public Collection<Observer<? super Object>> getSubscribers() {
+		return subscribers;
 	}
 
-	public void unSubscribe(Object o) {
-	}
 }
