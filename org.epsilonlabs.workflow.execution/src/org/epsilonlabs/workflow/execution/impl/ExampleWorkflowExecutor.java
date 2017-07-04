@@ -33,7 +33,8 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 	private Collection<Observer<? super Object>> subscribers = new LinkedList<>();
 
 	public static void main(String... args) throws Exception {
-		new ExampleWorkflowExecutor().executeClassificationWorkflow();
+		new ExampleWorkflowExecutor().executeWorkflow();
+		// new ExampleWorkflowExecutor().executeClassificationWorkflow();
 	}
 
 	private void executeClassificationWorkflow() {
@@ -84,7 +85,7 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 		exts.add("uml");
 
 		// find repositories in github by file extension
-		GithubExecutor source = new GithubExecutor();
+		GithubClient source = new GithubClient();
 
 		Observable<?> repoData = source.getRepositoriesByFileExtension(exts);
 

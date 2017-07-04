@@ -7,7 +7,9 @@ import java.util.List;
 
 import org.epsilonlabs.workflow.execution.impl.CachedConsumer;
 import org.epsilonlabs.workflow.execution.impl.ConsoleOutput;
-import org.epsilonlabs.workflow.execution.impl.GithubExecutor;
+import org.epsilonlabs.workflow.execution.impl.GithubClient;
+import org.epsilonlabs.workflow.execution.impl.GithubClient.File;
+import org.epsilonlabs.workflow.execution.impl.GithubClient.Repo;
 import org.epsilonlabs.workflow.execution.impl.GithubMapper;
 import org.epsilonlabs.workflow.execution.impl.StubGithubData;
 import org.junit.Test;
@@ -33,12 +35,12 @@ public class StatusTests {
 		List<String> exts = new LinkedList<String>();
 		exts.add("xmi");
 		exts.add("uml");
-		GithubExecutor source = new GithubExecutor();
+		GithubClient source = new GithubClient();
 
 		CachedConsumer c = new CachedConsumer();
 		source.subscribe(c);
 
-		PublishSubject<Object> repos = source.getRepositoriesByFileExtension(exts);
+		PublishSubject<Repo> repos = source.getRepositoriesByFileExtension(exts);
 
 		repos.subscribe(new ConsoleOutput());
 
@@ -66,9 +68,9 @@ public class StatusTests {
 		List<String> exts = new LinkedList<String>();
 		exts.add("xmi");
 		exts.add("uml");
-		GithubExecutor source = new GithubExecutor();
+		GithubClient source = new GithubClient();
 
-		PublishSubject<Object> repos = source.getRepositoriesByFileExtension(exts);
+		PublishSubject<Repo> repos = source.getRepositoriesByFileExtension(exts);
 
 		GithubMapper m = new GithubMapper();
 		repos.subscribe(m);
@@ -76,7 +78,7 @@ public class StatusTests {
 		CachedConsumer c = new CachedConsumer();
 		m.subscribe(c);
 
-		PublishSubject<Object> d = m.getFilesWithFileExtension(exts);
+		PublishSubject<File> d = m.getFilesWithFileExtension(exts);
 
 		d.subscribe(new ConsoleOutput());
 

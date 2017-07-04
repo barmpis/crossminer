@@ -6,10 +6,13 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.epsilonlabs.workflow.execution.impl.GithubExecutor;
+import org.epsilonlabs.workflow.execution.impl.GithubClient;
+import org.epsilonlabs.workflow.execution.impl.GithubClient.Author;
+import org.epsilonlabs.workflow.execution.impl.GithubClient.File;
+import org.epsilonlabs.workflow.execution.impl.GithubClient.Repo;
 import org.epsilonlabs.workflow.execution.impl.GithubMapper;
 import org.epsilonlabs.workflow.execution.impl.StubGithubData;
-import org.epsilonlabs.workflow.execution.tests.util.GithubExecutor2;
+import org.epsilonlabs.workflow.execution.tests.util.GithubClient2;
 import org.epsilonlabs.workflow.execution.tests.util.StubGithubData2;
 import org.junit.Test;
 
@@ -36,8 +39,8 @@ public class DataflowTests {
 		List<String> exts = new LinkedList<String>();
 		exts.add("xmi");
 		exts.add("uml");
-		GithubExecutor source = new GithubExecutor();
-		PublishSubject<Object> repos = source.getRepositoriesByFileExtension(exts);
+		GithubClient source = new GithubClient();
+		PublishSubject<Repo> repos = source.getRepositoriesByFileExtension(exts);
 
 		repos.subscribe(t -> data.add(t.toString()));
 
@@ -62,12 +65,12 @@ public class DataflowTests {
 		List<String> exts = new LinkedList<String>();
 		exts.add("xmi");
 		exts.add("uml");
-		GithubExecutor source = new GithubExecutor();
-		PublishSubject<Object> repos = source.getRepositoriesByFileExtension(exts);
+		GithubClient source = new GithubClient();
+		PublishSubject<Repo> repos = source.getRepositoriesByFileExtension(exts);
 
 		GithubMapper m1 = new GithubMapper();
 		repos.subscribe(m1);
-		PublishSubject<Object> files = m1.getFilesWithFileExtension(exts);
+		PublishSubject<File> files = m1.getFilesWithFileExtension(exts);
 
 		files.subscribe(t -> data.add(t.toString()));
 
@@ -93,22 +96,22 @@ public class DataflowTests {
 		List<String> exts = new LinkedList<String>();
 		exts.add("xmi");
 		exts.add("uml");
-		GithubExecutor source = new GithubExecutor();
-		PublishSubject<Object> repos = source.getRepositoriesByFileExtension(exts);
+		GithubClient source = new GithubClient();
+		PublishSubject<Repo> repos = source.getRepositoriesByFileExtension(exts);
 
 		GithubMapper m1 = new GithubMapper();
 		repos.subscribe(m1);
-		PublishSubject<Object> files1 = m1.getFilesWithFileExtension(exts);
+		PublishSubject<File> files1 = m1.getFilesWithFileExtension(exts);
 
 		files1.subscribe(t -> data1.add(t.toString()));
 
 		GithubMapper m2 = new GithubMapper();
 		repos.subscribe(m2);
-		PublishSubject<Object> files2 = m2.getFilesWithFileExtension(exts);
+		PublishSubject<File> files2 = m2.getFilesWithFileExtension(exts);
 
 		GithubMapper m3 = new GithubMapper();
 		files2.subscribe(m3);
-		PublishSubject<Object> authors = m3.getAuthors();
+		PublishSubject<Author> authors = m3.getAuthors();
 
 		authors.subscribe(t -> data2.add(t.toString()));
 
@@ -137,10 +140,11 @@ public class DataflowTests {
 		exts.add("xmi");
 		exts.add("uml");
 
-		GithubExecutor source1 = new GithubExecutor();
-		PublishSubject<Object> repos1 = source1.getRepositoriesByFileExtension(exts);
-		GithubExecutor2 source2 = new GithubExecutor2();
-		PublishSubject<Object> repos2 = source2.getRepositoriesByFileExtension(exts);
+		GithubClient source1 = new GithubClient();
+		PublishSubject<Repo> repos1 = source1.getRepositoriesByFileExtension(exts);
+		GithubClient2 source2 = new GithubClient2();
+		PublishSubject<org.epsilonlabs.workflow.execution.tests.util.GithubClient2.Repo> repos2 = source2
+				.getRepositoriesByFileExtension(exts);
 
 		repos1.subscribe(t -> data.add(t.toString()));
 		repos2.subscribe(t -> data.add(t.toString()));
@@ -153,13 +157,13 @@ public class DataflowTests {
 		source1.stubDenoteCompletion();
 		source2.stubDenoteCompletion();
 
-		// System.out.println(data);
+		//System.out.println(data);
 
 		HashSet<String> d = new HashSet<>();
 		d.addAll(StubGithubData.getSingle().getRepoData());
 		d.addAll(StubGithubData2.getSingle().getRepoData());
 
-		System.out.println(d);
+		//System.out.println(d);
 
 		assertEquals(d, data);
 
