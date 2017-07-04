@@ -8,13 +8,14 @@
  * Contributors:
  *     Konstantinos Barmpis - initial API and implementation
  ******************************************************************************/
-package org.epsilonlabs.workflow.execution.tests.util;
+package org.epsilonlabs.workflow.execution.impl;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Set;
 
 import org.epsilonlabs.workflow.execution.WorkflowProviderNode;
-import org.epsilonlabs.workflow.execution.impl.GithubClient.Repo;
 
 import io.reactivex.Observer;
 import io.reactivex.subjects.PublishSubject;
@@ -22,13 +23,14 @@ import io.reactivex.subjects.PublishSubject;
 /**
  * Coordinator of a {@link PublishSubject} observable, providing the appropriate
  * one on request and emiting relevant data when it receives it from Github. A
- * new {@link GithubExecutor2} should be created for each call as it only
- * manages one {@link PublishSubject} at a time.
+ * new {@link GithubClient} should be created for each call as it only manages
+ * one {@link PublishSubject} at a time (stub to real client which should manage
+ * as many calls as necessary).
  * 
  * @author kb
  *
  */
-public class GithubExecutor2 implements WorkflowProviderNode {
+public class GithubClient implements WorkflowProviderNode {
 
 	enum FILTERS {
 		FILETBYFILEEXTENSION, FILTERBYNAME
@@ -40,21 +42,83 @@ public class GithubExecutor2 implements WorkflowProviderNode {
 
 	private Collection<Observer<? super Object>> subscribers = new LinkedList<>();
 
-	protected PublishSubject<Object> ds = null;
+	protected PublishSubject<Repo> dsr = null;
+	protected PublishSubject<Author> dsa = null;
+	protected PublishSubject<File> dsf = null;
 
-	public GithubExecutor2() {
+	public GithubClient() {
 
 		// ...
 
 	}
 
-	public PublishSubject<Object> getRepositoriesByFileExtension(Iterable<String> exts) throws Exception {
+	public class Repo {
+
+		private String name;
+		private String type;
+		private HashMap<String, String> files = new HashMap<>();
+
+		public Repo(String name, String type, String contents) {
+
+			this.name = name;
+			this.type = type;
+
+			String[] contentSplit = contents.split(";");
+
+			for (String s : contentSplit) {
+
+				String[] fileSplit = s.split(":");
+
+				files.put(fileSplit[0], fileSplit[1]);
+
+			}
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public String getType() {
+			return type;
+		}
+
+		public Set<String> getFiles() {
+			return files.keySet();
+		}
+
+		public String getAuthor(String filename) {
+			return files.get(filename);
+		}
+
+		public boolean equals(Object o) {
+			if (!(o instanceof Repo))
+				return false;
+			return (this.getName() + "#" + this.getType()).equals(((Repo) o).getName() + "#" + ((Repo) o).getType());
+		}
+
+	}
+
+	public class File {
+
+		public File(String f, String repo) {
+			// TODO Auto-generated constructor stub
+		}
+	}
+
+	public class Author {
+
+		public Author(String author, String file) {
+			// TODO Auto-generated constructor stub
+		}
+	}
+
+	public PublishSubject<Repo> getRepositoriesByFileExtension(Iterable<String> exts) throws Exception {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// repos?)
 		try {
-			if (ds == null) {
+			if (dsr == null) {
 
-				return ds = PublishSubject.create();
+				return dsr = PublishSubject.create();
 
 			} else
 				throw new Exception("Tried to get repos but this executor has already been initialised");
@@ -63,13 +127,13 @@ public class GithubExecutor2 implements WorkflowProviderNode {
 		}
 	}
 
-	public PublishSubject<Object> getFilesWithFileExtension(String repo, Iterable<String> exts) throws Exception {
+	public PublishSubject<File> getFilesWithFileExtension(String repo, Iterable<String> exts) throws Exception {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// files?)
 		try {
-			if (ds == null) {
+			if (dsf == null) {
 
-				return ds = PublishSubject.create();
+				return dsf = PublishSubject.create();
 
 			} else
 				throw new Exception("Tried to get files but this executor has already been initialised");
@@ -78,13 +142,13 @@ public class GithubExecutor2 implements WorkflowProviderNode {
 		}
 	}
 
-	public PublishSubject<Object> getAuthors(String file) throws Exception {
+	public PublishSubject<Author> getAuthors(String file) throws Exception {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// authors?)
 		try {
-			if (ds == null) {
+			if (dsa == null) {
 
-				return ds = PublishSubject.create();
+				return dsa = PublishSubject.create();
 
 			} else
 				throw new Exception("Tried to get authors but this executor has already been initialised");
@@ -97,23 +161,23 @@ public class GithubExecutor2 implements WorkflowProviderNode {
 	public void stubRetrieveRepositoriesByFileExtension(String ext) {
 		System.out.println("(StubResilientGithubWrapper) providing repository containing " + ext + " files...");
 
-		LinkedList<Repo> data = StubGithubData2.getSingle().getData();
+		LinkedList<Repo> data = StubGithubData.getSingle().getData();
 
 		for (Repo repo : data)
 			if (repo.getType().equals(ext))
-				ds.onNext(repo.getName() + "#" + repo.getType());
+				dsr.onNext(repo);
 	}
 
 	//
 	public void stubRetrieveAuthorFromFile(String file) {
 		System.out.println("(StubResilientGithubWrapper) providing author of " + file + " files...");
 
-		LinkedList<Repo> data = StubGithubData2.getSingle().getData();
+		LinkedList<Repo> data = StubGithubData.getSingle().getData();
 
 		for (Repo repo : data)
 			for (String f : repo.getFiles())
 				if (f.equals(file.substring(0, file.indexOf("#"))))
-					ds.onNext(repo.getAuthor(f) + "#" + file);
+					dsa.onNext(new Author(repo.getAuthor(f), file));
 
 	}
 
@@ -121,12 +185,12 @@ public class GithubExecutor2 implements WorkflowProviderNode {
 	public void stubRetrieveFilesInRepo(String repo) {
 		System.out.println("(StubResilientGithubWrapper) providing actual files of " + repo + " repository...");
 
-		LinkedList<Repo> data = StubGithubData2.getSingle().getData();
+		LinkedList<Repo> data = StubGithubData.getSingle().getData();
 
 		for (Repo r : data)
 			if (r.getName().equals(repo.substring(0, repo.indexOf("#"))))
 				for (String f : r.getFiles())
-					ds.onNext(f + "#" + repo);
+					dsf.onNext(new File(f, repo));
 
 	}
 
@@ -134,7 +198,12 @@ public class GithubExecutor2 implements WorkflowProviderNode {
 	 * inform the dataset that there is no more data to provide
 	 */
 	public void stubDenoteCompletion() {
-		ds.onComplete();
+		if (dsr != null)
+			dsr.onComplete();
+		if (dsf != null)
+			dsf.onComplete();
+		if (dsa != null)
+			dsa.onComplete();
 		notifyObserversOfStatusChange("task complete");
 	}
 

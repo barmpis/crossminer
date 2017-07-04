@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.equinox.registry,
  org.epsilonlabs.workflow.execution;bundle-version="1.0.0",
  org.epsilonlabs.workflow.subscription;bundle-version="1.0.0",
  org.epsilonlabs.workflow;bundle-version="0.1.0"
-Export-Package: org.epsilonlabs.workflow.execution.tests
+Export-Package: org.epsilonlabs.workflow.execution.tests,
+ org.epsilonlabs.workflow.execution.tests.util
 Import-Package: junit.framework;version="4.12.0",
  org.junit;version="4.12.0",
  org.junit.runner,

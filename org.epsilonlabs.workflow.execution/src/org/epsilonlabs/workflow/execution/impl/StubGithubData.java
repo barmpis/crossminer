@@ -1,24 +1,32 @@
 package org.epsilonlabs.workflow.execution.impl;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.Set;
+
+import org.epsilonlabs.workflow.execution.impl.GithubClient.Repo;
 
 public class StubGithubData {
 
-	protected static LinkedList<Repo> data = new LinkedList<>();
+	private static StubGithubData ret;
 
-	private static int repoId = 0;
-	private static int fileId = 0;
-	private static int authorId = 0;
+	protected LinkedList<Repo> data = new LinkedList<>();
+
+	private int repoId = 0;
+	private int fileId = 0;
+	private int authorId = 0;
+
+	private GithubClient ref;
+
+	public StubGithubData() {
+		ref = new GithubClient();
+	}
 
 	/**
 	 * Adds 'repos' amount of repositories to the dataset
 	 * 
 	 * @param repos
 	 */
-	public static void addStubGithubData(int repos) {
+	public void addStubGithubData(int repos) {
 
 		repoId = 0;
 		fileId = 0;
@@ -32,23 +40,23 @@ public class StubGithubData {
 
 	}
 
-	private static void createRepo() {
+	private void createRepo() {
 
 		if (repoId % 4 == 0) {
 			if (repoId % 2 == 0) {
-				data.add(new Repo("repo~" + repoId, "uml", "file~" + fileId + ".uml:author~" + authorId + ";file~"
+				data.add(ref.new Repo("repo~" + repoId, "uml", "file~" + fileId + ".uml:author~" + authorId + ";file~"
 						+ (fileId + 1) + ".uml:author~" + (authorId + 1)));
 			} else {
-				data.add(new Repo("repo~" + repoId, "xmi", "file~" + fileId + ".xmi:author~" + authorId + ";file~"
+				data.add(ref.new Repo("repo~" + repoId, "xmi", "file~" + fileId + ".xmi:author~" + authorId + ";file~"
 						+ (fileId + 1) + ".xmi:author~" + (authorId + 1)));
 			}
 			fileId = fileId + 2;
 			authorId = authorId + 2;
 		} else {
 			if (repoId % 2 == 0) {
-				data.add(new Repo("repo~" + repoId, "uml", "file~" + fileId + ".uml:author~" + authorId));
+				data.add(ref.new Repo("repo~" + repoId, "uml", "file~" + fileId + ".uml:author~" + authorId));
 			} else {
-				data.add(new Repo("repo~" + repoId, "xmi", "file~" + fileId + ".xmi:author~" + authorId));
+				data.add(ref.new Repo("repo~" + repoId, "xmi", "file~" + fileId + ".xmi:author~" + authorId));
 			}
 			fileId++;
 			authorId++;
@@ -58,11 +66,11 @@ public class StubGithubData {
 
 	}
 
-	public static LinkedList<Repo> getData() {
+	public LinkedList<Repo> getData() {
 		return data;
 	}
 
-	public static HashSet<String> getRepoData() {
+	public HashSet<String> getRepoData() {
 
 		HashSet<String> d = new HashSet<>();
 
@@ -74,7 +82,7 @@ public class StubGithubData {
 
 	}
 
-	public static HashSet<String> getFileData() {
+	public HashSet<String> getFileData() {
 
 		HashSet<String> d = new HashSet<>();
 
@@ -89,7 +97,7 @@ public class StubGithubData {
 
 	}
 
-	public static HashSet<String> getAuthorData() {
+	public HashSet<String> getAuthorData() {
 
 		HashSet<String> d = new HashSet<>();
 
@@ -102,46 +110,11 @@ public class StubGithubData {
 
 	}
 
-	//
+	public static StubGithubData getSingle() {
+		if (ret == null)
+			ret = new StubGithubData();
 
-	public static class Repo {
-
-		private String name;
-		private String type;
-		private HashMap<String, String> files = new HashMap<>();
-
-		public Repo(String name, String type, String contents) {
-
-			this.name = name;
-			this.type = type;
-
-			String[] contentSplit = contents.split(";");
-
-			for (String s : contentSplit) {
-
-				String[] fileSplit = s.split(":");
-
-				files.put(fileSplit[0], fileSplit[1]);
-
-			}
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public String getType() {
-			return type;
-		}
-
-		public Set<String> getFiles() {
-			return files.keySet();
-		}
-
-		public String getAuthor(String filename) {
-			return files.get(filename);
-		}
-
+		return ret;
 	}
 
 }

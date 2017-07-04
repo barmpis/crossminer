@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 import org.epsilonlabs.workflow.execution.WorkflowProviderNode;
-import org.epsilonlabs.workflow.execution.impl.StubGithubData.Repo;
+import org.epsilonlabs.workflow.execution.impl.GithubClient.Repo;
 
 import io.reactivex.Observer;
 import io.reactivex.subjects.PublishSubject;
@@ -97,7 +97,7 @@ public class GithubExecutor implements WorkflowProviderNode {
 	public void stubRetrieveRepositoriesByFileExtension(String ext) {
 		System.out.println("(StubResilientGithubWrapper) providing repository containing " + ext + " files...");
 
-		LinkedList<Repo> data = StubGithubData.getData();
+		LinkedList<Repo> data = StubGithubData.getSingle().getData();
 
 		for (Repo repo : data)
 			if (repo.getType().equals(ext))
@@ -108,7 +108,7 @@ public class GithubExecutor implements WorkflowProviderNode {
 	public void stubRetrieveAuthorFromFile(String file) {
 		System.out.println("(StubResilientGithubWrapper) providing author of " + file + " files...");
 
-		LinkedList<Repo> data = StubGithubData.getData();
+		LinkedList<Repo> data = StubGithubData.getSingle().getData();
 
 		for (Repo repo : data)
 			for (String f : repo.getFiles())
@@ -121,7 +121,7 @@ public class GithubExecutor implements WorkflowProviderNode {
 	public void stubRetrieveFilesInRepo(String repo) {
 		System.out.println("(StubResilientGithubWrapper) providing actual files of " + repo + " repository...");
 
-		LinkedList<Repo> data = StubGithubData.getData();
+		LinkedList<Repo> data = StubGithubData.getSingle().getData();
 
 		for (Repo r : data)
 			if (r.getName().equals(repo.substring(0, repo.indexOf("#"))))

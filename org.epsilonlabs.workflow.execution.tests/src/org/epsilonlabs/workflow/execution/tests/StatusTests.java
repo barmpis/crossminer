@@ -19,7 +19,7 @@ public class StatusTests {
 	public StatusTests() {
 
 		// initialise test data with 4 repos
-		StubGithubData.addStubGithubData(4);
+		StubGithubData.getSingle().addStubGithubData(4);
 
 	}
 

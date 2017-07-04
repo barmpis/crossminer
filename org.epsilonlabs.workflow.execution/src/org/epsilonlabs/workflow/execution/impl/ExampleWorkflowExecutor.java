@@ -66,7 +66,7 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 
 		//
 		// STUB EXECUTION OF DATA RETRIEVAL
-		StubGithubData.addStubGithubData(2);
+		StubGithubData.getSingle().addStubGithubData(2);
 		for (String ext : exts) {
 			source.stubRetrieveRepositoriesByFileExtension(ext);
 			System.out.println("RATE LIMIT REACHED! waiting 59minutes...");

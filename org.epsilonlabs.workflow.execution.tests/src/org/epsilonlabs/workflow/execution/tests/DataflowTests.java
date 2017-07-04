@@ -20,8 +20,8 @@ public class DataflowTests {
 	public DataflowTests() {
 
 		// initialise test data with 4 repos
-		StubGithubData.addStubGithubData(4);
-		StubGithubData2.addStubGithubData(4);
+		StubGithubData.getSingle().addStubGithubData(4);
+		StubGithubData2.getSingle().addStubGithubData(4);
 
 	}
 
@@ -48,7 +48,7 @@ public class DataflowTests {
 
 		// System.out.println(data);
 
-		assertEquals(StubGithubData.getRepoData(), data);
+		assertEquals(StubGithubData.getSingle().getRepoData(), data);
 	}
 
 	@Test
@@ -78,7 +78,7 @@ public class DataflowTests {
 
 		// System.out.println(data);
 
-		assertEquals(StubGithubData.getFileData(), data);
+		assertEquals(StubGithubData.getSingle().getFileData(), data);
 	}
 
 	@Test
@@ -120,8 +120,8 @@ public class DataflowTests {
 		// System.out.println("1: " + data1);
 		// System.out.println("2: " + data2);
 
-		assertEquals(StubGithubData.getFileData(), data1);
-		assertEquals(StubGithubData.getAuthorData(), data2);
+		assertEquals(StubGithubData.getSingle().getFileData(), data1);
+		assertEquals(StubGithubData.getSingle().getAuthorData(), data2);
 
 	}
 
@@ -156,8 +156,8 @@ public class DataflowTests {
 		// System.out.println(data);
 
 		HashSet<String> d = new HashSet<>();
-		d.addAll(StubGithubData.getRepoData());
-		d.addAll(StubGithubData2.getRepoData());
+		d.addAll(StubGithubData.getSingle().getRepoData());
+		d.addAll(StubGithubData2.getSingle().getRepoData());
 
 		System.out.println(d);
 
