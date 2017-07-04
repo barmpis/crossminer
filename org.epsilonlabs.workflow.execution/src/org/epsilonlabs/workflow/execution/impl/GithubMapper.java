@@ -28,7 +28,7 @@ import io.reactivex.subjects.PublishSubject;
  * @author kb
  *
  */
-public class GithubMapper extends GithubExecutor implements WorkflowMapperNode {
+public class GithubMapper extends GithubClient implements WorkflowMapperNode {
 
 	private Collection<Observer<? super Object>> subscribers = new LinkedList<>();
 
@@ -36,18 +36,18 @@ public class GithubMapper extends GithubExecutor implements WorkflowMapperNode {
 
 	private HashMap<FILTERS, Object> config = new HashMap<>();
 
-	public PublishSubject<Object> getRepositoriesByFileExtension() throws Exception {
+	public PublishSubject<Repo> getRepositoriesByFileExtension() throws Exception {
 
 		if (to == null) {
 			to = DATATYPES.REPOSITORIES;
 			super.getRepositoriesByFileExtension(null);
-			return ds;
+			return dsr;
 		} else
 			throw new Exception("Tried to get repos but this executor has already been set to return: " + to);
 
 	}
 
-	public PublishSubject<Object> getFilesWithFileExtension(Iterable<String> exts) throws Exception {
+	public PublishSubject<File> getFilesWithFileExtension(Iterable<String> exts) throws Exception {
 
 		if (to == null) {
 			to = DATATYPES.FILES;
@@ -56,34 +56,34 @@ public class GithubMapper extends GithubExecutor implements WorkflowMapperNode {
 			// of
 			// files?)
 			super.getFilesWithFileExtension(null, exts);
-			return ds;
+			return dsf;
 		} else
 			throw new Exception("Tried to get files but this executor has already been set to return: " + to);
 	}
 
-	public PublishSubject<Object> getAuthors() throws Exception {
+	public PublishSubject<Author> getAuthors() throws Exception {
 		// TODO dataset likely specific to return type (in this case dataset of
 		// authors?)
 		if (to == null) {
 			to = DATATYPES.AUTHORS;
 			super.getAuthors(null);
-			return ds;
+			return dsa;
 		} else
 			throw new Exception("Tried to get authors but this executor has already been set to return: " + to);
 	}
 
 	@Override
-	public PublishSubject<Object> getRepositoriesByFileExtension(Iterable<String> exts) throws Exception {
+	public PublishSubject<Repo> getRepositoriesByFileExtension(Iterable<String> exts) throws Exception {
 		return getRepositoriesByFileExtension();
 	}
 
 	@Override
-	public PublishSubject<Object> getFilesWithFileExtension(String repo, Iterable<String> exts) throws Exception {
+	public PublishSubject<File> getFilesWithFileExtension(String repo, Iterable<String> exts) throws Exception {
 		return getFilesWithFileExtension(exts);
 	}
 
 	@Override
-	public PublishSubject<Object> getAuthors(String file) throws Exception {
+	public PublishSubject<Author> getAuthors(String file) throws Exception {
 		return getAuthors();
 	}
 
@@ -181,10 +181,10 @@ public class GithubMapper extends GithubExecutor implements WorkflowMapperNode {
 		Iterable<String> names = (Iterable<String>) config.get(FILTERS.FILTERBYNAME);
 
 		//
-		GithubExecutor ex = new GithubExecutor();
-		Observable<Object> files = ex.getFilesWithFileExtension(o.toString(), ext);
+		GithubClient ex = new GithubClient();
+		Observable<File> files = ex.getFilesWithFileExtension(o.toString(), ext);
 
-		files.subscribe(ds);
+		files.subscribe(dsf);
 
 		// STUB (would use info on name or extension here to guide the search)
 		ex.stubRetrieveFilesInRepo(o.toString());
@@ -198,10 +198,10 @@ public class GithubMapper extends GithubExecutor implements WorkflowMapperNode {
 		Iterable<String> names = (Iterable<String>) config.get(FILTERS.FILTERBYNAME);
 
 		//
-		GithubExecutor ex = new GithubExecutor();
-		Observable<Object> authors = ex.getAuthors(o.toString());
+		GithubClient ex = new GithubClient();
+		Observable<Author> authors = ex.getAuthors(o.toString());
 
-		authors.subscribe(ds);
+		authors.subscribe(dsa);
 
 		// STUB (would use info on name or extension here to guide the search)
 		ex.stubRetrieveAuthorFromFile(o.toString());
@@ -221,25 +221,26 @@ public class GithubMapper extends GithubExecutor implements WorkflowMapperNode {
 
 	@Override
 	public void onComplete() {
-		ds.onComplete();
+		if (dsr != null)
+			dsr.onComplete();
+		if (dsf != null)
+			dsf.onComplete();
+		if (dsa != null)
+			dsa.onComplete();
 		notifyObserversOfStatusChange("task complete");
 	}
 
-	// TODO to be replaced by typing the objects to appropriate java types
-	// (repo/file/author etc.)
 	private DATATYPES getDatatypeFromObject(Object o) {
 
-		String object = o.toString();
+		String object = o.getClass().toString();
 
-		String type = object.substring(0, object.indexOf("#")).substring(0, object.indexOf("~"));
-
-		switch (type) {
-		case "repo":
+		switch (object) {
+		case "class org.epsilonlabs.workflow.execution.impl.GithubClient$Repo":
 			return DATATYPES.REPOSITORIES;
-		case "file":
+		case "class org.epsilonlabs.workflow.execution.impl.GithubClient$File":
 			return DATATYPES.FILES;
 
-		case "author":
+		case "class org.epsilonlabs.workflow.execution.impl.GithubClient$Author":
 			return DATATYPES.AUTHORS;
 
 		default:

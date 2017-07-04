@@ -48,8 +48,6 @@ public class GithubClient implements WorkflowProviderNode {
 
 	public GithubClient() {
 
-		// ...
-
 	}
 
 	public class Repo {
@@ -93,23 +91,45 @@ public class GithubClient implements WorkflowProviderNode {
 		public boolean equals(Object o) {
 			if (!(o instanceof Repo))
 				return false;
-			return (this.getName() + "#" + this.getType()).equals(((Repo) o).getName() + "#" + ((Repo) o).getType());
+			return (getName() + "#" + getType()).equals(((Repo) o).getName() + "#" + ((Repo) o).getType());
+		}
+
+		public String toString() {
+			return getName() + "#" + getType();
 		}
 
 	}
 
 	public class File {
 
+		String f;
+		String repo;
+
 		public File(String f, String repo) {
-			// TODO Auto-generated constructor stub
+			this.f = f;
+			this.repo = repo;
 		}
+
+		public String toString() {
+			return f + "#" + repo.toString();
+		}
+
 	}
 
 	public class Author {
 
+		String author;
+		String file;
+
 		public Author(String author, String file) {
-			// TODO Auto-generated constructor stub
+			this.author = author;
+			this.file = file;
 		}
+
+		public String toString() {
+			return author + "#" + file.toString();
+		}
+
 	}
 
 	public PublishSubject<Repo> getRepositoriesByFileExtension(Iterable<String> exts) throws Exception {

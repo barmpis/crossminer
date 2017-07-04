@@ -3,13 +3,11 @@ package org.epsilonlabs.workflow.execution.tests.util;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-import org.epsilonlabs.workflow.execution.impl.GithubClient;
-import org.epsilonlabs.workflow.execution.impl.GithubClient.Repo;
-import org.epsilonlabs.workflow.execution.impl.StubGithubData;
+import org.epsilonlabs.workflow.execution.tests.util.GithubClient2.Repo;
 
 public class StubGithubData2 {
 
-	private static StubGithubData ret;
+	private static StubGithubData2 ret;
 
 	protected LinkedList<Repo> data = new LinkedList<>();
 
@@ -17,10 +15,10 @@ public class StubGithubData2 {
 	private int fileId = 100;
 	private int authorId = 100;
 
-	private GithubClient ref;
+	private GithubClient2 ref;
 
 	public StubGithubData2() {
-		ref = new GithubClient();
+		ref = new GithubClient2();
 	}
 
 	/**
@@ -112,9 +110,9 @@ public class StubGithubData2 {
 
 	}
 
-	public static StubGithubData getSingle() {
+	public static StubGithubData2 getSingle() {
 		if (ret == null)
-			ret = new StubGithubData();
+			ret = new StubGithubData2();
 
 		return ret;
 	}
