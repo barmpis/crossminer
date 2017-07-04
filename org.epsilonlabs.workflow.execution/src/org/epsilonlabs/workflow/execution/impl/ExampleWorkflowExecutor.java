@@ -11,13 +11,16 @@
 package org.epsilonlabs.workflow.execution.impl;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.epsilonlabs.workflow.execution.WorkflowExecutor;
+import org.ossmeter.platform.delta.bugtrackingsystem.BugTrackingSystemComment;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * Responsible for coordinating the execution of a workflow
@@ -30,7 +33,45 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 	private Collection<Observer<? super Object>> subscribers = new LinkedList<>();
 
 	public static void main(String... args) throws Exception {
-		new ExampleWorkflowExecutor().executeWorkflow();
+		new ExampleWorkflowExecutor().executeClassificationWorkflow();
+	}
+
+	private void executeClassificationWorkflow() {
+
+		BugTrackingSystemExampleProvider p = new BugTrackingSystemExampleProvider();
+		PublishSubject<Object> btc = p.getComments();
+
+		SentimentAnalysisTask t = new SentimentAnalysisTask();
+		btc.subscribe(t);
+
+		// stub data provision
+		String text1 = // "redirection forgot option mailbox"
+				"This project is immature and not suitable for use in production.";
+		String text2 = "Wot about Fig. 2 and (Fig. 3)? We created a myosinII-responsive FA interactome from proteins "
+				+ "in the expected FA list by color-coding proteins according to MDR magnitude (Supplemental Fig. "
+				+ "S4 and Table 7, http://dir.nhlbi.nih.gov/papers/lctm/focaladhesion/Home/index.html). The "
+				+ "interactome illustrates the full range of MDR values, including proteins exhibiting minor/low ";
+
+		BugTrackingSystemComment c1 = new BugTrackingSystemComment();
+		BugTrackingSystemComment c2 = new BugTrackingSystemComment();
+		c1.setBugId("bug1");
+		c1.setBugTrackingSystem(null);
+		c1.setCommentId("comment1");
+		c1.setText(text1);
+		c1.setCreator("adricosta");
+		c1.setCreationTime(new Date());
+
+		p.iHasData(c1);
+
+		c2.setBugId("bug2");
+		c2.setBugTrackingSystem(null);
+		c2.setCommentId("comment2");
+		c2.setText(text2);
+		c2.setCreator("adricosta2");
+		c2.setCreationTime(new Date());
+
+		p.iHasData(c2);
+
 	}
 
 	public void executeWorkflow() throws Exception {
