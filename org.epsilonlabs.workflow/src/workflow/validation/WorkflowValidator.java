@@ -6,8 +6,9 @@ package workflow.validation;
 
 import org.eclipse.emf.common.util.EList;
 
-import workflow.DataSource;
-import workflow.Element;
+import workflow.Task;
+import workflow.TaskCommunicationConfiguration;
+import workflow.Variable;
 
 /**
  * A sample validator interface for {@link workflow.Workflow}.
@@ -18,11 +19,8 @@ import workflow.Element;
 public interface WorkflowValidator {
 	boolean validate();
 
-	boolean validateStartingPoints(EList<DataSource> value);
-	boolean validateEndPoints(EList<DataSource> value);
-	boolean validateContents(EList<Element> value);
-
-	boolean validateContents(Element value);
-
-	boolean validateContents(DataSource value);
+	boolean validateName(String value);
+	boolean validateTasks(EList<Task> value);
+	boolean validateConfigs(EList<TaskCommunicationConfiguration> value);
+	boolean validateGlobals(EList<Variable> value);
 }

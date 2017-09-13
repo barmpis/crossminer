@@ -35,9 +35,11 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.helpers.GeneratedEditHelperBase;
 
-import workflow.DataManipulation;
-import workflow.DataRetrieval;
-import workflow.DataSource;
+import workflow.EmittingTask;
+import workflow.RemoteTaskCommunicationConfiguration;
+import workflow.Task;
+import workflow.TaskCommunicationConfiguration;
+import workflow.Workflow;
 import workflow.diagram.part.WorkflowDiagramEditorPlugin;
 import workflow.diagram.part.WorkflowVisualIDRegistry;
 import workflow.diagram.providers.WorkflowElementTypes;
@@ -311,66 +313,32 @@ public class WorkflowBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		/**
 		 * @generated
 		 */
-		public boolean canCreateDataSourceRetrievals_4001(DataSource source, DataRetrieval target) {
-			if (source != null) {
-				if (source.getRetrievals().contains(target)) {
-					return false;
-				}
-			}
-			if (target != null && (target.getSources().contains(target))) {
-				return false;
-			}
-
-			return canExistDataSourceRetrievals_4001(source, target);
+		public boolean canCreateRemoteTaskCommunicationConfiguration_4004(Workflow container, EmittingTask source,
+				Task target) {
+			return canExistRemoteTaskCommunicationConfiguration_4004(container, null, source, target);
 		}
 
 		/**
 		 * @generated
 		 */
-		public boolean canCreateDataRetrievalSources_4002(DataRetrieval source, DataSource target) {
-			if (source != null) {
-				if (source.getSources().contains(target)) {
-					return false;
-				}
-			}
-			if (target != null && (target.getRetrievals().contains(target))) {
-				return false;
-			}
-
-			return canExistDataRetrievalSources_4002(source, target);
-		}
-
-		/**
-		 * @generated
-		 */
-		public boolean canCreateDataManipulationSources_4003(DataManipulation source, DataRetrieval target) {
-			if (source != null) {
-				if (source.getSources().contains(target)) {
-					return false;
-				}
-			}
-
-			return canExistDataManipulationSources_4003(source, target);
+		public boolean canCreateTaskCommunicationConfiguration_4005(Workflow container, EmittingTask source,
+				Task target) {
+			return canExistTaskCommunicationConfiguration_4005(container, null, source, target);
 		}
 
 		/**
 		* @generated
 		*/
-		public boolean canExistDataSourceRetrievals_4001(DataSource source, DataRetrieval target) {
+		public boolean canExistRemoteTaskCommunicationConfiguration_4004(Workflow container,
+				RemoteTaskCommunicationConfiguration linkInstance, EmittingTask source, Task target) {
 			return true;
 		}
 
 		/**
 		* @generated
 		*/
-		public boolean canExistDataRetrievalSources_4002(DataRetrieval source, DataSource target) {
-			return true;
-		}
-
-		/**
-		* @generated
-		*/
-		public boolean canExistDataManipulationSources_4003(DataManipulation source, DataRetrieval target) {
+		public boolean canExistTaskCommunicationConfiguration_4005(Workflow container,
+				TaskCommunicationConfiguration linkInstance, EmittingTask source, Task target) {
 			return true;
 		}
 	}

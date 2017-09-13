@@ -28,19 +28,20 @@ import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonContentProvider;
 
-import workflow.diagram.edit.parts.AuthorsEditPart;
-import workflow.diagram.edit.parts.CommitsEditPart;
-import workflow.diagram.edit.parts.CustomScriptEditPart;
-import workflow.diagram.edit.parts.DataAggregationEditPart;
-import workflow.diagram.edit.parts.DataFilteringEditPart;
-import workflow.diagram.edit.parts.DataManipulationEditPart;
-import workflow.diagram.edit.parts.DataManipulationSourcesEditPart;
-import workflow.diagram.edit.parts.DataRetrievalSourcesEditPart;
-import workflow.diagram.edit.parts.DataSourceRetrievalsEditPart;
-import workflow.diagram.edit.parts.FilesEditPart;
-import workflow.diagram.edit.parts.GHTorrentEditPart;
-import workflow.diagram.edit.parts.GithubBigQueryEditPart;
-import workflow.diagram.edit.parts.GithubEditPart;
+import workflow.diagram.edit.parts.Boolean2EditPart;
+import workflow.diagram.edit.parts.BooleanEditPart;
+import workflow.diagram.edit.parts.Double2EditPart;
+import workflow.diagram.edit.parts.DoubleEditPart;
+import workflow.diagram.edit.parts.EmittingTaskEditPart;
+import workflow.diagram.edit.parts.EmittingTaskEmittingTaskLocalsCompartmentEditPart;
+import workflow.diagram.edit.parts.Integer2EditPart;
+import workflow.diagram.edit.parts.IntegerEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationEditPart;
+import workflow.diagram.edit.parts.String2EditPart;
+import workflow.diagram.edit.parts.StringEditPart;
+import workflow.diagram.edit.parts.TaskCommunicationConfigurationEditPart;
+import workflow.diagram.edit.parts.TaskEditPart;
+import workflow.diagram.edit.parts.TaskTaskLocalsCompartmentEditPart;
 import workflow.diagram.edit.parts.WorkflowEditPart;
 import workflow.diagram.part.Messages;
 import workflow.diagram.part.WorkflowVisualIDRegistry;
@@ -244,43 +245,28 @@ public class WorkflowNavigatorContentProvider implements ICommonContentProvider 
 					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getChildrenByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(GithubEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(EmittingTaskEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getChildrenByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(GithubBigQueryEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(StringEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getChildrenByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(GHTorrentEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(IntegerEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getChildrenByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(CommitsEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(BooleanEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getChildrenByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(AuthorsEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(DoubleEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getChildrenByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(FilesEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataAggregationEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataFilteringEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(CustomScriptEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataManipulationEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(TaskEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataSourceRetrievalsEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID));
 			links.addChildren(createNavigatorItems(connectedViews, links, false));
 			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataRetrievalSourcesEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataManipulationSourcesEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(TaskCommunicationConfigurationEditPart.VISUAL_ID));
 			links.addChildren(createNavigatorItems(connectedViews, links, false));
 			if (!links.isEmpty()) {
 				result.add(links);
@@ -288,100 +274,48 @@ public class WorkflowNavigatorContentProvider implements ICommonContentProvider 
 			return result.toArray();
 		}
 
-		case GithubEditPart.VISUAL_ID: {
+		case EmittingTaskEditPart.VISUAL_ID: {
 			LinkedList<WorkflowAbstractNavigatorItem> result = new LinkedList<WorkflowAbstractNavigatorItem>();
 			Node sv = (Node) view;
-			WorkflowNavigatorGroup outgoinglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_Github_2001_outgoinglinks, "icons/outgoingLinksNavigatorGroup.gif", //$NON-NLS-1$
-					parentElement);
 			WorkflowNavigatorGroup incominglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_Github_2001_incominglinks, "icons/incomingLinksNavigatorGroup.gif", //$NON-NLS-1$
-					parentElement);
-			Collection<View> connectedViews;
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataSourceRetrievalsEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataRetrievalSourcesEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			return result.toArray();
-		}
-
-		case GithubBigQueryEditPart.VISUAL_ID: {
-			LinkedList<WorkflowAbstractNavigatorItem> result = new LinkedList<WorkflowAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			WorkflowNavigatorGroup outgoinglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_GithubBigQuery_2002_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			WorkflowNavigatorGroup incominglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_GithubBigQuery_2002_incominglinks,
+					Messages.NavigatorGroupName_EmittingTask_2011_incominglinks,
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataSourceRetrievalsEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataRetrievalSourcesEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			return result.toArray();
-		}
-
-		case GHTorrentEditPart.VISUAL_ID: {
-			LinkedList<WorkflowAbstractNavigatorItem> result = new LinkedList<WorkflowAbstractNavigatorItem>();
-			Node sv = (Node) view;
 			WorkflowNavigatorGroup outgoinglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_GHTorrent_2003_outgoinglinks, "icons/outgoingLinksNavigatorGroup.gif", //$NON-NLS-1$
-					parentElement);
-			WorkflowNavigatorGroup incominglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_GHTorrent_2003_incominglinks, "icons/incomingLinksNavigatorGroup.gif", //$NON-NLS-1$
-					parentElement);
+					Messages.NavigatorGroupName_EmittingTask_2011_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataSourceRetrievalsEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					WorkflowVisualIDRegistry.getType(EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(connectedViews,
+					WorkflowVisualIDRegistry.getType(String2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					WorkflowVisualIDRegistry.getType(EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(connectedViews,
+					WorkflowVisualIDRegistry.getType(Integer2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					WorkflowVisualIDRegistry.getType(EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(connectedViews,
+					WorkflowVisualIDRegistry.getType(Boolean2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					WorkflowVisualIDRegistry.getType(EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(connectedViews,
+					WorkflowVisualIDRegistry.getType(Double2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataRetrievalSourcesEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			return result.toArray();
-		}
-
-		case CommitsEditPart.VISUAL_ID: {
-			LinkedList<WorkflowAbstractNavigatorItem> result = new LinkedList<WorkflowAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			WorkflowNavigatorGroup incominglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_Commits_2004_incominglinks, "icons/incomingLinksNavigatorGroup.gif", //$NON-NLS-1$
-					parentElement);
-			WorkflowNavigatorGroup outgoinglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_Commits_2004_outgoinglinks, "icons/outgoingLinksNavigatorGroup.gif", //$NON-NLS-1$
-					parentElement);
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataSourceRetrievalsEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
 			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataRetrievalSourcesEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataManipulationSourcesEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(TaskCommunicationConfigurationEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					WorkflowVisualIDRegistry.getType(TaskCommunicationConfigurationEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
 				result.add(incominglinks);
 			}
@@ -391,230 +325,91 @@ public class WorkflowNavigatorContentProvider implements ICommonContentProvider 
 			return result.toArray();
 		}
 
-		case AuthorsEditPart.VISUAL_ID: {
+		case TaskEditPart.VISUAL_ID: {
 			LinkedList<WorkflowAbstractNavigatorItem> result = new LinkedList<WorkflowAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			WorkflowNavigatorGroup incominglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_Authors_2005_incominglinks, "icons/incomingLinksNavigatorGroup.gif", //$NON-NLS-1$
-					parentElement);
-			WorkflowNavigatorGroup outgoinglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_Authors_2005_outgoinglinks, "icons/outgoingLinksNavigatorGroup.gif", //$NON-NLS-1$
+					Messages.NavigatorGroupName_Task_2016_incominglinks, "icons/incomingLinksNavigatorGroup.gif", //$NON-NLS-1$
 					parentElement);
 			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					WorkflowVisualIDRegistry.getType(TaskTaskLocalsCompartmentEditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(connectedViews,
+					WorkflowVisualIDRegistry.getType(String2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					WorkflowVisualIDRegistry.getType(TaskTaskLocalsCompartmentEditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(connectedViews,
+					WorkflowVisualIDRegistry.getType(Integer2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					WorkflowVisualIDRegistry.getType(TaskTaskLocalsCompartmentEditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(connectedViews,
+					WorkflowVisualIDRegistry.getType(Boolean2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					WorkflowVisualIDRegistry.getType(TaskTaskLocalsCompartmentEditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(connectedViews,
+					WorkflowVisualIDRegistry.getType(Double2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataSourceRetrievalsEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataRetrievalSourcesEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataManipulationSourcesEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case FilesEditPart.VISUAL_ID: {
-			LinkedList<WorkflowAbstractNavigatorItem> result = new LinkedList<WorkflowAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			WorkflowNavigatorGroup incominglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_Files_2006_incominglinks, "icons/incomingLinksNavigatorGroup.gif", //$NON-NLS-1$
-					parentElement);
-			WorkflowNavigatorGroup outgoinglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_Files_2006_outgoinglinks, "icons/outgoingLinksNavigatorGroup.gif", //$NON-NLS-1$
-					parentElement);
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataSourceRetrievalsEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataRetrievalSourcesEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataManipulationSourcesEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(TaskCommunicationConfigurationEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
 			if (!incominglinks.isEmpty()) {
 				result.add(incominglinks);
 			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
 			return result.toArray();
 		}
 
-		case DataAggregationEditPart.VISUAL_ID: {
-			LinkedList<WorkflowAbstractNavigatorItem> result = new LinkedList<WorkflowAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			WorkflowNavigatorGroup outgoinglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_DataAggregation_2007_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataManipulationSourcesEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case DataFilteringEditPart.VISUAL_ID: {
-			LinkedList<WorkflowAbstractNavigatorItem> result = new LinkedList<WorkflowAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			WorkflowNavigatorGroup outgoinglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_DataFiltering_2008_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataManipulationSourcesEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case CustomScriptEditPart.VISUAL_ID: {
-			LinkedList<WorkflowAbstractNavigatorItem> result = new LinkedList<WorkflowAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			WorkflowNavigatorGroup outgoinglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_CustomScript_2009_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataManipulationSourcesEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case DataManipulationEditPart.VISUAL_ID: {
-			LinkedList<WorkflowAbstractNavigatorItem> result = new LinkedList<WorkflowAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			WorkflowNavigatorGroup outgoinglinks = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_DataManipulation_2010_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataManipulationSourcesEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case DataSourceRetrievalsEditPart.VISUAL_ID: {
+		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID: {
 			LinkedList<WorkflowAbstractNavigatorItem> result = new LinkedList<WorkflowAbstractNavigatorItem>();
 			Edge sv = (Edge) view;
 			WorkflowNavigatorGroup target = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_DataSourceRetrievals_4001_target, "icons/linkTargetNavigatorGroup.gif", //$NON-NLS-1$
-					parentElement);
-			WorkflowNavigatorGroup source = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_DataSourceRetrievals_4001_source, "icons/linkSourceNavigatorGroup.gif", //$NON-NLS-1$
-					parentElement);
-			Collection<View> connectedViews;
-			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(CommitsEditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target, true));
-			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(AuthorsEditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target, true));
-			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(FilesEditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target, true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(GithubEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source, true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(GithubBigQueryEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source, true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(GHTorrentEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source, true));
-			if (!target.isEmpty()) {
-				result.add(target);
-			}
-			if (!source.isEmpty()) {
-				result.add(source);
-			}
-			return result.toArray();
-		}
-
-		case DataRetrievalSourcesEditPart.VISUAL_ID: {
-			LinkedList<WorkflowAbstractNavigatorItem> result = new LinkedList<WorkflowAbstractNavigatorItem>();
-			Edge sv = (Edge) view;
-			WorkflowNavigatorGroup target = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_DataRetrievalSources_4002_target, "icons/linkTargetNavigatorGroup.gif", //$NON-NLS-1$
-					parentElement);
-			WorkflowNavigatorGroup source = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_DataRetrievalSources_4002_source, "icons/linkSourceNavigatorGroup.gif", //$NON-NLS-1$
-					parentElement);
-			Collection<View> connectedViews;
-			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(GithubEditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target, true));
-			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(GithubBigQueryEditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target, true));
-			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(GHTorrentEditPart.VISUAL_ID));
-			target.addChildren(createNavigatorItems(connectedViews, target, true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(CommitsEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source, true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(AuthorsEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source, true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(FilesEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source, true));
-			if (!target.isEmpty()) {
-				result.add(target);
-			}
-			if (!source.isEmpty()) {
-				result.add(source);
-			}
-			return result.toArray();
-		}
-
-		case DataManipulationSourcesEditPart.VISUAL_ID: {
-			LinkedList<WorkflowAbstractNavigatorItem> result = new LinkedList<WorkflowAbstractNavigatorItem>();
-			Edge sv = (Edge) view;
-			WorkflowNavigatorGroup target = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_DataManipulationSources_4003_target,
+					Messages.NavigatorGroupName_RemoteTaskCommunicationConfiguration_4004_target,
 					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			WorkflowNavigatorGroup source = new WorkflowNavigatorGroup(
-					Messages.NavigatorGroupName_DataManipulationSources_4003_source,
+					Messages.NavigatorGroupName_RemoteTaskCommunicationConfiguration_4004_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(CommitsEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(EmittingTaskEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target, true));
 			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(AuthorsEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(TaskEditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target, true));
+			connectedViews = getLinksSourceByType(Collections.singleton(sv),
+					WorkflowVisualIDRegistry.getType(EmittingTaskEditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source, true));
+			if (!target.isEmpty()) {
+				result.add(target);
+			}
+			if (!source.isEmpty()) {
+				result.add(source);
+			}
+			return result.toArray();
+		}
+
+		case TaskCommunicationConfigurationEditPart.VISUAL_ID: {
+			LinkedList<WorkflowAbstractNavigatorItem> result = new LinkedList<WorkflowAbstractNavigatorItem>();
+			Edge sv = (Edge) view;
+			WorkflowNavigatorGroup target = new WorkflowNavigatorGroup(
+					Messages.NavigatorGroupName_TaskCommunicationConfiguration_4005_target,
+					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			WorkflowNavigatorGroup source = new WorkflowNavigatorGroup(
+					Messages.NavigatorGroupName_TaskCommunicationConfiguration_4005_source,
+					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					WorkflowVisualIDRegistry.getType(EmittingTaskEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target, true));
 			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(FilesEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(TaskEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target, true));
 			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataAggregationEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source, true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataFilteringEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source, true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(CustomScriptEditPart.VISUAL_ID));
-			source.addChildren(createNavigatorItems(connectedViews, source, true));
-			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					WorkflowVisualIDRegistry.getType(DataManipulationEditPart.VISUAL_ID));
+					WorkflowVisualIDRegistry.getType(EmittingTaskEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source, true));
 			if (!target.isEmpty()) {
 				result.add(target);

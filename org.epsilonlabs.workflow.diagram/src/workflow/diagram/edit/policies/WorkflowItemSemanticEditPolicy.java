@@ -10,16 +10,12 @@ import org.eclipse.gmf.runtime.emf.commands.core.commands.DuplicateEObjectsComma
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
 
-import workflow.diagram.edit.commands.AuthorsCreateCommand;
-import workflow.diagram.edit.commands.CommitsCreateCommand;
-import workflow.diagram.edit.commands.CustomScriptCreateCommand;
-import workflow.diagram.edit.commands.DataAggregationCreateCommand;
-import workflow.diagram.edit.commands.DataFilteringCreateCommand;
-import workflow.diagram.edit.commands.DataManipulationCreateCommand;
-import workflow.diagram.edit.commands.FilesCreateCommand;
-import workflow.diagram.edit.commands.GHTorrentCreateCommand;
-import workflow.diagram.edit.commands.GithubBigQueryCreateCommand;
-import workflow.diagram.edit.commands.GithubCreateCommand;
+import workflow.diagram.edit.commands.BooleanCreateCommand;
+import workflow.diagram.edit.commands.DoubleCreateCommand;
+import workflow.diagram.edit.commands.EmittingTaskCreateCommand;
+import workflow.diagram.edit.commands.IntegerCreateCommand;
+import workflow.diagram.edit.commands.StringCreateCommand;
+import workflow.diagram.edit.commands.TaskCreateCommand;
 import workflow.diagram.providers.WorkflowElementTypes;
 
 /**
@@ -38,35 +34,23 @@ public class WorkflowItemSemanticEditPolicy extends WorkflowBaseItemSemanticEdit
 	* @generated
 	*/
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (WorkflowElementTypes.Github_2001 == req.getElementType()) {
-			return getGEFWrapper(new GithubCreateCommand(req));
+		if (WorkflowElementTypes.EmittingTask_2011 == req.getElementType()) {
+			return getGEFWrapper(new EmittingTaskCreateCommand(req));
 		}
-		if (WorkflowElementTypes.GithubBigQuery_2002 == req.getElementType()) {
-			return getGEFWrapper(new GithubBigQueryCreateCommand(req));
+		if (WorkflowElementTypes.String_2012 == req.getElementType()) {
+			return getGEFWrapper(new StringCreateCommand(req));
 		}
-		if (WorkflowElementTypes.GHTorrent_2003 == req.getElementType()) {
-			return getGEFWrapper(new GHTorrentCreateCommand(req));
+		if (WorkflowElementTypes.Integer_2013 == req.getElementType()) {
+			return getGEFWrapper(new IntegerCreateCommand(req));
 		}
-		if (WorkflowElementTypes.Commits_2004 == req.getElementType()) {
-			return getGEFWrapper(new CommitsCreateCommand(req));
+		if (WorkflowElementTypes.Boolean_2014 == req.getElementType()) {
+			return getGEFWrapper(new BooleanCreateCommand(req));
 		}
-		if (WorkflowElementTypes.Authors_2005 == req.getElementType()) {
-			return getGEFWrapper(new AuthorsCreateCommand(req));
+		if (WorkflowElementTypes.Double_2015 == req.getElementType()) {
+			return getGEFWrapper(new DoubleCreateCommand(req));
 		}
-		if (WorkflowElementTypes.Files_2006 == req.getElementType()) {
-			return getGEFWrapper(new FilesCreateCommand(req));
-		}
-		if (WorkflowElementTypes.DataAggregation_2007 == req.getElementType()) {
-			return getGEFWrapper(new DataAggregationCreateCommand(req));
-		}
-		if (WorkflowElementTypes.DataFiltering_2008 == req.getElementType()) {
-			return getGEFWrapper(new DataFilteringCreateCommand(req));
-		}
-		if (WorkflowElementTypes.CustomScript_2009 == req.getElementType()) {
-			return getGEFWrapper(new CustomScriptCreateCommand(req));
-		}
-		if (WorkflowElementTypes.DataManipulation_2010 == req.getElementType()) {
-			return getGEFWrapper(new DataManipulationCreateCommand(req));
+		if (WorkflowElementTypes.Task_2016 == req.getElementType()) {
+			return getGEFWrapper(new TaskCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

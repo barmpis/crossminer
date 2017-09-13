@@ -7,7 +7,13 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import workflow.*;
+import workflow.EmittingTask;
+import workflow.RemoteTaskCommunicationConfiguration;
+import workflow.Task;
+import workflow.TaskCommunicationConfiguration;
+import workflow.Variable;
+import workflow.Workflow;
+import workflow.WorkflowPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,102 +78,63 @@ public class WorkflowSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkflowPackage.ELEMENT: {
-				Element element = (Element)theEObject;
-				T result = caseElement(element);
+			case WorkflowPackage.TASK: {
+				Task task = (Task)theEObject;
+				T result = caseTask(task);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkflowPackage.DATA_SOURCE: {
-				DataSource dataSource = (DataSource)theEObject;
-				T result = caseDataSource(dataSource);
-				if (result == null) result = caseElement(dataSource);
+			case WorkflowPackage.EMITTING_TASK: {
+				EmittingTask emittingTask = (EmittingTask)theEObject;
+				T result = caseEmittingTask(emittingTask);
+				if (result == null) result = caseTask(emittingTask);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkflowPackage.GITHUB: {
-				Github github = (Github)theEObject;
-				T result = caseGithub(github);
-				if (result == null) result = caseDataSource(github);
-				if (result == null) result = caseElement(github);
+			case WorkflowPackage.TASK_COMMUNICATION_CONFIGURATION: {
+				TaskCommunicationConfiguration taskCommunicationConfiguration = (TaskCommunicationConfiguration)theEObject;
+				T result = caseTaskCommunicationConfiguration(taskCommunicationConfiguration);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkflowPackage.GITHUB_BIG_QUERY: {
-				GithubBigQuery githubBigQuery = (GithubBigQuery)theEObject;
-				T result = caseGithubBigQuery(githubBigQuery);
-				if (result == null) result = caseDataSource(githubBigQuery);
-				if (result == null) result = caseElement(githubBigQuery);
+			case WorkflowPackage.REMOTE_TASK_COMMUNICATION_CONFIGURATION: {
+				RemoteTaskCommunicationConfiguration remoteTaskCommunicationConfiguration = (RemoteTaskCommunicationConfiguration)theEObject;
+				T result = caseRemoteTaskCommunicationConfiguration(remoteTaskCommunicationConfiguration);
+				if (result == null) result = caseTaskCommunicationConfiguration(remoteTaskCommunicationConfiguration);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkflowPackage.GH_TORRENT: {
-				GHTorrent ghTorrent = (GHTorrent)theEObject;
-				T result = caseGHTorrent(ghTorrent);
-				if (result == null) result = caseDataSource(ghTorrent);
-				if (result == null) result = caseElement(ghTorrent);
+			case WorkflowPackage.VARIABLE: {
+				Variable variable = (Variable)theEObject;
+				T result = caseVariable(variable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkflowPackage.DATA_RETRIEVAL: {
-				DataRetrieval dataRetrieval = (DataRetrieval)theEObject;
-				T result = caseDataRetrieval(dataRetrieval);
-				if (result == null) result = caseElement(dataRetrieval);
+			case WorkflowPackage.STRING: {
+				workflow.String string = (workflow.String)theEObject;
+				T result = caseString(string);
+				if (result == null) result = caseVariable(string);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkflowPackage.COMMITS: {
-				Commits commits = (Commits)theEObject;
-				T result = caseCommits(commits);
-				if (result == null) result = caseDataRetrieval(commits);
-				if (result == null) result = caseElement(commits);
+			case WorkflowPackage.INTEGER: {
+				workflow.Integer integer = (workflow.Integer)theEObject;
+				T result = caseInteger(integer);
+				if (result == null) result = caseVariable(integer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkflowPackage.AUTHORS: {
-				Authors authors = (Authors)theEObject;
-				T result = caseAuthors(authors);
-				if (result == null) result = caseDataRetrieval(authors);
-				if (result == null) result = caseElement(authors);
+			case WorkflowPackage.BOOLEAN: {
+				workflow.Boolean boolean_ = (workflow.Boolean)theEObject;
+				T result = caseBoolean(boolean_);
+				if (result == null) result = caseVariable(boolean_);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkflowPackage.FILES: {
-				Files files = (Files)theEObject;
-				T result = caseFiles(files);
-				if (result == null) result = caseDataRetrieval(files);
-				if (result == null) result = caseElement(files);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WorkflowPackage.DATA_MANIPULATION: {
-				DataManipulation dataManipulation = (DataManipulation)theEObject;
-				T result = caseDataManipulation(dataManipulation);
-				if (result == null) result = caseElement(dataManipulation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WorkflowPackage.DATA_AGGREGATION: {
-				DataAggregation dataAggregation = (DataAggregation)theEObject;
-				T result = caseDataAggregation(dataAggregation);
-				if (result == null) result = caseDataManipulation(dataAggregation);
-				if (result == null) result = caseElement(dataAggregation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WorkflowPackage.DATA_FILTERING: {
-				DataFiltering dataFiltering = (DataFiltering)theEObject;
-				T result = caseDataFiltering(dataFiltering);
-				if (result == null) result = caseDataManipulation(dataFiltering);
-				if (result == null) result = caseElement(dataFiltering);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WorkflowPackage.CUSTOM_SCRIPT: {
-				CustomScript customScript = (CustomScript)theEObject;
-				T result = caseCustomScript(customScript);
-				if (result == null) result = caseDataManipulation(customScript);
-				if (result == null) result = caseElement(customScript);
+			case WorkflowPackage.DOUBLE: {
+				workflow.Double double_ = (workflow.Double)theEObject;
+				T result = caseDouble(double_);
+				if (result == null) result = caseVariable(double_);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -191,197 +158,137 @@ public class WorkflowSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Task</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Element</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Task</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseElement(Element object) {
+	public T caseTask(Task object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Source</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Emitting Task</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Source</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Emitting Task</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDataSource(DataSource object) {
+	public T caseEmittingTask(EmittingTask object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Github</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Task Communication Configuration</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Github</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Task Communication Configuration</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseGithub(Github object) {
+	public T caseTaskCommunicationConfiguration(TaskCommunicationConfiguration object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Github Big Query</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Remote Task Communication Configuration</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Github Big Query</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Remote Task Communication Configuration</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseGithubBigQuery(GithubBigQuery object) {
+	public T caseRemoteTaskCommunicationConfiguration(RemoteTaskCommunicationConfiguration object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>GH Torrent</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>GH Torrent</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseGHTorrent(GHTorrent object) {
+	public T caseVariable(Variable object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Retrieval</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>String</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Retrieval</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>String</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDataRetrieval(DataRetrieval object) {
+	public T caseString(workflow.String object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Commits</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Integer</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Commits</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Integer</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCommits(Commits object) {
+	public T caseInteger(workflow.Integer object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Authors</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Authors</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Boolean</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAuthors(Authors object) {
+	public T caseBoolean(workflow.Boolean object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Files</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Double</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Files</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Double</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseFiles(Files object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Manipulation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Manipulation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDataManipulation(DataManipulation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Aggregation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Aggregation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDataAggregation(DataAggregation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Filtering</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Filtering</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDataFiltering(DataFiltering object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Custom Script</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Custom Script</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCustomScript(CustomScript object) {
+	public T caseDouble(workflow.Double object) {
 		return null;
 	}
 

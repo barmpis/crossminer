@@ -4,12 +4,14 @@
  */
 package workflow.diagram.part;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteDrawer;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.ToolEntry;
+import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.tooling.runtime.part.DefaultLinkToolEntry;
 import org.eclipse.gmf.tooling.runtime.part.DefaultNodeToolEntry;
 
@@ -35,16 +37,12 @@ public class WorkflowPaletteFactory {
 	private PaletteContainer createObjects1Group() {
 		PaletteDrawer paletteContainer = new PaletteDrawer(Messages.Objects1Group_title);
 		paletteContainer.setId("createObjects1Group"); //$NON-NLS-1$
-		paletteContainer.add(createAuthors1CreationTool());
-		paletteContainer.add(createCommits2CreationTool());
-		paletteContainer.add(createCustomScript3CreationTool());
-		paletteContainer.add(createDataAggregation4CreationTool());
-		paletteContainer.add(createDataFiltering5CreationTool());
-		paletteContainer.add(createDataManipulation6CreationTool());
-		paletteContainer.add(createFiles7CreationTool());
-		paletteContainer.add(createGHTorrent8CreationTool());
-		paletteContainer.add(createGithub9CreationTool());
-		paletteContainer.add(createGithubBigQuery10CreationTool());
+		paletteContainer.add(createBoolean1CreationTool());
+		paletteContainer.add(createDouble2CreationTool());
+		paletteContainer.add(createEmittingTask3CreationTool());
+		paletteContainer.add(createInteger4CreationTool());
+		paletteContainer.add(createString5CreationTool());
+		paletteContainer.add(createTask6CreationTool());
 		return paletteContainer;
 	}
 
@@ -55,20 +53,22 @@ public class WorkflowPaletteFactory {
 	private PaletteContainer createConnections2Group() {
 		PaletteDrawer paletteContainer = new PaletteDrawer(Messages.Connections2Group_title);
 		paletteContainer.setId("createConnections2Group"); //$NON-NLS-1$
-		paletteContainer.add(createRetrievals1CreationTool());
-		paletteContainer.add(createSources2CreationTool());
-		paletteContainer.add(createSources3CreationTool());
+		paletteContainer.add(createRemoteTaskCommunicationConfiguration1CreationTool());
+		paletteContainer.add(createTaskCommunicationConfiguration2CreationTool());
 		return paletteContainer;
 	}
 
 	/**
 	* @generated
 	*/
-	private ToolEntry createAuthors1CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Authors1CreationTool_title,
-				Messages.Authors1CreationTool_desc, Collections.singletonList(WorkflowElementTypes.Authors_2005));
-		entry.setId("createAuthors1CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.Authors_2005));
+	private ToolEntry createBoolean1CreationTool() {
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
+		types.add(WorkflowElementTypes.Boolean_3003);
+		types.add(WorkflowElementTypes.Boolean_2014);
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Boolean1CreationTool_title,
+				Messages.Boolean1CreationTool_desc, types);
+		entry.setId("createBoolean1CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.Boolean_3003));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -76,11 +76,14 @@ public class WorkflowPaletteFactory {
 	/**
 	* @generated
 	*/
-	private ToolEntry createCommits2CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Commits2CreationTool_title,
-				Messages.Commits2CreationTool_desc, Collections.singletonList(WorkflowElementTypes.Commits_2004));
-		entry.setId("createCommits2CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.Commits_2004));
+	private ToolEntry createDouble2CreationTool() {
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
+		types.add(WorkflowElementTypes.Double_3004);
+		types.add(WorkflowElementTypes.Double_2015);
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Double2CreationTool_title,
+				Messages.Double2CreationTool_desc, types);
+		entry.setId("createDouble2CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.Double_3004));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -88,12 +91,12 @@ public class WorkflowPaletteFactory {
 	/**
 	* @generated
 	*/
-	private ToolEntry createCustomScript3CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.CustomScript3CreationTool_title,
-				Messages.CustomScript3CreationTool_desc,
-				Collections.singletonList(WorkflowElementTypes.CustomScript_2009));
-		entry.setId("createCustomScript3CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.CustomScript_2009));
+	private ToolEntry createEmittingTask3CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.EmittingTask3CreationTool_title,
+				Messages.EmittingTask3CreationTool_desc,
+				Collections.singletonList(WorkflowElementTypes.EmittingTask_2011));
+		entry.setId("createEmittingTask3CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.EmittingTask_2011));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -101,12 +104,14 @@ public class WorkflowPaletteFactory {
 	/**
 	* @generated
 	*/
-	private ToolEntry createDataAggregation4CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.DataAggregation4CreationTool_title,
-				Messages.DataAggregation4CreationTool_desc,
-				Collections.singletonList(WorkflowElementTypes.DataAggregation_2007));
-		entry.setId("createDataAggregation4CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.DataAggregation_2007));
+	private ToolEntry createInteger4CreationTool() {
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
+		types.add(WorkflowElementTypes.Integer_3002);
+		types.add(WorkflowElementTypes.Integer_2013);
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Integer4CreationTool_title,
+				Messages.Integer4CreationTool_desc, types);
+		entry.setId("createInteger4CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.Integer_3002));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -114,12 +119,14 @@ public class WorkflowPaletteFactory {
 	/**
 	* @generated
 	*/
-	private ToolEntry createDataFiltering5CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.DataFiltering5CreationTool_title,
-				Messages.DataFiltering5CreationTool_desc,
-				Collections.singletonList(WorkflowElementTypes.DataFiltering_2008));
-		entry.setId("createDataFiltering5CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.DataFiltering_2008));
+	private ToolEntry createString5CreationTool() {
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
+		types.add(WorkflowElementTypes.String_3001);
+		types.add(WorkflowElementTypes.String_2012);
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.String5CreationTool_title,
+				Messages.String5CreationTool_desc, types);
+		entry.setId("createString5CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.String_3001));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -127,12 +134,11 @@ public class WorkflowPaletteFactory {
 	/**
 	* @generated
 	*/
-	private ToolEntry createDataManipulation6CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.DataManipulation6CreationTool_title,
-				Messages.DataManipulation6CreationTool_desc,
-				Collections.singletonList(WorkflowElementTypes.DataManipulation_2010));
-		entry.setId("createDataManipulation6CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.DataManipulation_2010));
+	private ToolEntry createTask6CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Task6CreationTool_title,
+				Messages.Task6CreationTool_desc, Collections.singletonList(WorkflowElementTypes.Task_2016));
+		entry.setId("createTask6CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.Task_2016));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -140,11 +146,14 @@ public class WorkflowPaletteFactory {
 	/**
 	* @generated
 	*/
-	private ToolEntry createFiles7CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Files7CreationTool_title,
-				Messages.Files7CreationTool_desc, Collections.singletonList(WorkflowElementTypes.Files_2006));
-		entry.setId("createFiles7CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.Files_2006));
+	private ToolEntry createRemoteTaskCommunicationConfiguration1CreationTool() {
+		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(
+				Messages.RemoteTaskCommunicationConfiguration1CreationTool_title,
+				Messages.RemoteTaskCommunicationConfiguration1CreationTool_desc,
+				Collections.singletonList(WorkflowElementTypes.RemoteTaskCommunicationConfiguration_4004));
+		entry.setId("createRemoteTaskCommunicationConfiguration1CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(WorkflowElementTypes
+				.getImageDescriptor(WorkflowElementTypes.RemoteTaskCommunicationConfiguration_4004));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -152,75 +161,14 @@ public class WorkflowPaletteFactory {
 	/**
 	* @generated
 	*/
-	private ToolEntry createGHTorrent8CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.GHTorrent8CreationTool_title,
-				Messages.GHTorrent8CreationTool_desc, Collections.singletonList(WorkflowElementTypes.GHTorrent_2003));
-		entry.setId("createGHTorrent8CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.GHTorrent_2003));
-		entry.setLargeIcon(entry.getSmallIcon());
-		return entry;
-	}
-
-	/**
-	* @generated
-	*/
-	private ToolEntry createGithub9CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Github9CreationTool_title,
-				Messages.Github9CreationTool_desc, Collections.singletonList(WorkflowElementTypes.Github_2001));
-		entry.setId("createGithub9CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.Github_2001));
-		entry.setLargeIcon(entry.getSmallIcon());
-		return entry;
-	}
-
-	/**
-	* @generated
-	*/
-	private ToolEntry createGithubBigQuery10CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.GithubBigQuery10CreationTool_title,
-				Messages.GithubBigQuery10CreationTool_desc,
-				Collections.singletonList(WorkflowElementTypes.GithubBigQuery_2002));
-		entry.setId("createGithubBigQuery10CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.GithubBigQuery_2002));
-		entry.setLargeIcon(entry.getSmallIcon());
-		return entry;
-	}
-
-	/**
-	* @generated
-	*/
-	private ToolEntry createRetrievals1CreationTool() {
-		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(Messages.Retrievals1CreationTool_title,
-				Messages.Retrievals1CreationTool_desc,
-				Collections.singletonList(WorkflowElementTypes.DataSourceRetrievals_4001));
-		entry.setId("createRetrievals1CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.DataSourceRetrievals_4001));
-		entry.setLargeIcon(entry.getSmallIcon());
-		return entry;
-	}
-
-	/**
-	* @generated
-	*/
-	private ToolEntry createSources2CreationTool() {
-		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(Messages.Sources2CreationTool_title,
-				Messages.Sources2CreationTool_desc,
-				Collections.singletonList(WorkflowElementTypes.DataRetrievalSources_4002));
-		entry.setId("createSources2CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.DataRetrievalSources_4002));
-		entry.setLargeIcon(entry.getSmallIcon());
-		return entry;
-	}
-
-	/**
-	* @generated
-	*/
-	private ToolEntry createSources3CreationTool() {
-		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(Messages.Sources3CreationTool_title,
-				Messages.Sources3CreationTool_desc,
-				Collections.singletonList(WorkflowElementTypes.DataManipulationSources_4003));
-		entry.setId("createSources3CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.DataManipulationSources_4003));
+	private ToolEntry createTaskCommunicationConfiguration2CreationTool() {
+		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(
+				Messages.TaskCommunicationConfiguration2CreationTool_title,
+				Messages.TaskCommunicationConfiguration2CreationTool_desc,
+				Collections.singletonList(WorkflowElementTypes.TaskCommunicationConfiguration_4005));
+		entry.setId("createTaskCommunicationConfiguration2CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(
+				WorkflowElementTypes.getImageDescriptor(WorkflowElementTypes.TaskCommunicationConfiguration_4005));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

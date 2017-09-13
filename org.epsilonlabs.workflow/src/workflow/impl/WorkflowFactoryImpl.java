@@ -3,6 +3,7 @@
 package workflow.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -10,7 +11,15 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import workflow.*;
+import workflow.EmittingTask;
+import workflow.QueuePersistanceOptions;
+import workflow.RemoteTaskCommunicationConfiguration;
+import workflow.Task;
+import workflow.TaskCommunicationConfiguration;
+import workflow.TaskConcurrency;
+import workflow.Workflow;
+import workflow.WorkflowFactory;
+import workflow.WorkflowPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -57,18 +66,50 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case WorkflowPackage.WORKFLOW: return createWorkflow();
-			case WorkflowPackage.GITHUB: return createGithub();
-			case WorkflowPackage.GITHUB_BIG_QUERY: return createGithubBigQuery();
-			case WorkflowPackage.GH_TORRENT: return createGHTorrent();
-			case WorkflowPackage.COMMITS: return createCommits();
-			case WorkflowPackage.AUTHORS: return createAuthors();
-			case WorkflowPackage.FILES: return createFiles();
-			case WorkflowPackage.DATA_MANIPULATION: return createDataManipulation();
-			case WorkflowPackage.DATA_AGGREGATION: return createDataAggregation();
-			case WorkflowPackage.DATA_FILTERING: return createDataFiltering();
-			case WorkflowPackage.CUSTOM_SCRIPT: return createCustomScript();
+			case WorkflowPackage.TASK: return createTask();
+			case WorkflowPackage.EMITTING_TASK: return createEmittingTask();
+			case WorkflowPackage.TASK_COMMUNICATION_CONFIGURATION: return createTaskCommunicationConfiguration();
+			case WorkflowPackage.REMOTE_TASK_COMMUNICATION_CONFIGURATION: return createRemoteTaskCommunicationConfiguration();
+			case WorkflowPackage.STRING: return createString();
+			case WorkflowPackage.INTEGER: return createInteger();
+			case WorkflowPackage.BOOLEAN: return createBoolean();
+			case WorkflowPackage.DOUBLE: return createDouble();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case WorkflowPackage.TASK_CONCURRENCY:
+				return createTaskConcurrencyFromString(eDataType, initialValue);
+			case WorkflowPackage.QUEUE_PERSISTANCE_OPTIONS:
+				return createQueuePersistanceOptionsFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case WorkflowPackage.TASK_CONCURRENCY:
+				return convertTaskConcurrencyToString(eDataType, instanceValue);
+			case WorkflowPackage.QUEUE_PERSISTANCE_OPTIONS:
+				return convertQueuePersistanceOptionsToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -87,9 +128,9 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Github createGithub() {
-		GithubImpl github = new GithubImpl();
-		return github;
+	public Task createTask() {
+		TaskImpl task = new TaskImpl();
+		return task;
 	}
 
 	/**
@@ -97,9 +138,9 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GithubBigQuery createGithubBigQuery() {
-		GithubBigQueryImpl githubBigQuery = new GithubBigQueryImpl();
-		return githubBigQuery;
+	public EmittingTask createEmittingTask() {
+		EmittingTaskImpl emittingTask = new EmittingTaskImpl();
+		return emittingTask;
 	}
 
 	/**
@@ -107,9 +148,9 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GHTorrent createGHTorrent() {
-		GHTorrentImpl ghTorrent = new GHTorrentImpl();
-		return ghTorrent;
+	public TaskCommunicationConfiguration createTaskCommunicationConfiguration() {
+		TaskCommunicationConfigurationImpl taskCommunicationConfiguration = new TaskCommunicationConfigurationImpl();
+		return taskCommunicationConfiguration;
 	}
 
 	/**
@@ -117,9 +158,9 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Commits createCommits() {
-		CommitsImpl commits = new CommitsImpl();
-		return commits;
+	public RemoteTaskCommunicationConfiguration createRemoteTaskCommunicationConfiguration() {
+		RemoteTaskCommunicationConfigurationImpl remoteTaskCommunicationConfiguration = new RemoteTaskCommunicationConfigurationImpl();
+		return remoteTaskCommunicationConfiguration;
 	}
 
 	/**
@@ -127,9 +168,9 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Authors createAuthors() {
-		AuthorsImpl authors = new AuthorsImpl();
-		return authors;
+	public workflow.String createString() {
+		StringImpl string = new StringImpl();
+		return string;
 	}
 
 	/**
@@ -137,9 +178,9 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Files createFiles() {
-		FilesImpl files = new FilesImpl();
-		return files;
+	public workflow.Integer createInteger() {
+		IntegerImpl integer = new IntegerImpl();
+		return integer;
 	}
 
 	/**
@@ -147,9 +188,9 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataManipulation createDataManipulation() {
-		DataManipulationImpl dataManipulation = new DataManipulationImpl();
-		return dataManipulation;
+	public workflow.Boolean createBoolean() {
+		BooleanImpl boolean_ = new BooleanImpl();
+		return boolean_;
 	}
 
 	/**
@@ -157,9 +198,9 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataAggregation createDataAggregation() {
-		DataAggregationImpl dataAggregation = new DataAggregationImpl();
-		return dataAggregation;
+	public workflow.Double createDouble() {
+		DoubleImpl double_ = new DoubleImpl();
+		return double_;
 	}
 
 	/**
@@ -167,9 +208,10 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataFiltering createDataFiltering() {
-		DataFilteringImpl dataFiltering = new DataFilteringImpl();
-		return dataFiltering;
+	public TaskConcurrency createTaskConcurrencyFromString(EDataType eDataType, String initialValue) {
+		TaskConcurrency result = TaskConcurrency.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
 	}
 
 	/**
@@ -177,9 +219,28 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CustomScript createCustomScript() {
-		CustomScriptImpl customScript = new CustomScriptImpl();
-		return customScript;
+	public String convertTaskConcurrencyToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QueuePersistanceOptions createQueuePersistanceOptionsFromString(EDataType eDataType, String initialValue) {
+		QueuePersistanceOptions result = QueuePersistanceOptions.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertQueuePersistanceOptionsToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

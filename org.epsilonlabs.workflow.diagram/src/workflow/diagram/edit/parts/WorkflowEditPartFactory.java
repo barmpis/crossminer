@@ -28,83 +28,131 @@ public class WorkflowEditPartFactory implements EditPartFactory {
 			case WorkflowEditPart.VISUAL_ID:
 				return new WorkflowEditPart(view);
 
-			case GithubEditPart.VISUAL_ID:
-				return new GithubEditPart(view);
+			case EmittingTaskEditPart.VISUAL_ID:
+				return new EmittingTaskEditPart(view);
 
-			case GithubUrlEditPart.VISUAL_ID:
-				return new GithubUrlEditPart(view);
+			case EmittingTaskNameEditPart.VISUAL_ID:
+				return new EmittingTaskNameEditPart(view);
 
-			case GithubBigQueryEditPart.VISUAL_ID:
-				return new GithubBigQueryEditPart(view);
+			case EmittingTaskConcurrencyEditPart.VISUAL_ID:
+				return new EmittingTaskConcurrencyEditPart(view);
 
-			case GithubBigQueryUrlEditPart.VISUAL_ID:
-				return new GithubBigQueryUrlEditPart(view);
+			case EmittingTaskImplementationFullyQualEditPart.VISUAL_ID:
+				return new EmittingTaskImplementationFullyQualEditPart(view);
 
-			case GHTorrentEditPart.VISUAL_ID:
-				return new GHTorrentEditPart(view);
+			case EmittingTaskImplementationEntryPoinEditPart.VISUAL_ID:
+				return new EmittingTaskImplementationEntryPoinEditPart(view);
 
-			case GHTorrentUrlEditPart.VISUAL_ID:
-				return new GHTorrentUrlEditPart(view);
+			case EmittingTaskAcceptsPartialDataEditPart.VISUAL_ID:
+				return new EmittingTaskAcceptsPartialDataEditPart(view);
 
-			case CommitsEditPart.VISUAL_ID:
-				return new CommitsEditPart(view);
+			case EmittingTaskProvidesPartialDataEditPart.VISUAL_ID:
+				return new EmittingTaskProvidesPartialDataEditPart(view);
 
-			case CommitsRepoPatternsEditPart.VISUAL_ID:
-				return new CommitsRepoPatternsEditPart(view);
+			case StringEditPart.VISUAL_ID:
+				return new StringEditPart(view);
 
-			case AuthorsEditPart.VISUAL_ID:
-				return new AuthorsEditPart(view);
+			case StringNameEditPart.VISUAL_ID:
+				return new StringNameEditPart(view);
 
-			case AuthorsRepoPatternsEditPart.VISUAL_ID:
-				return new AuthorsRepoPatternsEditPart(view);
+			case StringValueEditPart.VISUAL_ID:
+				return new StringValueEditPart(view);
 
-			case FilesEditPart.VISUAL_ID:
-				return new FilesEditPart(view);
+			case IntegerEditPart.VISUAL_ID:
+				return new IntegerEditPart(view);
 
-			case FilesRepoPatternsEditPart.VISUAL_ID:
-				return new FilesRepoPatternsEditPart(view);
+			case IntegerNameEditPart.VISUAL_ID:
+				return new IntegerNameEditPart(view);
 
-			case DataAggregationEditPart.VISUAL_ID:
-				return new DataAggregationEditPart(view);
+			case IntegerValueEditPart.VISUAL_ID:
+				return new IntegerValueEditPart(view);
 
-			case DataAggregationTempEditPart.VISUAL_ID:
-				return new DataAggregationTempEditPart(view);
+			case BooleanEditPart.VISUAL_ID:
+				return new BooleanEditPart(view);
 
-			case DataFilteringEditPart.VISUAL_ID:
-				return new DataFilteringEditPart(view);
+			case BooleanNameEditPart.VISUAL_ID:
+				return new BooleanNameEditPart(view);
 
-			case DataFilteringTempEditPart.VISUAL_ID:
-				return new DataFilteringTempEditPart(view);
+			case BooleanValueEditPart.VISUAL_ID:
+				return new BooleanValueEditPart(view);
 
-			case CustomScriptEditPart.VISUAL_ID:
-				return new CustomScriptEditPart(view);
+			case DoubleEditPart.VISUAL_ID:
+				return new DoubleEditPart(view);
 
-			case CustomScriptTempEditPart.VISUAL_ID:
-				return new CustomScriptTempEditPart(view);
+			case DoubleNameEditPart.VISUAL_ID:
+				return new DoubleNameEditPart(view);
 
-			case DataManipulationEditPart.VISUAL_ID:
-				return new DataManipulationEditPart(view);
+			case DoubleValueEditPart.VISUAL_ID:
+				return new DoubleValueEditPart(view);
 
-			case DataManipulationTempEditPart.VISUAL_ID:
-				return new DataManipulationTempEditPart(view);
+			case TaskEditPart.VISUAL_ID:
+				return new TaskEditPart(view);
 
-			case DataSourceRetrievalsEditPart.VISUAL_ID:
-				return new DataSourceRetrievalsEditPart(view);
+			case TaskNameEditPart.VISUAL_ID:
+				return new TaskNameEditPart(view);
 
-			case WrappingLabelEditPart.VISUAL_ID:
-				return new WrappingLabelEditPart(view);
+			case TaskConcurrencyEditPart.VISUAL_ID:
+				return new TaskConcurrencyEditPart(view);
 
-			case DataRetrievalSourcesEditPart.VISUAL_ID:
-				return new DataRetrievalSourcesEditPart(view);
+			case TaskImplementationFullyQualEditPart.VISUAL_ID:
+				return new TaskImplementationFullyQualEditPart(view);
 
-			case WrappingLabel2EditPart.VISUAL_ID:
-				return new WrappingLabel2EditPart(view);
+			case TaskImplementationEntryPoinEditPart.VISUAL_ID:
+				return new TaskImplementationEntryPoinEditPart(view);
 
-			case DataManipulationSourcesEditPart.VISUAL_ID:
-				return new DataManipulationSourcesEditPart(view);
+			case TaskAcceptsPartialDataEditPart.VISUAL_ID:
+				return new TaskAcceptsPartialDataEditPart(view);
 
-			case WrappingLabel3EditPart.VISUAL_ID:
-				return new WrappingLabel3EditPart(view);
+			case String2EditPart.VISUAL_ID:
+				return new String2EditPart(view);
+
+			case StringName2EditPart.VISUAL_ID:
+				return new StringName2EditPart(view);
+
+			case StringValue2EditPart.VISUAL_ID:
+				return new StringValue2EditPart(view);
+
+			case Integer2EditPart.VISUAL_ID:
+				return new Integer2EditPart(view);
+
+			case IntegerName2EditPart.VISUAL_ID:
+				return new IntegerName2EditPart(view);
+
+			case IntegerValue2EditPart.VISUAL_ID:
+				return new IntegerValue2EditPart(view);
+
+			case Boolean2EditPart.VISUAL_ID:
+				return new Boolean2EditPart(view);
+
+			case BooleanName2EditPart.VISUAL_ID:
+				return new BooleanName2EditPart(view);
+
+			case BooleanValue2EditPart.VISUAL_ID:
+				return new BooleanValue2EditPart(view);
+
+			case Double2EditPart.VISUAL_ID:
+				return new Double2EditPart(view);
+
+			case DoubleName2EditPart.VISUAL_ID:
+				return new DoubleName2EditPart(view);
+
+			case DoubleValue2EditPart.VISUAL_ID:
+				return new DoubleValue2EditPart(view);
+
+			case EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID:
+				return new EmittingTaskEmittingTaskLocalsCompartmentEditPart(view);
+
+			case TaskTaskLocalsCompartmentEditPart.VISUAL_ID:
+				return new TaskTaskLocalsCompartmentEditPart(view);
+
+			case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID:
+				return new RemoteTaskCommunicationConfigurationEditPart(view);
+
+			case RemoteTaskCommunicationConfigurationAddressPortSingleQueueQEditPart.VISUAL_ID:
+				return new RemoteTaskCommunicationConfigurationAddressPortSingleQueueQEditPart(view);
+
+			case TaskCommunicationConfigurationEditPart.VISUAL_ID:
+				return new TaskCommunicationConfigurationEditPart(view);
 
 			}
 		}

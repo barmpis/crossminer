@@ -4,94 +4,140 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:trace="http://www.eclipse.org/gmf/2006/Trace">
   <nodeTraces
-      visualID="2001"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Github') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+      visualID="2011"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'EmittingTask') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'tasks')">
     <nodeLabelTraces
-        visualID="5001"
+        visualID="5011"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5025"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5026"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5027"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5028"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5029"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="7001"
         queryText="true"/>
   </nodeTraces>
   <nodeTraces
-      visualID="2002"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'GithubBigQuery') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+      visualID="2012"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'String') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'globals')">
     <nodeLabelTraces
-        visualID="5002"
+        visualID="5012"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5030"
         queryText="true"/>
   </nodeTraces>
   <nodeTraces
-      visualID="2003"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'GHTorrent') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+      visualID="2013"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Integer') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'globals')">
     <nodeLabelTraces
-        visualID="5003"
+        visualID="5013"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5031"
         queryText="true"/>
   </nodeTraces>
   <nodeTraces
-      visualID="2004"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Commits') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+      visualID="2014"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Boolean') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'globals')">
     <nodeLabelTraces
-        visualID="5004"
+        visualID="5014"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5032"
         queryText="true"/>
   </nodeTraces>
   <nodeTraces
-      visualID="2005"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Authors') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+      visualID="2015"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Double') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'globals')">
     <nodeLabelTraces
-        visualID="5005"
+        visualID="5015"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5033"
         queryText="true"/>
   </nodeTraces>
   <nodeTraces
-      visualID="2006"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Files') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+      visualID="2016"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Task') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'tasks')">
     <nodeLabelTraces
-        visualID="5006"
+        visualID="5016"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5034"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5035"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5036"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5037"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="7002"
         queryText="true"/>
   </nodeTraces>
-  <nodeTraces
-      visualID="2007"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'DataAggregation') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+  <childNodeTraces
+      visualID="3001"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'String') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Task') and _containmentMF_.name = 'locals')">
     <nodeLabelTraces
-        visualID="5007"
+        visualID="5017"
         queryText="true"/>
-  </nodeTraces>
-  <nodeTraces
-      visualID="2008"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'DataFiltering') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
     <nodeLabelTraces
-        visualID="5008"
+        visualID="5018"
         queryText="true"/>
-  </nodeTraces>
-  <nodeTraces
-      visualID="2009"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'CustomScript') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3002"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Integer') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Task') and _containmentMF_.name = 'locals')">
     <nodeLabelTraces
-        visualID="5009"
+        visualID="5019"
         queryText="true"/>
-  </nodeTraces>
-  <nodeTraces
-      visualID="2010"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'DataManipulation') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'Workflow') and _containmentMF_.name = 'contents')">
     <nodeLabelTraces
-        visualID="5010"
+        visualID="5020"
         queryText="true"/>
-  </nodeTraces>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3003"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Boolean') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Task') and _containmentMF_.name = 'locals')">
+    <nodeLabelTraces
+        visualID="5021"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5022"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3004"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Double') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'Task') and _containmentMF_.name = 'locals')">
+    <nodeLabelTraces
+        visualID="5023"
+        queryText="true"/>
+    <nodeLabelTraces
+        visualID="5024"
+        queryText="true"/>
+  </childNodeTraces>
   <linkTraces
-      visualID="4001"
-      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'DataSource') and _feature_.name = 'retrievals')">
+      visualID="4004"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'RemoteTaskCommunicationConfiguration')">
     <linkLabelTraces
         visualID="6001"
         queryText="true"/>
   </linkTraces>
   <linkTraces
-      visualID="4002"
-      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'DataRetrieval') and _feature_.name = 'sources')">
-    <linkLabelTraces
-        visualID="6002"
-        queryText="true"/>
-  </linkTraces>
-  <linkTraces
-      visualID="4003"
-      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://workflow' and _eClass_.name = 'DataManipulation') and _feature_.name = 'sources')">
-    <linkLabelTraces
-        visualID="6003"
-        queryText="true"/>
-  </linkTraces>
+      visualID="4005"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://org.crossminer.workflow' and _eClass_.name = 'TaskCommunicationConfiguration')"/>
 </trace:TraceModel>

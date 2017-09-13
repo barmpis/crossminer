@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -62,52 +63,29 @@ public class WorkflowItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addStartingPointsPropertyDescriptor(object);
-			addEndPointsPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Starting Points feature.
+	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addStartingPointsPropertyDescriptor(Object object) {
+	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Workflow_startingPoints_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Workflow_startingPoints_feature", "_UI_Workflow_type"),
-				 WorkflowPackage.Literals.WORKFLOW__STARTING_POINTS,
+				 getString("_UI_Workflow_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Workflow_name_feature", "_UI_Workflow_type"),
+				 WorkflowPackage.Literals.WORKFLOW__NAME,
 				 true,
 				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the End Points feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addEndPointsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Workflow_endPoints_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Workflow_endPoints_feature", "_UI_Workflow_type"),
-				 WorkflowPackage.Literals.WORKFLOW__END_POINTS,
-				 true,
 				 false,
-				 true,
-				 null,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -124,7 +102,9 @@ public class WorkflowItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(WorkflowPackage.Literals.WORKFLOW__CONTENTS);
+			childrenFeatures.add(WorkflowPackage.Literals.WORKFLOW__TASKS);
+			childrenFeatures.add(WorkflowPackage.Literals.WORKFLOW__CONFIGS);
+			childrenFeatures.add(WorkflowPackage.Literals.WORKFLOW__GLOBALS);
 		}
 		return childrenFeatures;
 	}
@@ -161,7 +141,10 @@ public class WorkflowItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Workflow_type");
+		String label = ((Workflow)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Workflow_type") :
+			getString("_UI_Workflow_type") + " " + label;
 	}
 	
 
@@ -177,7 +160,12 @@ public class WorkflowItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Workflow.class)) {
-			case WorkflowPackage.WORKFLOW__CONTENTS:
+			case WorkflowPackage.WORKFLOW__NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case WorkflowPackage.WORKFLOW__TASKS:
+			case WorkflowPackage.WORKFLOW__CONFIGS:
+			case WorkflowPackage.WORKFLOW__GLOBALS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -197,53 +185,43 @@ public class WorkflowItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__CONTENTS,
-				 WorkflowFactory.eINSTANCE.createGithub()));
+				(WorkflowPackage.Literals.WORKFLOW__TASKS,
+				 WorkflowFactory.eINSTANCE.createTask()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__CONTENTS,
-				 WorkflowFactory.eINSTANCE.createGithubBigQuery()));
+				(WorkflowPackage.Literals.WORKFLOW__TASKS,
+				 WorkflowFactory.eINSTANCE.createEmittingTask()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__CONTENTS,
-				 WorkflowFactory.eINSTANCE.createGHTorrent()));
+				(WorkflowPackage.Literals.WORKFLOW__CONFIGS,
+				 WorkflowFactory.eINSTANCE.createTaskCommunicationConfiguration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__CONTENTS,
-				 WorkflowFactory.eINSTANCE.createCommits()));
+				(WorkflowPackage.Literals.WORKFLOW__CONFIGS,
+				 WorkflowFactory.eINSTANCE.createRemoteTaskCommunicationConfiguration()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__CONTENTS,
-				 WorkflowFactory.eINSTANCE.createAuthors()));
+				(WorkflowPackage.Literals.WORKFLOW__GLOBALS,
+				 WorkflowFactory.eINSTANCE.createString()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__CONTENTS,
-				 WorkflowFactory.eINSTANCE.createFiles()));
+				(WorkflowPackage.Literals.WORKFLOW__GLOBALS,
+				 WorkflowFactory.eINSTANCE.createInteger()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__CONTENTS,
-				 WorkflowFactory.eINSTANCE.createDataManipulation()));
+				(WorkflowPackage.Literals.WORKFLOW__GLOBALS,
+				 WorkflowFactory.eINSTANCE.createBoolean()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__CONTENTS,
-				 WorkflowFactory.eINSTANCE.createDataAggregation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__CONTENTS,
-				 WorkflowFactory.eINSTANCE.createDataFiltering()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__CONTENTS,
-				 WorkflowFactory.eINSTANCE.createCustomScript()));
+				(WorkflowPackage.Literals.WORKFLOW__GLOBALS,
+				 WorkflowFactory.eINSTANCE.createDouble()));
 	}
 
 	/**

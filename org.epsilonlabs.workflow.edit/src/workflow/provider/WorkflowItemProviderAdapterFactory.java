@@ -95,233 +95,187 @@ public class WorkflowItemProviderAdapterFactory extends WorkflowAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link workflow.Github} instances.
+	 * This keeps track of the one adapter used for all {@link workflow.Task} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected GithubItemProvider githubItemProvider;
+	protected TaskItemProvider taskItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link workflow.Github}.
+	 * This creates an adapter for a {@link workflow.Task}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createGithubAdapter() {
-		if (githubItemProvider == null) {
-			githubItemProvider = new GithubItemProvider(this);
+	public Adapter createTaskAdapter() {
+		if (taskItemProvider == null) {
+			taskItemProvider = new TaskItemProvider(this);
 		}
 
-		return githubItemProvider;
+		return taskItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link workflow.GithubBigQuery} instances.
+	 * This keeps track of the one adapter used for all {@link workflow.EmittingTask} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected GithubBigQueryItemProvider githubBigQueryItemProvider;
+	protected EmittingTaskItemProvider emittingTaskItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link workflow.GithubBigQuery}.
+	 * This creates an adapter for a {@link workflow.EmittingTask}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createGithubBigQueryAdapter() {
-		if (githubBigQueryItemProvider == null) {
-			githubBigQueryItemProvider = new GithubBigQueryItemProvider(this);
+	public Adapter createEmittingTaskAdapter() {
+		if (emittingTaskItemProvider == null) {
+			emittingTaskItemProvider = new EmittingTaskItemProvider(this);
 		}
 
-		return githubBigQueryItemProvider;
+		return emittingTaskItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link workflow.GHTorrent} instances.
+	 * This keeps track of the one adapter used for all {@link workflow.TaskCommunicationConfiguration} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected GHTorrentItemProvider ghTorrentItemProvider;
+	protected TaskCommunicationConfigurationItemProvider taskCommunicationConfigurationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link workflow.GHTorrent}.
+	 * This creates an adapter for a {@link workflow.TaskCommunicationConfiguration}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createGHTorrentAdapter() {
-		if (ghTorrentItemProvider == null) {
-			ghTorrentItemProvider = new GHTorrentItemProvider(this);
+	public Adapter createTaskCommunicationConfigurationAdapter() {
+		if (taskCommunicationConfigurationItemProvider == null) {
+			taskCommunicationConfigurationItemProvider = new TaskCommunicationConfigurationItemProvider(this);
 		}
 
-		return ghTorrentItemProvider;
+		return taskCommunicationConfigurationItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link workflow.Commits} instances.
+	 * This keeps track of the one adapter used for all {@link workflow.RemoteTaskCommunicationConfiguration} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CommitsItemProvider commitsItemProvider;
+	protected RemoteTaskCommunicationConfigurationItemProvider remoteTaskCommunicationConfigurationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link workflow.Commits}.
+	 * This creates an adapter for a {@link workflow.RemoteTaskCommunicationConfiguration}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createCommitsAdapter() {
-		if (commitsItemProvider == null) {
-			commitsItemProvider = new CommitsItemProvider(this);
+	public Adapter createRemoteTaskCommunicationConfigurationAdapter() {
+		if (remoteTaskCommunicationConfigurationItemProvider == null) {
+			remoteTaskCommunicationConfigurationItemProvider = new RemoteTaskCommunicationConfigurationItemProvider(this);
 		}
 
-		return commitsItemProvider;
+		return remoteTaskCommunicationConfigurationItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link workflow.Authors} instances.
+	 * This keeps track of the one adapter used for all {@link workflow.String} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AuthorsItemProvider authorsItemProvider;
+	protected StringItemProvider stringItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link workflow.Authors}.
+	 * This creates an adapter for a {@link workflow.String}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createAuthorsAdapter() {
-		if (authorsItemProvider == null) {
-			authorsItemProvider = new AuthorsItemProvider(this);
+	public Adapter createStringAdapter() {
+		if (stringItemProvider == null) {
+			stringItemProvider = new StringItemProvider(this);
 		}
 
-		return authorsItemProvider;
+		return stringItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link workflow.Files} instances.
+	 * This keeps track of the one adapter used for all {@link workflow.Integer} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected FilesItemProvider filesItemProvider;
+	protected IntegerItemProvider integerItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link workflow.Files}.
+	 * This creates an adapter for a {@link workflow.Integer}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createFilesAdapter() {
-		if (filesItemProvider == null) {
-			filesItemProvider = new FilesItemProvider(this);
+	public Adapter createIntegerAdapter() {
+		if (integerItemProvider == null) {
+			integerItemProvider = new IntegerItemProvider(this);
 		}
 
-		return filesItemProvider;
+		return integerItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link workflow.DataManipulation} instances.
+	 * This keeps track of the one adapter used for all {@link workflow.Boolean} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DataManipulationItemProvider dataManipulationItemProvider;
+	protected BooleanItemProvider booleanItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link workflow.DataManipulation}.
+	 * This creates an adapter for a {@link workflow.Boolean}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createDataManipulationAdapter() {
-		if (dataManipulationItemProvider == null) {
-			dataManipulationItemProvider = new DataManipulationItemProvider(this);
+	public Adapter createBooleanAdapter() {
+		if (booleanItemProvider == null) {
+			booleanItemProvider = new BooleanItemProvider(this);
 		}
 
-		return dataManipulationItemProvider;
+		return booleanItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link workflow.DataAggregation} instances.
+	 * This keeps track of the one adapter used for all {@link workflow.Double} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DataAggregationItemProvider dataAggregationItemProvider;
+	protected DoubleItemProvider doubleItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link workflow.DataAggregation}.
+	 * This creates an adapter for a {@link workflow.Double}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createDataAggregationAdapter() {
-		if (dataAggregationItemProvider == null) {
-			dataAggregationItemProvider = new DataAggregationItemProvider(this);
+	public Adapter createDoubleAdapter() {
+		if (doubleItemProvider == null) {
+			doubleItemProvider = new DoubleItemProvider(this);
 		}
 
-		return dataAggregationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link workflow.DataFiltering} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DataFilteringItemProvider dataFilteringItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link workflow.DataFiltering}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDataFilteringAdapter() {
-		if (dataFilteringItemProvider == null) {
-			dataFilteringItemProvider = new DataFilteringItemProvider(this);
-		}
-
-		return dataFilteringItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link workflow.CustomScript} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CustomScriptItemProvider customScriptItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link workflow.CustomScript}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCustomScriptAdapter() {
-		if (customScriptItemProvider == null) {
-			customScriptItemProvider = new CustomScriptItemProvider(this);
-		}
-
-		return customScriptItemProvider;
+		return doubleItemProvider;
 	}
 
 	/**
@@ -424,16 +378,14 @@ public class WorkflowItemProviderAdapterFactory extends WorkflowAdapterFactory i
 	 */
 	public void dispose() {
 		if (workflowItemProvider != null) workflowItemProvider.dispose();
-		if (githubItemProvider != null) githubItemProvider.dispose();
-		if (githubBigQueryItemProvider != null) githubBigQueryItemProvider.dispose();
-		if (ghTorrentItemProvider != null) ghTorrentItemProvider.dispose();
-		if (commitsItemProvider != null) commitsItemProvider.dispose();
-		if (authorsItemProvider != null) authorsItemProvider.dispose();
-		if (filesItemProvider != null) filesItemProvider.dispose();
-		if (dataManipulationItemProvider != null) dataManipulationItemProvider.dispose();
-		if (dataAggregationItemProvider != null) dataAggregationItemProvider.dispose();
-		if (dataFilteringItemProvider != null) dataFilteringItemProvider.dispose();
-		if (customScriptItemProvider != null) customScriptItemProvider.dispose();
+		if (taskItemProvider != null) taskItemProvider.dispose();
+		if (emittingTaskItemProvider != null) emittingTaskItemProvider.dispose();
+		if (taskCommunicationConfigurationItemProvider != null) taskCommunicationConfigurationItemProvider.dispose();
+		if (remoteTaskCommunicationConfigurationItemProvider != null) remoteTaskCommunicationConfigurationItemProvider.dispose();
+		if (stringItemProvider != null) stringItemProvider.dispose();
+		if (integerItemProvider != null) integerItemProvider.dispose();
+		if (booleanItemProvider != null) booleanItemProvider.dispose();
+		if (doubleItemProvider != null) doubleItemProvider.dispose();
 	}
 
 }

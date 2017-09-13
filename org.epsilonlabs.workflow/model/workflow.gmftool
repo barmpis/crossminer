@@ -12,8 +12,8 @@
         collapsible="true">
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Authors"
-          description="Create new Authors">
+          title="Boolean"
+          description="Create new Boolean">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -21,8 +21,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Commits"
-          description="Create new Commits">
+          title="Double"
+          description="Create new Double">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -30,8 +30,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="CustomScript"
-          description="Create new CustomScript">
+          title="EmittingTask"
+          description="Create new EmittingTask">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -39,8 +39,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="DataAggregation"
-          description="Create new DataAggregation">
+          title="Integer"
+          description="Create new Integer">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -48,8 +48,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="DataFiltering"
-          description="Create new DataFiltering">
+          title="String"
+          description="Create new String">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -57,44 +57,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="DataManipulation"
-          description="Create new DataManipulation">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Files"
-          description="Create new Files">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="GHTorrent"
-          description="Create new GHTorrent">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Github"
-          description="Create new Github">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="GithubBigQuery"
-          description="Create new GithubBigQuery">
+          title="Task"
+          description="Create new Task">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -107,8 +71,8 @@
         collapsible="true">
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Retrievals"
-          description="Create new Retrievals">
+          title="RemoteTaskCommunicationConfiguration"
+          description="Create new RemoteTaskCommunicationConfiguration">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -116,17 +80,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Sources"
-          description="Create new Sources">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Sources"
-          description="Create new Sources">
+          title="TaskCommunicationConfiguration"
+          description="Create new TaskCommunicationConfiguration">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon

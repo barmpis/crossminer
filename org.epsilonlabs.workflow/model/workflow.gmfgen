@@ -7,238 +7,353 @@
     <containsShortcutsTo>workflow</containsShortcutsTo>
     <shortcutsProvidedFor>workflow</shortcutsProvidedFor>
     <domainDiagramElement href="workflow.genmodel#//workflow/Workflow"/>
-    <topLevelNodes visualID="2001" editPartClassName="GithubEditPart" itemSemanticEditPolicyClassName="GithubItemSemanticEditPolicy" canonicalEditPolicyClassName="GithubCanonicalEditPolicy" graphicalNodeEditPolicyClassName="GithubGraphicalNodeEditPolicy" createCommandClassName="GithubCreateCommand">
+    <childNodes visualID="3001" editPartClassName="String2EditPart" itemSemanticEditPolicyClassName="String2ItemSemanticEditPolicy" canonicalEditPolicyClassName="String2CanonicalEditPolicy" graphicalNodeEditPolicyClassName="String2GraphicalNodeEditPolicy" createCommandClassName="String2CreateCommand" containers="//@diagram/@compartments.0 //@diagram/@compartments.1">
       <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="GithubEditHelper"/>
-      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="GithubFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class GithubFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureGithubLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public GithubFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureGithubLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureGithubLabelFigure.setText(&quot;Github&quot;);&#xA;&#xA;this.add(fFigureGithubLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureGithubLabelFigure() {&#xA;&#x9;&#x9;return fFigureGithubLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="StringEditHelper"/>
+      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="StringFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class StringFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureStringLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureStringValueLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public StringFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureStringLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureStringLabelFigure.setText(&quot;String&quot;);&#xA;&#xA;this.add(fFigureStringLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureStringValueLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureStringValueLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureStringValueLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureStringLabelFigure() {&#xA;&#x9;&#x9;return fFigureStringLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureStringValueLabelFigure() {&#xA;&#x9;&#x9;return fFigureStringValueLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
       <modelFacet>
-        <metaClass href="workflow.genmodel#//workflow/Github"/>
-        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
-        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
+        <metaClass href="workflow.genmodel#//workflow/String"/>
+        <containmentMetaFeature href="workflow.genmodel#//workflow/Task/locals"/>
+        <childMetaFeature href="workflow.genmodel#//workflow/Task/locals"/>
       </modelFacet>
-      <labels visualID="5001" editPartClassName="GithubUrlEditPart" itemSemanticEditPolicyClassName="GithubUrlItemSemanticEditPolicy" elementIcon="true">
+      <labels visualID="5017" editPartClassName="StringName2EditPart" itemSemanticEditPolicyClassName="StringName2ItemSemanticEditPolicy" elementIcon="true">
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureGithubLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureStringLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="workflow.genmodel#//workflow/DataSource/url"/>
+          <metaFeatures href="workflow.genmodel#//workflow/Variable/name"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5018" editPartClassName="StringValue2EditPart" itemSemanticEditPolicyClassName="StringValue2ItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureStringValueLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/String/value"/>
+        </modelFacet>
+      </labels>
+    </childNodes>
+    <childNodes visualID="3002" editPartClassName="Integer2EditPart" itemSemanticEditPolicyClassName="Integer2ItemSemanticEditPolicy" canonicalEditPolicyClassName="Integer2CanonicalEditPolicy" graphicalNodeEditPolicyClassName="Integer2GraphicalNodeEditPolicy" createCommandClassName="Integer2CreateCommand" containers="//@diagram/@compartments.0 //@diagram/@compartments.1">
+      <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="IntegerEditHelper"/>
+      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="IntegerFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class IntegerFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureIntegerLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureIntegerValueLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public IntegerFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureIntegerLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureIntegerLabelFigure.setText(&quot;Integer&quot;);&#xA;&#xA;this.add(fFigureIntegerLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureIntegerValueLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureIntegerValueLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureIntegerValueLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureIntegerLabelFigure() {&#xA;&#x9;&#x9;return fFigureIntegerLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureIntegerValueLabelFigure() {&#xA;&#x9;&#x9;return fFigureIntegerValueLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <modelFacet>
+        <metaClass href="workflow.genmodel#//workflow/Integer"/>
+        <containmentMetaFeature href="workflow.genmodel#//workflow/Task/locals"/>
+        <childMetaFeature href="workflow.genmodel#//workflow/Task/locals"/>
+      </modelFacet>
+      <labels visualID="5019" editPartClassName="IntegerName2EditPart" itemSemanticEditPolicyClassName="IntegerName2ItemSemanticEditPolicy" elementIcon="true">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureIntegerLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Variable/name"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5020" editPartClassName="IntegerValue2EditPart" itemSemanticEditPolicyClassName="IntegerValue2ItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureIntegerValueLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Integer/value"/>
+        </modelFacet>
+      </labels>
+    </childNodes>
+    <childNodes visualID="3003" editPartClassName="Boolean2EditPart" itemSemanticEditPolicyClassName="Boolean2ItemSemanticEditPolicy" canonicalEditPolicyClassName="Boolean2CanonicalEditPolicy" graphicalNodeEditPolicyClassName="Boolean2GraphicalNodeEditPolicy" createCommandClassName="Boolean2CreateCommand" containers="//@diagram/@compartments.0 //@diagram/@compartments.1">
+      <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="BooleanEditHelper"/>
+      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="BooleanFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class BooleanFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureBooleanLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureBooleanValueLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public BooleanFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureBooleanLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureBooleanLabelFigure.setText(&quot;Boolean&quot;);&#xA;&#xA;this.add(fFigureBooleanLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureBooleanValueLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureBooleanValueLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureBooleanValueLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureBooleanLabelFigure() {&#xA;&#x9;&#x9;return fFigureBooleanLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureBooleanValueLabelFigure() {&#xA;&#x9;&#x9;return fFigureBooleanValueLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <modelFacet>
+        <metaClass href="workflow.genmodel#//workflow/Boolean"/>
+        <containmentMetaFeature href="workflow.genmodel#//workflow/Task/locals"/>
+        <childMetaFeature href="workflow.genmodel#//workflow/Task/locals"/>
+      </modelFacet>
+      <labels visualID="5021" editPartClassName="BooleanName2EditPart" itemSemanticEditPolicyClassName="BooleanName2ItemSemanticEditPolicy" elementIcon="true">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureBooleanLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Variable/name"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5022" editPartClassName="BooleanValue2EditPart" itemSemanticEditPolicyClassName="BooleanValue2ItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureBooleanValueLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Boolean/value"/>
+        </modelFacet>
+      </labels>
+    </childNodes>
+    <childNodes visualID="3004" editPartClassName="Double2EditPart" itemSemanticEditPolicyClassName="Double2ItemSemanticEditPolicy" canonicalEditPolicyClassName="Double2CanonicalEditPolicy" graphicalNodeEditPolicyClassName="Double2GraphicalNodeEditPolicy" createCommandClassName="Double2CreateCommand" containers="//@diagram/@compartments.0 //@diagram/@compartments.1">
+      <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="DoubleEditHelper"/>
+      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="DoubleFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DoubleFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDoubleLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDoubleValueLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DoubleFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureDoubleLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureDoubleLabelFigure.setText(&quot;Double&quot;);&#xA;&#xA;this.add(fFigureDoubleLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureDoubleValueLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureDoubleValueLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureDoubleValueLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDoubleLabelFigure() {&#xA;&#x9;&#x9;return fFigureDoubleLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDoubleValueLabelFigure() {&#xA;&#x9;&#x9;return fFigureDoubleValueLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <modelFacet>
+        <metaClass href="workflow.genmodel#//workflow/Double"/>
+        <containmentMetaFeature href="workflow.genmodel#//workflow/Task/locals"/>
+        <childMetaFeature href="workflow.genmodel#//workflow/Task/locals"/>
+      </modelFacet>
+      <labels visualID="5023" editPartClassName="DoubleName2EditPart" itemSemanticEditPolicyClassName="DoubleName2ItemSemanticEditPolicy" elementIcon="true">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureDoubleLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Variable/name"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5024" editPartClassName="DoubleValue2EditPart" itemSemanticEditPolicyClassName="DoubleValue2ItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureDoubleValueLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Double/value"/>
+        </modelFacet>
+      </labels>
+    </childNodes>
+    <topLevelNodes visualID="2011" editPartClassName="EmittingTaskEditPart" itemSemanticEditPolicyClassName="EmittingTaskItemSemanticEditPolicy" canonicalEditPolicyClassName="EmittingTaskCanonicalEditPolicy" compartments="//@diagram/@compartments.0" graphicalNodeEditPolicyClassName="EmittingTaskGraphicalNodeEditPolicy" createCommandClassName="EmittingTaskCreateCommand">
+      <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="EmittingTaskEditHelper"/>
+      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="EmittingTaskFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class EmittingTaskFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureEmittingTaskLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureTaskConcurrencyLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureTaskImplementationFullyQualifiedNameLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureTaskImplementationEntryPointLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureTaskAcceptsPartialDataLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureEmittingTaskProvidesPartialDataLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RectangleFigure fEmittingTaskLocalsCompartmentFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public EmittingTaskFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureEmittingTaskLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureEmittingTaskLabelFigure.setText(&quot;EmittingTask&quot;);&#xA;fFigureEmittingTaskLabelFigure.setMaximumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(10000)&#xA;, getMapMode().DPtoLP(50)&#xA;));&#xA;&#xA;this.add(fFigureEmittingTaskLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureTaskConcurrencyLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureTaskConcurrencyLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureTaskConcurrencyLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureTaskImplementationFullyQualifiedNameLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureTaskImplementationFullyQualifiedNameLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureTaskImplementationFullyQualifiedNameLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureTaskImplementationEntryPointLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureTaskImplementationEntryPointLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureTaskImplementationEntryPointLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureTaskAcceptsPartialDataLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureTaskAcceptsPartialDataLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureTaskAcceptsPartialDataLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureEmittingTaskProvidesPartialDataLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureEmittingTaskProvidesPartialDataLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureEmittingTaskProvidesPartialDataLabelFigure);&#xA;&#xA;&#xA;&#xA;fEmittingTaskLocalsCompartmentFigure = new org.eclipse.draw2d.RectangleFigure();&#xA;&#xA;fEmittingTaskLocalsCompartmentFigure.setOutline(false);&#xA;&#xA;this.add(fEmittingTaskLocalsCompartmentFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureEmittingTaskLabelFigure() {&#xA;&#x9;&#x9;return fFigureEmittingTaskLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureTaskConcurrencyLabelFigure() {&#xA;&#x9;&#x9;return fFigureTaskConcurrencyLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureTaskImplementationFullyQualifiedNameLabelFigure() {&#xA;&#x9;&#x9;return fFigureTaskImplementationFullyQualifiedNameLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureTaskImplementationEntryPointLabelFigure() {&#xA;&#x9;&#x9;return fFigureTaskImplementationEntryPointLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureTaskAcceptsPartialDataLabelFigure() {&#xA;&#x9;&#x9;return fFigureTaskAcceptsPartialDataLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureEmittingTaskProvidesPartialDataLabelFigure() {&#xA;&#x9;&#x9;return fFigureEmittingTaskProvidesPartialDataLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.draw2d.RectangleFigure getEmittingTaskLocalsCompartmentFigure() {&#xA;&#x9;&#x9;return fEmittingTaskLocalsCompartmentFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <behaviour xsi:type="gmfgen:OpenDiagramBehaviour"/>
+      <modelFacet>
+        <metaClass href="workflow.genmodel#//workflow/EmittingTask"/>
+        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/tasks"/>
+        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/tasks"/>
+      </modelFacet>
+      <labels visualID="5011" editPartClassName="EmittingTaskNameEditPart" itemSemanticEditPolicyClassName="EmittingTaskNameItemSemanticEditPolicy" elementIcon="true">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureEmittingTaskLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Task/name"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5025" editPartClassName="EmittingTaskConcurrencyEditPart" itemSemanticEditPolicyClassName="EmittingTaskConcurrencyItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureTaskConcurrencyLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.1">
+          <metaFeatures href="workflow.genmodel#//workflow/Task/concurrency"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5026" editPartClassName="EmittingTaskImplementationFullyQualEditPart" itemSemanticEditPolicyClassName="EmittingTaskImplementationFullyQualItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureTaskImplementationFullyQualifiedNameLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Task/implementationFullyQualifiedName"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5027" editPartClassName="EmittingTaskImplementationEntryPoinEditPart" itemSemanticEditPolicyClassName="EmittingTaskImplementationEntryPoinItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureTaskImplementationEntryPointLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Task/implementationEntryPoint"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5028" editPartClassName="EmittingTaskAcceptsPartialDataEditPart" itemSemanticEditPolicyClassName="EmittingTaskAcceptsPartialDataItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureTaskAcceptsPartialDataLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Task/acceptsPartialData"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5029" editPartClassName="EmittingTaskProvidesPartialDataEditPart" itemSemanticEditPolicyClassName="EmittingTaskProvidesPartialDataItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureEmittingTaskProvidesPartialDataLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/EmittingTask/providesPartialData"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
-    <topLevelNodes visualID="2002" editPartClassName="GithubBigQueryEditPart" itemSemanticEditPolicyClassName="GithubBigQueryItemSemanticEditPolicy" canonicalEditPolicyClassName="GithubBigQueryCanonicalEditPolicy" graphicalNodeEditPolicyClassName="GithubBigQueryGraphicalNodeEditPolicy" createCommandClassName="GithubBigQueryCreateCommand">
+    <topLevelNodes visualID="2012" editPartClassName="StringEditPart" itemSemanticEditPolicyClassName="StringItemSemanticEditPolicy" canonicalEditPolicyClassName="StringCanonicalEditPolicy" graphicalNodeEditPolicyClassName="StringGraphicalNodeEditPolicy" createCommandClassName="StringCreateCommand">
       <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="GithubBigQueryEditHelper"/>
-      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="GithubBigQueryFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class GithubBigQueryFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureGithubBigQueryLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public GithubBigQueryFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureGithubBigQueryLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureGithubBigQueryLabelFigure.setText(&quot;GithubBigQuery&quot;);&#xA;&#xA;this.add(fFigureGithubBigQueryLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureGithubBigQueryLabelFigure() {&#xA;&#x9;&#x9;return fFigureGithubBigQueryLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <elementType xsi:type="gmfgen:SpecializationType" metamodelType="//@diagram/@childNodes.0/@elementType"/>
+      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="StringFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class StringFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureStringLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureStringValueLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public StringFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureStringLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureStringLabelFigure.setText(&quot;String&quot;);&#xA;&#xA;this.add(fFigureStringLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureStringValueLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureStringValueLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureStringValueLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureStringLabelFigure() {&#xA;&#x9;&#x9;return fFigureStringLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureStringValueLabelFigure() {&#xA;&#x9;&#x9;return fFigureStringValueLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
       <modelFacet>
-        <metaClass href="workflow.genmodel#//workflow/GithubBigQuery"/>
-        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
-        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
+        <metaClass href="workflow.genmodel#//workflow/String"/>
+        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/globals"/>
+        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/globals"/>
       </modelFacet>
-      <labels visualID="5002" editPartClassName="GithubBigQueryUrlEditPart" itemSemanticEditPolicyClassName="GithubBigQueryUrlItemSemanticEditPolicy" elementIcon="true">
+      <labels visualID="5012" editPartClassName="StringNameEditPart" itemSemanticEditPolicyClassName="StringNameItemSemanticEditPolicy" elementIcon="true">
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureGithubBigQueryLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureStringLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="workflow.genmodel#//workflow/DataSource/url"/>
+          <metaFeatures href="workflow.genmodel#//workflow/Variable/name"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5030" editPartClassName="StringValueEditPart" itemSemanticEditPolicyClassName="StringValueItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureStringValueLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/String/value"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
-    <topLevelNodes visualID="2003" editPartClassName="GHTorrentEditPart" itemSemanticEditPolicyClassName="GHTorrentItemSemanticEditPolicy" canonicalEditPolicyClassName="GHTorrentCanonicalEditPolicy" graphicalNodeEditPolicyClassName="GHTorrentGraphicalNodeEditPolicy" createCommandClassName="GHTorrentCreateCommand">
+    <topLevelNodes visualID="2013" editPartClassName="IntegerEditPart" itemSemanticEditPolicyClassName="IntegerItemSemanticEditPolicy" canonicalEditPolicyClassName="IntegerCanonicalEditPolicy" graphicalNodeEditPolicyClassName="IntegerGraphicalNodeEditPolicy" createCommandClassName="IntegerCreateCommand">
       <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="GHTorrentEditHelper"/>
-      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="GHTorrentFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class GHTorrentFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureGHTorrentLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public GHTorrentFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureGHTorrentLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureGHTorrentLabelFigure.setText(&quot;GHTorrent&quot;);&#xA;&#xA;this.add(fFigureGHTorrentLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureGHTorrentLabelFigure() {&#xA;&#x9;&#x9;return fFigureGHTorrentLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <elementType xsi:type="gmfgen:SpecializationType" metamodelType="//@diagram/@childNodes.1/@elementType"/>
+      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="IntegerFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class IntegerFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureIntegerLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureIntegerValueLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public IntegerFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureIntegerLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureIntegerLabelFigure.setText(&quot;Integer&quot;);&#xA;&#xA;this.add(fFigureIntegerLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureIntegerValueLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureIntegerValueLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureIntegerValueLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureIntegerLabelFigure() {&#xA;&#x9;&#x9;return fFigureIntegerLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureIntegerValueLabelFigure() {&#xA;&#x9;&#x9;return fFigureIntegerValueLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
       <modelFacet>
-        <metaClass href="workflow.genmodel#//workflow/GHTorrent"/>
-        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
-        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
+        <metaClass href="workflow.genmodel#//workflow/Integer"/>
+        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/globals"/>
+        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/globals"/>
       </modelFacet>
-      <labels visualID="5003" editPartClassName="GHTorrentUrlEditPart" itemSemanticEditPolicyClassName="GHTorrentUrlItemSemanticEditPolicy" elementIcon="true">
+      <labels visualID="5013" editPartClassName="IntegerNameEditPart" itemSemanticEditPolicyClassName="IntegerNameItemSemanticEditPolicy" elementIcon="true">
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureGHTorrentLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureIntegerLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="workflow.genmodel#//workflow/DataSource/url"/>
+          <metaFeatures href="workflow.genmodel#//workflow/Variable/name"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5031" editPartClassName="IntegerValueEditPart" itemSemanticEditPolicyClassName="IntegerValueItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureIntegerValueLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Integer/value"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
-    <topLevelNodes visualID="2004" editPartClassName="CommitsEditPart" itemSemanticEditPolicyClassName="CommitsItemSemanticEditPolicy" canonicalEditPolicyClassName="CommitsCanonicalEditPolicy" graphicalNodeEditPolicyClassName="CommitsGraphicalNodeEditPolicy" createCommandClassName="CommitsCreateCommand">
+    <topLevelNodes visualID="2014" editPartClassName="BooleanEditPart" itemSemanticEditPolicyClassName="BooleanItemSemanticEditPolicy" canonicalEditPolicyClassName="BooleanCanonicalEditPolicy" graphicalNodeEditPolicyClassName="BooleanGraphicalNodeEditPolicy" createCommandClassName="BooleanCreateCommand">
       <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="CommitsEditHelper"/>
-      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="CommitsFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class CommitsFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureCommitsLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public CommitsFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureCommitsLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureCommitsLabelFigure.setText(&quot;Commits&quot;);&#xA;&#xA;this.add(fFigureCommitsLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureCommitsLabelFigure() {&#xA;&#x9;&#x9;return fFigureCommitsLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <elementType xsi:type="gmfgen:SpecializationType" metamodelType="//@diagram/@childNodes.2/@elementType"/>
+      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="BooleanFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class BooleanFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureBooleanLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureBooleanValueLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public BooleanFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureBooleanLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureBooleanLabelFigure.setText(&quot;Boolean&quot;);&#xA;&#xA;this.add(fFigureBooleanLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureBooleanValueLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureBooleanValueLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureBooleanValueLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureBooleanLabelFigure() {&#xA;&#x9;&#x9;return fFigureBooleanLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureBooleanValueLabelFigure() {&#xA;&#x9;&#x9;return fFigureBooleanValueLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
       <modelFacet>
-        <metaClass href="workflow.genmodel#//workflow/Commits"/>
-        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
-        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
+        <metaClass href="workflow.genmodel#//workflow/Boolean"/>
+        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/globals"/>
+        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/globals"/>
       </modelFacet>
-      <labels visualID="5004" editPartClassName="CommitsRepoPatternsEditPart" itemSemanticEditPolicyClassName="CommitsRepoPatternsItemSemanticEditPolicy" elementIcon="true">
+      <labels visualID="5014" editPartClassName="BooleanNameEditPart" itemSemanticEditPolicyClassName="BooleanNameItemSemanticEditPolicy" elementIcon="true">
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureCommitsLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureBooleanLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="workflow.genmodel#//workflow/DataRetrieval/repoPatterns"/>
+          <metaFeatures href="workflow.genmodel#//workflow/Variable/name"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5032" editPartClassName="BooleanValueEditPart" itemSemanticEditPolicyClassName="BooleanValueItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureBooleanValueLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Boolean/value"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
-    <topLevelNodes visualID="2005" editPartClassName="AuthorsEditPart" itemSemanticEditPolicyClassName="AuthorsItemSemanticEditPolicy" canonicalEditPolicyClassName="AuthorsCanonicalEditPolicy" graphicalNodeEditPolicyClassName="AuthorsGraphicalNodeEditPolicy" createCommandClassName="AuthorsCreateCommand">
+    <topLevelNodes visualID="2015" editPartClassName="DoubleEditPart" itemSemanticEditPolicyClassName="DoubleItemSemanticEditPolicy" canonicalEditPolicyClassName="DoubleCanonicalEditPolicy" graphicalNodeEditPolicyClassName="DoubleGraphicalNodeEditPolicy" createCommandClassName="DoubleCreateCommand">
       <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="AuthorsEditHelper"/>
-      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="AuthorsFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class AuthorsFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureAuthorsLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public AuthorsFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureAuthorsLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureAuthorsLabelFigure.setText(&quot;Authors&quot;);&#xA;&#xA;this.add(fFigureAuthorsLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureAuthorsLabelFigure() {&#xA;&#x9;&#x9;return fFigureAuthorsLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <elementType xsi:type="gmfgen:SpecializationType" metamodelType="//@diagram/@childNodes.3/@elementType"/>
+      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="DoubleFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DoubleFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDoubleLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDoubleValueLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DoubleFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureDoubleLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureDoubleLabelFigure.setText(&quot;Double&quot;);&#xA;&#xA;this.add(fFigureDoubleLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureDoubleValueLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureDoubleValueLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureDoubleValueLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDoubleLabelFigure() {&#xA;&#x9;&#x9;return fFigureDoubleLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDoubleValueLabelFigure() {&#xA;&#x9;&#x9;return fFigureDoubleValueLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
       <modelFacet>
-        <metaClass href="workflow.genmodel#//workflow/Authors"/>
-        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
-        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
+        <metaClass href="workflow.genmodel#//workflow/Double"/>
+        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/globals"/>
+        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/globals"/>
       </modelFacet>
-      <labels visualID="5005" editPartClassName="AuthorsRepoPatternsEditPart" itemSemanticEditPolicyClassName="AuthorsRepoPatternsItemSemanticEditPolicy" elementIcon="true">
+      <labels visualID="5015" editPartClassName="DoubleNameEditPart" itemSemanticEditPolicyClassName="DoubleNameItemSemanticEditPolicy" elementIcon="true">
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureAuthorsLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureDoubleLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="workflow.genmodel#//workflow/DataRetrieval/repoPatterns"/>
+          <metaFeatures href="workflow.genmodel#//workflow/Variable/name"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5033" editPartClassName="DoubleValueEditPart" itemSemanticEditPolicyClassName="DoubleValueItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureDoubleValueLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Double/value"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
-    <topLevelNodes visualID="2006" editPartClassName="FilesEditPart" itemSemanticEditPolicyClassName="FilesItemSemanticEditPolicy" canonicalEditPolicyClassName="FilesCanonicalEditPolicy" graphicalNodeEditPolicyClassName="FilesGraphicalNodeEditPolicy" createCommandClassName="FilesCreateCommand">
+    <topLevelNodes visualID="2016" editPartClassName="TaskEditPart" itemSemanticEditPolicyClassName="TaskItemSemanticEditPolicy" canonicalEditPolicyClassName="TaskCanonicalEditPolicy" compartments="//@diagram/@compartments.1" graphicalNodeEditPolicyClassName="TaskGraphicalNodeEditPolicy" createCommandClassName="TaskCreateCommand">
       <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="FilesEditHelper"/>
-      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="FilesFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class FilesFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureFilesLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public FilesFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureFilesLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureFilesLabelFigure.setText(&quot;Files&quot;);&#xA;&#xA;this.add(fFigureFilesLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureFilesLabelFigure() {&#xA;&#x9;&#x9;return fFigureFilesLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="TaskEditHelper"/>
+      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="TaskFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class TaskFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureTaskLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureTaskConcurrencyLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureTaskImplementationFullyQualifiedNameLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureTaskImplementationEntryPointLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureTaskAcceptsPartialDataLabelFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RectangleFigure fTaskLocalsCompartmentFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public TaskFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureTaskLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureTaskLabelFigure.setText(&quot;Task&quot;);&#xA;fFigureTaskLabelFigure.setMaximumSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(10000)&#xA;, getMapMode().DPtoLP(50)&#xA;));&#xA;&#xA;this.add(fFigureTaskLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureTaskConcurrencyLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureTaskConcurrencyLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureTaskConcurrencyLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureTaskImplementationFullyQualifiedNameLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureTaskImplementationFullyQualifiedNameLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureTaskImplementationFullyQualifiedNameLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureTaskImplementationEntryPointLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureTaskImplementationEntryPointLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureTaskImplementationEntryPointLabelFigure);&#xA;&#xA;&#xA;&#xA;fFigureTaskAcceptsPartialDataLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureTaskAcceptsPartialDataLabelFigure.setText(&quot;&quot;);&#xA;&#xA;this.add(fFigureTaskAcceptsPartialDataLabelFigure);&#xA;&#xA;&#xA;&#xA;fTaskLocalsCompartmentFigure = new org.eclipse.draw2d.RectangleFigure();&#xA;&#xA;fTaskLocalsCompartmentFigure.setOutline(false);&#xA;&#xA;this.add(fTaskLocalsCompartmentFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureTaskLabelFigure() {&#xA;&#x9;&#x9;return fFigureTaskLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureTaskConcurrencyLabelFigure() {&#xA;&#x9;&#x9;return fFigureTaskConcurrencyLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureTaskImplementationFullyQualifiedNameLabelFigure() {&#xA;&#x9;&#x9;return fFigureTaskImplementationFullyQualifiedNameLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureTaskImplementationEntryPointLabelFigure() {&#xA;&#x9;&#x9;return fFigureTaskImplementationEntryPointLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureTaskAcceptsPartialDataLabelFigure() {&#xA;&#x9;&#x9;return fFigureTaskAcceptsPartialDataLabelFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.draw2d.RectangleFigure getTaskLocalsCompartmentFigure() {&#xA;&#x9;&#x9;return fTaskLocalsCompartmentFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <behaviour xsi:type="gmfgen:OpenDiagramBehaviour"/>
       <modelFacet>
-        <metaClass href="workflow.genmodel#//workflow/Files"/>
-        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
-        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
+        <metaClass href="workflow.genmodel#//workflow/Task"/>
+        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/tasks"/>
+        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/tasks"/>
       </modelFacet>
-      <labels visualID="5006" editPartClassName="FilesRepoPatternsEditPart" itemSemanticEditPolicyClassName="FilesRepoPatternsItemSemanticEditPolicy" elementIcon="true">
+      <labels visualID="5016" editPartClassName="TaskNameEditPart" itemSemanticEditPolicyClassName="TaskNameItemSemanticEditPolicy" elementIcon="true">
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureFilesLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureTaskLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="workflow.genmodel#//workflow/DataRetrieval/repoPatterns"/>
+          <metaFeatures href="workflow.genmodel#//workflow/Task/name"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5034" editPartClassName="TaskConcurrencyEditPart" itemSemanticEditPolicyClassName="TaskConcurrencyItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureTaskConcurrencyLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.1">
+          <metaFeatures href="workflow.genmodel#//workflow/Task/concurrency"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5035" editPartClassName="TaskImplementationFullyQualEditPart" itemSemanticEditPolicyClassName="TaskImplementationFullyQualItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureTaskImplementationFullyQualifiedNameLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Task/implementationFullyQualifiedName"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5036" editPartClassName="TaskImplementationEntryPoinEditPart" itemSemanticEditPolicyClassName="TaskImplementationEntryPoinItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureTaskImplementationEntryPointLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Task/implementationEntryPoint"/>
+        </modelFacet>
+      </labels>
+      <labels visualID="5037" editPartClassName="TaskAcceptsPartialDataEditPart" itemSemanticEditPolicyClassName="TaskAcceptsPartialDataItemSemanticEditPolicy">
+        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureTaskAcceptsPartialDataLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/Task/acceptsPartialData"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
-    <topLevelNodes visualID="2007" editPartClassName="DataAggregationEditPart" itemSemanticEditPolicyClassName="DataAggregationItemSemanticEditPolicy" canonicalEditPolicyClassName="DataAggregationCanonicalEditPolicy" graphicalNodeEditPolicyClassName="DataAggregationGraphicalNodeEditPolicy" createCommandClassName="DataAggregationCreateCommand">
-      <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="DataAggregationEditHelper"/>
-      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="DataAggregationFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DataAggregationFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDataAggregationLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DataAggregationFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureDataAggregationLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureDataAggregationLabelFigure.setText(&quot;DataAggregation&quot;);&#xA;&#xA;this.add(fFigureDataAggregationLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDataAggregationLabelFigure() {&#xA;&#x9;&#x9;return fFigureDataAggregationLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
-      <modelFacet>
-        <metaClass href="workflow.genmodel#//workflow/DataAggregation"/>
-        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
-        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
-      </modelFacet>
-      <labels visualID="5007" editPartClassName="DataAggregationTempEditPart" itemSemanticEditPolicyClassName="DataAggregationTempItemSemanticEditPolicy" elementIcon="true">
-        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureDataAggregationLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
-        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="workflow.genmodel#//workflow/DataManipulation/temp"/>
-        </modelFacet>
-      </labels>
-    </topLevelNodes>
-    <topLevelNodes visualID="2008" editPartClassName="DataFilteringEditPart" itemSemanticEditPolicyClassName="DataFilteringItemSemanticEditPolicy" canonicalEditPolicyClassName="DataFilteringCanonicalEditPolicy" graphicalNodeEditPolicyClassName="DataFilteringGraphicalNodeEditPolicy" createCommandClassName="DataFilteringCreateCommand">
-      <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="DataFilteringEditHelper"/>
-      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="DataFilteringFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DataFilteringFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDataFilteringLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DataFilteringFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureDataFilteringLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureDataFilteringLabelFigure.setText(&quot;DataFiltering&quot;);&#xA;&#xA;this.add(fFigureDataFilteringLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDataFilteringLabelFigure() {&#xA;&#x9;&#x9;return fFigureDataFilteringLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
-      <modelFacet>
-        <metaClass href="workflow.genmodel#//workflow/DataFiltering"/>
-        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
-        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
-      </modelFacet>
-      <labels visualID="5008" editPartClassName="DataFilteringTempEditPart" itemSemanticEditPolicyClassName="DataFilteringTempItemSemanticEditPolicy" elementIcon="true">
-        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureDataFilteringLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
-        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="workflow.genmodel#//workflow/DataManipulation/temp"/>
-        </modelFacet>
-      </labels>
-    </topLevelNodes>
-    <topLevelNodes visualID="2009" editPartClassName="CustomScriptEditPart" itemSemanticEditPolicyClassName="CustomScriptItemSemanticEditPolicy" canonicalEditPolicyClassName="CustomScriptCanonicalEditPolicy" graphicalNodeEditPolicyClassName="CustomScriptGraphicalNodeEditPolicy" createCommandClassName="CustomScriptCreateCommand">
-      <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="CustomScriptEditHelper"/>
-      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="CustomScriptFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class CustomScriptFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureCustomScriptLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public CustomScriptFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureCustomScriptLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureCustomScriptLabelFigure.setText(&quot;CustomScript&quot;);&#xA;&#xA;this.add(fFigureCustomScriptLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureCustomScriptLabelFigure() {&#xA;&#x9;&#x9;return fFigureCustomScriptLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
-      <modelFacet>
-        <metaClass href="workflow.genmodel#//workflow/CustomScript"/>
-        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
-        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
-      </modelFacet>
-      <labels visualID="5009" editPartClassName="CustomScriptTempEditPart" itemSemanticEditPolicyClassName="CustomScriptTempItemSemanticEditPolicy" elementIcon="true">
-        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureCustomScriptLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
-        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="workflow.genmodel#//workflow/DataManipulation/temp"/>
-        </modelFacet>
-      </labels>
-    </topLevelNodes>
-    <topLevelNodes visualID="2010" editPartClassName="DataManipulationEditPart" itemSemanticEditPolicyClassName="DataManipulationItemSemanticEditPolicy" canonicalEditPolicyClassName="DataManipulationCanonicalEditPolicy" graphicalNodeEditPolicyClassName="DataManipulationGraphicalNodeEditPolicy" createCommandClassName="DataManipulationCreateCommand">
-      <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="DataManipulationEditHelper"/>
-      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="DataManipulationFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class DataManipulationFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureDataManipulationLabelFigure; &#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public DataManipulationFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(8)&#xA;, getMapMode().DPtoLP(8)&#xA;));&#xA;this.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;, getMapMode().DPtoLP(5)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureDataManipulationLabelFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureDataManipulationLabelFigure.setText(&quot;DataManipulation&quot;);&#xA;&#xA;this.add(fFigureDataManipulationLabelFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureDataManipulationLabelFigure() {&#xA;&#x9;&#x9;return fFigureDataManipulationLabelFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
-      <modelFacet>
-        <metaClass href="workflow.genmodel#//workflow/DataManipulation"/>
-        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
-        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/contents"/>
-      </modelFacet>
-      <labels visualID="5010" editPartClassName="DataManipulationTempEditPart" itemSemanticEditPolicyClassName="DataManipulationTempItemSemanticEditPolicy" elementIcon="true">
-        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getFigureDataManipulationLabelFigure" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
-        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
-          <metaFeatures href="workflow.genmodel#//workflow/DataManipulation/temp"/>
-        </modelFacet>
-      </labels>
-    </topLevelNodes>
-    <links visualID="4001" editPartClassName="DataSourceRetrievalsEditPart" itemSemanticEditPolicyClassName="DataSourceRetrievalsItemSemanticEditPolicy" createCommandClassName="DataSourceRetrievalsCreateCommand" reorientCommandClassName="DataSourceRetrievalsReorientCommand">
+    <links visualID="4004" editPartClassName="RemoteTaskCommunicationConfigurationEditPart" itemSemanticEditPolicyClassName="RemoteTaskCommunicationConfigurationItemSemanticEditPolicy" createCommandClassName="RemoteTaskCommunicationConfigurationCreateCommand" reorientCommandClassName="RemoteTaskCommunicationConfigurationReorientCommand">
       <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
-      <elementType xsi:type="gmfgen:SpecializationType"/>
-      <viewmap xsi:type="gmfgen:FigureViewmap" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx"/>
-      <modelFacet xsi:type="gmfgen:FeatureLinkModelFacet">
-        <metaFeature href="workflow.genmodel#//workflow/DataSource/retrievals"/>
+      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="RemoteTaskCommunicationConfigurationEditHelper"/>
+      <viewmap xsi:type="gmfgen:InnerClassViewmap" className="RemoteTaskCommunicationConfigurationFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class RemoteTaskCommunicationConfigurationFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public RemoteTaskCommunicationConfigurationFigure() {&#xA;&#x9;&#x9;this.setLineStyle(org.eclipse.draw2d.Graphics.LINE_DOT);&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <modelFacet xsi:type="gmfgen:TypeLinkModelFacet">
+        <metaClass href="workflow.genmodel#//workflow/RemoteTaskCommunicationConfiguration"/>
+        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/configs"/>
+        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/configs"/>
+        <sourceMetaFeature href="workflow.genmodel#//workflow/TaskCommunicationConfiguration/incoming"/>
+        <targetMetaFeature href="workflow.genmodel#//workflow/TaskCommunicationConfiguration/outgoing"/>
       </modelFacet>
-      <labels visualID="6001" editPartClassName="WrappingLabelEditPart" itemSemanticEditPolicyClassName="WrappingLabelItemSemanticEditPolicy" readOnly="true">
+      <labels visualID="6001" editPartClassName="RemoteTaskCommunicationConfigurationAddressPortSingleQueueQEditPart" itemSemanticEditPolicyClassName="RemoteTaskCommunicationConfigurationAddressPortSingleQueueQItemSemanticEditPolicy">
         <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap xsi:type="gmfgen:FigureViewmap" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+        <viewmap xsi:type="gmfgen:InnerClassViewmap" className="RemoteTaskCommunicationConfigurationLabelFigure" classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class RemoteTaskCommunicationConfigurationLabelFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public RemoteTaskCommunicationConfigurationLabelFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;RemoteTaskCommunicationConfiguration&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
           <attributes xsi:type="gmfgen:LabelOffsetAttributes" y="40"/>
         </viewmap>
-        <modelFacet xsi:type="gmfgen:DesignLabelModelFacet" parser="//@labelParsers/@implementations.1"/>
+        <modelFacet xsi:type="gmfgen:FeatureLabelModelFacet" parser="//@labelParsers/@implementations.0">
+          <metaFeatures href="workflow.genmodel#//workflow/RemoteTaskCommunicationConfiguration/address"/>
+          <metaFeatures href="workflow.genmodel#//workflow/RemoteTaskCommunicationConfiguration/port"/>
+          <metaFeatures href="workflow.genmodel#//workflow/RemoteTaskCommunicationConfiguration/singleQueue"/>
+          <metaFeatures href="workflow.genmodel#//workflow/RemoteTaskCommunicationConfiguration/queuePersistance"/>
+        </modelFacet>
       </labels>
     </links>
-    <links visualID="4002" editPartClassName="DataRetrievalSourcesEditPart" itemSemanticEditPolicyClassName="DataRetrievalSourcesItemSemanticEditPolicy" createCommandClassName="DataRetrievalSourcesCreateCommand" reorientCommandClassName="DataRetrievalSourcesReorientCommand">
+    <links visualID="4005" editPartClassName="TaskCommunicationConfigurationEditPart" itemSemanticEditPolicyClassName="TaskCommunicationConfigurationItemSemanticEditPolicy" createCommandClassName="TaskCommunicationConfigurationCreateCommand" reorientCommandClassName="TaskCommunicationConfigurationReorientCommand">
       <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
-      <elementType xsi:type="gmfgen:SpecializationType"/>
+      <elementType xsi:type="gmfgen:MetamodelType" editHelperClassName="TaskCommunicationConfigurationEditHelper"/>
       <viewmap xsi:type="gmfgen:FigureViewmap" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx"/>
-      <modelFacet xsi:type="gmfgen:FeatureLinkModelFacet">
-        <metaFeature href="workflow.genmodel#//workflow/DataRetrieval/sources"/>
+      <modelFacet xsi:type="gmfgen:TypeLinkModelFacet">
+        <metaClass href="workflow.genmodel#//workflow/TaskCommunicationConfiguration"/>
+        <containmentMetaFeature href="workflow.genmodel#//workflow/Workflow/configs"/>
+        <childMetaFeature href="workflow.genmodel#//workflow/Workflow/configs"/>
+        <sourceMetaFeature href="workflow.genmodel#//workflow/TaskCommunicationConfiguration/incoming"/>
+        <targetMetaFeature href="workflow.genmodel#//workflow/TaskCommunicationConfiguration/outgoing"/>
       </modelFacet>
-      <labels visualID="6002" editPartClassName="WrappingLabel2EditPart" itemSemanticEditPolicyClassName="WrappingLabel2ItemSemanticEditPolicy" readOnly="true">
-        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap xsi:type="gmfgen:FigureViewmap" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
-          <attributes xsi:type="gmfgen:LabelOffsetAttributes" y="40"/>
-        </viewmap>
-        <modelFacet xsi:type="gmfgen:DesignLabelModelFacet" parser="//@labelParsers/@implementations.1"/>
-      </labels>
     </links>
-    <links visualID="4003" editPartClassName="DataManipulationSourcesEditPart" itemSemanticEditPolicyClassName="DataManipulationSourcesItemSemanticEditPolicy" createCommandClassName="DataManipulationSourcesCreateCommand" reorientCommandClassName="DataManipulationSourcesReorientCommand">
-      <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
-      <elementType xsi:type="gmfgen:SpecializationType"/>
-      <viewmap xsi:type="gmfgen:FigureViewmap" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx"/>
-      <modelFacet xsi:type="gmfgen:FeatureLinkModelFacet">
-        <metaFeature href="workflow.genmodel#//workflow/DataManipulation/sources"/>
-      </modelFacet>
-      <labels visualID="6003" editPartClassName="WrappingLabel3EditPart" itemSemanticEditPolicyClassName="WrappingLabel3ItemSemanticEditPolicy" readOnly="true">
-        <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-        <viewmap xsi:type="gmfgen:FigureViewmap" figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
-          <attributes xsi:type="gmfgen:LabelOffsetAttributes" y="40"/>
-        </viewmap>
-        <modelFacet xsi:type="gmfgen:DesignLabelModelFacet" parser="//@labelParsers/@implementations.1"/>
-      </labels>
-    </links>
+    <compartments visualID="7001" editPartClassName="EmittingTaskEmittingTaskLocalsCompartmentEditPart" itemSemanticEditPolicyClassName="EmittingTaskEmittingTaskLocalsCompartmentItemSemanticEditPolicy" canonicalEditPolicyClassName="EmittingTaskEmittingTaskLocalsCompartmentCanonicalEditPolicy" childNodes="//@diagram/@childNodes.0 //@diagram/@childNodes.1 //@diagram/@childNodes.2 //@diagram/@childNodes.3" title="EmittingTaskLocalsCompartment" needsTitle="false" node="//@diagram/@topLevelNodes.0" listLayout="false">
+      <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getEmittingTaskLocalsCompartmentFigure" figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
+    </compartments>
+    <compartments visualID="7002" editPartClassName="TaskTaskLocalsCompartmentEditPart" itemSemanticEditPolicyClassName="TaskTaskLocalsCompartmentItemSemanticEditPolicy" canonicalEditPolicyClassName="TaskTaskLocalsCompartmentCanonicalEditPolicy" childNodes="//@diagram/@childNodes.0 //@diagram/@childNodes.1 //@diagram/@childNodes.2 //@diagram/@childNodes.3" title="TaskLocalsCompartment" needsTitle="false" node="//@diagram/@topLevelNodes.5" listLayout="false">
+      <diagramRunTimeClass href="platform:/plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <viewmap xsi:type="gmfgen:ParentAssignedViewmap" getterName="getTaskLocalsCompartmentFigure" figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
+    </compartments>
     <palette>
       <groups title="Objects" collapse="true">
-        <entries xsi:type="gmfgen:ToolEntry" title="Authors" description="Create new Authors" genNodes="//@diagram/@topLevelNodes.4"/>
-        <entries xsi:type="gmfgen:ToolEntry" title="Commits" description="Create new Commits" genNodes="//@diagram/@topLevelNodes.3"/>
-        <entries xsi:type="gmfgen:ToolEntry" title="CustomScript" description="Create new CustomScript" genNodes="//@diagram/@topLevelNodes.8"/>
-        <entries xsi:type="gmfgen:ToolEntry" title="DataAggregation" description="Create new DataAggregation" genNodes="//@diagram/@topLevelNodes.6"/>
-        <entries xsi:type="gmfgen:ToolEntry" title="DataFiltering" description="Create new DataFiltering" genNodes="//@diagram/@topLevelNodes.7"/>
-        <entries xsi:type="gmfgen:ToolEntry" title="DataManipulation" description="Create new DataManipulation" genNodes="//@diagram/@topLevelNodes.9"/>
-        <entries xsi:type="gmfgen:ToolEntry" title="Files" description="Create new Files" genNodes="//@diagram/@topLevelNodes.5"/>
-        <entries xsi:type="gmfgen:ToolEntry" title="GHTorrent" description="Create new GHTorrent" genNodes="//@diagram/@topLevelNodes.2"/>
-        <entries xsi:type="gmfgen:ToolEntry" title="Github" description="Create new Github" genNodes="//@diagram/@topLevelNodes.0"/>
-        <entries xsi:type="gmfgen:ToolEntry" title="GithubBigQuery" description="Create new GithubBigQuery" genNodes="//@diagram/@topLevelNodes.1"/>
+        <entries xsi:type="gmfgen:ToolEntry" title="Boolean" description="Create new Boolean" genNodes="//@diagram/@childNodes.2 //@diagram/@topLevelNodes.3"/>
+        <entries xsi:type="gmfgen:ToolEntry" title="Double" description="Create new Double" genNodes="//@diagram/@childNodes.3 //@diagram/@topLevelNodes.4"/>
+        <entries xsi:type="gmfgen:ToolEntry" title="EmittingTask" description="Create new EmittingTask" genNodes="//@diagram/@topLevelNodes.0"/>
+        <entries xsi:type="gmfgen:ToolEntry" title="Integer" description="Create new Integer" genNodes="//@diagram/@childNodes.1 //@diagram/@topLevelNodes.2"/>
+        <entries xsi:type="gmfgen:ToolEntry" title="String" description="Create new String" genNodes="//@diagram/@childNodes.0 //@diagram/@topLevelNodes.1"/>
+        <entries xsi:type="gmfgen:ToolEntry" title="Task" description="Create new Task" genNodes="//@diagram/@topLevelNodes.5"/>
       </groups>
       <groups title="Connections" collapse="true">
-        <entries xsi:type="gmfgen:ToolEntry" title="Retrievals" description="Create new Retrievals" genLinks="//@diagram/@links.0"/>
-        <entries xsi:type="gmfgen:ToolEntry" title="Sources" description="Create new Sources" genLinks="//@diagram/@links.1"/>
-        <entries xsi:type="gmfgen:ToolEntry" title="Sources" description="Create new Sources" genLinks="//@diagram/@links.2"/>
+        <entries xsi:type="gmfgen:ToolEntry" title="RemoteTaskCommunicationConfiguration" description="Create new RemoteTaskCommunicationConfiguration" genLinks="//@diagram/@links.0"/>
+        <entries xsi:type="gmfgen:ToolEntry" title="TaskCommunicationConfiguration" description="Create new TaskCommunicationConfiguration" genLinks="//@diagram/@links.1"/>
       </groups>
     </palette>
     <preferencePages xsi:type="gmfgen:GenStandardPreferencePage" iD="org.epsilonlabs.workflow.diagram.general" name="Workflow Diagram">
@@ -256,57 +371,34 @@
   <editor/>
   <navigator>
     <childReferences child="//@diagram"/>
+    <childReferences parent="//@diagram/@topLevelNodes.0" child="//@diagram/@childNodes.0"/>
+    <childReferences parent="//@diagram/@topLevelNodes.0" child="//@diagram/@childNodes.1"/>
+    <childReferences parent="//@diagram/@topLevelNodes.0" child="//@diagram/@childNodes.2"/>
+    <childReferences parent="//@diagram/@topLevelNodes.0" child="//@diagram/@childNodes.3"/>
     <childReferences parent="//@diagram" child="//@diagram/@topLevelNodes.0"/>
     <childReferences parent="//@diagram" child="//@diagram/@topLevelNodes.1"/>
     <childReferences parent="//@diagram" child="//@diagram/@topLevelNodes.2"/>
     <childReferences parent="//@diagram" child="//@diagram/@topLevelNodes.3"/>
     <childReferences parent="//@diagram" child="//@diagram/@topLevelNodes.4"/>
+    <childReferences parent="//@diagram/@topLevelNodes.5" child="//@diagram/@childNodes.0"/>
+    <childReferences parent="//@diagram/@topLevelNodes.5" child="//@diagram/@childNodes.1"/>
+    <childReferences parent="//@diagram/@topLevelNodes.5" child="//@diagram/@childNodes.2"/>
+    <childReferences parent="//@diagram/@topLevelNodes.5" child="//@diagram/@childNodes.3"/>
     <childReferences parent="//@diagram" child="//@diagram/@topLevelNodes.5"/>
-    <childReferences parent="//@diagram" child="//@diagram/@topLevelNodes.6"/>
-    <childReferences parent="//@diagram" child="//@diagram/@topLevelNodes.7"/>
-    <childReferences parent="//@diagram" child="//@diagram/@topLevelNodes.8"/>
-    <childReferences parent="//@diagram" child="//@diagram/@topLevelNodes.9"/>
     <childReferences parent="//@diagram" child="//@diagram/@links.0" groupName="links" groupIcon="icons/linksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.0" child="//@diagram/@topLevelNodes.3" referenceType="out_target" groupName="target" groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.3" child="//@diagram/@links.0" referenceType="in_source" groupName="incoming links" groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.0" child="//@diagram/@topLevelNodes.4" referenceType="out_target" groupName="target" groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.4" child="//@diagram/@links.0" referenceType="in_source" groupName="incoming links" groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences parent="//@diagram/@links.0" child="//@diagram/@topLevelNodes.0" referenceType="out_target" groupName="target" groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences parent="//@diagram/@topLevelNodes.0" child="//@diagram/@links.0" referenceType="in_source" groupName="incoming links" groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
     <childReferences parent="//@diagram/@links.0" child="//@diagram/@topLevelNodes.5" referenceType="out_target" groupName="target" groupIcon="icons/linkTargetNavigatorGroup.gif"/>
     <childReferences parent="//@diagram/@topLevelNodes.5" child="//@diagram/@links.0" referenceType="in_source" groupName="incoming links" groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
     <childReferences parent="//@diagram/@links.0" child="//@diagram/@topLevelNodes.0" referenceType="in_source" groupName="source" groupIcon="icons/linkSourceNavigatorGroup.gif"/>
     <childReferences parent="//@diagram/@topLevelNodes.0" child="//@diagram/@links.0" referenceType="out_target" groupName="outgoing links" groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.0" child="//@diagram/@topLevelNodes.1" referenceType="in_source" groupName="source" groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.1" child="//@diagram/@links.0" referenceType="out_target" groupName="outgoing links" groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.0" child="//@diagram/@topLevelNodes.2" referenceType="in_source" groupName="source" groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.2" child="//@diagram/@links.0" referenceType="out_target" groupName="outgoing links" groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
     <childReferences parent="//@diagram" child="//@diagram/@links.1" groupName="links" groupIcon="icons/linksNavigatorGroup.gif"/>
     <childReferences parent="//@diagram/@links.1" child="//@diagram/@topLevelNodes.0" referenceType="out_target" groupName="target" groupIcon="icons/linkTargetNavigatorGroup.gif"/>
     <childReferences parent="//@diagram/@topLevelNodes.0" child="//@diagram/@links.1" referenceType="in_source" groupName="incoming links" groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.1" child="//@diagram/@topLevelNodes.1" referenceType="out_target" groupName="target" groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.1" child="//@diagram/@links.1" referenceType="in_source" groupName="incoming links" groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.1" child="//@diagram/@topLevelNodes.2" referenceType="out_target" groupName="target" groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.2" child="//@diagram/@links.1" referenceType="in_source" groupName="incoming links" groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.1" child="//@diagram/@topLevelNodes.3" referenceType="in_source" groupName="source" groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.3" child="//@diagram/@links.1" referenceType="out_target" groupName="outgoing links" groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.1" child="//@diagram/@topLevelNodes.4" referenceType="in_source" groupName="source" groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.4" child="//@diagram/@links.1" referenceType="out_target" groupName="outgoing links" groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.1" child="//@diagram/@topLevelNodes.5" referenceType="in_source" groupName="source" groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.5" child="//@diagram/@links.1" referenceType="out_target" groupName="outgoing links" groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram" child="//@diagram/@links.2" groupName="links" groupIcon="icons/linksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.2" child="//@diagram/@topLevelNodes.3" referenceType="out_target" groupName="target" groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.3" child="//@diagram/@links.2" referenceType="in_source" groupName="incoming links" groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.2" child="//@diagram/@topLevelNodes.4" referenceType="out_target" groupName="target" groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.4" child="//@diagram/@links.2" referenceType="in_source" groupName="incoming links" groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.2" child="//@diagram/@topLevelNodes.5" referenceType="out_target" groupName="target" groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.5" child="//@diagram/@links.2" referenceType="in_source" groupName="incoming links" groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.2" child="//@diagram/@topLevelNodes.6" referenceType="in_source" groupName="source" groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.6" child="//@diagram/@links.2" referenceType="out_target" groupName="outgoing links" groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.2" child="//@diagram/@topLevelNodes.7" referenceType="in_source" groupName="source" groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.7" child="//@diagram/@links.2" referenceType="out_target" groupName="outgoing links" groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.2" child="//@diagram/@topLevelNodes.8" referenceType="in_source" groupName="source" groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.8" child="//@diagram/@links.2" referenceType="out_target" groupName="outgoing links" groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@links.2" child="//@diagram/@topLevelNodes.9" referenceType="in_source" groupName="source" groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences parent="//@diagram/@topLevelNodes.9" child="//@diagram/@links.2" referenceType="out_target" groupName="outgoing links" groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
+    <childReferences parent="//@diagram/@links.1" child="//@diagram/@topLevelNodes.5" referenceType="out_target" groupName="target" groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences parent="//@diagram/@topLevelNodes.5" child="//@diagram/@links.1" referenceType="in_source" groupName="incoming links" groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences parent="//@diagram/@links.1" child="//@diagram/@topLevelNodes.0" referenceType="in_source" groupName="source" groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences parent="//@diagram/@topLevelNodes.0" child="//@diagram/@links.1" referenceType="out_target" groupName="outgoing links" groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
   </navigator>
   <diagramUpdater/>
   <propertySheet>
@@ -322,8 +414,8 @@
   </propertySheet>
   <domainGenModel href="workflow.genmodel#/"/>
   <labelParsers extensibleViaService="true">
-    <implementations xsi:type="gmfgen:PredefinedParser" uses="//@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet //@diagram/@topLevelNodes.2/@labels.0/@modelFacet //@diagram/@topLevelNodes.3/@labels.0/@modelFacet //@diagram/@topLevelNodes.4/@labels.0/@modelFacet //@diagram/@topLevelNodes.5/@labels.0/@modelFacet //@diagram/@topLevelNodes.6/@labels.0/@modelFacet //@diagram/@topLevelNodes.7/@labels.0/@modelFacet //@diagram/@topLevelNodes.8/@labels.0/@modelFacet //@diagram/@topLevelNodes.9/@labels.0/@modelFacet"/>
-    <implementations xsi:type="gmfgen:ExternalParser" uses="//@diagram/@links.0/@labels.0/@modelFacet //@diagram/@links.1/@labels.0/@modelFacet //@diagram/@links.2/@labels.0/@modelFacet"/>
+    <implementations xsi:type="gmfgen:PredefinedParser" uses="//@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@childNodes.0/@labels.1/@modelFacet //@diagram/@childNodes.1/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.1/@modelFacet //@diagram/@childNodes.2/@labels.0/@modelFacet //@diagram/@childNodes.2/@labels.1/@modelFacet //@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.3/@labels.1/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.2/@modelFacet //@diagram/@topLevelNodes.0/@labels.3/@modelFacet //@diagram/@topLevelNodes.0/@labels.4/@modelFacet //@diagram/@topLevelNodes.0/@labels.5/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.1/@modelFacet //@diagram/@topLevelNodes.2/@labels.0/@modelFacet //@diagram/@topLevelNodes.2/@labels.1/@modelFacet //@diagram/@topLevelNodes.3/@labels.0/@modelFacet //@diagram/@topLevelNodes.3/@labels.1/@modelFacet //@diagram/@topLevelNodes.4/@labels.0/@modelFacet //@diagram/@topLevelNodes.4/@labels.1/@modelFacet //@diagram/@topLevelNodes.5/@labels.0/@modelFacet //@diagram/@topLevelNodes.5/@labels.2/@modelFacet //@diagram/@topLevelNodes.5/@labels.3/@modelFacet //@diagram/@topLevelNodes.5/@labels.4/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet"/>
+    <implementations xsi:type="gmfgen:PredefinedEnumParser" uses="//@diagram/@topLevelNodes.0/@labels.1/@modelFacet //@diagram/@topLevelNodes.5/@labels.1/@modelFacet"/>
   </labelParsers>
   <contextMenus context="//@diagram">
     <items xsi:type="gmfgen:LoadResourceAction"/>

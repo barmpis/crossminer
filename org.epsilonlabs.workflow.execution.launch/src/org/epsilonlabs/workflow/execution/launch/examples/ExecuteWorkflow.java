@@ -23,8 +23,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.epsilonlabs.workflow.execution.subscription.WorkflowGraphicalChangeSubscription;
 
-import workflow.DataSource;
-
 /**
  * @generated NOT
  * @author kb

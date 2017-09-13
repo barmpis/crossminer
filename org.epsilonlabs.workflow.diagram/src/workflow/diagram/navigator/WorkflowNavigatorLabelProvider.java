@@ -4,7 +4,6 @@
 package workflow.diagram.navigator;
 
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.gmf.runtime.common.ui.services.parser.CommonParserHint;
 import org.eclipse.gmf.runtime.common.ui.services.parser.IParser;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserOptions;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
@@ -21,29 +20,34 @@ import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
 
-import workflow.diagram.edit.parts.AuthorsEditPart;
-import workflow.diagram.edit.parts.AuthorsRepoPatternsEditPart;
-import workflow.diagram.edit.parts.CommitsEditPart;
-import workflow.diagram.edit.parts.CommitsRepoPatternsEditPart;
-import workflow.diagram.edit.parts.CustomScriptEditPart;
-import workflow.diagram.edit.parts.CustomScriptTempEditPart;
-import workflow.diagram.edit.parts.DataAggregationEditPart;
-import workflow.diagram.edit.parts.DataAggregationTempEditPart;
-import workflow.diagram.edit.parts.DataFilteringEditPart;
-import workflow.diagram.edit.parts.DataFilteringTempEditPart;
-import workflow.diagram.edit.parts.DataManipulationEditPart;
-import workflow.diagram.edit.parts.DataManipulationSourcesEditPart;
-import workflow.diagram.edit.parts.DataManipulationTempEditPart;
-import workflow.diagram.edit.parts.DataRetrievalSourcesEditPart;
-import workflow.diagram.edit.parts.DataSourceRetrievalsEditPart;
-import workflow.diagram.edit.parts.FilesEditPart;
-import workflow.diagram.edit.parts.FilesRepoPatternsEditPart;
-import workflow.diagram.edit.parts.GHTorrentEditPart;
-import workflow.diagram.edit.parts.GHTorrentUrlEditPart;
-import workflow.diagram.edit.parts.GithubBigQueryEditPart;
-import workflow.diagram.edit.parts.GithubBigQueryUrlEditPart;
-import workflow.diagram.edit.parts.GithubEditPart;
-import workflow.diagram.edit.parts.GithubUrlEditPart;
+import workflow.RemoteTaskCommunicationConfiguration;
+import workflow.Workflow;
+import workflow.diagram.edit.parts.Boolean2EditPart;
+import workflow.diagram.edit.parts.BooleanEditPart;
+import workflow.diagram.edit.parts.BooleanName2EditPart;
+import workflow.diagram.edit.parts.BooleanNameEditPart;
+import workflow.diagram.edit.parts.Double2EditPart;
+import workflow.diagram.edit.parts.DoubleEditPart;
+import workflow.diagram.edit.parts.DoubleName2EditPart;
+import workflow.diagram.edit.parts.DoubleNameEditPart;
+import workflow.diagram.edit.parts.EmittingTaskEditPart;
+import workflow.diagram.edit.parts.EmittingTaskNameEditPart;
+import workflow.diagram.edit.parts.Integer2EditPart;
+import workflow.diagram.edit.parts.IntegerEditPart;
+import workflow.diagram.edit.parts.IntegerName2EditPart;
+import workflow.diagram.edit.parts.IntegerNameEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationAddressEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationAddressPortSingleQueueEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationAddressPortSingleQueueQEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationPortEditPart;
+import workflow.diagram.edit.parts.String2EditPart;
+import workflow.diagram.edit.parts.StringEditPart;
+import workflow.diagram.edit.parts.StringName2EditPart;
+import workflow.diagram.edit.parts.StringNameEditPart;
+import workflow.diagram.edit.parts.TaskCommunicationConfigurationEditPart;
+import workflow.diagram.edit.parts.TaskEditPart;
+import workflow.diagram.edit.parts.TaskNameEditPart;
 import workflow.diagram.edit.parts.WorkflowEditPart;
 import workflow.diagram.part.WorkflowDiagramEditorPlugin;
 import workflow.diagram.part.WorkflowVisualIDRegistry;
@@ -112,41 +116,40 @@ public class WorkflowNavigatorLabelProvider extends LabelProvider
 	public Image getImage(View view) {
 		switch (WorkflowVisualIDRegistry.getVisualID(view)) {
 		case WorkflowEditPart.VISUAL_ID:
-			return getImage("Navigator?Diagram?http://workflow?Workflow", WorkflowElementTypes.Workflow_1000); //$NON-NLS-1$
-		case GithubEditPart.VISUAL_ID:
-			return getImage("Navigator?TopLevelNode?http://workflow?Github", WorkflowElementTypes.Github_2001); //$NON-NLS-1$
-		case GithubBigQueryEditPart.VISUAL_ID:
-			return getImage("Navigator?TopLevelNode?http://workflow?GithubBigQuery", //$NON-NLS-1$
-					WorkflowElementTypes.GithubBigQuery_2002);
-		case GHTorrentEditPart.VISUAL_ID:
-			return getImage("Navigator?TopLevelNode?http://workflow?GHTorrent", WorkflowElementTypes.GHTorrent_2003); //$NON-NLS-1$
-		case CommitsEditPart.VISUAL_ID:
-			return getImage("Navigator?TopLevelNode?http://workflow?Commits", WorkflowElementTypes.Commits_2004); //$NON-NLS-1$
-		case AuthorsEditPart.VISUAL_ID:
-			return getImage("Navigator?TopLevelNode?http://workflow?Authors", WorkflowElementTypes.Authors_2005); //$NON-NLS-1$
-		case FilesEditPart.VISUAL_ID:
-			return getImage("Navigator?TopLevelNode?http://workflow?Files", WorkflowElementTypes.Files_2006); //$NON-NLS-1$
-		case DataAggregationEditPart.VISUAL_ID:
-			return getImage("Navigator?TopLevelNode?http://workflow?DataAggregation", //$NON-NLS-1$
-					WorkflowElementTypes.DataAggregation_2007);
-		case DataFilteringEditPart.VISUAL_ID:
-			return getImage("Navigator?TopLevelNode?http://workflow?DataFiltering", //$NON-NLS-1$
-					WorkflowElementTypes.DataFiltering_2008);
-		case CustomScriptEditPart.VISUAL_ID:
-			return getImage("Navigator?TopLevelNode?http://workflow?CustomScript", //$NON-NLS-1$
-					WorkflowElementTypes.CustomScript_2009);
-		case DataManipulationEditPart.VISUAL_ID:
-			return getImage("Navigator?TopLevelNode?http://workflow?DataManipulation", //$NON-NLS-1$
-					WorkflowElementTypes.DataManipulation_2010);
-		case DataSourceRetrievalsEditPart.VISUAL_ID:
-			return getImage("Navigator?Link?http://workflow?DataSource?retrievals", //$NON-NLS-1$
-					WorkflowElementTypes.DataSourceRetrievals_4001);
-		case DataRetrievalSourcesEditPart.VISUAL_ID:
-			return getImage("Navigator?Link?http://workflow?DataRetrieval?sources", //$NON-NLS-1$
-					WorkflowElementTypes.DataRetrievalSources_4002);
-		case DataManipulationSourcesEditPart.VISUAL_ID:
-			return getImage("Navigator?Link?http://workflow?DataManipulation?sources", //$NON-NLS-1$
-					WorkflowElementTypes.DataManipulationSources_4003);
+			return getImage("Navigator?Diagram?http://org.crossminer.workflow?Workflow", //$NON-NLS-1$
+					WorkflowElementTypes.Workflow_1000);
+		case EmittingTaskEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http://org.crossminer.workflow?EmittingTask", //$NON-NLS-1$
+					WorkflowElementTypes.EmittingTask_2011);
+		case StringEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http://org.crossminer.workflow?String", //$NON-NLS-1$
+					WorkflowElementTypes.String_2012);
+		case IntegerEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http://org.crossminer.workflow?Integer", //$NON-NLS-1$
+					WorkflowElementTypes.Integer_2013);
+		case BooleanEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http://org.crossminer.workflow?Boolean", //$NON-NLS-1$
+					WorkflowElementTypes.Boolean_2014);
+		case DoubleEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http://org.crossminer.workflow?Double", //$NON-NLS-1$
+					WorkflowElementTypes.Double_2015);
+		case TaskEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http://org.crossminer.workflow?Task", //$NON-NLS-1$
+					WorkflowElementTypes.Task_2016);
+		case String2EditPart.VISUAL_ID:
+			return getImage("Navigator?Node?http://org.crossminer.workflow?String", WorkflowElementTypes.String_3001); //$NON-NLS-1$
+		case Integer2EditPart.VISUAL_ID:
+			return getImage("Navigator?Node?http://org.crossminer.workflow?Integer", WorkflowElementTypes.Integer_3002); //$NON-NLS-1$
+		case Boolean2EditPart.VISUAL_ID:
+			return getImage("Navigator?Node?http://org.crossminer.workflow?Boolean", WorkflowElementTypes.Boolean_3003); //$NON-NLS-1$
+		case Double2EditPart.VISUAL_ID:
+			return getImage("Navigator?Node?http://org.crossminer.workflow?Double", WorkflowElementTypes.Double_3004); //$NON-NLS-1$
+		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID:
+			return getImage("Navigator?Link?http://org.crossminer.workflow?RemoteTaskCommunicationConfiguration", //$NON-NLS-1$
+					WorkflowElementTypes.RemoteTaskCommunicationConfiguration_4004);
+		case TaskCommunicationConfigurationEditPart.VISUAL_ID:
+			return getImage("Navigator?Link?http://org.crossminer.workflow?TaskCommunicationConfiguration", //$NON-NLS-1$
+					WorkflowElementTypes.TaskCommunicationConfiguration_4005);
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
@@ -207,32 +210,30 @@ public class WorkflowNavigatorLabelProvider extends LabelProvider
 		switch (WorkflowVisualIDRegistry.getVisualID(view)) {
 		case WorkflowEditPart.VISUAL_ID:
 			return getWorkflow_1000Text(view);
-		case GithubEditPart.VISUAL_ID:
-			return getGithub_2001Text(view);
-		case GithubBigQueryEditPart.VISUAL_ID:
-			return getGithubBigQuery_2002Text(view);
-		case GHTorrentEditPart.VISUAL_ID:
-			return getGHTorrent_2003Text(view);
-		case CommitsEditPart.VISUAL_ID:
-			return getCommits_2004Text(view);
-		case AuthorsEditPart.VISUAL_ID:
-			return getAuthors_2005Text(view);
-		case FilesEditPart.VISUAL_ID:
-			return getFiles_2006Text(view);
-		case DataAggregationEditPart.VISUAL_ID:
-			return getDataAggregation_2007Text(view);
-		case DataFilteringEditPart.VISUAL_ID:
-			return getDataFiltering_2008Text(view);
-		case CustomScriptEditPart.VISUAL_ID:
-			return getCustomScript_2009Text(view);
-		case DataManipulationEditPart.VISUAL_ID:
-			return getDataManipulation_2010Text(view);
-		case DataSourceRetrievalsEditPart.VISUAL_ID:
-			return getDataSourceRetrievals_4001Text(view);
-		case DataRetrievalSourcesEditPart.VISUAL_ID:
-			return getDataRetrievalSources_4002Text(view);
-		case DataManipulationSourcesEditPart.VISUAL_ID:
-			return getDataManipulationSources_4003Text(view);
+		case EmittingTaskEditPart.VISUAL_ID:
+			return getEmittingTask_2011Text(view);
+		case StringEditPart.VISUAL_ID:
+			return getString_2012Text(view);
+		case IntegerEditPart.VISUAL_ID:
+			return getInteger_2013Text(view);
+		case BooleanEditPart.VISUAL_ID:
+			return getBoolean_2014Text(view);
+		case DoubleEditPart.VISUAL_ID:
+			return getDouble_2015Text(view);
+		case TaskEditPart.VISUAL_ID:
+			return getTask_2016Text(view);
+		case String2EditPart.VISUAL_ID:
+			return getString_3001Text(view);
+		case Integer2EditPart.VISUAL_ID:
+			return getInteger_3002Text(view);
+		case Boolean2EditPart.VISUAL_ID:
+			return getBoolean_3003Text(view);
+		case Double2EditPart.VISUAL_ID:
+			return getDouble_3004Text(view);
+		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID:
+			return getRemoteTaskCommunicationConfiguration_4004Text(view);
+		case TaskCommunicationConfigurationEditPart.VISUAL_ID:
+			return getTaskCommunicationConfiguration_4005Text(view);
 		}
 		return getUnknownElementText(view);
 	}
@@ -241,21 +242,11 @@ public class WorkflowNavigatorLabelProvider extends LabelProvider
 	* @generated
 	*/
 	private String getWorkflow_1000Text(View view) {
-		return ""; //$NON-NLS-1$
-	}
-
-	/**
-	* @generated
-	*/
-	private String getGithub_2001Text(View view) {
-		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.Github_2001,
-				view.getElement() != null ? view.getElement() : view,
-				WorkflowVisualIDRegistry.getType(GithubUrlEditPart.VISUAL_ID));
-		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
-					ParserOptions.NONE.intValue());
+		Workflow domainModelElement = (Workflow) view.getElement();
+		if (domainModelElement != null) {
+			return domainModelElement.getName();
 		} else {
-			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5001); //$NON-NLS-1$
+			WorkflowDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 1000); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -263,15 +254,15 @@ public class WorkflowNavigatorLabelProvider extends LabelProvider
 	/**
 	* @generated
 	*/
-	private String getGithubBigQuery_2002Text(View view) {
-		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.GithubBigQuery_2002,
+	private String getEmittingTask_2011Text(View view) {
+		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.EmittingTask_2011,
 				view.getElement() != null ? view.getElement() : view,
-				WorkflowVisualIDRegistry.getType(GithubBigQueryUrlEditPart.VISUAL_ID));
+				WorkflowVisualIDRegistry.getType(EmittingTaskNameEditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5002); //$NON-NLS-1$
+			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5011); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -279,15 +270,15 @@ public class WorkflowNavigatorLabelProvider extends LabelProvider
 	/**
 	* @generated
 	*/
-	private String getGHTorrent_2003Text(View view) {
-		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.GHTorrent_2003,
+	private String getString_2012Text(View view) {
+		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.String_2012,
 				view.getElement() != null ? view.getElement() : view,
-				WorkflowVisualIDRegistry.getType(GHTorrentUrlEditPart.VISUAL_ID));
+				WorkflowVisualIDRegistry.getType(StringNameEditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5003); //$NON-NLS-1$
+			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5012); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -295,15 +286,15 @@ public class WorkflowNavigatorLabelProvider extends LabelProvider
 	/**
 	* @generated
 	*/
-	private String getCommits_2004Text(View view) {
-		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.Commits_2004,
+	private String getInteger_2013Text(View view) {
+		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.Integer_2013,
 				view.getElement() != null ? view.getElement() : view,
-				WorkflowVisualIDRegistry.getType(CommitsRepoPatternsEditPart.VISUAL_ID));
+				WorkflowVisualIDRegistry.getType(IntegerNameEditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5004); //$NON-NLS-1$
+			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5013); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -311,15 +302,15 @@ public class WorkflowNavigatorLabelProvider extends LabelProvider
 	/**
 	* @generated
 	*/
-	private String getAuthors_2005Text(View view) {
-		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.Authors_2005,
+	private String getBoolean_2014Text(View view) {
+		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.Boolean_2014,
 				view.getElement() != null ? view.getElement() : view,
-				WorkflowVisualIDRegistry.getType(AuthorsRepoPatternsEditPart.VISUAL_ID));
+				WorkflowVisualIDRegistry.getType(BooleanNameEditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5005); //$NON-NLS-1$
+			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5014); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -327,15 +318,15 @@ public class WorkflowNavigatorLabelProvider extends LabelProvider
 	/**
 	* @generated
 	*/
-	private String getFiles_2006Text(View view) {
-		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.Files_2006,
+	private String getDouble_2015Text(View view) {
+		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.Double_2015,
 				view.getElement() != null ? view.getElement() : view,
-				WorkflowVisualIDRegistry.getType(FilesRepoPatternsEditPart.VISUAL_ID));
+				WorkflowVisualIDRegistry.getType(DoubleNameEditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5006); //$NON-NLS-1$
+			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5015); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -343,15 +334,15 @@ public class WorkflowNavigatorLabelProvider extends LabelProvider
 	/**
 	* @generated
 	*/
-	private String getDataAggregation_2007Text(View view) {
-		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.DataAggregation_2007,
+	private String getTask_2016Text(View view) {
+		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.Task_2016,
 				view.getElement() != null ? view.getElement() : view,
-				WorkflowVisualIDRegistry.getType(DataAggregationTempEditPart.VISUAL_ID));
+				WorkflowVisualIDRegistry.getType(TaskNameEditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5007); //$NON-NLS-1$
+			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5016); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -359,15 +350,15 @@ public class WorkflowNavigatorLabelProvider extends LabelProvider
 	/**
 	* @generated
 	*/
-	private String getDataFiltering_2008Text(View view) {
-		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.DataFiltering_2008,
+	private String getString_3001Text(View view) {
+		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.String_3001,
 				view.getElement() != null ? view.getElement() : view,
-				WorkflowVisualIDRegistry.getType(DataFilteringTempEditPart.VISUAL_ID));
+				WorkflowVisualIDRegistry.getType(StringName2EditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5008); //$NON-NLS-1$
+			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5017); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -375,15 +366,15 @@ public class WorkflowNavigatorLabelProvider extends LabelProvider
 	/**
 	* @generated
 	*/
-	private String getCustomScript_2009Text(View view) {
-		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.CustomScript_2009,
+	private String getInteger_3002Text(View view) {
+		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.Integer_3002,
 				view.getElement() != null ? view.getElement() : view,
-				WorkflowVisualIDRegistry.getType(CustomScriptTempEditPart.VISUAL_ID));
+				WorkflowVisualIDRegistry.getType(IntegerName2EditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5009); //$NON-NLS-1$
+			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5019); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -391,15 +382,15 @@ public class WorkflowNavigatorLabelProvider extends LabelProvider
 	/**
 	* @generated
 	*/
-	private String getDataManipulation_2010Text(View view) {
-		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.DataManipulation_2010,
+	private String getBoolean_3003Text(View view) {
+		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.Boolean_3003,
 				view.getElement() != null ? view.getElement() : view,
-				WorkflowVisualIDRegistry.getType(DataManipulationTempEditPart.VISUAL_ID));
+				WorkflowVisualIDRegistry.getType(BooleanName2EditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5010); //$NON-NLS-1$
+			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5021); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -407,9 +398,27 @@ public class WorkflowNavigatorLabelProvider extends LabelProvider
 	/**
 	* @generated
 	*/
-	private String getDataSourceRetrievals_4001Text(View view) {
-		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.DataSourceRetrievals_4001,
-				view.getElement() != null ? view.getElement() : view, CommonParserHint.DESCRIPTION);
+	private String getDouble_3004Text(View view) {
+		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.Double_3004,
+				view.getElement() != null ? view.getElement() : view,
+				WorkflowVisualIDRegistry.getType(DoubleName2EditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5023); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getRemoteTaskCommunicationConfiguration_4004Text(View view) {
+		IParser parser = WorkflowParserProvider.getParser(
+				WorkflowElementTypes.RemoteTaskCommunicationConfiguration_4004,
+				view.getElement() != null ? view.getElement() : view, WorkflowVisualIDRegistry
+						.getType(RemoteTaskCommunicationConfigurationAddressPortSingleQueueQEditPart.VISUAL_ID));
 		if (parser != null) {
 			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
@@ -422,31 +431,8 @@ public class WorkflowNavigatorLabelProvider extends LabelProvider
 	/**
 	* @generated
 	*/
-	private String getDataRetrievalSources_4002Text(View view) {
-		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.DataRetrievalSources_4002,
-				view.getElement() != null ? view.getElement() : view, CommonParserHint.DESCRIPTION);
-		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
-					ParserOptions.NONE.intValue());
-		} else {
-			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 6002); //$NON-NLS-1$
-			return ""; //$NON-NLS-1$
-		}
-	}
-
-	/**
-	* @generated
-	*/
-	private String getDataManipulationSources_4003Text(View view) {
-		IParser parser = WorkflowParserProvider.getParser(WorkflowElementTypes.DataManipulationSources_4003,
-				view.getElement() != null ? view.getElement() : view, CommonParserHint.DESCRIPTION);
-		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
-					ParserOptions.NONE.intValue());
-		} else {
-			WorkflowDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 6003); //$NON-NLS-1$
-			return ""; //$NON-NLS-1$
-		}
+	private String getTaskCommunicationConfiguration_4005Text(View view) {
+		return ""; //$NON-NLS-1$
 	}
 
 	/**

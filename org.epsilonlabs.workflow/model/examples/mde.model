@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<wf:Workflow xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wf="http://org.crossminer.workflow" xmi:id="_DjusEJehEeeoMKGoFdlBQw" name="mde popularity workflow">
+  <tasks xsi:type="wf:EmittingTask" xmi:id="_IxJMIJehEeeoMKGoFdlBQw" name="github provider task" concurrency="full" implementationFullyQualifiedName="org.crossminer.resilientclients.GitHubClient" implementationEntryPoint="getReposByFileExtension" acceptsPartialData="true" providesPartialData="true" outgoing="_IW3q8JehEeeoMKGoFdlBQw">
+    <locals xsi:type="wf:String" xmi:id="_2SmXwJehEeeoMKGoFdlBQw" name="repoTypes">
+      <value>ecore</value>
+      <value>uml</value>
+    </locals>
+  </tasks>
+  <tasks xsi:type="wf:EmittingTask" xmi:id="_Hxee4JehEeeoMKGoFdlBQw" name="file retriever task" concurrency="full" implementationFullyQualifiedName="org.crossminer.resilientclients.GitHubClient" implementationEntryPoint="getFilesByExtension" acceptsPartialData="true" incoming="_IW3q8JehEeeoMKGoFdlBQw" providesPartialData="true" outgoing="_IW3q8JehEeeoMKGoFdlBQw">
+    <locals xsi:type="wf:String" xmi:id="_Dko1kJeiEeeoMKGoFdlBQw" name="fileTypes">
+      <value>ecore</value>
+      <value>uml</value>
+    </locals>
+  </tasks>
+  <tasks xsi:type="wf:EmittingTask" xmi:id="_ZeONcJehEeeoMKGoFdlBQw" name="author retriever task" concurrency="full" implementationFullyQualifiedName="org.crossminer.resilientclients.GitHubClient" implementationEntryPoint="getAuthors" acceptsPartialData="true" incoming="_IW3q8JehEeeoMKGoFdlBQw" providesPartialData="true" outgoing="_IW3q8JehEeeoMKGoFdlBQw"/>
+  <tasks xmi:id="_cKWcgJehEeeoMKGoFdlBQw" name="results output task" concurrency="full" implementationFullyQualifiedName="org.crossminer.resilientclients.ConsoleOutput" implementationEntryPoint="" acceptsPartialData="true" incoming="_IW3q8JehEeeoMKGoFdlBQw"/>
+  <configs xmi:id="_IW3q8JehEeeoMKGoFdlBQw" incoming="_Hxee4JehEeeoMKGoFdlBQw _IxJMIJehEeeoMKGoFdlBQw _ZeONcJehEeeoMKGoFdlBQw" outgoing="_Hxee4JehEeeoMKGoFdlBQw _ZeONcJehEeeoMKGoFdlBQw _cKWcgJehEeeoMKGoFdlBQw"/>
+</wf:Workflow>

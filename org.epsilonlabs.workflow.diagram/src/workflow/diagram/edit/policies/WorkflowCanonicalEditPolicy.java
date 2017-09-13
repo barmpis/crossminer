@@ -7,9 +7,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
@@ -33,16 +35,18 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.update.UpdaterLinkDescriptor;
 
 import workflow.WorkflowPackage;
-import workflow.diagram.edit.parts.AuthorsEditPart;
-import workflow.diagram.edit.parts.CommitsEditPart;
-import workflow.diagram.edit.parts.CustomScriptEditPart;
-import workflow.diagram.edit.parts.DataAggregationEditPart;
-import workflow.diagram.edit.parts.DataFilteringEditPart;
-import workflow.diagram.edit.parts.DataManipulationEditPart;
-import workflow.diagram.edit.parts.FilesEditPart;
-import workflow.diagram.edit.parts.GHTorrentEditPart;
-import workflow.diagram.edit.parts.GithubBigQueryEditPart;
-import workflow.diagram.edit.parts.GithubEditPart;
+import workflow.diagram.edit.parts.Boolean2EditPart;
+import workflow.diagram.edit.parts.BooleanEditPart;
+import workflow.diagram.edit.parts.Double2EditPart;
+import workflow.diagram.edit.parts.DoubleEditPart;
+import workflow.diagram.edit.parts.EmittingTaskEditPart;
+import workflow.diagram.edit.parts.Integer2EditPart;
+import workflow.diagram.edit.parts.IntegerEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationEditPart;
+import workflow.diagram.edit.parts.String2EditPart;
+import workflow.diagram.edit.parts.StringEditPart;
+import workflow.diagram.edit.parts.TaskCommunicationConfigurationEditPart;
+import workflow.diagram.edit.parts.TaskEditPart;
 import workflow.diagram.edit.parts.WorkflowEditPart;
 import workflow.diagram.part.WorkflowDiagramUpdater;
 import workflow.diagram.part.WorkflowLinkDescriptor;
@@ -53,6 +57,11 @@ import workflow.diagram.part.WorkflowVisualIDRegistry;
  * @generated
  */
 public class WorkflowCanonicalEditPolicy extends CanonicalEditPolicy {
+
+	/**
+	* @generated
+	*/
+	private Set<EStructuralFeature> myFeaturesToSynchronize;
 
 	/**
 	* @generated
@@ -69,8 +78,13 @@ public class WorkflowCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	* @generated
 	*/
-	protected EStructuralFeature getFeatureToSynchronize() {
-		return WorkflowPackage.eINSTANCE.getWorkflow_Contents();
+	protected Set getFeaturesToSynchronize() {
+		if (myFeaturesToSynchronize == null) {
+			myFeaturesToSynchronize = new HashSet<EStructuralFeature>();
+			myFeaturesToSynchronize.add(WorkflowPackage.eINSTANCE.getWorkflow_Tasks());
+			myFeaturesToSynchronize.add(WorkflowPackage.eINSTANCE.getWorkflow_Globals());
+		}
+		return myFeaturesToSynchronize;
 	}
 
 	/**
@@ -105,16 +119,12 @@ public class WorkflowCanonicalEditPolicy extends CanonicalEditPolicy {
 	private boolean isMyDiagramElement(View view) {
 		int visualID = WorkflowVisualIDRegistry.getVisualID(view);
 		switch (visualID) {
-		case GithubEditPart.VISUAL_ID:
-		case GithubBigQueryEditPart.VISUAL_ID:
-		case GHTorrentEditPart.VISUAL_ID:
-		case CommitsEditPart.VISUAL_ID:
-		case AuthorsEditPart.VISUAL_ID:
-		case FilesEditPart.VISUAL_ID:
-		case DataAggregationEditPart.VISUAL_ID:
-		case DataFilteringEditPart.VISUAL_ID:
-		case CustomScriptEditPart.VISUAL_ID:
-		case DataManipulationEditPart.VISUAL_ID:
+		case EmittingTaskEditPart.VISUAL_ID:
+		case StringEditPart.VISUAL_ID:
+		case IntegerEditPart.VISUAL_ID:
+		case BooleanEditPart.VISUAL_ID:
+		case DoubleEditPart.VISUAL_ID:
+		case TaskEditPart.VISUAL_ID:
 			return true;
 		}
 		return false;
@@ -274,72 +284,86 @@ public class WorkflowCanonicalEditPolicy extends CanonicalEditPolicy {
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case GithubEditPart.VISUAL_ID: {
+		case EmittingTaskEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getGithub_2001ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getEmittingTask_2011ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case GithubBigQueryEditPart.VISUAL_ID: {
+		case StringEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getGithubBigQuery_2002ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getString_2012ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case GHTorrentEditPart.VISUAL_ID: {
+		case IntegerEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getGHTorrent_2003ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getInteger_2013ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case CommitsEditPart.VISUAL_ID: {
+		case BooleanEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getCommits_2004ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getBoolean_2014ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case AuthorsEditPart.VISUAL_ID: {
+		case DoubleEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getAuthors_2005ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getDouble_2015ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case FilesEditPart.VISUAL_ID: {
+		case TaskEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getFiles_2006ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getTask_2016ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case DataAggregationEditPart.VISUAL_ID: {
+		case String2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getDataAggregation_2007ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getString_3001ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case DataFilteringEditPart.VISUAL_ID: {
+		case Integer2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getDataFiltering_2008ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getInteger_3002ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case CustomScriptEditPart.VISUAL_ID: {
+		case Boolean2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getCustomScript_2009ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getBoolean_3003ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case DataManipulationEditPart.VISUAL_ID: {
+		case Double2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getDataManipulation_2010ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getDouble_3004ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(WorkflowDiagramUpdater.getRemoteTaskCommunicationConfiguration_4004ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case TaskCommunicationConfigurationEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(WorkflowDiagramUpdater.getTaskCommunicationConfiguration_4005ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

@@ -16,17 +16,39 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.ui.services.parser.ParserHintAdapter;
 import org.eclipse.gmf.runtime.notation.View;
 
+import org.eclipse.gmf.tooling.runtime.parsers.EnumParser;
 import workflow.WorkflowPackage;
-import workflow.diagram.edit.parts.AuthorsRepoPatternsEditPart;
-import workflow.diagram.edit.parts.CommitsRepoPatternsEditPart;
-import workflow.diagram.edit.parts.CustomScriptTempEditPart;
-import workflow.diagram.edit.parts.DataAggregationTempEditPart;
-import workflow.diagram.edit.parts.DataFilteringTempEditPart;
-import workflow.diagram.edit.parts.DataManipulationTempEditPart;
-import workflow.diagram.edit.parts.FilesRepoPatternsEditPart;
-import workflow.diagram.edit.parts.GHTorrentUrlEditPart;
-import workflow.diagram.edit.parts.GithubBigQueryUrlEditPart;
-import workflow.diagram.edit.parts.GithubUrlEditPart;
+import workflow.diagram.edit.parts.BooleanName2EditPart;
+import workflow.diagram.edit.parts.BooleanNameEditPart;
+import workflow.diagram.edit.parts.BooleanValue2EditPart;
+import workflow.diagram.edit.parts.BooleanValueEditPart;
+import workflow.diagram.edit.parts.DoubleName2EditPart;
+import workflow.diagram.edit.parts.DoubleNameEditPart;
+import workflow.diagram.edit.parts.DoubleValue2EditPart;
+import workflow.diagram.edit.parts.DoubleValueEditPart;
+import workflow.diagram.edit.parts.EmittingTaskAcceptsPartialDataEditPart;
+import workflow.diagram.edit.parts.EmittingTaskConcurrencyEditPart;
+import workflow.diagram.edit.parts.EmittingTaskImplementationEntryPoinEditPart;
+import workflow.diagram.edit.parts.EmittingTaskImplementationFullyQualEditPart;
+import workflow.diagram.edit.parts.EmittingTaskNameEditPart;
+import workflow.diagram.edit.parts.EmittingTaskProvidesPartialDataEditPart;
+import workflow.diagram.edit.parts.IntegerName2EditPart;
+import workflow.diagram.edit.parts.IntegerNameEditPart;
+import workflow.diagram.edit.parts.IntegerValue2EditPart;
+import workflow.diagram.edit.parts.IntegerValueEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationAddressEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationAddressPortSingleQueueEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationAddressPortSingleQueueQEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationPortEditPart;
+import workflow.diagram.edit.parts.StringName2EditPart;
+import workflow.diagram.edit.parts.StringNameEditPart;
+import workflow.diagram.edit.parts.StringValue2EditPart;
+import workflow.diagram.edit.parts.StringValueEditPart;
+import workflow.diagram.edit.parts.TaskAcceptsPartialDataEditPart;
+import workflow.diagram.edit.parts.TaskConcurrencyEditPart;
+import workflow.diagram.edit.parts.TaskImplementationEntryPoinEditPart;
+import workflow.diagram.edit.parts.TaskImplementationFullyQualEditPart;
+import workflow.diagram.edit.parts.TaskNameEditPart;
 import workflow.diagram.parsers.MessageFormatParser;
 import workflow.diagram.part.WorkflowVisualIDRegistry;
 
@@ -38,171 +60,484 @@ public class WorkflowParserProvider extends AbstractProvider implements IParserP
 	/**
 	* @generated
 	*/
-	private IParser githubUrl_5001Parser;
+	private IParser emittingTaskName_5011Parser;
 
 	/**
 	* @generated
 	*/
-	private IParser getGithubUrl_5001Parser() {
-		if (githubUrl_5001Parser == null) {
-			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getDataSource_Url() };
+	private IParser getEmittingTaskName_5011Parser() {
+		if (emittingTaskName_5011Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getTask_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			githubUrl_5001Parser = parser;
+			emittingTaskName_5011Parser = parser;
 		}
-		return githubUrl_5001Parser;
+		return emittingTaskName_5011Parser;
 	}
 
 	/**
 	* @generated
 	*/
-	private IParser githubBigQueryUrl_5002Parser;
+	private IParser emittingTaskConcurrency_5025Parser;
 
 	/**
 	* @generated
 	*/
-	private IParser getGithubBigQueryUrl_5002Parser() {
-		if (githubBigQueryUrl_5002Parser == null) {
-			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getDataSource_Url() };
-			MessageFormatParser parser = new MessageFormatParser(features);
-			githubBigQueryUrl_5002Parser = parser;
+	private IParser getEmittingTaskConcurrency_5025Parser() {
+		if (emittingTaskConcurrency_5025Parser == null) {
+			EAttribute editableFeature = WorkflowPackage.eINSTANCE.getTask_Concurrency();
+			EnumParser parser = new EnumParser(editableFeature);
+			emittingTaskConcurrency_5025Parser = parser;
 		}
-		return githubBigQueryUrl_5002Parser;
+		return emittingTaskConcurrency_5025Parser;
 	}
 
 	/**
 	* @generated
 	*/
-	private IParser gHTorrentUrl_5003Parser;
+	private IParser emittingTaskImplementationFullyQualifiedName_5026Parser;
 
 	/**
 	* @generated
 	*/
-	private IParser getGHTorrentUrl_5003Parser() {
-		if (gHTorrentUrl_5003Parser == null) {
-			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getDataSource_Url() };
+	private IParser getEmittingTaskImplementationFullyQualifiedName_5026Parser() {
+		if (emittingTaskImplementationFullyQualifiedName_5026Parser == null) {
+			EAttribute[] features = new EAttribute[] {
+					WorkflowPackage.eINSTANCE.getTask_ImplementationFullyQualifiedName() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			gHTorrentUrl_5003Parser = parser;
+			emittingTaskImplementationFullyQualifiedName_5026Parser = parser;
 		}
-		return gHTorrentUrl_5003Parser;
+		return emittingTaskImplementationFullyQualifiedName_5026Parser;
 	}
 
 	/**
 	* @generated
 	*/
-	private IParser commitsRepoPatterns_5004Parser;
+	private IParser emittingTaskImplementationEntryPoint_5027Parser;
 
 	/**
 	* @generated
 	*/
-	private IParser getCommitsRepoPatterns_5004Parser() {
-		if (commitsRepoPatterns_5004Parser == null) {
-			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getDataRetrieval_RepoPatterns() };
+	private IParser getEmittingTaskImplementationEntryPoint_5027Parser() {
+		if (emittingTaskImplementationEntryPoint_5027Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getTask_ImplementationEntryPoint() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			commitsRepoPatterns_5004Parser = parser;
+			emittingTaskImplementationEntryPoint_5027Parser = parser;
 		}
-		return commitsRepoPatterns_5004Parser;
+		return emittingTaskImplementationEntryPoint_5027Parser;
 	}
 
 	/**
 	* @generated
 	*/
-	private IParser authorsRepoPatterns_5005Parser;
+	private IParser emittingTaskAcceptsPartialData_5028Parser;
 
 	/**
 	* @generated
 	*/
-	private IParser getAuthorsRepoPatterns_5005Parser() {
-		if (authorsRepoPatterns_5005Parser == null) {
-			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getDataRetrieval_RepoPatterns() };
+	private IParser getEmittingTaskAcceptsPartialData_5028Parser() {
+		if (emittingTaskAcceptsPartialData_5028Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getTask_AcceptsPartialData() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			authorsRepoPatterns_5005Parser = parser;
+			emittingTaskAcceptsPartialData_5028Parser = parser;
 		}
-		return authorsRepoPatterns_5005Parser;
+		return emittingTaskAcceptsPartialData_5028Parser;
 	}
 
 	/**
 	* @generated
 	*/
-	private IParser filesRepoPatterns_5006Parser;
+	private IParser emittingTaskProvidesPartialData_5029Parser;
 
 	/**
 	* @generated
 	*/
-	private IParser getFilesRepoPatterns_5006Parser() {
-		if (filesRepoPatterns_5006Parser == null) {
-			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getDataRetrieval_RepoPatterns() };
+	private IParser getEmittingTaskProvidesPartialData_5029Parser() {
+		if (emittingTaskProvidesPartialData_5029Parser == null) {
+			EAttribute[] features = new EAttribute[] {
+					WorkflowPackage.eINSTANCE.getEmittingTask_ProvidesPartialData() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			filesRepoPatterns_5006Parser = parser;
+			emittingTaskProvidesPartialData_5029Parser = parser;
 		}
-		return filesRepoPatterns_5006Parser;
+		return emittingTaskProvidesPartialData_5029Parser;
 	}
 
 	/**
 	* @generated
 	*/
-	private IParser dataAggregationTemp_5007Parser;
+	private IParser stringName_5012Parser;
 
 	/**
 	* @generated
 	*/
-	private IParser getDataAggregationTemp_5007Parser() {
-		if (dataAggregationTemp_5007Parser == null) {
-			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getDataManipulation_Temp() };
+	private IParser getStringName_5012Parser() {
+		if (stringName_5012Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getVariable_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			dataAggregationTemp_5007Parser = parser;
+			stringName_5012Parser = parser;
 		}
-		return dataAggregationTemp_5007Parser;
+		return stringName_5012Parser;
 	}
 
 	/**
 	* @generated
 	*/
-	private IParser dataFilteringTemp_5008Parser;
+	private IParser stringValue_5030Parser;
 
 	/**
 	* @generated
 	*/
-	private IParser getDataFilteringTemp_5008Parser() {
-		if (dataFilteringTemp_5008Parser == null) {
-			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getDataManipulation_Temp() };
+	private IParser getStringValue_5030Parser() {
+		if (stringValue_5030Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getString_Value() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			dataFilteringTemp_5008Parser = parser;
+			stringValue_5030Parser = parser;
 		}
-		return dataFilteringTemp_5008Parser;
+		return stringValue_5030Parser;
 	}
 
 	/**
 	* @generated
 	*/
-	private IParser customScriptTemp_5009Parser;
+	private IParser integerName_5013Parser;
 
 	/**
 	* @generated
 	*/
-	private IParser getCustomScriptTemp_5009Parser() {
-		if (customScriptTemp_5009Parser == null) {
-			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getDataManipulation_Temp() };
+	private IParser getIntegerName_5013Parser() {
+		if (integerName_5013Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getVariable_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			customScriptTemp_5009Parser = parser;
+			integerName_5013Parser = parser;
 		}
-		return customScriptTemp_5009Parser;
+		return integerName_5013Parser;
 	}
 
 	/**
 	* @generated
 	*/
-	private IParser dataManipulationTemp_5010Parser;
+	private IParser integerValue_5031Parser;
 
 	/**
 	* @generated
 	*/
-	private IParser getDataManipulationTemp_5010Parser() {
-		if (dataManipulationTemp_5010Parser == null) {
-			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getDataManipulation_Temp() };
+	private IParser getIntegerValue_5031Parser() {
+		if (integerValue_5031Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getInteger_Value() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			dataManipulationTemp_5010Parser = parser;
+			integerValue_5031Parser = parser;
 		}
-		return dataManipulationTemp_5010Parser;
+		return integerValue_5031Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser booleanName_5014Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getBooleanName_5014Parser() {
+		if (booleanName_5014Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getVariable_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			booleanName_5014Parser = parser;
+		}
+		return booleanName_5014Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser booleanValue_5032Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getBooleanValue_5032Parser() {
+		if (booleanValue_5032Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getBoolean_Value() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			booleanValue_5032Parser = parser;
+		}
+		return booleanValue_5032Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser doubleName_5015Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getDoubleName_5015Parser() {
+		if (doubleName_5015Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getVariable_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			doubleName_5015Parser = parser;
+		}
+		return doubleName_5015Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser doubleValue_5033Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getDoubleValue_5033Parser() {
+		if (doubleValue_5033Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getDouble_Value() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			doubleValue_5033Parser = parser;
+		}
+		return doubleValue_5033Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser taskName_5016Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getTaskName_5016Parser() {
+		if (taskName_5016Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getTask_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			taskName_5016Parser = parser;
+		}
+		return taskName_5016Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser taskConcurrency_5034Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getTaskConcurrency_5034Parser() {
+		if (taskConcurrency_5034Parser == null) {
+			EAttribute editableFeature = WorkflowPackage.eINSTANCE.getTask_Concurrency();
+			EnumParser parser = new EnumParser(editableFeature);
+			taskConcurrency_5034Parser = parser;
+		}
+		return taskConcurrency_5034Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser taskImplementationFullyQualifiedName_5035Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getTaskImplementationFullyQualifiedName_5035Parser() {
+		if (taskImplementationFullyQualifiedName_5035Parser == null) {
+			EAttribute[] features = new EAttribute[] {
+					WorkflowPackage.eINSTANCE.getTask_ImplementationFullyQualifiedName() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			taskImplementationFullyQualifiedName_5035Parser = parser;
+		}
+		return taskImplementationFullyQualifiedName_5035Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser taskImplementationEntryPoint_5036Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getTaskImplementationEntryPoint_5036Parser() {
+		if (taskImplementationEntryPoint_5036Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getTask_ImplementationEntryPoint() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			taskImplementationEntryPoint_5036Parser = parser;
+		}
+		return taskImplementationEntryPoint_5036Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser taskAcceptsPartialData_5037Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getTaskAcceptsPartialData_5037Parser() {
+		if (taskAcceptsPartialData_5037Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getTask_AcceptsPartialData() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			taskAcceptsPartialData_5037Parser = parser;
+		}
+		return taskAcceptsPartialData_5037Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser stringName_5017Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getStringName_5017Parser() {
+		if (stringName_5017Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getVariable_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			stringName_5017Parser = parser;
+		}
+		return stringName_5017Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser stringValue_5018Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getStringValue_5018Parser() {
+		if (stringValue_5018Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getString_Value() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			stringValue_5018Parser = parser;
+		}
+		return stringValue_5018Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser integerName_5019Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getIntegerName_5019Parser() {
+		if (integerName_5019Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getVariable_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			integerName_5019Parser = parser;
+		}
+		return integerName_5019Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser integerValue_5020Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getIntegerValue_5020Parser() {
+		if (integerValue_5020Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getInteger_Value() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			integerValue_5020Parser = parser;
+		}
+		return integerValue_5020Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser booleanName_5021Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getBooleanName_5021Parser() {
+		if (booleanName_5021Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getVariable_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			booleanName_5021Parser = parser;
+		}
+		return booleanName_5021Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser booleanValue_5022Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getBooleanValue_5022Parser() {
+		if (booleanValue_5022Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getBoolean_Value() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			booleanValue_5022Parser = parser;
+		}
+		return booleanValue_5022Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser doubleName_5023Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getDoubleName_5023Parser() {
+		if (doubleName_5023Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getVariable_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			doubleName_5023Parser = parser;
+		}
+		return doubleName_5023Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser doubleValue_5024Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getDoubleValue_5024Parser() {
+		if (doubleValue_5024Parser == null) {
+			EAttribute[] features = new EAttribute[] { WorkflowPackage.eINSTANCE.getDouble_Value() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			doubleValue_5024Parser = parser;
+		}
+		return doubleValue_5024Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser remoteTaskCommunicationConfigurationAddressPortSingleQueueQueuePersistance_6001Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getRemoteTaskCommunicationConfigurationAddressPortSingleQueueQueuePersistance_6001Parser() {
+		if (remoteTaskCommunicationConfigurationAddressPortSingleQueueQueuePersistance_6001Parser == null) {
+			EAttribute[] features = new EAttribute[] {
+					WorkflowPackage.eINSTANCE.getRemoteTaskCommunicationConfiguration_Address(),
+					WorkflowPackage.eINSTANCE.getRemoteTaskCommunicationConfiguration_Port(),
+					WorkflowPackage.eINSTANCE.getRemoteTaskCommunicationConfiguration_SingleQueue(),
+					WorkflowPackage.eINSTANCE.getRemoteTaskCommunicationConfiguration_QueuePersistance() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			remoteTaskCommunicationConfigurationAddressPortSingleQueueQueuePersistance_6001Parser = parser;
+		}
+		return remoteTaskCommunicationConfigurationAddressPortSingleQueueQueuePersistance_6001Parser;
 	}
 
 	/**
@@ -210,26 +545,64 @@ public class WorkflowParserProvider extends AbstractProvider implements IParserP
 	*/
 	protected IParser getParser(int visualID) {
 		switch (visualID) {
-		case GithubUrlEditPart.VISUAL_ID:
-			return getGithubUrl_5001Parser();
-		case GithubBigQueryUrlEditPart.VISUAL_ID:
-			return getGithubBigQueryUrl_5002Parser();
-		case GHTorrentUrlEditPart.VISUAL_ID:
-			return getGHTorrentUrl_5003Parser();
-		case CommitsRepoPatternsEditPart.VISUAL_ID:
-			return getCommitsRepoPatterns_5004Parser();
-		case AuthorsRepoPatternsEditPart.VISUAL_ID:
-			return getAuthorsRepoPatterns_5005Parser();
-		case FilesRepoPatternsEditPart.VISUAL_ID:
-			return getFilesRepoPatterns_5006Parser();
-		case DataAggregationTempEditPart.VISUAL_ID:
-			return getDataAggregationTemp_5007Parser();
-		case DataFilteringTempEditPart.VISUAL_ID:
-			return getDataFilteringTemp_5008Parser();
-		case CustomScriptTempEditPart.VISUAL_ID:
-			return getCustomScriptTemp_5009Parser();
-		case DataManipulationTempEditPart.VISUAL_ID:
-			return getDataManipulationTemp_5010Parser();
+		case EmittingTaskNameEditPart.VISUAL_ID:
+			return getEmittingTaskName_5011Parser();
+
+		case EmittingTaskConcurrencyEditPart.VISUAL_ID:
+			return getEmittingTaskConcurrency_5025Parser();
+		case EmittingTaskImplementationFullyQualEditPart.VISUAL_ID:
+			return getEmittingTaskImplementationFullyQualifiedName_5026Parser();
+		case EmittingTaskImplementationEntryPoinEditPart.VISUAL_ID:
+			return getEmittingTaskImplementationEntryPoint_5027Parser();
+		case EmittingTaskAcceptsPartialDataEditPart.VISUAL_ID:
+			return getEmittingTaskAcceptsPartialData_5028Parser();
+		case EmittingTaskProvidesPartialDataEditPart.VISUAL_ID:
+			return getEmittingTaskProvidesPartialData_5029Parser();
+		case StringNameEditPart.VISUAL_ID:
+			return getStringName_5012Parser();
+		case StringValueEditPart.VISUAL_ID:
+			return getStringValue_5030Parser();
+		case IntegerNameEditPart.VISUAL_ID:
+			return getIntegerName_5013Parser();
+		case IntegerValueEditPart.VISUAL_ID:
+			return getIntegerValue_5031Parser();
+		case BooleanNameEditPart.VISUAL_ID:
+			return getBooleanName_5014Parser();
+		case BooleanValueEditPart.VISUAL_ID:
+			return getBooleanValue_5032Parser();
+		case DoubleNameEditPart.VISUAL_ID:
+			return getDoubleName_5015Parser();
+		case DoubleValueEditPart.VISUAL_ID:
+			return getDoubleValue_5033Parser();
+		case TaskNameEditPart.VISUAL_ID:
+			return getTaskName_5016Parser();
+
+		case TaskConcurrencyEditPart.VISUAL_ID:
+			return getTaskConcurrency_5034Parser();
+		case TaskImplementationFullyQualEditPart.VISUAL_ID:
+			return getTaskImplementationFullyQualifiedName_5035Parser();
+		case TaskImplementationEntryPoinEditPart.VISUAL_ID:
+			return getTaskImplementationEntryPoint_5036Parser();
+		case TaskAcceptsPartialDataEditPart.VISUAL_ID:
+			return getTaskAcceptsPartialData_5037Parser();
+		case StringName2EditPart.VISUAL_ID:
+			return getStringName_5017Parser();
+		case StringValue2EditPart.VISUAL_ID:
+			return getStringValue_5018Parser();
+		case IntegerName2EditPart.VISUAL_ID:
+			return getIntegerName_5019Parser();
+		case IntegerValue2EditPart.VISUAL_ID:
+			return getIntegerValue_5020Parser();
+		case BooleanName2EditPart.VISUAL_ID:
+			return getBooleanName_5021Parser();
+		case BooleanValue2EditPart.VISUAL_ID:
+			return getBooleanValue_5022Parser();
+		case DoubleName2EditPart.VISUAL_ID:
+			return getDoubleName_5023Parser();
+		case DoubleValue2EditPart.VISUAL_ID:
+			return getDoubleValue_5024Parser();
+		case RemoteTaskCommunicationConfigurationAddressPortSingleQueueQEditPart.VISUAL_ID:
+			return getRemoteTaskCommunicationConfigurationAddressPortSingleQueueQueuePersistance_6001Parser();
 		}
 		return null;
 	}

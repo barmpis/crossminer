@@ -9,7 +9,13 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import workflow.*;
+import workflow.EmittingTask;
+import workflow.RemoteTaskCommunicationConfiguration;
+import workflow.Task;
+import workflow.TaskCommunicationConfiguration;
+import workflow.Variable;
+import workflow.Workflow;
+import workflow.WorkflowPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,56 +78,40 @@ public class WorkflowAdapterFactory extends AdapterFactoryImpl {
 				return createWorkflowAdapter();
 			}
 			@Override
-			public Adapter caseElement(Element object) {
-				return createElementAdapter();
+			public Adapter caseTask(Task object) {
+				return createTaskAdapter();
 			}
 			@Override
-			public Adapter caseDataSource(DataSource object) {
-				return createDataSourceAdapter();
+			public Adapter caseEmittingTask(EmittingTask object) {
+				return createEmittingTaskAdapter();
 			}
 			@Override
-			public Adapter caseGithub(Github object) {
-				return createGithubAdapter();
+			public Adapter caseTaskCommunicationConfiguration(TaskCommunicationConfiguration object) {
+				return createTaskCommunicationConfigurationAdapter();
 			}
 			@Override
-			public Adapter caseGithubBigQuery(GithubBigQuery object) {
-				return createGithubBigQueryAdapter();
+			public Adapter caseRemoteTaskCommunicationConfiguration(RemoteTaskCommunicationConfiguration object) {
+				return createRemoteTaskCommunicationConfigurationAdapter();
 			}
 			@Override
-			public Adapter caseGHTorrent(GHTorrent object) {
-				return createGHTorrentAdapter();
+			public Adapter caseVariable(Variable object) {
+				return createVariableAdapter();
 			}
 			@Override
-			public Adapter caseDataRetrieval(DataRetrieval object) {
-				return createDataRetrievalAdapter();
+			public Adapter caseString(workflow.String object) {
+				return createStringAdapter();
 			}
 			@Override
-			public Adapter caseCommits(Commits object) {
-				return createCommitsAdapter();
+			public Adapter caseInteger(workflow.Integer object) {
+				return createIntegerAdapter();
 			}
 			@Override
-			public Adapter caseAuthors(Authors object) {
-				return createAuthorsAdapter();
+			public Adapter caseBoolean(workflow.Boolean object) {
+				return createBooleanAdapter();
 			}
 			@Override
-			public Adapter caseFiles(Files object) {
-				return createFilesAdapter();
-			}
-			@Override
-			public Adapter caseDataManipulation(DataManipulation object) {
-				return createDataManipulationAdapter();
-			}
-			@Override
-			public Adapter caseDataAggregation(DataAggregation object) {
-				return createDataAggregationAdapter();
-			}
-			@Override
-			public Adapter caseDataFiltering(DataFiltering object) {
-				return createDataFilteringAdapter();
-			}
-			@Override
-			public Adapter caseCustomScript(CustomScript object) {
-				return createCustomScriptAdapter();
+			public Adapter caseDouble(workflow.Double object) {
+				return createDoubleAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -158,184 +148,128 @@ public class WorkflowAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link workflow.Element <em>Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link workflow.Task <em>Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see workflow.Element
+	 * @see workflow.Task
 	 * @generated
 	 */
-	public Adapter createElementAdapter() {
+	public Adapter createTaskAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link workflow.DataSource <em>Data Source</em>}'.
+	 * Creates a new adapter for an object of class '{@link workflow.EmittingTask <em>Emitting Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see workflow.DataSource
+	 * @see workflow.EmittingTask
 	 * @generated
 	 */
-	public Adapter createDataSourceAdapter() {
+	public Adapter createEmittingTaskAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link workflow.Github <em>Github</em>}'.
+	 * Creates a new adapter for an object of class '{@link workflow.TaskCommunicationConfiguration <em>Task Communication Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see workflow.Github
+	 * @see workflow.TaskCommunicationConfiguration
 	 * @generated
 	 */
-	public Adapter createGithubAdapter() {
+	public Adapter createTaskCommunicationConfigurationAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link workflow.GithubBigQuery <em>Github Big Query</em>}'.
+	 * Creates a new adapter for an object of class '{@link workflow.RemoteTaskCommunicationConfiguration <em>Remote Task Communication Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see workflow.GithubBigQuery
+	 * @see workflow.RemoteTaskCommunicationConfiguration
 	 * @generated
 	 */
-	public Adapter createGithubBigQueryAdapter() {
+	public Adapter createRemoteTaskCommunicationConfigurationAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link workflow.GHTorrent <em>GH Torrent</em>}'.
+	 * Creates a new adapter for an object of class '{@link workflow.Variable <em>Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see workflow.GHTorrent
+	 * @see workflow.Variable
 	 * @generated
 	 */
-	public Adapter createGHTorrentAdapter() {
+	public Adapter createVariableAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link workflow.DataRetrieval <em>Data Retrieval</em>}'.
+	 * Creates a new adapter for an object of class '{@link workflow.String <em>String</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see workflow.DataRetrieval
+	 * @see workflow.String
 	 * @generated
 	 */
-	public Adapter createDataRetrievalAdapter() {
+	public Adapter createStringAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link workflow.Commits <em>Commits</em>}'.
+	 * Creates a new adapter for an object of class '{@link workflow.Integer <em>Integer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see workflow.Commits
+	 * @see workflow.Integer
 	 * @generated
 	 */
-	public Adapter createCommitsAdapter() {
+	public Adapter createIntegerAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link workflow.Authors <em>Authors</em>}'.
+	 * Creates a new adapter for an object of class '{@link workflow.Boolean <em>Boolean</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see workflow.Authors
+	 * @see workflow.Boolean
 	 * @generated
 	 */
-	public Adapter createAuthorsAdapter() {
+	public Adapter createBooleanAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link workflow.Files <em>Files</em>}'.
+	 * Creates a new adapter for an object of class '{@link workflow.Double <em>Double</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see workflow.Files
+	 * @see workflow.Double
 	 * @generated
 	 */
-	public Adapter createFilesAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link workflow.DataManipulation <em>Data Manipulation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see workflow.DataManipulation
-	 * @generated
-	 */
-	public Adapter createDataManipulationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link workflow.DataAggregation <em>Data Aggregation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see workflow.DataAggregation
-	 * @generated
-	 */
-	public Adapter createDataAggregationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link workflow.DataFiltering <em>Data Filtering</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see workflow.DataFiltering
-	 * @generated
-	 */
-	public Adapter createDataFilteringAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link workflow.CustomScript <em>Custom Script</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see workflow.CustomScript
-	 * @generated
-	 */
-	public Adapter createCustomScriptAdapter() {
+	public Adapter createDoubleAdapter() {
 		return null;
 	}
 

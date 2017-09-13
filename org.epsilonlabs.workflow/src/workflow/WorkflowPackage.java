@@ -2,8 +2,11 @@
  */
 package workflow;
 
+import java.lang.String;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -37,7 +40,7 @@ public interface WorkflowPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://workflow";
+	String eNS_URI = "http://org.crossminer.workflow";
 
 	/**
 	 * The package namespace name.
@@ -66,31 +69,40 @@ public interface WorkflowPackage extends EPackage {
 	int WORKFLOW = 0;
 
 	/**
-	 * The feature id for the '<em><b>Starting Points</b></em>' reference list.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__STARTING_POINTS = 0;
+	int WORKFLOW__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>End Points</b></em>' reference list.
+	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__END_POINTS = 1;
+	int WORKFLOW__TASKS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Configs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__CONTENTS = 2;
+	int WORKFLOW__CONFIGS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Globals</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW__GLOBALS = 3;
 
 	/**
 	 * The number of structural features of the '<em>Workflow</em>' class.
@@ -99,274 +111,53 @@ public interface WorkflowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_FEATURE_COUNT = 3;
+	int WORKFLOW_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link workflow.impl.ElementImpl <em>Element</em>}' class.
+	 * The meta object id for the '{@link workflow.impl.TaskImpl <em>Task</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see workflow.impl.ElementImpl
-	 * @see workflow.impl.WorkflowPackageImpl#getElement()
+	 * @see workflow.impl.TaskImpl
+	 * @see workflow.impl.WorkflowPackageImpl#getTask()
 	 * @generated
 	 */
-	int ELEMENT = 1;
+	int TASK = 1;
 
 	/**
-	 * The number of structural features of the '<em>Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link workflow.impl.DataSourceImpl <em>Data Source</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see workflow.impl.DataSourceImpl
-	 * @see workflow.impl.WorkflowPackageImpl#getDataSource()
-	 * @generated
-	 */
-	int DATA_SOURCE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Retrievals</b></em>' reference list.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SOURCE__RETRIEVALS = ELEMENT_FEATURE_COUNT + 0;
+	int TASK__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * The feature id for the '<em><b>Concurrency</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SOURCE__URL = ELEMENT_FEATURE_COUNT + 1;
+	int TASK__CONCURRENCY = 1;
 
 	/**
-	 * The feature id for the '<em><b>Offers Partial Data</b></em>' attribute.
+	 * The feature id for the '<em><b>Implementation Fully Qualified Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SOURCE__OFFERS_PARTIAL_DATA = ELEMENT_FEATURE_COUNT + 2;
+	int TASK__IMPLEMENTATION_FULLY_QUALIFIED_NAME = 2;
 
 	/**
-	 * The number of structural features of the '<em>Data Source</em>' class.
+	 * The feature id for the '<em><b>Implementation Entry Point</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SOURCE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The meta object id for the '{@link workflow.impl.GithubImpl <em>Github</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see workflow.impl.GithubImpl
-	 * @see workflow.impl.WorkflowPackageImpl#getGithub()
-	 * @generated
-	 */
-	int GITHUB = 3;
-
-	/**
-	 * The feature id for the '<em><b>Retrievals</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GITHUB__RETRIEVALS = DATA_SOURCE__RETRIEVALS;
-
-	/**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GITHUB__URL = DATA_SOURCE__URL;
-
-	/**
-	 * The feature id for the '<em><b>Offers Partial Data</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GITHUB__OFFERS_PARTIAL_DATA = DATA_SOURCE__OFFERS_PARTIAL_DATA;
-
-	/**
-	 * The feature id for the '<em><b>Un</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GITHUB__UN = DATA_SOURCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Pw</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GITHUB__PW = DATA_SOURCE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Github</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GITHUB_FEATURE_COUNT = DATA_SOURCE_FEATURE_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link workflow.impl.GithubBigQueryImpl <em>Github Big Query</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see workflow.impl.GithubBigQueryImpl
-	 * @see workflow.impl.WorkflowPackageImpl#getGithubBigQuery()
-	 * @generated
-	 */
-	int GITHUB_BIG_QUERY = 4;
-
-	/**
-	 * The feature id for the '<em><b>Retrievals</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GITHUB_BIG_QUERY__RETRIEVALS = DATA_SOURCE__RETRIEVALS;
-
-	/**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GITHUB_BIG_QUERY__URL = DATA_SOURCE__URL;
-
-	/**
-	 * The feature id for the '<em><b>Offers Partial Data</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GITHUB_BIG_QUERY__OFFERS_PARTIAL_DATA = DATA_SOURCE__OFFERS_PARTIAL_DATA;
-
-	/**
-	 * The feature id for the '<em><b>Un</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GITHUB_BIG_QUERY__UN = DATA_SOURCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Pw</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GITHUB_BIG_QUERY__PW = DATA_SOURCE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Github Big Query</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GITHUB_BIG_QUERY_FEATURE_COUNT = DATA_SOURCE_FEATURE_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link workflow.impl.GHTorrentImpl <em>GH Torrent</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see workflow.impl.GHTorrentImpl
-	 * @see workflow.impl.WorkflowPackageImpl#getGHTorrent()
-	 * @generated
-	 */
-	int GH_TORRENT = 5;
-
-	/**
-	 * The feature id for the '<em><b>Retrievals</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GH_TORRENT__RETRIEVALS = DATA_SOURCE__RETRIEVALS;
-
-	/**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GH_TORRENT__URL = DATA_SOURCE__URL;
-
-	/**
-	 * The feature id for the '<em><b>Offers Partial Data</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GH_TORRENT__OFFERS_PARTIAL_DATA = DATA_SOURCE__OFFERS_PARTIAL_DATA;
-
-	/**
-	 * The feature id for the '<em><b>Public Key</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GH_TORRENT__PUBLIC_KEY = DATA_SOURCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>GH Torrent</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GH_TORRENT_FEATURE_COUNT = DATA_SOURCE_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link workflow.impl.DataRetrievalImpl <em>Data Retrieval</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see workflow.impl.DataRetrievalImpl
-	 * @see workflow.impl.WorkflowPackageImpl#getDataRetrieval()
-	 * @generated
-	 */
-	int DATA_RETRIEVAL = 6;
-
-	/**
-	 * The feature id for the '<em><b>Sources</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RETRIEVAL__SOURCES = ELEMENT_FEATURE_COUNT + 0;
+	int TASK__IMPLEMENTATION_ENTRY_POINT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Accepts Partial Data</b></em>' attribute.
@@ -375,44 +166,80 @@ public interface WorkflowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RETRIEVAL__ACCEPTS_PARTIAL_DATA = ELEMENT_FEATURE_COUNT + 1;
+	int TASK__ACCEPTS_PARTIAL_DATA = 4;
 
 	/**
-	 * The feature id for the '<em><b>Repo Patterns</b></em>' attribute.
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RETRIEVAL__REPO_PATTERNS = ELEMENT_FEATURE_COUNT + 2;
+	int TASK__INCOMING = 5;
 
 	/**
-	 * The number of structural features of the '<em>Data Retrieval</em>' class.
+	 * The feature id for the '<em><b>Locals</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RETRIEVAL_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 3;
+	int TASK__LOCALS = 6;
 
 	/**
-	 * The meta object id for the '{@link workflow.impl.CommitsImpl <em>Commits</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see workflow.impl.CommitsImpl
-	 * @see workflow.impl.WorkflowPackageImpl#getCommits()
-	 * @generated
-	 */
-	int COMMITS = 7;
-
-	/**
-	 * The feature id for the '<em><b>Sources</b></em>' reference list.
+	 * The number of structural features of the '<em>Task</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMITS__SOURCES = DATA_RETRIEVAL__SOURCES;
+	int TASK_FEATURE_COUNT = 7;
+
+	/**
+	 * The meta object id for the '{@link workflow.impl.EmittingTaskImpl <em>Emitting Task</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see workflow.impl.EmittingTaskImpl
+	 * @see workflow.impl.WorkflowPackageImpl#getEmittingTask()
+	 * @generated
+	 */
+	int EMITTING_TASK = 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMITTING_TASK__NAME = TASK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Concurrency</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMITTING_TASK__CONCURRENCY = TASK__CONCURRENCY;
+
+	/**
+	 * The feature id for the '<em><b>Implementation Fully Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMITTING_TASK__IMPLEMENTATION_FULLY_QUALIFIED_NAME = TASK__IMPLEMENTATION_FULLY_QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Implementation Entry Point</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMITTING_TASK__IMPLEMENTATION_ENTRY_POINT = TASK__IMPLEMENTATION_ENTRY_POINT;
 
 	/**
 	 * The feature id for the '<em><b>Accepts Partial Data</b></em>' attribute.
@@ -421,328 +248,358 @@ public interface WorkflowPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMMITS__ACCEPTS_PARTIAL_DATA = DATA_RETRIEVAL__ACCEPTS_PARTIAL_DATA;
+	int EMITTING_TASK__ACCEPTS_PARTIAL_DATA = TASK__ACCEPTS_PARTIAL_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Repo Patterns</b></em>' attribute.
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMITS__REPO_PATTERNS = DATA_RETRIEVAL__REPO_PATTERNS;
+	int EMITTING_TASK__INCOMING = TASK__INCOMING;
 
 	/**
-	 * The feature id for the '<em><b>Patterns</b></em>' attribute.
+	 * The feature id for the '<em><b>Locals</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMITS__PATTERNS = DATA_RETRIEVAL_FEATURE_COUNT + 0;
+	int EMITTING_TASK__LOCALS = TASK__LOCALS;
 
 	/**
-	 * The feature id for the '<em><b>Start Date</b></em>' attribute.
+	 * The feature id for the '<em><b>Provides Partial Data</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMITS__START_DATE = DATA_RETRIEVAL_FEATURE_COUNT + 1;
+	int EMITTING_TASK__PROVIDES_PARTIAL_DATA = TASK_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>End Date</b></em>' attribute.
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMITS__END_DATE = DATA_RETRIEVAL_FEATURE_COUNT + 2;
+	int EMITTING_TASK__OUTGOING = TASK_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Commits</em>' class.
+	 * The number of structural features of the '<em>Emitting Task</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMITS_FEATURE_COUNT = DATA_RETRIEVAL_FEATURE_COUNT + 3;
+	int EMITTING_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link workflow.impl.AuthorsImpl <em>Authors</em>}' class.
+	 * The meta object id for the '{@link workflow.impl.TaskCommunicationConfigurationImpl <em>Task Communication Configuration</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see workflow.impl.AuthorsImpl
-	 * @see workflow.impl.WorkflowPackageImpl#getAuthors()
+	 * @see workflow.impl.TaskCommunicationConfigurationImpl
+	 * @see workflow.impl.WorkflowPackageImpl#getTaskCommunicationConfiguration()
 	 * @generated
 	 */
-	int AUTHORS = 8;
+	int TASK_COMMUNICATION_CONFIGURATION = 3;
 
 	/**
-	 * The feature id for the '<em><b>Sources</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AUTHORS__SOURCES = DATA_RETRIEVAL__SOURCES;
-
-	/**
-	 * The feature id for the '<em><b>Accepts Partial Data</b></em>' attribute.
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AUTHORS__ACCEPTS_PARTIAL_DATA = DATA_RETRIEVAL__ACCEPTS_PARTIAL_DATA;
+	int TASK_COMMUNICATION_CONFIGURATION__INCOMING = 0;
 
 	/**
-	 * The feature id for the '<em><b>Repo Patterns</b></em>' attribute.
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AUTHORS__REPO_PATTERNS = DATA_RETRIEVAL__REPO_PATTERNS;
+	int TASK_COMMUNICATION_CONFIGURATION__OUTGOING = 1;
 
 	/**
-	 * The feature id for the '<em><b>Patterns</b></em>' attribute.
+	 * The number of structural features of the '<em>Task Communication Configuration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AUTHORS__PATTERNS = DATA_RETRIEVAL_FEATURE_COUNT + 0;
+	int TASK_COMMUNICATION_CONFIGURATION_FEATURE_COUNT = 2;
 
 	/**
-	 * The number of structural features of the '<em>Authors</em>' class.
+	 * The meta object id for the '{@link workflow.impl.RemoteTaskCommunicationConfigurationImpl <em>Remote Task Communication Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see workflow.impl.RemoteTaskCommunicationConfigurationImpl
+	 * @see workflow.impl.WorkflowPackageImpl#getRemoteTaskCommunicationConfiguration()
+	 * @generated
+	 */
+	int REMOTE_TASK_COMMUNICATION_CONFIGURATION = 4;
+
+	/**
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AUTHORS_FEATURE_COUNT = DATA_RETRIEVAL_FEATURE_COUNT + 1;
+	int REMOTE_TASK_COMMUNICATION_CONFIGURATION__INCOMING = TASK_COMMUNICATION_CONFIGURATION__INCOMING;
 
 	/**
-	 * The meta object id for the '{@link workflow.impl.FilesImpl <em>Files</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see workflow.impl.FilesImpl
-	 * @see workflow.impl.WorkflowPackageImpl#getFiles()
-	 * @generated
-	 */
-	int FILES = 9;
-
-	/**
-	 * The feature id for the '<em><b>Sources</b></em>' reference list.
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FILES__SOURCES = DATA_RETRIEVAL__SOURCES;
+	int REMOTE_TASK_COMMUNICATION_CONFIGURATION__OUTGOING = TASK_COMMUNICATION_CONFIGURATION__OUTGOING;
 
 	/**
-	 * The feature id for the '<em><b>Accepts Partial Data</b></em>' attribute.
+	 * The feature id for the '<em><b>Address</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FILES__ACCEPTS_PARTIAL_DATA = DATA_RETRIEVAL__ACCEPTS_PARTIAL_DATA;
+	int REMOTE_TASK_COMMUNICATION_CONFIGURATION__ADDRESS = TASK_COMMUNICATION_CONFIGURATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Repo Patterns</b></em>' attribute.
+	 * The feature id for the '<em><b>Port</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FILES__REPO_PATTERNS = DATA_RETRIEVAL__REPO_PATTERNS;
+	int REMOTE_TASK_COMMUNICATION_CONFIGURATION__PORT = TASK_COMMUNICATION_CONFIGURATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Patterns</b></em>' attribute.
+	 * The feature id for the '<em><b>Single Queue</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FILES__PATTERNS = DATA_RETRIEVAL_FEATURE_COUNT + 0;
+	int REMOTE_TASK_COMMUNICATION_CONFIGURATION__SINGLE_QUEUE = TASK_COMMUNICATION_CONFIGURATION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Files</em>' class.
+	 * The feature id for the '<em><b>Queue Persistance</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FILES_FEATURE_COUNT = DATA_RETRIEVAL_FEATURE_COUNT + 1;
+	int REMOTE_TASK_COMMUNICATION_CONFIGURATION__QUEUE_PERSISTANCE = TASK_COMMUNICATION_CONFIGURATION_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link workflow.impl.DataManipulationImpl <em>Data Manipulation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see workflow.impl.DataManipulationImpl
-	 * @see workflow.impl.WorkflowPackageImpl#getDataManipulation()
-	 * @generated
-	 */
-	int DATA_MANIPULATION = 10;
-
-	/**
-	 * The feature id for the '<em><b>Temp</b></em>' attribute.
+	 * The number of structural features of the '<em>Remote Task Communication Configuration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MANIPULATION__TEMP = ELEMENT_FEATURE_COUNT + 0;
+	int REMOTE_TASK_COMMUNICATION_CONFIGURATION_FEATURE_COUNT = TASK_COMMUNICATION_CONFIGURATION_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Sources</b></em>' reference list.
+	 * The meta object id for the '{@link workflow.impl.VariableImpl <em>Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see workflow.impl.VariableImpl
+	 * @see workflow.impl.WorkflowPackageImpl#getVariable()
+	 * @generated
+	 */
+	int VARIABLE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MANIPULATION__SOURCES = ELEMENT_FEATURE_COUNT + 1;
+	int VARIABLE__NAME = 0;
 
 	/**
-	 * The number of structural features of the '<em>Data Manipulation</em>' class.
+	 * The number of structural features of the '<em>Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MANIPULATION_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 2;
+	int VARIABLE_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link workflow.impl.DataAggregationImpl <em>Data Aggregation</em>}' class.
+	 * The meta object id for the '{@link workflow.impl.StringImpl <em>String</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see workflow.impl.DataAggregationImpl
-	 * @see workflow.impl.WorkflowPackageImpl#getDataAggregation()
+	 * @see workflow.impl.StringImpl
+	 * @see workflow.impl.WorkflowPackageImpl#getString()
 	 * @generated
 	 */
-	int DATA_AGGREGATION = 11;
+	int STRING = 6;
 
 	/**
-	 * The feature id for the '<em><b>Temp</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_AGGREGATION__TEMP = DATA_MANIPULATION__TEMP;
-
-	/**
-	 * The feature id for the '<em><b>Sources</b></em>' reference list.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_AGGREGATION__SOURCES = DATA_MANIPULATION__SOURCES;
+	int STRING__NAME = VARIABLE__NAME;
 
 	/**
-	 * The number of structural features of the '<em>Data Aggregation</em>' class.
+	 * The feature id for the '<em><b>Value</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_AGGREGATION_FEATURE_COUNT = DATA_MANIPULATION_FEATURE_COUNT + 0;
+	int STRING__VALUE = VARIABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link workflow.impl.DataFilteringImpl <em>Data Filtering</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see workflow.impl.DataFilteringImpl
-	 * @see workflow.impl.WorkflowPackageImpl#getDataFiltering()
-	 * @generated
-	 */
-	int DATA_FILTERING = 12;
-
-	/**
-	 * The feature id for the '<em><b>Temp</b></em>' attribute.
+	 * The number of structural features of the '<em>String</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_FILTERING__TEMP = DATA_MANIPULATION__TEMP;
+	int STRING_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Sources</b></em>' reference list.
+	 * The meta object id for the '{@link workflow.impl.IntegerImpl <em>Integer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see workflow.impl.IntegerImpl
+	 * @see workflow.impl.WorkflowPackageImpl#getInteger()
+	 * @generated
+	 */
+	int INTEGER = 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_FILTERING__SOURCES = DATA_MANIPULATION__SOURCES;
+	int INTEGER__NAME = VARIABLE__NAME;
 
 	/**
-	 * The number of structural features of the '<em>Data Filtering</em>' class.
+	 * The feature id for the '<em><b>Value</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_FILTERING_FEATURE_COUNT = DATA_MANIPULATION_FEATURE_COUNT + 0;
+	int INTEGER__VALUE = VARIABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link workflow.impl.CustomScriptImpl <em>Custom Script</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see workflow.impl.CustomScriptImpl
-	 * @see workflow.impl.WorkflowPackageImpl#getCustomScript()
-	 * @generated
-	 */
-	int CUSTOM_SCRIPT = 13;
-
-	/**
-	 * The feature id for the '<em><b>Temp</b></em>' attribute.
+	 * The number of structural features of the '<em>Integer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_SCRIPT__TEMP = DATA_MANIPULATION__TEMP;
+	int INTEGER_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Sources</b></em>' reference list.
+	 * The meta object id for the '{@link workflow.impl.BooleanImpl <em>Boolean</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see workflow.impl.BooleanImpl
+	 * @see workflow.impl.WorkflowPackageImpl#getBoolean()
+	 * @generated
+	 */
+	int BOOLEAN = 8;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_SCRIPT__SOURCES = DATA_MANIPULATION__SOURCES;
+	int BOOLEAN__NAME = VARIABLE__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Language</b></em>' attribute.
+	 * The feature id for the '<em><b>Value</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_SCRIPT__LANGUAGE = DATA_MANIPULATION_FEATURE_COUNT + 0;
+	int BOOLEAN__VALUE = VARIABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' attribute.
+	 * The number of structural features of the '<em>Boolean</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_SCRIPT__CODE = DATA_MANIPULATION_FEATURE_COUNT + 1;
+	int BOOLEAN_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Custom Script</em>' class.
+	 * The meta object id for the '{@link workflow.impl.DoubleImpl <em>Double</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see workflow.impl.DoubleImpl
+	 * @see workflow.impl.WorkflowPackageImpl#getDouble()
+	 * @generated
+	 */
+	int DOUBLE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_SCRIPT_FEATURE_COUNT = DATA_MANIPULATION_FEATURE_COUNT + 2;
+	int DOUBLE__NAME = VARIABLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOUBLE__VALUE = VARIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Double</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOUBLE_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link workflow.TaskConcurrency <em>Task Concurrency</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see workflow.TaskConcurrency
+	 * @see workflow.impl.WorkflowPackageImpl#getTaskConcurrency()
+	 * @generated
+	 */
+	int TASK_CONCURRENCY = 10;
+
+	/**
+	 * The meta object id for the '{@link workflow.QueuePersistanceOptions <em>Queue Persistance Options</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see workflow.QueuePersistanceOptions
+	 * @see workflow.impl.WorkflowPackageImpl#getQueuePersistanceOptions()
+	 * @generated
+	 */
+	int QUEUE_PERSISTANCE_OPTIONS = 11;
 
 
 	/**
@@ -756,387 +613,378 @@ public interface WorkflowPackage extends EPackage {
 	EClass getWorkflow();
 
 	/**
-	 * Returns the meta object for the reference list '{@link workflow.Workflow#getStartingPoints <em>Starting Points</em>}'.
+	 * Returns the meta object for the attribute '{@link workflow.Workflow#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Starting Points</em>'.
-	 * @see workflow.Workflow#getStartingPoints()
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see workflow.Workflow#getName()
 	 * @see #getWorkflow()
 	 * @generated
 	 */
-	EReference getWorkflow_StartingPoints();
+	EAttribute getWorkflow_Name();
 
 	/**
-	 * Returns the meta object for the reference list '{@link workflow.Workflow#getEndPoints <em>End Points</em>}'.
+	 * Returns the meta object for the containment reference list '{@link workflow.Workflow#getTasks <em>Tasks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>End Points</em>'.
-	 * @see workflow.Workflow#getEndPoints()
+	 * @return the meta object for the containment reference list '<em>Tasks</em>'.
+	 * @see workflow.Workflow#getTasks()
 	 * @see #getWorkflow()
 	 * @generated
 	 */
-	EReference getWorkflow_EndPoints();
+	EReference getWorkflow_Tasks();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link workflow.Workflow#getContents <em>Contents</em>}'.
+	 * Returns the meta object for the containment reference list '{@link workflow.Workflow#getConfigs <em>Configs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Contents</em>'.
-	 * @see workflow.Workflow#getContents()
+	 * @return the meta object for the containment reference list '<em>Configs</em>'.
+	 * @see workflow.Workflow#getConfigs()
 	 * @see #getWorkflow()
 	 * @generated
 	 */
-	EReference getWorkflow_Contents();
+	EReference getWorkflow_Configs();
 
 	/**
-	 * Returns the meta object for class '{@link workflow.Element <em>Element</em>}'.
+	 * Returns the meta object for the containment reference list '{@link workflow.Workflow#getGlobals <em>Globals</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Element</em>'.
-	 * @see workflow.Element
+	 * @return the meta object for the containment reference list '<em>Globals</em>'.
+	 * @see workflow.Workflow#getGlobals()
+	 * @see #getWorkflow()
 	 * @generated
 	 */
-	EClass getElement();
+	EReference getWorkflow_Globals();
 
 	/**
-	 * Returns the meta object for class '{@link workflow.DataSource <em>Data Source</em>}'.
+	 * Returns the meta object for class '{@link workflow.Task <em>Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data Source</em>'.
-	 * @see workflow.DataSource
+	 * @return the meta object for class '<em>Task</em>'.
+	 * @see workflow.Task
 	 * @generated
 	 */
-	EClass getDataSource();
+	EClass getTask();
 
 	/**
-	 * Returns the meta object for the reference list '{@link workflow.DataSource#getRetrievals <em>Retrievals</em>}'.
+	 * Returns the meta object for the attribute '{@link workflow.Task#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Retrievals</em>'.
-	 * @see workflow.DataSource#getRetrievals()
-	 * @see #getDataSource()
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see workflow.Task#getName()
+	 * @see #getTask()
 	 * @generated
 	 */
-	EReference getDataSource_Retrievals();
+	EAttribute getTask_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link workflow.DataSource#getUrl <em>Url</em>}'.
+	 * Returns the meta object for the attribute '{@link workflow.Task#getConcurrency <em>Concurrency</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Url</em>'.
-	 * @see workflow.DataSource#getUrl()
-	 * @see #getDataSource()
+	 * @return the meta object for the attribute '<em>Concurrency</em>'.
+	 * @see workflow.Task#getConcurrency()
+	 * @see #getTask()
 	 * @generated
 	 */
-	EAttribute getDataSource_Url();
+	EAttribute getTask_Concurrency();
 
 	/**
-	 * Returns the meta object for the attribute '{@link workflow.DataSource#isOffersPartialData <em>Offers Partial Data</em>}'.
+	 * Returns the meta object for the attribute '{@link workflow.Task#getImplementationFullyQualifiedName <em>Implementation Fully Qualified Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Offers Partial Data</em>'.
-	 * @see workflow.DataSource#isOffersPartialData()
-	 * @see #getDataSource()
+	 * @return the meta object for the attribute '<em>Implementation Fully Qualified Name</em>'.
+	 * @see workflow.Task#getImplementationFullyQualifiedName()
+	 * @see #getTask()
 	 * @generated
 	 */
-	EAttribute getDataSource_OffersPartialData();
+	EAttribute getTask_ImplementationFullyQualifiedName();
 
 	/**
-	 * Returns the meta object for class '{@link workflow.Github <em>Github</em>}'.
+	 * Returns the meta object for the attribute '{@link workflow.Task#getImplementationEntryPoint <em>Implementation Entry Point</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Github</em>'.
-	 * @see workflow.Github
+	 * @return the meta object for the attribute '<em>Implementation Entry Point</em>'.
+	 * @see workflow.Task#getImplementationEntryPoint()
+	 * @see #getTask()
 	 * @generated
 	 */
-	EClass getGithub();
+	EAttribute getTask_ImplementationEntryPoint();
 
 	/**
-	 * Returns the meta object for the attribute '{@link workflow.Github#getUn <em>Un</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Un</em>'.
-	 * @see workflow.Github#getUn()
-	 * @see #getGithub()
-	 * @generated
-	 */
-	EAttribute getGithub_Un();
-
-	/**
-	 * Returns the meta object for the attribute '{@link workflow.Github#getPw <em>Pw</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pw</em>'.
-	 * @see workflow.Github#getPw()
-	 * @see #getGithub()
-	 * @generated
-	 */
-	EAttribute getGithub_Pw();
-
-	/**
-	 * Returns the meta object for class '{@link workflow.GithubBigQuery <em>Github Big Query</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Github Big Query</em>'.
-	 * @see workflow.GithubBigQuery
-	 * @generated
-	 */
-	EClass getGithubBigQuery();
-
-	/**
-	 * Returns the meta object for the attribute '{@link workflow.GithubBigQuery#getUn <em>Un</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Un</em>'.
-	 * @see workflow.GithubBigQuery#getUn()
-	 * @see #getGithubBigQuery()
-	 * @generated
-	 */
-	EAttribute getGithubBigQuery_Un();
-
-	/**
-	 * Returns the meta object for the attribute '{@link workflow.GithubBigQuery#getPw <em>Pw</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pw</em>'.
-	 * @see workflow.GithubBigQuery#getPw()
-	 * @see #getGithubBigQuery()
-	 * @generated
-	 */
-	EAttribute getGithubBigQuery_Pw();
-
-	/**
-	 * Returns the meta object for class '{@link workflow.GHTorrent <em>GH Torrent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>GH Torrent</em>'.
-	 * @see workflow.GHTorrent
-	 * @generated
-	 */
-	EClass getGHTorrent();
-
-	/**
-	 * Returns the meta object for the attribute '{@link workflow.GHTorrent#getPublicKey <em>Public Key</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Public Key</em>'.
-	 * @see workflow.GHTorrent#getPublicKey()
-	 * @see #getGHTorrent()
-	 * @generated
-	 */
-	EAttribute getGHTorrent_PublicKey();
-
-	/**
-	 * Returns the meta object for class '{@link workflow.DataRetrieval <em>Data Retrieval</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data Retrieval</em>'.
-	 * @see workflow.DataRetrieval
-	 * @generated
-	 */
-	EClass getDataRetrieval();
-
-	/**
-	 * Returns the meta object for the reference list '{@link workflow.DataRetrieval#getSources <em>Sources</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Sources</em>'.
-	 * @see workflow.DataRetrieval#getSources()
-	 * @see #getDataRetrieval()
-	 * @generated
-	 */
-	EReference getDataRetrieval_Sources();
-
-	/**
-	 * Returns the meta object for the attribute '{@link workflow.DataRetrieval#isAcceptsPartialData <em>Accepts Partial Data</em>}'.
+	 * Returns the meta object for the attribute '{@link workflow.Task#isAcceptsPartialData <em>Accepts Partial Data</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Accepts Partial Data</em>'.
-	 * @see workflow.DataRetrieval#isAcceptsPartialData()
-	 * @see #getDataRetrieval()
+	 * @see workflow.Task#isAcceptsPartialData()
+	 * @see #getTask()
 	 * @generated
 	 */
-	EAttribute getDataRetrieval_AcceptsPartialData();
+	EAttribute getTask_AcceptsPartialData();
 
 	/**
-	 * Returns the meta object for the attribute '{@link workflow.DataRetrieval#getRepoPatterns <em>Repo Patterns</em>}'.
+	 * Returns the meta object for the reference list '{@link workflow.Task#getIncoming <em>Incoming</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Repo Patterns</em>'.
-	 * @see workflow.DataRetrieval#getRepoPatterns()
-	 * @see #getDataRetrieval()
+	 * @return the meta object for the reference list '<em>Incoming</em>'.
+	 * @see workflow.Task#getIncoming()
+	 * @see #getTask()
 	 * @generated
 	 */
-	EAttribute getDataRetrieval_RepoPatterns();
+	EReference getTask_Incoming();
 
 	/**
-	 * Returns the meta object for class '{@link workflow.Commits <em>Commits</em>}'.
+	 * Returns the meta object for the containment reference list '{@link workflow.Task#getLocals <em>Locals</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Commits</em>'.
-	 * @see workflow.Commits
+	 * @return the meta object for the containment reference list '<em>Locals</em>'.
+	 * @see workflow.Task#getLocals()
+	 * @see #getTask()
 	 * @generated
 	 */
-	EClass getCommits();
+	EReference getTask_Locals();
 
 	/**
-	 * Returns the meta object for the attribute '{@link workflow.Commits#getPatterns <em>Patterns</em>}'.
+	 * Returns the meta object for class '{@link workflow.EmittingTask <em>Emitting Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Patterns</em>'.
-	 * @see workflow.Commits#getPatterns()
-	 * @see #getCommits()
+	 * @return the meta object for class '<em>Emitting Task</em>'.
+	 * @see workflow.EmittingTask
 	 * @generated
 	 */
-	EAttribute getCommits_Patterns();
+	EClass getEmittingTask();
 
 	/**
-	 * Returns the meta object for the attribute '{@link workflow.Commits#getStartDate <em>Start Date</em>}'.
+	 * Returns the meta object for the attribute '{@link workflow.EmittingTask#isProvidesPartialData <em>Provides Partial Data</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Start Date</em>'.
-	 * @see workflow.Commits#getStartDate()
-	 * @see #getCommits()
+	 * @return the meta object for the attribute '<em>Provides Partial Data</em>'.
+	 * @see workflow.EmittingTask#isProvidesPartialData()
+	 * @see #getEmittingTask()
 	 * @generated
 	 */
-	EAttribute getCommits_StartDate();
+	EAttribute getEmittingTask_ProvidesPartialData();
 
 	/**
-	 * Returns the meta object for the attribute '{@link workflow.Commits#getEndDate <em>End Date</em>}'.
+	 * Returns the meta object for the reference list '{@link workflow.EmittingTask#getOutgoing <em>Outgoing</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>End Date</em>'.
-	 * @see workflow.Commits#getEndDate()
-	 * @see #getCommits()
+	 * @return the meta object for the reference list '<em>Outgoing</em>'.
+	 * @see workflow.EmittingTask#getOutgoing()
+	 * @see #getEmittingTask()
 	 * @generated
 	 */
-	EAttribute getCommits_EndDate();
+	EReference getEmittingTask_Outgoing();
 
 	/**
-	 * Returns the meta object for class '{@link workflow.Authors <em>Authors</em>}'.
+	 * Returns the meta object for class '{@link workflow.TaskCommunicationConfiguration <em>Task Communication Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Authors</em>'.
-	 * @see workflow.Authors
+	 * @return the meta object for class '<em>Task Communication Configuration</em>'.
+	 * @see workflow.TaskCommunicationConfiguration
 	 * @generated
 	 */
-	EClass getAuthors();
+	EClass getTaskCommunicationConfiguration();
 
 	/**
-	 * Returns the meta object for the attribute '{@link workflow.Authors#getPatterns <em>Patterns</em>}'.
+	 * Returns the meta object for the reference list '{@link workflow.TaskCommunicationConfiguration#getIncoming <em>Incoming</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Patterns</em>'.
-	 * @see workflow.Authors#getPatterns()
-	 * @see #getAuthors()
+	 * @return the meta object for the reference list '<em>Incoming</em>'.
+	 * @see workflow.TaskCommunicationConfiguration#getIncoming()
+	 * @see #getTaskCommunicationConfiguration()
 	 * @generated
 	 */
-	EAttribute getAuthors_Patterns();
+	EReference getTaskCommunicationConfiguration_Incoming();
 
 	/**
-	 * Returns the meta object for class '{@link workflow.Files <em>Files</em>}'.
+	 * Returns the meta object for the reference list '{@link workflow.TaskCommunicationConfiguration#getOutgoing <em>Outgoing</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Files</em>'.
-	 * @see workflow.Files
+	 * @return the meta object for the reference list '<em>Outgoing</em>'.
+	 * @see workflow.TaskCommunicationConfiguration#getOutgoing()
+	 * @see #getTaskCommunicationConfiguration()
 	 * @generated
 	 */
-	EClass getFiles();
+	EReference getTaskCommunicationConfiguration_Outgoing();
 
 	/**
-	 * Returns the meta object for the attribute '{@link workflow.Files#getPatterns <em>Patterns</em>}'.
+	 * Returns the meta object for class '{@link workflow.RemoteTaskCommunicationConfiguration <em>Remote Task Communication Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Patterns</em>'.
-	 * @see workflow.Files#getPatterns()
-	 * @see #getFiles()
+	 * @return the meta object for class '<em>Remote Task Communication Configuration</em>'.
+	 * @see workflow.RemoteTaskCommunicationConfiguration
 	 * @generated
 	 */
-	EAttribute getFiles_Patterns();
+	EClass getRemoteTaskCommunicationConfiguration();
 
 	/**
-	 * Returns the meta object for class '{@link workflow.DataManipulation <em>Data Manipulation</em>}'.
+	 * Returns the meta object for the attribute '{@link workflow.RemoteTaskCommunicationConfiguration#getAddress <em>Address</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data Manipulation</em>'.
-	 * @see workflow.DataManipulation
+	 * @return the meta object for the attribute '<em>Address</em>'.
+	 * @see workflow.RemoteTaskCommunicationConfiguration#getAddress()
+	 * @see #getRemoteTaskCommunicationConfiguration()
 	 * @generated
 	 */
-	EClass getDataManipulation();
+	EAttribute getRemoteTaskCommunicationConfiguration_Address();
 
 	/**
-	 * Returns the meta object for the attribute '{@link workflow.DataManipulation#getTemp <em>Temp</em>}'.
+	 * Returns the meta object for the attribute '{@link workflow.RemoteTaskCommunicationConfiguration#getPort <em>Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Temp</em>'.
-	 * @see workflow.DataManipulation#getTemp()
-	 * @see #getDataManipulation()
+	 * @return the meta object for the attribute '<em>Port</em>'.
+	 * @see workflow.RemoteTaskCommunicationConfiguration#getPort()
+	 * @see #getRemoteTaskCommunicationConfiguration()
 	 * @generated
 	 */
-	EAttribute getDataManipulation_Temp();
+	EAttribute getRemoteTaskCommunicationConfiguration_Port();
 
 	/**
-	 * Returns the meta object for the reference list '{@link workflow.DataManipulation#getSources <em>Sources</em>}'.
+	 * Returns the meta object for the attribute '{@link workflow.RemoteTaskCommunicationConfiguration#isSingleQueue <em>Single Queue</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Sources</em>'.
-	 * @see workflow.DataManipulation#getSources()
-	 * @see #getDataManipulation()
+	 * @return the meta object for the attribute '<em>Single Queue</em>'.
+	 * @see workflow.RemoteTaskCommunicationConfiguration#isSingleQueue()
+	 * @see #getRemoteTaskCommunicationConfiguration()
 	 * @generated
 	 */
-	EReference getDataManipulation_Sources();
+	EAttribute getRemoteTaskCommunicationConfiguration_SingleQueue();
 
 	/**
-	 * Returns the meta object for class '{@link workflow.DataAggregation <em>Data Aggregation</em>}'.
+	 * Returns the meta object for the attribute '{@link workflow.RemoteTaskCommunicationConfiguration#getQueuePersistance <em>Queue Persistance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data Aggregation</em>'.
-	 * @see workflow.DataAggregation
+	 * @return the meta object for the attribute '<em>Queue Persistance</em>'.
+	 * @see workflow.RemoteTaskCommunicationConfiguration#getQueuePersistance()
+	 * @see #getRemoteTaskCommunicationConfiguration()
 	 * @generated
 	 */
-	EClass getDataAggregation();
+	EAttribute getRemoteTaskCommunicationConfiguration_QueuePersistance();
 
 	/**
-	 * Returns the meta object for class '{@link workflow.DataFiltering <em>Data Filtering</em>}'.
+	 * Returns the meta object for class '{@link workflow.Variable <em>Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data Filtering</em>'.
-	 * @see workflow.DataFiltering
+	 * @return the meta object for class '<em>Variable</em>'.
+	 * @see workflow.Variable
 	 * @generated
 	 */
-	EClass getDataFiltering();
+	EClass getVariable();
 
 	/**
-	 * Returns the meta object for class '{@link workflow.CustomScript <em>Custom Script</em>}'.
+	 * Returns the meta object for the attribute '{@link workflow.Variable#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Custom Script</em>'.
-	 * @see workflow.CustomScript
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see workflow.Variable#getName()
+	 * @see #getVariable()
 	 * @generated
 	 */
-	EClass getCustomScript();
+	EAttribute getVariable_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link workflow.CustomScript#getLanguage <em>Language</em>}'.
+	 * Returns the meta object for class '{@link workflow.String <em>String</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Language</em>'.
-	 * @see workflow.CustomScript#getLanguage()
-	 * @see #getCustomScript()
+	 * @return the meta object for class '<em>String</em>'.
+	 * @see workflow.String
 	 * @generated
 	 */
-	EAttribute getCustomScript_Language();
+	EClass getString();
 
 	/**
-	 * Returns the meta object for the attribute '{@link workflow.CustomScript#getCode <em>Code</em>}'.
+	 * Returns the meta object for the attribute list '{@link workflow.String#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Code</em>'.
-	 * @see workflow.CustomScript#getCode()
-	 * @see #getCustomScript()
+	 * @return the meta object for the attribute list '<em>Value</em>'.
+	 * @see workflow.String#getValue()
+	 * @see #getString()
 	 * @generated
 	 */
-	EAttribute getCustomScript_Code();
+	EAttribute getString_Value();
+
+	/**
+	 * Returns the meta object for class '{@link workflow.Integer <em>Integer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Integer</em>'.
+	 * @see workflow.Integer
+	 * @generated
+	 */
+	EClass getInteger();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link workflow.Integer#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Value</em>'.
+	 * @see workflow.Integer#getValue()
+	 * @see #getInteger()
+	 * @generated
+	 */
+	EAttribute getInteger_Value();
+
+	/**
+	 * Returns the meta object for class '{@link workflow.Boolean <em>Boolean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Boolean</em>'.
+	 * @see workflow.Boolean
+	 * @generated
+	 */
+	EClass getBoolean();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link workflow.Boolean#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Value</em>'.
+	 * @see workflow.Boolean#getValue()
+	 * @see #getBoolean()
+	 * @generated
+	 */
+	EAttribute getBoolean_Value();
+
+	/**
+	 * Returns the meta object for class '{@link workflow.Double <em>Double</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Double</em>'.
+	 * @see workflow.Double
+	 * @generated
+	 */
+	EClass getDouble();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link workflow.Double#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Value</em>'.
+	 * @see workflow.Double#getValue()
+	 * @see #getDouble()
+	 * @generated
+	 */
+	EAttribute getDouble_Value();
+
+	/**
+	 * Returns the meta object for enum '{@link workflow.TaskConcurrency <em>Task Concurrency</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Task Concurrency</em>'.
+	 * @see workflow.TaskConcurrency
+	 * @generated
+	 */
+	EEnum getTaskConcurrency();
+
+	/**
+	 * Returns the meta object for enum '{@link workflow.QueuePersistanceOptions <em>Queue Persistance Options</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Queue Persistance Options</em>'.
+	 * @see workflow.QueuePersistanceOptions
+	 * @generated
+	 */
+	EEnum getQueuePersistanceOptions();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1171,160 +1019,78 @@ public interface WorkflowPackage extends EPackage {
 		EClass WORKFLOW = eINSTANCE.getWorkflow();
 
 		/**
-		 * The meta object literal for the '<em><b>Starting Points</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WORKFLOW__STARTING_POINTS = eINSTANCE.getWorkflow_StartingPoints();
+		EAttribute WORKFLOW__NAME = eINSTANCE.getWorkflow_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>End Points</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Tasks</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WORKFLOW__END_POINTS = eINSTANCE.getWorkflow_EndPoints();
+		EReference WORKFLOW__TASKS = eINSTANCE.getWorkflow_Tasks();
 
 		/**
-		 * The meta object literal for the '<em><b>Contents</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Configs</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WORKFLOW__CONTENTS = eINSTANCE.getWorkflow_Contents();
+		EReference WORKFLOW__CONFIGS = eINSTANCE.getWorkflow_Configs();
 
 		/**
-		 * The meta object literal for the '{@link workflow.impl.ElementImpl <em>Element</em>}' class.
+		 * The meta object literal for the '<em><b>Globals</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see workflow.impl.ElementImpl
-		 * @see workflow.impl.WorkflowPackageImpl#getElement()
 		 * @generated
 		 */
-		EClass ELEMENT = eINSTANCE.getElement();
+		EReference WORKFLOW__GLOBALS = eINSTANCE.getWorkflow_Globals();
 
 		/**
-		 * The meta object literal for the '{@link workflow.impl.DataSourceImpl <em>Data Source</em>}' class.
+		 * The meta object literal for the '{@link workflow.impl.TaskImpl <em>Task</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see workflow.impl.DataSourceImpl
-		 * @see workflow.impl.WorkflowPackageImpl#getDataSource()
+		 * @see workflow.impl.TaskImpl
+		 * @see workflow.impl.WorkflowPackageImpl#getTask()
 		 * @generated
 		 */
-		EClass DATA_SOURCE = eINSTANCE.getDataSource();
+		EClass TASK = eINSTANCE.getTask();
 
 		/**
-		 * The meta object literal for the '<em><b>Retrievals</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATA_SOURCE__RETRIEVALS = eINSTANCE.getDataSource_Retrievals();
+		EAttribute TASK__NAME = eINSTANCE.getTask_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Url</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Concurrency</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATA_SOURCE__URL = eINSTANCE.getDataSource_Url();
+		EAttribute TASK__CONCURRENCY = eINSTANCE.getTask_Concurrency();
 
 		/**
-		 * The meta object literal for the '<em><b>Offers Partial Data</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Implementation Fully Qualified Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATA_SOURCE__OFFERS_PARTIAL_DATA = eINSTANCE.getDataSource_OffersPartialData();
+		EAttribute TASK__IMPLEMENTATION_FULLY_QUALIFIED_NAME = eINSTANCE.getTask_ImplementationFullyQualifiedName();
 
 		/**
-		 * The meta object literal for the '{@link workflow.impl.GithubImpl <em>Github</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see workflow.impl.GithubImpl
-		 * @see workflow.impl.WorkflowPackageImpl#getGithub()
-		 * @generated
-		 */
-		EClass GITHUB = eINSTANCE.getGithub();
-
-		/**
-		 * The meta object literal for the '<em><b>Un</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Implementation Entry Point</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GITHUB__UN = eINSTANCE.getGithub_Un();
-
-		/**
-		 * The meta object literal for the '<em><b>Pw</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GITHUB__PW = eINSTANCE.getGithub_Pw();
-
-		/**
-		 * The meta object literal for the '{@link workflow.impl.GithubBigQueryImpl <em>Github Big Query</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see workflow.impl.GithubBigQueryImpl
-		 * @see workflow.impl.WorkflowPackageImpl#getGithubBigQuery()
-		 * @generated
-		 */
-		EClass GITHUB_BIG_QUERY = eINSTANCE.getGithubBigQuery();
-
-		/**
-		 * The meta object literal for the '<em><b>Un</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GITHUB_BIG_QUERY__UN = eINSTANCE.getGithubBigQuery_Un();
-
-		/**
-		 * The meta object literal for the '<em><b>Pw</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GITHUB_BIG_QUERY__PW = eINSTANCE.getGithubBigQuery_Pw();
-
-		/**
-		 * The meta object literal for the '{@link workflow.impl.GHTorrentImpl <em>GH Torrent</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see workflow.impl.GHTorrentImpl
-		 * @see workflow.impl.WorkflowPackageImpl#getGHTorrent()
-		 * @generated
-		 */
-		EClass GH_TORRENT = eINSTANCE.getGHTorrent();
-
-		/**
-		 * The meta object literal for the '<em><b>Public Key</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GH_TORRENT__PUBLIC_KEY = eINSTANCE.getGHTorrent_PublicKey();
-
-		/**
-		 * The meta object literal for the '{@link workflow.impl.DataRetrievalImpl <em>Data Retrieval</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see workflow.impl.DataRetrievalImpl
-		 * @see workflow.impl.WorkflowPackageImpl#getDataRetrieval()
-		 * @generated
-		 */
-		EClass DATA_RETRIEVAL = eINSTANCE.getDataRetrieval();
-
-		/**
-		 * The meta object literal for the '<em><b>Sources</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DATA_RETRIEVAL__SOURCES = eINSTANCE.getDataRetrieval_Sources();
+		EAttribute TASK__IMPLEMENTATION_ENTRY_POINT = eINSTANCE.getTask_ImplementationEntryPoint();
 
 		/**
 		 * The meta object literal for the '<em><b>Accepts Partial Data</b></em>' attribute feature.
@@ -1332,157 +1098,227 @@ public interface WorkflowPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATA_RETRIEVAL__ACCEPTS_PARTIAL_DATA = eINSTANCE.getDataRetrieval_AcceptsPartialData();
+		EAttribute TASK__ACCEPTS_PARTIAL_DATA = eINSTANCE.getTask_AcceptsPartialData();
 
 		/**
-		 * The meta object literal for the '<em><b>Repo Patterns</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Incoming</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATA_RETRIEVAL__REPO_PATTERNS = eINSTANCE.getDataRetrieval_RepoPatterns();
+		EReference TASK__INCOMING = eINSTANCE.getTask_Incoming();
 
 		/**
-		 * The meta object literal for the '{@link workflow.impl.CommitsImpl <em>Commits</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see workflow.impl.CommitsImpl
-		 * @see workflow.impl.WorkflowPackageImpl#getCommits()
-		 * @generated
-		 */
-		EClass COMMITS = eINSTANCE.getCommits();
-
-		/**
-		 * The meta object literal for the '<em><b>Patterns</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Locals</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COMMITS__PATTERNS = eINSTANCE.getCommits_Patterns();
+		EReference TASK__LOCALS = eINSTANCE.getTask_Locals();
 
 		/**
-		 * The meta object literal for the '<em><b>Start Date</b></em>' attribute feature.
+		 * The meta object literal for the '{@link workflow.impl.EmittingTaskImpl <em>Emitting Task</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see workflow.impl.EmittingTaskImpl
+		 * @see workflow.impl.WorkflowPackageImpl#getEmittingTask()
+		 * @generated
+		 */
+		EClass EMITTING_TASK = eINSTANCE.getEmittingTask();
+
+		/**
+		 * The meta object literal for the '<em><b>Provides Partial Data</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COMMITS__START_DATE = eINSTANCE.getCommits_StartDate();
+		EAttribute EMITTING_TASK__PROVIDES_PARTIAL_DATA = eINSTANCE.getEmittingTask_ProvidesPartialData();
 
 		/**
-		 * The meta object literal for the '<em><b>End Date</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Outgoing</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COMMITS__END_DATE = eINSTANCE.getCommits_EndDate();
+		EReference EMITTING_TASK__OUTGOING = eINSTANCE.getEmittingTask_Outgoing();
 
 		/**
-		 * The meta object literal for the '{@link workflow.impl.AuthorsImpl <em>Authors</em>}' class.
+		 * The meta object literal for the '{@link workflow.impl.TaskCommunicationConfigurationImpl <em>Task Communication Configuration</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see workflow.impl.AuthorsImpl
-		 * @see workflow.impl.WorkflowPackageImpl#getAuthors()
+		 * @see workflow.impl.TaskCommunicationConfigurationImpl
+		 * @see workflow.impl.WorkflowPackageImpl#getTaskCommunicationConfiguration()
 		 * @generated
 		 */
-		EClass AUTHORS = eINSTANCE.getAuthors();
+		EClass TASK_COMMUNICATION_CONFIGURATION = eINSTANCE.getTaskCommunicationConfiguration();
 
 		/**
-		 * The meta object literal for the '<em><b>Patterns</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute AUTHORS__PATTERNS = eINSTANCE.getAuthors_Patterns();
-
-		/**
-		 * The meta object literal for the '{@link workflow.impl.FilesImpl <em>Files</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see workflow.impl.FilesImpl
-		 * @see workflow.impl.WorkflowPackageImpl#getFiles()
-		 * @generated
-		 */
-		EClass FILES = eINSTANCE.getFiles();
-
-		/**
-		 * The meta object literal for the '<em><b>Patterns</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Incoming</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute FILES__PATTERNS = eINSTANCE.getFiles_Patterns();
+		EReference TASK_COMMUNICATION_CONFIGURATION__INCOMING = eINSTANCE.getTaskCommunicationConfiguration_Incoming();
 
 		/**
-		 * The meta object literal for the '{@link workflow.impl.DataManipulationImpl <em>Data Manipulation</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see workflow.impl.DataManipulationImpl
-		 * @see workflow.impl.WorkflowPackageImpl#getDataManipulation()
-		 * @generated
-		 */
-		EClass DATA_MANIPULATION = eINSTANCE.getDataManipulation();
-
-		/**
-		 * The meta object literal for the '<em><b>Temp</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Outgoing</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATA_MANIPULATION__TEMP = eINSTANCE.getDataManipulation_Temp();
+		EReference TASK_COMMUNICATION_CONFIGURATION__OUTGOING = eINSTANCE.getTaskCommunicationConfiguration_Outgoing();
 
 		/**
-		 * The meta object literal for the '<em><b>Sources</b></em>' reference list feature.
+		 * The meta object literal for the '{@link workflow.impl.RemoteTaskCommunicationConfigurationImpl <em>Remote Task Communication Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see workflow.impl.RemoteTaskCommunicationConfigurationImpl
+		 * @see workflow.impl.WorkflowPackageImpl#getRemoteTaskCommunicationConfiguration()
+		 * @generated
+		 */
+		EClass REMOTE_TASK_COMMUNICATION_CONFIGURATION = eINSTANCE.getRemoteTaskCommunicationConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Address</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATA_MANIPULATION__SOURCES = eINSTANCE.getDataManipulation_Sources();
+		EAttribute REMOTE_TASK_COMMUNICATION_CONFIGURATION__ADDRESS = eINSTANCE.getRemoteTaskCommunicationConfiguration_Address();
 
 		/**
-		 * The meta object literal for the '{@link workflow.impl.DataAggregationImpl <em>Data Aggregation</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see workflow.impl.DataAggregationImpl
-		 * @see workflow.impl.WorkflowPackageImpl#getDataAggregation()
-		 * @generated
-		 */
-		EClass DATA_AGGREGATION = eINSTANCE.getDataAggregation();
-
-		/**
-		 * The meta object literal for the '{@link workflow.impl.DataFilteringImpl <em>Data Filtering</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see workflow.impl.DataFilteringImpl
-		 * @see workflow.impl.WorkflowPackageImpl#getDataFiltering()
-		 * @generated
-		 */
-		EClass DATA_FILTERING = eINSTANCE.getDataFiltering();
-
-		/**
-		 * The meta object literal for the '{@link workflow.impl.CustomScriptImpl <em>Custom Script</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see workflow.impl.CustomScriptImpl
-		 * @see workflow.impl.WorkflowPackageImpl#getCustomScript()
-		 * @generated
-		 */
-		EClass CUSTOM_SCRIPT = eINSTANCE.getCustomScript();
-
-		/**
-		 * The meta object literal for the '<em><b>Language</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Port</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CUSTOM_SCRIPT__LANGUAGE = eINSTANCE.getCustomScript_Language();
+		EAttribute REMOTE_TASK_COMMUNICATION_CONFIGURATION__PORT = eINSTANCE.getRemoteTaskCommunicationConfiguration_Port();
 
 		/**
-		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Single Queue</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CUSTOM_SCRIPT__CODE = eINSTANCE.getCustomScript_Code();
+		EAttribute REMOTE_TASK_COMMUNICATION_CONFIGURATION__SINGLE_QUEUE = eINSTANCE.getRemoteTaskCommunicationConfiguration_SingleQueue();
+
+		/**
+		 * The meta object literal for the '<em><b>Queue Persistance</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REMOTE_TASK_COMMUNICATION_CONFIGURATION__QUEUE_PERSISTANCE = eINSTANCE.getRemoteTaskCommunicationConfiguration_QueuePersistance();
+
+		/**
+		 * The meta object literal for the '{@link workflow.impl.VariableImpl <em>Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see workflow.impl.VariableImpl
+		 * @see workflow.impl.WorkflowPackageImpl#getVariable()
+		 * @generated
+		 */
+		EClass VARIABLE = eINSTANCE.getVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__NAME = eINSTANCE.getVariable_Name();
+
+		/**
+		 * The meta object literal for the '{@link workflow.impl.StringImpl <em>String</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see workflow.impl.StringImpl
+		 * @see workflow.impl.WorkflowPackageImpl#getString()
+		 * @generated
+		 */
+		EClass STRING = eINSTANCE.getString();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STRING__VALUE = eINSTANCE.getString_Value();
+
+		/**
+		 * The meta object literal for the '{@link workflow.impl.IntegerImpl <em>Integer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see workflow.impl.IntegerImpl
+		 * @see workflow.impl.WorkflowPackageImpl#getInteger()
+		 * @generated
+		 */
+		EClass INTEGER = eINSTANCE.getInteger();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INTEGER__VALUE = eINSTANCE.getInteger_Value();
+
+		/**
+		 * The meta object literal for the '{@link workflow.impl.BooleanImpl <em>Boolean</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see workflow.impl.BooleanImpl
+		 * @see workflow.impl.WorkflowPackageImpl#getBoolean()
+		 * @generated
+		 */
+		EClass BOOLEAN = eINSTANCE.getBoolean();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOLEAN__VALUE = eINSTANCE.getBoolean_Value();
+
+		/**
+		 * The meta object literal for the '{@link workflow.impl.DoubleImpl <em>Double</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see workflow.impl.DoubleImpl
+		 * @see workflow.impl.WorkflowPackageImpl#getDouble()
+		 * @generated
+		 */
+		EClass DOUBLE = eINSTANCE.getDouble();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOUBLE__VALUE = eINSTANCE.getDouble_Value();
+
+		/**
+		 * The meta object literal for the '{@link workflow.TaskConcurrency <em>Task Concurrency</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see workflow.TaskConcurrency
+		 * @see workflow.impl.WorkflowPackageImpl#getTaskConcurrency()
+		 * @generated
+		 */
+		EEnum TASK_CONCURRENCY = eINSTANCE.getTaskConcurrency();
+
+		/**
+		 * The meta object literal for the '{@link workflow.QueuePersistanceOptions <em>Queue Persistance Options</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see workflow.QueuePersistanceOptions
+		 * @see workflow.impl.WorkflowPackageImpl#getQueuePersistanceOptions()
+		 * @generated
+		 */
+		EEnum QUEUE_PERSISTANCE_OPTIONS = eINSTANCE.getQueuePersistanceOptions();
 
 	}
 

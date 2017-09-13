@@ -18,19 +18,18 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 
 import workflow.WorkflowPackage;
-import workflow.diagram.edit.parts.AuthorsEditPart;
-import workflow.diagram.edit.parts.CommitsEditPart;
-import workflow.diagram.edit.parts.CustomScriptEditPart;
-import workflow.diagram.edit.parts.DataAggregationEditPart;
-import workflow.diagram.edit.parts.DataFilteringEditPart;
-import workflow.diagram.edit.parts.DataManipulationEditPart;
-import workflow.diagram.edit.parts.DataManipulationSourcesEditPart;
-import workflow.diagram.edit.parts.DataRetrievalSourcesEditPart;
-import workflow.diagram.edit.parts.DataSourceRetrievalsEditPart;
-import workflow.diagram.edit.parts.FilesEditPart;
-import workflow.diagram.edit.parts.GHTorrentEditPart;
-import workflow.diagram.edit.parts.GithubBigQueryEditPart;
-import workflow.diagram.edit.parts.GithubEditPart;
+import workflow.diagram.edit.parts.Boolean2EditPart;
+import workflow.diagram.edit.parts.BooleanEditPart;
+import workflow.diagram.edit.parts.Double2EditPart;
+import workflow.diagram.edit.parts.DoubleEditPart;
+import workflow.diagram.edit.parts.EmittingTaskEditPart;
+import workflow.diagram.edit.parts.Integer2EditPart;
+import workflow.diagram.edit.parts.IntegerEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationEditPart;
+import workflow.diagram.edit.parts.String2EditPart;
+import workflow.diagram.edit.parts.StringEditPart;
+import workflow.diagram.edit.parts.TaskCommunicationConfigurationEditPart;
+import workflow.diagram.edit.parts.TaskEditPart;
 import workflow.diagram.edit.parts.WorkflowEditPart;
 import workflow.diagram.part.WorkflowDiagramEditorPlugin;
 
@@ -68,63 +67,58 @@ public class WorkflowElementTypes {
 	/**
 	* @generated
 	*/
-	public static final IElementType Github_2001 = getElementType("org.epsilonlabs.workflow.diagram.Github_2001"); //$NON-NLS-1$
+	public static final IElementType EmittingTask_2011 = getElementType(
+			"org.epsilonlabs.workflow.diagram.EmittingTask_2011"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType GithubBigQuery_2002 = getElementType(
-			"org.epsilonlabs.workflow.diagram.GithubBigQuery_2002"); //$NON-NLS-1$
+	public static final IElementType String_2012 = getElementType("org.epsilonlabs.workflow.diagram.String_2012"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType GHTorrent_2003 = getElementType("org.epsilonlabs.workflow.diagram.GHTorrent_2003"); //$NON-NLS-1$
+	public static final IElementType Integer_2013 = getElementType("org.epsilonlabs.workflow.diagram.Integer_2013"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType Commits_2004 = getElementType("org.epsilonlabs.workflow.diagram.Commits_2004"); //$NON-NLS-1$
+	public static final IElementType Boolean_2014 = getElementType("org.epsilonlabs.workflow.diagram.Boolean_2014"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType Authors_2005 = getElementType("org.epsilonlabs.workflow.diagram.Authors_2005"); //$NON-NLS-1$
+	public static final IElementType Double_2015 = getElementType("org.epsilonlabs.workflow.diagram.Double_2015"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType Files_2006 = getElementType("org.epsilonlabs.workflow.diagram.Files_2006"); //$NON-NLS-1$
+	public static final IElementType Task_2016 = getElementType("org.epsilonlabs.workflow.diagram.Task_2016"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType DataAggregation_2007 = getElementType(
-			"org.epsilonlabs.workflow.diagram.DataAggregation_2007"); //$NON-NLS-1$
+	public static final IElementType String_3001 = getElementType("org.epsilonlabs.workflow.diagram.String_3001"); //$NON-NLS-1$
+
 	/**
 	* @generated
 	*/
-	public static final IElementType DataFiltering_2008 = getElementType(
-			"org.epsilonlabs.workflow.diagram.DataFiltering_2008"); //$NON-NLS-1$
+	public static final IElementType Integer_3002 = getElementType("org.epsilonlabs.workflow.diagram.Integer_3002"); //$NON-NLS-1$
+
 	/**
 	* @generated
 	*/
-	public static final IElementType CustomScript_2009 = getElementType(
-			"org.epsilonlabs.workflow.diagram.CustomScript_2009"); //$NON-NLS-1$
+	public static final IElementType Boolean_3003 = getElementType("org.epsilonlabs.workflow.diagram.Boolean_3003"); //$NON-NLS-1$
+
 	/**
 	* @generated
 	*/
-	public static final IElementType DataManipulation_2010 = getElementType(
-			"org.epsilonlabs.workflow.diagram.DataManipulation_2010"); //$NON-NLS-1$
+	public static final IElementType Double_3004 = getElementType("org.epsilonlabs.workflow.diagram.Double_3004"); //$NON-NLS-1$
+
 	/**
 	* @generated
 	*/
-	public static final IElementType DataSourceRetrievals_4001 = getElementType(
-			"org.epsilonlabs.workflow.diagram.DataSourceRetrievals_4001"); //$NON-NLS-1$
+	public static final IElementType RemoteTaskCommunicationConfiguration_4004 = getElementType(
+			"org.epsilonlabs.workflow.diagram.RemoteTaskCommunicationConfiguration_4004"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType DataRetrievalSources_4002 = getElementType(
-			"org.epsilonlabs.workflow.diagram.DataRetrievalSources_4002"); //$NON-NLS-1$
-	/**
-	* @generated
-	*/
-	public static final IElementType DataManipulationSources_4003 = getElementType(
-			"org.epsilonlabs.workflow.diagram.DataManipulationSources_4003"); //$NON-NLS-1$
+	public static final IElementType TaskCommunicationConfiguration_4005 = getElementType(
+			"org.epsilonlabs.workflow.diagram.TaskCommunicationConfiguration_4005"); //$NON-NLS-1$
 
 	/**
 	* @generated
@@ -166,31 +160,31 @@ public class WorkflowElementTypes {
 
 			elements.put(Workflow_1000, WorkflowPackage.eINSTANCE.getWorkflow());
 
-			elements.put(Github_2001, WorkflowPackage.eINSTANCE.getGithub());
+			elements.put(EmittingTask_2011, WorkflowPackage.eINSTANCE.getEmittingTask());
 
-			elements.put(GithubBigQuery_2002, WorkflowPackage.eINSTANCE.getGithubBigQuery());
+			elements.put(String_2012, WorkflowPackage.eINSTANCE.getString());
 
-			elements.put(GHTorrent_2003, WorkflowPackage.eINSTANCE.getGHTorrent());
+			elements.put(Integer_2013, WorkflowPackage.eINSTANCE.getInteger());
 
-			elements.put(Commits_2004, WorkflowPackage.eINSTANCE.getCommits());
+			elements.put(Boolean_2014, WorkflowPackage.eINSTANCE.getBoolean());
 
-			elements.put(Authors_2005, WorkflowPackage.eINSTANCE.getAuthors());
+			elements.put(Double_2015, WorkflowPackage.eINSTANCE.getDouble());
 
-			elements.put(Files_2006, WorkflowPackage.eINSTANCE.getFiles());
+			elements.put(Task_2016, WorkflowPackage.eINSTANCE.getTask());
 
-			elements.put(DataAggregation_2007, WorkflowPackage.eINSTANCE.getDataAggregation());
+			elements.put(String_3001, WorkflowPackage.eINSTANCE.getString());
 
-			elements.put(DataFiltering_2008, WorkflowPackage.eINSTANCE.getDataFiltering());
+			elements.put(Integer_3002, WorkflowPackage.eINSTANCE.getInteger());
 
-			elements.put(CustomScript_2009, WorkflowPackage.eINSTANCE.getCustomScript());
+			elements.put(Boolean_3003, WorkflowPackage.eINSTANCE.getBoolean());
 
-			elements.put(DataManipulation_2010, WorkflowPackage.eINSTANCE.getDataManipulation());
+			elements.put(Double_3004, WorkflowPackage.eINSTANCE.getDouble());
 
-			elements.put(DataSourceRetrievals_4001, WorkflowPackage.eINSTANCE.getDataSource_Retrievals());
+			elements.put(RemoteTaskCommunicationConfiguration_4004,
+					WorkflowPackage.eINSTANCE.getRemoteTaskCommunicationConfiguration());
 
-			elements.put(DataRetrievalSources_4002, WorkflowPackage.eINSTANCE.getDataRetrieval_Sources());
-
-			elements.put(DataManipulationSources_4003, WorkflowPackage.eINSTANCE.getDataManipulation_Sources());
+			elements.put(TaskCommunicationConfiguration_4005,
+					WorkflowPackage.eINSTANCE.getTaskCommunicationConfiguration());
 		}
 		return (ENamedElement) elements.get(type);
 	}
@@ -209,19 +203,18 @@ public class WorkflowElementTypes {
 		if (KNOWN_ELEMENT_TYPES == null) {
 			KNOWN_ELEMENT_TYPES = new HashSet<IElementType>();
 			KNOWN_ELEMENT_TYPES.add(Workflow_1000);
-			KNOWN_ELEMENT_TYPES.add(Github_2001);
-			KNOWN_ELEMENT_TYPES.add(GithubBigQuery_2002);
-			KNOWN_ELEMENT_TYPES.add(GHTorrent_2003);
-			KNOWN_ELEMENT_TYPES.add(Commits_2004);
-			KNOWN_ELEMENT_TYPES.add(Authors_2005);
-			KNOWN_ELEMENT_TYPES.add(Files_2006);
-			KNOWN_ELEMENT_TYPES.add(DataAggregation_2007);
-			KNOWN_ELEMENT_TYPES.add(DataFiltering_2008);
-			KNOWN_ELEMENT_TYPES.add(CustomScript_2009);
-			KNOWN_ELEMENT_TYPES.add(DataManipulation_2010);
-			KNOWN_ELEMENT_TYPES.add(DataSourceRetrievals_4001);
-			KNOWN_ELEMENT_TYPES.add(DataRetrievalSources_4002);
-			KNOWN_ELEMENT_TYPES.add(DataManipulationSources_4003);
+			KNOWN_ELEMENT_TYPES.add(EmittingTask_2011);
+			KNOWN_ELEMENT_TYPES.add(String_2012);
+			KNOWN_ELEMENT_TYPES.add(Integer_2013);
+			KNOWN_ELEMENT_TYPES.add(Boolean_2014);
+			KNOWN_ELEMENT_TYPES.add(Double_2015);
+			KNOWN_ELEMENT_TYPES.add(Task_2016);
+			KNOWN_ELEMENT_TYPES.add(String_3001);
+			KNOWN_ELEMENT_TYPES.add(Integer_3002);
+			KNOWN_ELEMENT_TYPES.add(Boolean_3003);
+			KNOWN_ELEMENT_TYPES.add(Double_3004);
+			KNOWN_ELEMENT_TYPES.add(RemoteTaskCommunicationConfiguration_4004);
+			KNOWN_ELEMENT_TYPES.add(TaskCommunicationConfiguration_4005);
 		}
 		return KNOWN_ELEMENT_TYPES.contains(elementType);
 	}
@@ -233,32 +226,30 @@ public class WorkflowElementTypes {
 		switch (visualID) {
 		case WorkflowEditPart.VISUAL_ID:
 			return Workflow_1000;
-		case GithubEditPart.VISUAL_ID:
-			return Github_2001;
-		case GithubBigQueryEditPart.VISUAL_ID:
-			return GithubBigQuery_2002;
-		case GHTorrentEditPart.VISUAL_ID:
-			return GHTorrent_2003;
-		case CommitsEditPart.VISUAL_ID:
-			return Commits_2004;
-		case AuthorsEditPart.VISUAL_ID:
-			return Authors_2005;
-		case FilesEditPart.VISUAL_ID:
-			return Files_2006;
-		case DataAggregationEditPart.VISUAL_ID:
-			return DataAggregation_2007;
-		case DataFilteringEditPart.VISUAL_ID:
-			return DataFiltering_2008;
-		case CustomScriptEditPart.VISUAL_ID:
-			return CustomScript_2009;
-		case DataManipulationEditPart.VISUAL_ID:
-			return DataManipulation_2010;
-		case DataSourceRetrievalsEditPart.VISUAL_ID:
-			return DataSourceRetrievals_4001;
-		case DataRetrievalSourcesEditPart.VISUAL_ID:
-			return DataRetrievalSources_4002;
-		case DataManipulationSourcesEditPart.VISUAL_ID:
-			return DataManipulationSources_4003;
+		case EmittingTaskEditPart.VISUAL_ID:
+			return EmittingTask_2011;
+		case StringEditPart.VISUAL_ID:
+			return String_2012;
+		case IntegerEditPart.VISUAL_ID:
+			return Integer_2013;
+		case BooleanEditPart.VISUAL_ID:
+			return Boolean_2014;
+		case DoubleEditPart.VISUAL_ID:
+			return Double_2015;
+		case TaskEditPart.VISUAL_ID:
+			return Task_2016;
+		case String2EditPart.VISUAL_ID:
+			return String_3001;
+		case Integer2EditPart.VISUAL_ID:
+			return Integer_3002;
+		case Boolean2EditPart.VISUAL_ID:
+			return Boolean_3003;
+		case Double2EditPart.VISUAL_ID:
+			return Double_3004;
+		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID:
+			return RemoteTaskCommunicationConfiguration_4004;
+		case TaskCommunicationConfigurationEditPart.VISUAL_ID:
+			return TaskCommunicationConfiguration_4005;
 		}
 		return null;
 	}

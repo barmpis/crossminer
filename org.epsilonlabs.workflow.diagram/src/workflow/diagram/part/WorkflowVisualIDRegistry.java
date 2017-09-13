@@ -12,33 +12,52 @@ import org.eclipse.gmf.tooling.runtime.structure.DiagramStructure;
 
 import workflow.Workflow;
 import workflow.WorkflowPackage;
-import workflow.diagram.edit.parts.AuthorsEditPart;
-import workflow.diagram.edit.parts.AuthorsRepoPatternsEditPart;
-import workflow.diagram.edit.parts.CommitsEditPart;
-import workflow.diagram.edit.parts.CommitsRepoPatternsEditPart;
-import workflow.diagram.edit.parts.CustomScriptEditPart;
-import workflow.diagram.edit.parts.CustomScriptTempEditPart;
-import workflow.diagram.edit.parts.DataAggregationEditPart;
-import workflow.diagram.edit.parts.DataAggregationTempEditPart;
-import workflow.diagram.edit.parts.DataFilteringEditPart;
-import workflow.diagram.edit.parts.DataFilteringTempEditPart;
-import workflow.diagram.edit.parts.DataManipulationEditPart;
-import workflow.diagram.edit.parts.DataManipulationSourcesEditPart;
-import workflow.diagram.edit.parts.DataManipulationTempEditPart;
-import workflow.diagram.edit.parts.DataRetrievalSourcesEditPart;
-import workflow.diagram.edit.parts.DataSourceRetrievalsEditPart;
-import workflow.diagram.edit.parts.FilesEditPart;
-import workflow.diagram.edit.parts.FilesRepoPatternsEditPart;
-import workflow.diagram.edit.parts.GHTorrentEditPart;
-import workflow.diagram.edit.parts.GHTorrentUrlEditPart;
-import workflow.diagram.edit.parts.GithubBigQueryEditPart;
-import workflow.diagram.edit.parts.GithubBigQueryUrlEditPart;
-import workflow.diagram.edit.parts.GithubEditPart;
-import workflow.diagram.edit.parts.GithubUrlEditPart;
+import workflow.diagram.edit.parts.Boolean2EditPart;
+import workflow.diagram.edit.parts.BooleanEditPart;
+import workflow.diagram.edit.parts.BooleanName2EditPart;
+import workflow.diagram.edit.parts.BooleanNameEditPart;
+import workflow.diagram.edit.parts.BooleanValue2EditPart;
+import workflow.diagram.edit.parts.BooleanValueEditPart;
+import workflow.diagram.edit.parts.Double2EditPart;
+import workflow.diagram.edit.parts.DoubleEditPart;
+import workflow.diagram.edit.parts.DoubleName2EditPart;
+import workflow.diagram.edit.parts.DoubleNameEditPart;
+import workflow.diagram.edit.parts.DoubleValue2EditPart;
+import workflow.diagram.edit.parts.DoubleValueEditPart;
+import workflow.diagram.edit.parts.EmittingTaskAcceptsPartialDataEditPart;
+import workflow.diagram.edit.parts.EmittingTaskConcurrencyEditPart;
+import workflow.diagram.edit.parts.EmittingTaskEditPart;
+import workflow.diagram.edit.parts.EmittingTaskEmittingTaskLocalsCompartmentEditPart;
+import workflow.diagram.edit.parts.EmittingTaskImplementationEntryPoinEditPart;
+import workflow.diagram.edit.parts.EmittingTaskImplementationFullyQualEditPart;
+import workflow.diagram.edit.parts.EmittingTaskNameEditPart;
+import workflow.diagram.edit.parts.EmittingTaskProvidesPartialDataEditPart;
+import workflow.diagram.edit.parts.Integer2EditPart;
+import workflow.diagram.edit.parts.IntegerEditPart;
+import workflow.diagram.edit.parts.IntegerName2EditPart;
+import workflow.diagram.edit.parts.IntegerNameEditPart;
+import workflow.diagram.edit.parts.IntegerValue2EditPart;
+import workflow.diagram.edit.parts.IntegerValueEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationAddressEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationAddressPortSingleQueueEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationAddressPortSingleQueueQEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationPortEditPart;
+import workflow.diagram.edit.parts.String2EditPart;
+import workflow.diagram.edit.parts.StringEditPart;
+import workflow.diagram.edit.parts.StringName2EditPart;
+import workflow.diagram.edit.parts.StringNameEditPart;
+import workflow.diagram.edit.parts.StringValue2EditPart;
+import workflow.diagram.edit.parts.StringValueEditPart;
+import workflow.diagram.edit.parts.TaskAcceptsPartialDataEditPart;
+import workflow.diagram.edit.parts.TaskCommunicationConfigurationEditPart;
+import workflow.diagram.edit.parts.TaskConcurrencyEditPart;
+import workflow.diagram.edit.parts.TaskEditPart;
+import workflow.diagram.edit.parts.TaskImplementationEntryPoinEditPart;
+import workflow.diagram.edit.parts.TaskImplementationFullyQualEditPart;
+import workflow.diagram.edit.parts.TaskNameEditPart;
+import workflow.diagram.edit.parts.TaskTaskLocalsCompartmentEditPart;
 import workflow.diagram.edit.parts.WorkflowEditPart;
-import workflow.diagram.edit.parts.WrappingLabel2EditPart;
-import workflow.diagram.edit.parts.WrappingLabel3EditPart;
-import workflow.diagram.edit.parts.WrappingLabelEditPart;
 
 /**
  * This registry is used to determine which type of visual object should be
@@ -142,35 +161,51 @@ public class WorkflowVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case WorkflowEditPart.VISUAL_ID:
-			if (WorkflowPackage.eINSTANCE.getGithub().isSuperTypeOf(domainElement.eClass())) {
-				return GithubEditPart.VISUAL_ID;
+			if (WorkflowPackage.eINSTANCE.getEmittingTask().isSuperTypeOf(domainElement.eClass())) {
+				return EmittingTaskEditPart.VISUAL_ID;
 			}
-			if (WorkflowPackage.eINSTANCE.getGithubBigQuery().isSuperTypeOf(domainElement.eClass())) {
-				return GithubBigQueryEditPart.VISUAL_ID;
+			if (WorkflowPackage.eINSTANCE.getString().isSuperTypeOf(domainElement.eClass())) {
+				return StringEditPart.VISUAL_ID;
 			}
-			if (WorkflowPackage.eINSTANCE.getGHTorrent().isSuperTypeOf(domainElement.eClass())) {
-				return GHTorrentEditPart.VISUAL_ID;
+			if (WorkflowPackage.eINSTANCE.getInteger().isSuperTypeOf(domainElement.eClass())) {
+				return IntegerEditPart.VISUAL_ID;
 			}
-			if (WorkflowPackage.eINSTANCE.getCommits().isSuperTypeOf(domainElement.eClass())) {
-				return CommitsEditPart.VISUAL_ID;
+			if (WorkflowPackage.eINSTANCE.getBoolean().isSuperTypeOf(domainElement.eClass())) {
+				return BooleanEditPart.VISUAL_ID;
 			}
-			if (WorkflowPackage.eINSTANCE.getAuthors().isSuperTypeOf(domainElement.eClass())) {
-				return AuthorsEditPart.VISUAL_ID;
+			if (WorkflowPackage.eINSTANCE.getDouble().isSuperTypeOf(domainElement.eClass())) {
+				return DoubleEditPart.VISUAL_ID;
 			}
-			if (WorkflowPackage.eINSTANCE.getFiles().isSuperTypeOf(domainElement.eClass())) {
-				return FilesEditPart.VISUAL_ID;
+			if (WorkflowPackage.eINSTANCE.getTask().isSuperTypeOf(domainElement.eClass())) {
+				return TaskEditPart.VISUAL_ID;
 			}
-			if (WorkflowPackage.eINSTANCE.getDataAggregation().isSuperTypeOf(domainElement.eClass())) {
-				return DataAggregationEditPart.VISUAL_ID;
+			break;
+		case EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID:
+			if (WorkflowPackage.eINSTANCE.getString().isSuperTypeOf(domainElement.eClass())) {
+				return String2EditPart.VISUAL_ID;
 			}
-			if (WorkflowPackage.eINSTANCE.getDataFiltering().isSuperTypeOf(domainElement.eClass())) {
-				return DataFilteringEditPart.VISUAL_ID;
+			if (WorkflowPackage.eINSTANCE.getInteger().isSuperTypeOf(domainElement.eClass())) {
+				return Integer2EditPart.VISUAL_ID;
 			}
-			if (WorkflowPackage.eINSTANCE.getCustomScript().isSuperTypeOf(domainElement.eClass())) {
-				return CustomScriptEditPart.VISUAL_ID;
+			if (WorkflowPackage.eINSTANCE.getBoolean().isSuperTypeOf(domainElement.eClass())) {
+				return Boolean2EditPart.VISUAL_ID;
 			}
-			if (WorkflowPackage.eINSTANCE.getDataManipulation().isSuperTypeOf(domainElement.eClass())) {
-				return DataManipulationEditPart.VISUAL_ID;
+			if (WorkflowPackage.eINSTANCE.getDouble().isSuperTypeOf(domainElement.eClass())) {
+				return Double2EditPart.VISUAL_ID;
+			}
+			break;
+		case TaskTaskLocalsCompartmentEditPart.VISUAL_ID:
+			if (WorkflowPackage.eINSTANCE.getString().isSuperTypeOf(domainElement.eClass())) {
+				return String2EditPart.VISUAL_ID;
+			}
+			if (WorkflowPackage.eINSTANCE.getInteger().isSuperTypeOf(domainElement.eClass())) {
+				return Integer2EditPart.VISUAL_ID;
+			}
+			if (WorkflowPackage.eINSTANCE.getBoolean().isSuperTypeOf(domainElement.eClass())) {
+				return Boolean2EditPart.VISUAL_ID;
+			}
+			if (WorkflowPackage.eINSTANCE.getDouble().isSuperTypeOf(domainElement.eClass())) {
+				return Double2EditPart.VISUAL_ID;
 			}
 			break;
 		}
@@ -197,99 +232,162 @@ public class WorkflowVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case WorkflowEditPart.VISUAL_ID:
-			if (GithubEditPart.VISUAL_ID == nodeVisualID) {
+			if (EmittingTaskEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (GithubBigQueryEditPart.VISUAL_ID == nodeVisualID) {
+			if (StringEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (GHTorrentEditPart.VISUAL_ID == nodeVisualID) {
+			if (IntegerEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (CommitsEditPart.VISUAL_ID == nodeVisualID) {
+			if (BooleanEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (AuthorsEditPart.VISUAL_ID == nodeVisualID) {
+			if (DoubleEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (FilesEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (DataAggregationEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (DataFilteringEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (CustomScriptEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (DataManipulationEditPart.VISUAL_ID == nodeVisualID) {
+			if (TaskEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case GithubEditPart.VISUAL_ID:
-			if (GithubUrlEditPart.VISUAL_ID == nodeVisualID) {
+		case EmittingTaskEditPart.VISUAL_ID:
+			if (EmittingTaskNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (EmittingTaskConcurrencyEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (EmittingTaskImplementationFullyQualEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (EmittingTaskImplementationEntryPoinEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (EmittingTaskAcceptsPartialDataEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (EmittingTaskProvidesPartialDataEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case GithubBigQueryEditPart.VISUAL_ID:
-			if (GithubBigQueryUrlEditPart.VISUAL_ID == nodeVisualID) {
+		case StringEditPart.VISUAL_ID:
+			if (StringNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (StringValueEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case GHTorrentEditPart.VISUAL_ID:
-			if (GHTorrentUrlEditPart.VISUAL_ID == nodeVisualID) {
+		case IntegerEditPart.VISUAL_ID:
+			if (IntegerNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (IntegerValueEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case CommitsEditPart.VISUAL_ID:
-			if (CommitsRepoPatternsEditPart.VISUAL_ID == nodeVisualID) {
+		case BooleanEditPart.VISUAL_ID:
+			if (BooleanNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (BooleanValueEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case AuthorsEditPart.VISUAL_ID:
-			if (AuthorsRepoPatternsEditPart.VISUAL_ID == nodeVisualID) {
+		case DoubleEditPart.VISUAL_ID:
+			if (DoubleNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (DoubleValueEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case FilesEditPart.VISUAL_ID:
-			if (FilesRepoPatternsEditPart.VISUAL_ID == nodeVisualID) {
+		case TaskEditPart.VISUAL_ID:
+			if (TaskNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (TaskConcurrencyEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (TaskImplementationFullyQualEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (TaskImplementationEntryPoinEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (TaskAcceptsPartialDataEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (TaskTaskLocalsCompartmentEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case DataAggregationEditPart.VISUAL_ID:
-			if (DataAggregationTempEditPart.VISUAL_ID == nodeVisualID) {
+		case String2EditPart.VISUAL_ID:
+			if (StringName2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (StringValue2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case DataFilteringEditPart.VISUAL_ID:
-			if (DataFilteringTempEditPart.VISUAL_ID == nodeVisualID) {
+		case Integer2EditPart.VISUAL_ID:
+			if (IntegerName2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (IntegerValue2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case CustomScriptEditPart.VISUAL_ID:
-			if (CustomScriptTempEditPart.VISUAL_ID == nodeVisualID) {
+		case Boolean2EditPart.VISUAL_ID:
+			if (BooleanName2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (BooleanValue2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case DataManipulationEditPart.VISUAL_ID:
-			if (DataManipulationTempEditPart.VISUAL_ID == nodeVisualID) {
+		case Double2EditPart.VISUAL_ID:
+			if (DoubleName2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (DoubleValue2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case DataSourceRetrievalsEditPart.VISUAL_ID:
-			if (WrappingLabelEditPart.VISUAL_ID == nodeVisualID) {
+		case EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID:
+			if (String2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (Integer2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (Boolean2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (Double2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case DataRetrievalSourcesEditPart.VISUAL_ID:
-			if (WrappingLabel2EditPart.VISUAL_ID == nodeVisualID) {
+		case TaskTaskLocalsCompartmentEditPart.VISUAL_ID:
+			if (String2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (Integer2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (Boolean2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (Double2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case DataManipulationSourcesEditPart.VISUAL_ID:
-			if (WrappingLabel3EditPart.VISUAL_ID == nodeVisualID) {
+		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID:
+			if (RemoteTaskCommunicationConfigurationAddressPortSingleQueueQEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -303,6 +401,12 @@ public class WorkflowVisualIDRegistry {
 	public static int getLinkWithClassVisualID(EObject domainElement) {
 		if (domainElement == null) {
 			return -1;
+		}
+		if (WorkflowPackage.eINSTANCE.getRemoteTaskCommunicationConfiguration().isSuperTypeOf(domainElement.eClass())) {
+			return RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID;
+		}
+		if (WorkflowPackage.eINSTANCE.getTaskCommunicationConfiguration().isSuperTypeOf(domainElement.eClass())) {
+			return TaskCommunicationConfigurationEditPart.VISUAL_ID;
 		}
 		return -1;
 	}
@@ -333,6 +437,13 @@ public class WorkflowVisualIDRegistry {
 	* @generated
 	*/
 	public static boolean isCompartmentVisualID(int visualID) {
+		switch (visualID) {
+		case EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID:
+		case TaskTaskLocalsCompartmentEditPart.VISUAL_ID:
+			return true;
+		default:
+			break;
+		}
 		return false;
 	}
 
@@ -343,16 +454,14 @@ public class WorkflowVisualIDRegistry {
 		switch (visualID) {
 		case WorkflowEditPart.VISUAL_ID:
 			return false;
-		case GithubEditPart.VISUAL_ID:
-		case GithubBigQueryEditPart.VISUAL_ID:
-		case GHTorrentEditPart.VISUAL_ID:
-		case CommitsEditPart.VISUAL_ID:
-		case AuthorsEditPart.VISUAL_ID:
-		case FilesEditPart.VISUAL_ID:
-		case DataAggregationEditPart.VISUAL_ID:
-		case DataFilteringEditPart.VISUAL_ID:
-		case CustomScriptEditPart.VISUAL_ID:
-		case DataManipulationEditPart.VISUAL_ID:
+		case StringEditPart.VISUAL_ID:
+		case IntegerEditPart.VISUAL_ID:
+		case BooleanEditPart.VISUAL_ID:
+		case DoubleEditPart.VISUAL_ID:
+		case String2EditPart.VISUAL_ID:
+		case Integer2EditPart.VISUAL_ID:
+		case Boolean2EditPart.VISUAL_ID:
+		case Double2EditPart.VISUAL_ID:
 			return true;
 		default:
 			break;

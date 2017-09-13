@@ -1,76 +1,88 @@
-@namespace(uri="http://workflow", prefix="wf")
+@namespace(uri="http://org.crossminer.workflow", prefix="wf")
 package workflow;
 
 @gmf.diagram(onefile="true")
 class Workflow {
-  ref DataSource[+] startingPoints;
-  ref DataSource[+] endPoints;
-  val Element[*] contents;
+  attr EString name;
+  val Task[*] tasks;
+  val TaskCommunicationConfiguration[*] configs;
+  val Variable[*] globals;
 }
 
-abstract class Element {
-
+@gmf.node(label="name")
+class Task {
+  attr EString name;
+  @gmf.label
+  attr TaskConcurrency[1] concurrency;
+  @gmf.label
+  attr EString implementationFullyQualifiedName;
+  @gmf.label
+  attr EString implementationEntryPoint;
+  @gmf.label
+  attr EBoolean[1] acceptsPartialData;
+  ref TaskCommunicationConfiguration[*]#outgoing incoming;
+  @gmf.compartment
+  val Variable[*] locals;
 }
 
-@gmf.node(label="url")
-abstract class DataSource extends Element{
-  @gmf.link
-  ref DataRetrieval[+]#sources retrievals;
-  attr String url;
-  attr boolean offersPartialData;
+class EmittingTask extends Task {
+  @gmf.label
+  attr EBoolean[1] providesPartialData;
+  ref TaskCommunicationConfiguration[+]#incoming outgoing;
 }
 
-class Github extends DataSource {
-  attr String un;
-  attr String pw;
+@gmf.link(source="incoming", target="outgoing")
+class TaskCommunicationConfiguration {
+  ref EmittingTask[*]#outgoing incoming;
+  ref Task[*]#incoming outgoing;
 }
 
-class GithubBigQuery extends DataSource {
-  attr String un;
-  attr String pw;
+@gmf.link(label="address,port,singleQueue,queuePersistance",style="dot")
+class RemoteTaskCommunicationConfiguration extends TaskCommunicationConfiguration {
+  @gmf.label
+  attr EString[1] address;
+  @gmf.label
+  attr EInt[1] port;
+  @gmf.label
+  attr EBoolean[1] singleQueue;
+  @gmf.label
+  attr QueuePersistanceOptions[1] queuePersistance;
 }
 
-class GHTorrent extends DataSource {
-  attr String publicKey;
+enum TaskConcurrency {
+  none = 0;
+  full = 1;
+  partial = 2;
 }
 
-@gmf.node(label="repoPatterns")
-abstract class DataRetrieval extends Element{
-  @gmf.link
-  ref DataSource[+]#retrievals sources;
-  attr boolean acceptsPartialData;
-  attr String repoPatterns;
+enum QueuePersistanceOptions {
+  none = 0;
+  full = 1;
+  partial = 2;
 }
 
-class Commits extends DataRetrieval {
-  attr String patterns;
-  attr EDate startDate;
-  attr EDate endDate;
+@gmf.node(label="name",icon="false")
+abstract class Variable {
+  attr EString[1] name;
 }
 
-class Authors extends DataRetrieval {
-  attr String patterns;
+class String extends Variable {
+  @gmf.label
+  attr EString[+] value;
 }
 
-class Files extends DataRetrieval {
-  attr String patterns;
+class Integer extends Variable {
+  @gmf.label
+  attr EInt[+] value;
 }
 
-@gmf.node(label="temp")
-class DataManipulation extends Element{
-  attr String temp;
-  @gmf.link
-  ref DataRetrieval[+] sources;
+class Boolean extends Variable {
+  @gmf.label
+  attr EBoolean[+] value;
 }
 
-class DataAggregation extends DataManipulation {
-}
-
-class DataFiltering extends DataManipulation {
-}
-
-class CustomScript extends DataManipulation {
-  attr String language;
-  attr String code;
+class Double extends Variable {
+  @gmf.label
+  attr EDouble[+] value;
 }
 

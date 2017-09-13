@@ -1,139 +1,132 @@
 <?xml version="1.0" encoding="ASCII"?>
 <gmfgraph:Canvas xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition" name="workflow">
   <figures name="Default">
-    <descriptors name="GithubFigure">
-      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="GithubFigure">
+    <descriptors name="TaskFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="TaskFigure">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
-        <children xsi:type="gmfgraph:Label" name="GithubLabelFigure" text="Github"/>
+        <children xsi:type="gmfgraph:Label" name="TaskLabelFigure" text="Task">
+          <maximumSize dx="10000" dy="50"/>
+        </children>
+        <children xsi:type="gmfgraph:Label" name="TaskConcurrencyLabelFigure"/>
+        <children xsi:type="gmfgraph:Label" name="TaskImplementationFullyQualifiedNameLabelFigure"/>
+        <children xsi:type="gmfgraph:Label" name="TaskImplementationEntryPointLabelFigure"/>
+        <children xsi:type="gmfgraph:Label" name="TaskAcceptsPartialDataLabelFigure"/>
+        <children xsi:type="gmfgraph:Rectangle" name="TaskLocalsCompartmentFigure" outline="false"/>
       </actualFigure>
-      <accessors accessor="getFigureGithubLabelFigure" figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
+      <accessors accessor="getFigureTaskLabelFigure" figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
+      <accessors accessor="getFigureTaskConcurrencyLabelFigure" figure="//@figures.0/@descriptors.0/@actualFigure/@children.1"/>
+      <accessors accessor="getFigureTaskImplementationFullyQualifiedNameLabelFigure" figure="//@figures.0/@descriptors.0/@actualFigure/@children.2"/>
+      <accessors accessor="getFigureTaskImplementationEntryPointLabelFigure" figure="//@figures.0/@descriptors.0/@actualFigure/@children.3"/>
+      <accessors accessor="getFigureTaskAcceptsPartialDataLabelFigure" figure="//@figures.0/@descriptors.0/@actualFigure/@children.4"/>
+      <accessors accessor="getTaskLocalsCompartmentFigure" figure="//@figures.0/@descriptors.0/@actualFigure/@children.5"/>
     </descriptors>
-    <descriptors name="GithubBigQueryFigure">
-      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="GithubBigQueryFigure">
+    <descriptors name="EmittingTaskFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="EmittingTaskFigure">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
-        <children xsi:type="gmfgraph:Label" name="GithubBigQueryLabelFigure" text="GithubBigQuery"/>
+        <children xsi:type="gmfgraph:Label" name="EmittingTaskLabelFigure" text="EmittingTask">
+          <maximumSize dx="10000" dy="50"/>
+        </children>
+        <children xsi:type="gmfgraph:Label" name="TaskConcurrencyLabelFigure"/>
+        <children xsi:type="gmfgraph:Label" name="TaskImplementationFullyQualifiedNameLabelFigure"/>
+        <children xsi:type="gmfgraph:Label" name="TaskImplementationEntryPointLabelFigure"/>
+        <children xsi:type="gmfgraph:Label" name="TaskAcceptsPartialDataLabelFigure"/>
+        <children xsi:type="gmfgraph:Label" name="EmittingTaskProvidesPartialDataLabelFigure"/>
+        <children xsi:type="gmfgraph:Rectangle" name="EmittingTaskLocalsCompartmentFigure" outline="false"/>
       </actualFigure>
-      <accessors accessor="getFigureGithubBigQueryLabelFigure" figure="//@figures.0/@descriptors.1/@actualFigure/@children.0"/>
+      <accessors accessor="getFigureEmittingTaskLabelFigure" figure="//@figures.0/@descriptors.1/@actualFigure/@children.0"/>
+      <accessors accessor="getFigureTaskConcurrencyLabelFigure" figure="//@figures.0/@descriptors.1/@actualFigure/@children.1"/>
+      <accessors accessor="getFigureTaskImplementationFullyQualifiedNameLabelFigure" figure="//@figures.0/@descriptors.1/@actualFigure/@children.2"/>
+      <accessors accessor="getFigureTaskImplementationEntryPointLabelFigure" figure="//@figures.0/@descriptors.1/@actualFigure/@children.3"/>
+      <accessors accessor="getFigureTaskAcceptsPartialDataLabelFigure" figure="//@figures.0/@descriptors.1/@actualFigure/@children.4"/>
+      <accessors accessor="getFigureEmittingTaskProvidesPartialDataLabelFigure" figure="//@figures.0/@descriptors.1/@actualFigure/@children.5"/>
+      <accessors accessor="getEmittingTaskLocalsCompartmentFigure" figure="//@figures.0/@descriptors.1/@actualFigure/@children.6"/>
     </descriptors>
-    <descriptors name="GHTorrentFigure">
-      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="GHTorrentFigure">
+    <descriptors name="StringFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="StringFigure">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
-        <children xsi:type="gmfgraph:Label" name="GHTorrentLabelFigure" text="GHTorrent"/>
+        <children xsi:type="gmfgraph:Label" name="StringLabelFigure" text="String"/>
+        <children xsi:type="gmfgraph:Label" name="StringValueLabelFigure"/>
       </actualFigure>
-      <accessors accessor="getFigureGHTorrentLabelFigure" figure="//@figures.0/@descriptors.2/@actualFigure/@children.0"/>
+      <accessors accessor="getFigureStringLabelFigure" figure="//@figures.0/@descriptors.2/@actualFigure/@children.0"/>
+      <accessors accessor="getFigureStringValueLabelFigure" figure="//@figures.0/@descriptors.2/@actualFigure/@children.1"/>
     </descriptors>
-    <descriptors name="CommitsFigure">
-      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="CommitsFigure">
+    <descriptors name="IntegerFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="IntegerFigure">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
-        <children xsi:type="gmfgraph:Label" name="CommitsLabelFigure" text="Commits"/>
+        <children xsi:type="gmfgraph:Label" name="IntegerLabelFigure" text="Integer"/>
+        <children xsi:type="gmfgraph:Label" name="IntegerValueLabelFigure"/>
       </actualFigure>
-      <accessors accessor="getFigureCommitsLabelFigure" figure="//@figures.0/@descriptors.3/@actualFigure/@children.0"/>
+      <accessors accessor="getFigureIntegerLabelFigure" figure="//@figures.0/@descriptors.3/@actualFigure/@children.0"/>
+      <accessors accessor="getFigureIntegerValueLabelFigure" figure="//@figures.0/@descriptors.3/@actualFigure/@children.1"/>
     </descriptors>
-    <descriptors name="AuthorsFigure">
-      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="AuthorsFigure">
+    <descriptors name="BooleanFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="BooleanFigure">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
-        <children xsi:type="gmfgraph:Label" name="AuthorsLabelFigure" text="Authors"/>
+        <children xsi:type="gmfgraph:Label" name="BooleanLabelFigure" text="Boolean"/>
+        <children xsi:type="gmfgraph:Label" name="BooleanValueLabelFigure"/>
       </actualFigure>
-      <accessors accessor="getFigureAuthorsLabelFigure" figure="//@figures.0/@descriptors.4/@actualFigure/@children.0"/>
+      <accessors accessor="getFigureBooleanLabelFigure" figure="//@figures.0/@descriptors.4/@actualFigure/@children.0"/>
+      <accessors accessor="getFigureBooleanValueLabelFigure" figure="//@figures.0/@descriptors.4/@actualFigure/@children.1"/>
     </descriptors>
-    <descriptors name="FilesFigure">
-      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="FilesFigure">
+    <descriptors name="DoubleFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="DoubleFigure">
         <border xsi:type="gmfgraph:MarginBorder">
           <insets top="5" left="5" bottom="5" right="5"/>
         </border>
-        <children xsi:type="gmfgraph:Label" name="FilesLabelFigure" text="Files"/>
+        <children xsi:type="gmfgraph:Label" name="DoubleLabelFigure" text="Double"/>
+        <children xsi:type="gmfgraph:Label" name="DoubleValueLabelFigure"/>
       </actualFigure>
-      <accessors accessor="getFigureFilesLabelFigure" figure="//@figures.0/@descriptors.5/@actualFigure/@children.0"/>
+      <accessors accessor="getFigureDoubleLabelFigure" figure="//@figures.0/@descriptors.5/@actualFigure/@children.0"/>
+      <accessors accessor="getFigureDoubleValueLabelFigure" figure="//@figures.0/@descriptors.5/@actualFigure/@children.1"/>
     </descriptors>
-    <descriptors name="DataManipulationFigure">
-      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="DataManipulationFigure">
-        <border xsi:type="gmfgraph:MarginBorder">
-          <insets top="5" left="5" bottom="5" right="5"/>
-        </border>
-        <children xsi:type="gmfgraph:Label" name="DataManipulationLabelFigure" text="DataManipulation"/>
-      </actualFigure>
-      <accessors accessor="getFigureDataManipulationLabelFigure" figure="//@figures.0/@descriptors.6/@actualFigure/@children.0"/>
+    <descriptors name="TaskCommunicationConfigurationFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="TaskCommunicationConfigurationFigure"/>
     </descriptors>
-    <descriptors name="DataAggregationFigure">
-      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="DataAggregationFigure">
-        <border xsi:type="gmfgraph:MarginBorder">
-          <insets top="5" left="5" bottom="5" right="5"/>
-        </border>
-        <children xsi:type="gmfgraph:Label" name="DataAggregationLabelFigure" text="DataAggregation"/>
-      </actualFigure>
-      <accessors accessor="getFigureDataAggregationLabelFigure" figure="//@figures.0/@descriptors.7/@actualFigure/@children.0"/>
+    <descriptors name="RemoteTaskCommunicationConfigurationFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="RemoteTaskCommunicationConfigurationFigure" lineKind="LINE_DOT"/>
     </descriptors>
-    <descriptors name="DataFilteringFigure">
-      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="DataFilteringFigure">
-        <border xsi:type="gmfgraph:MarginBorder">
-          <insets top="5" left="5" bottom="5" right="5"/>
-        </border>
-        <children xsi:type="gmfgraph:Label" name="DataFilteringLabelFigure" text="DataFiltering"/>
-      </actualFigure>
-      <accessors accessor="getFigureDataFilteringLabelFigure" figure="//@figures.0/@descriptors.8/@actualFigure/@children.0"/>
-    </descriptors>
-    <descriptors name="CustomScriptFigure">
-      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="CustomScriptFigure">
-        <border xsi:type="gmfgraph:MarginBorder">
-          <insets top="5" left="5" bottom="5" right="5"/>
-        </border>
-        <children xsi:type="gmfgraph:Label" name="CustomScriptLabelFigure" text="CustomScript"/>
-      </actualFigure>
-      <accessors accessor="getFigureCustomScriptLabelFigure" figure="//@figures.0/@descriptors.9/@actualFigure/@children.0"/>
-    </descriptors>
-    <descriptors name="DataSourceRetrievalsFigure">
-      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="DataSourceRetrievalsFigure"/>
-    </descriptors>
-    <descriptors name="DataSourceRetrievalsExternalLabelFigure">
-      <actualFigure xsi:type="gmfgraph:Label" name="DataSourceRetrievalsExternalLabel"/>
-    </descriptors>
-    <descriptors name="DataRetrievalSourcesFigure">
-      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="DataRetrievalSourcesFigure"/>
-    </descriptors>
-    <descriptors name="DataRetrievalSourcesExternalLabelFigure">
-      <actualFigure xsi:type="gmfgraph:Label" name="DataRetrievalSourcesExternalLabel"/>
-    </descriptors>
-    <descriptors name="DataManipulationSourcesFigure">
-      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="DataManipulationSourcesFigure"/>
-    </descriptors>
-    <descriptors name="DataManipulationSourcesExternalLabelFigure">
-      <actualFigure xsi:type="gmfgraph:Label" name="DataManipulationSourcesExternalLabel"/>
+    <descriptors name="RemoteTaskCommunicationConfigurationLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="RemoteTaskCommunicationConfigurationLabelLabel" text="RemoteTaskCommunicationConfiguration"/>
     </descriptors>
   </figures>
-  <nodes name="Github" figure="GithubFigure"/>
-  <nodes name="GithubBigQuery" figure="GithubBigQueryFigure"/>
-  <nodes name="GHTorrent" figure="GHTorrentFigure"/>
-  <nodes name="Commits" figure="CommitsFigure"/>
-  <nodes name="Authors" figure="AuthorsFigure"/>
-  <nodes name="Files" figure="FilesFigure"/>
-  <nodes name="DataManipulation" figure="DataManipulationFigure"/>
-  <nodes name="DataAggregation" figure="DataAggregationFigure"/>
-  <nodes name="DataFiltering" figure="DataFilteringFigure"/>
-  <nodes name="CustomScript" figure="CustomScriptFigure"/>
-  <connections name="DataSourceRetrievals" figure="DataSourceRetrievalsFigure"/>
-  <connections name="DataRetrievalSources" figure="DataRetrievalSourcesFigure"/>
-  <connections name="DataManipulationSources" figure="DataManipulationSourcesFigure"/>
-  <labels name="GithubLabel" figure="GithubFigure" accessor="//@figures.0/@descriptors.0/@accessors.0"/>
-  <labels name="GithubBigQueryLabel" figure="GithubBigQueryFigure" accessor="//@figures.0/@descriptors.1/@accessors.0"/>
-  <labels name="GHTorrentLabel" figure="GHTorrentFigure" accessor="//@figures.0/@descriptors.2/@accessors.0"/>
-  <labels name="CommitsLabel" figure="CommitsFigure" accessor="//@figures.0/@descriptors.3/@accessors.0"/>
-  <labels name="AuthorsLabel" figure="AuthorsFigure" accessor="//@figures.0/@descriptors.4/@accessors.0"/>
-  <labels name="FilesLabel" figure="FilesFigure" accessor="//@figures.0/@descriptors.5/@accessors.0"/>
-  <labels name="DataManipulationLabel" figure="DataManipulationFigure" accessor="//@figures.0/@descriptors.6/@accessors.0"/>
-  <labels name="DataAggregationLabel" figure="DataAggregationFigure" accessor="//@figures.0/@descriptors.7/@accessors.0"/>
-  <labels name="DataFilteringLabel" figure="DataFilteringFigure" accessor="//@figures.0/@descriptors.8/@accessors.0"/>
-  <labels name="CustomScriptLabel" figure="CustomScriptFigure" accessor="//@figures.0/@descriptors.9/@accessors.0"/>
-  <labels name="DataSourceRetrievalsExternalLabel" figure="DataSourceRetrievalsExternalLabelFigure" elementIcon="false"/>
-  <labels name="DataRetrievalSourcesExternalLabel" figure="DataRetrievalSourcesExternalLabelFigure" elementIcon="false"/>
-  <labels name="DataManipulationSourcesExternalLabel" figure="DataManipulationSourcesExternalLabelFigure" elementIcon="false"/>
+  <nodes name="Task" figure="TaskFigure"/>
+  <nodes name="EmittingTask" figure="EmittingTaskFigure"/>
+  <nodes name="String" figure="StringFigure"/>
+  <nodes name="Integer" figure="IntegerFigure"/>
+  <nodes name="Boolean" figure="BooleanFigure"/>
+  <nodes name="Double" figure="DoubleFigure"/>
+  <connections name="TaskCommunicationConfiguration" figure="TaskCommunicationConfigurationFigure"/>
+  <connections name="RemoteTaskCommunicationConfiguration" figure="RemoteTaskCommunicationConfigurationFigure"/>
+  <compartments name="TaskLocalsCompartment" figure="TaskFigure" collapsible="true" accessor="//@figures.0/@descriptors.0/@accessors.5"/>
+  <compartments name="EmittingTaskLocalsCompartment" figure="EmittingTaskFigure" collapsible="true" accessor="//@figures.0/@descriptors.1/@accessors.6"/>
+  <labels name="TaskLabel" figure="TaskFigure" accessor="//@figures.0/@descriptors.0/@accessors.0"/>
+  <labels name="TaskConcurrencyLabel" figure="TaskFigure" elementIcon="false" accessor="//@figures.0/@descriptors.0/@accessors.1"/>
+  <labels name="TaskImplementationFullyQualifiedNameLabel" figure="TaskFigure" elementIcon="false" accessor="//@figures.0/@descriptors.0/@accessors.2"/>
+  <labels name="TaskImplementationEntryPointLabel" figure="TaskFigure" elementIcon="false" accessor="//@figures.0/@descriptors.0/@accessors.3"/>
+  <labels name="TaskAcceptsPartialDataLabel" figure="TaskFigure" elementIcon="false" accessor="//@figures.0/@descriptors.0/@accessors.4"/>
+  <labels name="EmittingTaskLabel" figure="EmittingTaskFigure" accessor="//@figures.0/@descriptors.1/@accessors.0"/>
+  <labels name="TaskConcurrencyLabel" figure="EmittingTaskFigure" elementIcon="false" accessor="//@figures.0/@descriptors.1/@accessors.1"/>
+  <labels name="TaskImplementationFullyQualifiedNameLabel" figure="EmittingTaskFigure" elementIcon="false" accessor="//@figures.0/@descriptors.1/@accessors.2"/>
+  <labels name="TaskImplementationEntryPointLabel" figure="EmittingTaskFigure" elementIcon="false" accessor="//@figures.0/@descriptors.1/@accessors.3"/>
+  <labels name="TaskAcceptsPartialDataLabel" figure="EmittingTaskFigure" elementIcon="false" accessor="//@figures.0/@descriptors.1/@accessors.4"/>
+  <labels name="EmittingTaskProvidesPartialDataLabel" figure="EmittingTaskFigure" elementIcon="false" accessor="//@figures.0/@descriptors.1/@accessors.5"/>
+  <labels name="StringLabel" figure="StringFigure" accessor="//@figures.0/@descriptors.2/@accessors.0"/>
+  <labels name="StringValueLabel" figure="StringFigure" elementIcon="false" accessor="//@figures.0/@descriptors.2/@accessors.1"/>
+  <labels name="IntegerLabel" figure="IntegerFigure" accessor="//@figures.0/@descriptors.3/@accessors.0"/>
+  <labels name="IntegerValueLabel" figure="IntegerFigure" elementIcon="false" accessor="//@figures.0/@descriptors.3/@accessors.1"/>
+  <labels name="BooleanLabel" figure="BooleanFigure" accessor="//@figures.0/@descriptors.4/@accessors.0"/>
+  <labels name="BooleanValueLabel" figure="BooleanFigure" elementIcon="false" accessor="//@figures.0/@descriptors.4/@accessors.1"/>
+  <labels name="DoubleLabel" figure="DoubleFigure" accessor="//@figures.0/@descriptors.5/@accessors.0"/>
+  <labels name="DoubleValueLabel" figure="DoubleFigure" elementIcon="false" accessor="//@figures.0/@descriptors.5/@accessors.1"/>
+  <labels name="RemoteTaskCommunicationConfigurationLabel" figure="RemoteTaskCommunicationConfigurationLabelFigure" elementIcon="false"/>
 </gmfgraph:Canvas>

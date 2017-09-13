@@ -2,6 +2,8 @@
  */
 package workflow;
 
+import java.lang.String;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -15,9 +17,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link workflow.Workflow#getStartingPoints <em>Starting Points</em>}</li>
- *   <li>{@link workflow.Workflow#getEndPoints <em>End Points</em>}</li>
- *   <li>{@link workflow.Workflow#getContents <em>Contents</em>}</li>
+ *   <li>{@link workflow.Workflow#getName <em>Name</em>}</li>
+ *   <li>{@link workflow.Workflow#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link workflow.Workflow#getConfigs <em>Configs</em>}</li>
+ *   <li>{@link workflow.Workflow#getGlobals <em>Globals</em>}</li>
  * </ul>
  *
  * @see workflow.WorkflowPackage#getWorkflow()
@@ -26,51 +29,77 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Workflow extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Starting Points</b></em>' reference list.
-	 * The list contents are of type {@link workflow.DataSource}.
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Starting Points</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Starting Points</em>' reference list.
-	 * @see workflow.WorkflowPackage#getWorkflow_StartingPoints()
-	 * @model required="true"
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see workflow.WorkflowPackage#getWorkflow_Name()
+	 * @model
 	 * @generated
 	 */
-	EList<DataSource> getStartingPoints();
+	String getName();
 
 	/**
-	 * Returns the value of the '<em><b>End Points</b></em>' reference list.
-	 * The list contents are of type {@link workflow.DataSource}.
+	 * Sets the value of the '{@link workflow.Workflow#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>End Points</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>End Points</em>' reference list.
-	 * @see workflow.WorkflowPackage#getWorkflow_EndPoints()
-	 * @model required="true"
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
 	 * @generated
 	 */
-	EList<DataSource> getEndPoints();
+	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Contents</b></em>' containment reference list.
-	 * The list contents are of type {@link workflow.Element}.
+	 * Returns the value of the '<em><b>Tasks</b></em>' containment reference list.
+	 * The list contents are of type {@link workflow.Task}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Contents</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Tasks</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contents</em>' containment reference list.
-	 * @see workflow.WorkflowPackage#getWorkflow_Contents()
+	 * @return the value of the '<em>Tasks</em>' containment reference list.
+	 * @see workflow.WorkflowPackage#getWorkflow_Tasks()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Element> getContents();
+	EList<Task> getTasks();
+
+	/**
+	 * Returns the value of the '<em><b>Configs</b></em>' containment reference list.
+	 * The list contents are of type {@link workflow.TaskCommunicationConfiguration}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Configs</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Configs</em>' containment reference list.
+	 * @see workflow.WorkflowPackage#getWorkflow_Configs()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<TaskCommunicationConfiguration> getConfigs();
+
+	/**
+	 * Returns the value of the '<em><b>Globals</b></em>' containment reference list.
+	 * The list contents are of type {@link workflow.Variable}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Globals</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Globals</em>' containment reference list.
+	 * @see workflow.WorkflowPackage#getWorkflow_Globals()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Variable> getGlobals();
 
 } // Workflow

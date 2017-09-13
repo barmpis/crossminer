@@ -16,34 +16,27 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.update.DiagramUpdater;
 
-import workflow.Authors;
-import workflow.Commits;
-import workflow.CustomScript;
-import workflow.DataAggregation;
-import workflow.DataFiltering;
-import workflow.DataManipulation;
-import workflow.DataRetrieval;
-import workflow.DataSource;
-import workflow.Element;
-import workflow.Files;
-import workflow.GHTorrent;
-import workflow.Github;
-import workflow.GithubBigQuery;
+import workflow.EmittingTask;
+import workflow.RemoteTaskCommunicationConfiguration;
+import workflow.Task;
+import workflow.TaskCommunicationConfiguration;
+import workflow.Variable;
 import workflow.Workflow;
 import workflow.WorkflowPackage;
-import workflow.diagram.edit.parts.AuthorsEditPart;
-import workflow.diagram.edit.parts.CommitsEditPart;
-import workflow.diagram.edit.parts.CustomScriptEditPart;
-import workflow.diagram.edit.parts.DataAggregationEditPart;
-import workflow.diagram.edit.parts.DataFilteringEditPart;
-import workflow.diagram.edit.parts.DataManipulationEditPart;
-import workflow.diagram.edit.parts.DataManipulationSourcesEditPart;
-import workflow.diagram.edit.parts.DataRetrievalSourcesEditPart;
-import workflow.diagram.edit.parts.DataSourceRetrievalsEditPart;
-import workflow.diagram.edit.parts.FilesEditPart;
-import workflow.diagram.edit.parts.GHTorrentEditPart;
-import workflow.diagram.edit.parts.GithubBigQueryEditPart;
-import workflow.diagram.edit.parts.GithubEditPart;
+import workflow.diagram.edit.parts.Boolean2EditPart;
+import workflow.diagram.edit.parts.BooleanEditPart;
+import workflow.diagram.edit.parts.Double2EditPart;
+import workflow.diagram.edit.parts.DoubleEditPart;
+import workflow.diagram.edit.parts.EmittingTaskEditPart;
+import workflow.diagram.edit.parts.EmittingTaskEmittingTaskLocalsCompartmentEditPart;
+import workflow.diagram.edit.parts.Integer2EditPart;
+import workflow.diagram.edit.parts.IntegerEditPart;
+import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationEditPart;
+import workflow.diagram.edit.parts.String2EditPart;
+import workflow.diagram.edit.parts.StringEditPart;
+import workflow.diagram.edit.parts.TaskCommunicationConfigurationEditPart;
+import workflow.diagram.edit.parts.TaskEditPart;
+import workflow.diagram.edit.parts.TaskTaskLocalsCompartmentEditPart;
 import workflow.diagram.edit.parts.WorkflowEditPart;
 import workflow.diagram.providers.WorkflowElementTypes;
 
@@ -66,6 +59,10 @@ public class WorkflowDiagramUpdater {
 		switch (WorkflowVisualIDRegistry.getVisualID(view)) {
 		case WorkflowEditPart.VISUAL_ID:
 			return getWorkflow_1000SemanticChildren(view);
+		case EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID:
+			return getEmittingTaskEmittingTaskLocalsCompartment_7001SemanticChildren(view);
+		case TaskTaskLocalsCompartmentEditPart.VISUAL_ID:
+			return getTaskTaskLocalsCompartment_7002SemanticChildren(view);
 		}
 		return Collections.emptyList();
 	}
@@ -79,46 +76,107 @@ public class WorkflowDiagramUpdater {
 		}
 		Workflow modelElement = (Workflow) view.getElement();
 		LinkedList<WorkflowNodeDescriptor> result = new LinkedList<WorkflowNodeDescriptor>();
-		for (Iterator<?> it = modelElement.getContents().iterator(); it.hasNext();) {
-			Element childElement = (Element) it.next();
+		for (Iterator<?> it = modelElement.getTasks().iterator(); it.hasNext();) {
+			Task childElement = (Task) it.next();
 			int visualID = WorkflowVisualIDRegistry.getNodeVisualID(view, childElement);
-			if (visualID == GithubEditPart.VISUAL_ID) {
+			if (visualID == EmittingTaskEditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
 				continue;
 			}
-			if (visualID == GithubBigQueryEditPart.VISUAL_ID) {
+			if (visualID == TaskEditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
 				continue;
 			}
-			if (visualID == GHTorrentEditPart.VISUAL_ID) {
+		}
+		for (Iterator<?> it = modelElement.getGlobals().iterator(); it.hasNext();) {
+			Variable childElement = (Variable) it.next();
+			int visualID = WorkflowVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == StringEditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
 				continue;
 			}
-			if (visualID == CommitsEditPart.VISUAL_ID) {
+			if (visualID == IntegerEditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
 				continue;
 			}
-			if (visualID == AuthorsEditPart.VISUAL_ID) {
+			if (visualID == BooleanEditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
 				continue;
 			}
-			if (visualID == FilesEditPart.VISUAL_ID) {
+			if (visualID == DoubleEditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
 				continue;
 			}
-			if (visualID == DataAggregationEditPart.VISUAL_ID) {
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowNodeDescriptor> getEmittingTaskEmittingTaskLocalsCompartment_7001SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		EmittingTask modelElement = (EmittingTask) containerView.getElement();
+		LinkedList<WorkflowNodeDescriptor> result = new LinkedList<WorkflowNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getLocals().iterator(); it.hasNext();) {
+			Variable childElement = (Variable) it.next();
+			int visualID = WorkflowVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == String2EditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
 				continue;
 			}
-			if (visualID == DataFilteringEditPart.VISUAL_ID) {
+			if (visualID == Integer2EditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
 				continue;
 			}
-			if (visualID == CustomScriptEditPart.VISUAL_ID) {
+			if (visualID == Boolean2EditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
 				continue;
 			}
-			if (visualID == DataManipulationEditPart.VISUAL_ID) {
+			if (visualID == Double2EditPart.VISUAL_ID) {
+				result.add(new WorkflowNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowNodeDescriptor> getTaskTaskLocalsCompartment_7002SemanticChildren(View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Task modelElement = (Task) containerView.getElement();
+		LinkedList<WorkflowNodeDescriptor> result = new LinkedList<WorkflowNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getLocals().iterator(); it.hasNext();) {
+			Variable childElement = (Variable) it.next();
+			int visualID = WorkflowVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == String2EditPart.VISUAL_ID) {
+				result.add(new WorkflowNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == Integer2EditPart.VISUAL_ID) {
+				result.add(new WorkflowNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == Boolean2EditPart.VISUAL_ID) {
+				result.add(new WorkflowNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == Double2EditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -133,26 +191,30 @@ public class WorkflowDiagramUpdater {
 		switch (WorkflowVisualIDRegistry.getVisualID(view)) {
 		case WorkflowEditPart.VISUAL_ID:
 			return getWorkflow_1000ContainedLinks(view);
-		case GithubEditPart.VISUAL_ID:
-			return getGithub_2001ContainedLinks(view);
-		case GithubBigQueryEditPart.VISUAL_ID:
-			return getGithubBigQuery_2002ContainedLinks(view);
-		case GHTorrentEditPart.VISUAL_ID:
-			return getGHTorrent_2003ContainedLinks(view);
-		case CommitsEditPart.VISUAL_ID:
-			return getCommits_2004ContainedLinks(view);
-		case AuthorsEditPart.VISUAL_ID:
-			return getAuthors_2005ContainedLinks(view);
-		case FilesEditPart.VISUAL_ID:
-			return getFiles_2006ContainedLinks(view);
-		case DataAggregationEditPart.VISUAL_ID:
-			return getDataAggregation_2007ContainedLinks(view);
-		case DataFilteringEditPart.VISUAL_ID:
-			return getDataFiltering_2008ContainedLinks(view);
-		case CustomScriptEditPart.VISUAL_ID:
-			return getCustomScript_2009ContainedLinks(view);
-		case DataManipulationEditPart.VISUAL_ID:
-			return getDataManipulation_2010ContainedLinks(view);
+		case EmittingTaskEditPart.VISUAL_ID:
+			return getEmittingTask_2011ContainedLinks(view);
+		case StringEditPart.VISUAL_ID:
+			return getString_2012ContainedLinks(view);
+		case IntegerEditPart.VISUAL_ID:
+			return getInteger_2013ContainedLinks(view);
+		case BooleanEditPart.VISUAL_ID:
+			return getBoolean_2014ContainedLinks(view);
+		case DoubleEditPart.VISUAL_ID:
+			return getDouble_2015ContainedLinks(view);
+		case TaskEditPart.VISUAL_ID:
+			return getTask_2016ContainedLinks(view);
+		case String2EditPart.VISUAL_ID:
+			return getString_3001ContainedLinks(view);
+		case Integer2EditPart.VISUAL_ID:
+			return getInteger_3002ContainedLinks(view);
+		case Boolean2EditPart.VISUAL_ID:
+			return getBoolean_3003ContainedLinks(view);
+		case Double2EditPart.VISUAL_ID:
+			return getDouble_3004ContainedLinks(view);
+		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID:
+			return getRemoteTaskCommunicationConfiguration_4004ContainedLinks(view);
+		case TaskCommunicationConfigurationEditPart.VISUAL_ID:
+			return getTaskCommunicationConfiguration_4005ContainedLinks(view);
 		}
 		return Collections.emptyList();
 	}
@@ -162,26 +224,30 @@ public class WorkflowDiagramUpdater {
 	*/
 	public static List<WorkflowLinkDescriptor> getIncomingLinks(View view) {
 		switch (WorkflowVisualIDRegistry.getVisualID(view)) {
-		case GithubEditPart.VISUAL_ID:
-			return getGithub_2001IncomingLinks(view);
-		case GithubBigQueryEditPart.VISUAL_ID:
-			return getGithubBigQuery_2002IncomingLinks(view);
-		case GHTorrentEditPart.VISUAL_ID:
-			return getGHTorrent_2003IncomingLinks(view);
-		case CommitsEditPart.VISUAL_ID:
-			return getCommits_2004IncomingLinks(view);
-		case AuthorsEditPart.VISUAL_ID:
-			return getAuthors_2005IncomingLinks(view);
-		case FilesEditPart.VISUAL_ID:
-			return getFiles_2006IncomingLinks(view);
-		case DataAggregationEditPart.VISUAL_ID:
-			return getDataAggregation_2007IncomingLinks(view);
-		case DataFilteringEditPart.VISUAL_ID:
-			return getDataFiltering_2008IncomingLinks(view);
-		case CustomScriptEditPart.VISUAL_ID:
-			return getCustomScript_2009IncomingLinks(view);
-		case DataManipulationEditPart.VISUAL_ID:
-			return getDataManipulation_2010IncomingLinks(view);
+		case EmittingTaskEditPart.VISUAL_ID:
+			return getEmittingTask_2011IncomingLinks(view);
+		case StringEditPart.VISUAL_ID:
+			return getString_2012IncomingLinks(view);
+		case IntegerEditPart.VISUAL_ID:
+			return getInteger_2013IncomingLinks(view);
+		case BooleanEditPart.VISUAL_ID:
+			return getBoolean_2014IncomingLinks(view);
+		case DoubleEditPart.VISUAL_ID:
+			return getDouble_2015IncomingLinks(view);
+		case TaskEditPart.VISUAL_ID:
+			return getTask_2016IncomingLinks(view);
+		case String2EditPart.VISUAL_ID:
+			return getString_3001IncomingLinks(view);
+		case Integer2EditPart.VISUAL_ID:
+			return getInteger_3002IncomingLinks(view);
+		case Boolean2EditPart.VISUAL_ID:
+			return getBoolean_3003IncomingLinks(view);
+		case Double2EditPart.VISUAL_ID:
+			return getDouble_3004IncomingLinks(view);
+		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID:
+			return getRemoteTaskCommunicationConfiguration_4004IncomingLinks(view);
+		case TaskCommunicationConfigurationEditPart.VISUAL_ID:
+			return getTaskCommunicationConfiguration_4005IncomingLinks(view);
 		}
 		return Collections.emptyList();
 	}
@@ -191,26 +257,30 @@ public class WorkflowDiagramUpdater {
 	*/
 	public static List<WorkflowLinkDescriptor> getOutgoingLinks(View view) {
 		switch (WorkflowVisualIDRegistry.getVisualID(view)) {
-		case GithubEditPart.VISUAL_ID:
-			return getGithub_2001OutgoingLinks(view);
-		case GithubBigQueryEditPart.VISUAL_ID:
-			return getGithubBigQuery_2002OutgoingLinks(view);
-		case GHTorrentEditPart.VISUAL_ID:
-			return getGHTorrent_2003OutgoingLinks(view);
-		case CommitsEditPart.VISUAL_ID:
-			return getCommits_2004OutgoingLinks(view);
-		case AuthorsEditPart.VISUAL_ID:
-			return getAuthors_2005OutgoingLinks(view);
-		case FilesEditPart.VISUAL_ID:
-			return getFiles_2006OutgoingLinks(view);
-		case DataAggregationEditPart.VISUAL_ID:
-			return getDataAggregation_2007OutgoingLinks(view);
-		case DataFilteringEditPart.VISUAL_ID:
-			return getDataFiltering_2008OutgoingLinks(view);
-		case CustomScriptEditPart.VISUAL_ID:
-			return getCustomScript_2009OutgoingLinks(view);
-		case DataManipulationEditPart.VISUAL_ID:
-			return getDataManipulation_2010OutgoingLinks(view);
+		case EmittingTaskEditPart.VISUAL_ID:
+			return getEmittingTask_2011OutgoingLinks(view);
+		case StringEditPart.VISUAL_ID:
+			return getString_2012OutgoingLinks(view);
+		case IntegerEditPart.VISUAL_ID:
+			return getInteger_2013OutgoingLinks(view);
+		case BooleanEditPart.VISUAL_ID:
+			return getBoolean_2014OutgoingLinks(view);
+		case DoubleEditPart.VISUAL_ID:
+			return getDouble_2015OutgoingLinks(view);
+		case TaskEditPart.VISUAL_ID:
+			return getTask_2016OutgoingLinks(view);
+		case String2EditPart.VISUAL_ID:
+			return getString_3001OutgoingLinks(view);
+		case Integer2EditPart.VISUAL_ID:
+			return getInteger_3002OutgoingLinks(view);
+		case Boolean2EditPart.VISUAL_ID:
+			return getBoolean_3003OutgoingLinks(view);
+		case Double2EditPart.VISUAL_ID:
+			return getDouble_3004OutgoingLinks(view);
+		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID:
+			return getRemoteTaskCommunicationConfiguration_4004OutgoingLinks(view);
+		case TaskCommunicationConfigurationEditPart.VISUAL_ID:
+			return getTaskCommunicationConfiguration_4005OutgoingLinks(view);
 		}
 		return Collections.emptyList();
 	}
@@ -219,356 +289,316 @@ public class WorkflowDiagramUpdater {
 	 * @generated
 	 */
 	public static List<WorkflowLinkDescriptor> getWorkflow_1000ContainedLinks(View view) {
+		Workflow modelElement = (Workflow) view.getElement();
+		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
+		result.addAll(getContainedTypeModelFacetLinks_RemoteTaskCommunicationConfiguration_4004(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_TaskCommunicationConfiguration_4005(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WorkflowLinkDescriptor> getEmittingTask_2011ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getGithub_2001ContainedLinks(View view) {
-		Github modelElement = (Github) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataSource_Retrievals_4001(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getGithubBigQuery_2002ContainedLinks(View view) {
-		GithubBigQuery modelElement = (GithubBigQuery) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataSource_Retrievals_4001(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getGHTorrent_2003ContainedLinks(View view) {
-		GHTorrent modelElement = (GHTorrent) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataSource_Retrievals_4001(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getCommits_2004ContainedLinks(View view) {
-		Commits modelElement = (Commits) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataRetrieval_Sources_4002(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getAuthors_2005ContainedLinks(View view) {
-		Authors modelElement = (Authors) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataRetrieval_Sources_4002(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getFiles_2006ContainedLinks(View view) {
-		Files modelElement = (Files) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataRetrieval_Sources_4002(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getDataAggregation_2007ContainedLinks(View view) {
-		DataAggregation modelElement = (DataAggregation) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataManipulation_Sources_4003(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getDataFiltering_2008ContainedLinks(View view) {
-		DataFiltering modelElement = (DataFiltering) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataManipulation_Sources_4003(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getCustomScript_2009ContainedLinks(View view) {
-		CustomScript modelElement = (CustomScript) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataManipulation_Sources_4003(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getDataManipulation_2010ContainedLinks(View view) {
-		DataManipulation modelElement = (DataManipulation) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataManipulation_Sources_4003(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getGithub_2001IncomingLinks(View view) {
-		Github modelElement = (Github) view.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
-				.find(view.eResource().getResourceSet().getResources());
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getIncomingFeatureModelFacetLinks_DataRetrieval_Sources_4002(modelElement, crossReferences));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getGithubBigQuery_2002IncomingLinks(View view) {
-		GithubBigQuery modelElement = (GithubBigQuery) view.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
-				.find(view.eResource().getResourceSet().getResources());
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getIncomingFeatureModelFacetLinks_DataRetrieval_Sources_4002(modelElement, crossReferences));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getGHTorrent_2003IncomingLinks(View view) {
-		GHTorrent modelElement = (GHTorrent) view.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
-				.find(view.eResource().getResourceSet().getResources());
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getIncomingFeatureModelFacetLinks_DataRetrieval_Sources_4002(modelElement, crossReferences));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getCommits_2004IncomingLinks(View view) {
-		Commits modelElement = (Commits) view.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
-				.find(view.eResource().getResourceSet().getResources());
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getIncomingFeatureModelFacetLinks_DataSource_Retrievals_4001(modelElement, crossReferences));
-		result.addAll(getIncomingFeatureModelFacetLinks_DataManipulation_Sources_4003(modelElement, crossReferences));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getAuthors_2005IncomingLinks(View view) {
-		Authors modelElement = (Authors) view.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
-				.find(view.eResource().getResourceSet().getResources());
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getIncomingFeatureModelFacetLinks_DataSource_Retrievals_4001(modelElement, crossReferences));
-		result.addAll(getIncomingFeatureModelFacetLinks_DataManipulation_Sources_4003(modelElement, crossReferences));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getFiles_2006IncomingLinks(View view) {
-		Files modelElement = (Files) view.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
-				.find(view.eResource().getResourceSet().getResources());
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getIncomingFeatureModelFacetLinks_DataSource_Retrievals_4001(modelElement, crossReferences));
-		result.addAll(getIncomingFeatureModelFacetLinks_DataManipulation_Sources_4003(modelElement, crossReferences));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getDataAggregation_2007IncomingLinks(View view) {
+	public static List<WorkflowLinkDescriptor> getString_2012ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getDataFiltering_2008IncomingLinks(View view) {
+	public static List<WorkflowLinkDescriptor> getInteger_2013ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getCustomScript_2009IncomingLinks(View view) {
+	public static List<WorkflowLinkDescriptor> getBoolean_2014ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getDataManipulation_2010IncomingLinks(View view) {
+	public static List<WorkflowLinkDescriptor> getDouble_2015ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getGithub_2001OutgoingLinks(View view) {
-		Github modelElement = (Github) view.getElement();
+	public static List<WorkflowLinkDescriptor> getTask_2016ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowLinkDescriptor> getString_3001ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowLinkDescriptor> getInteger_3002ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowLinkDescriptor> getBoolean_3003ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowLinkDescriptor> getDouble_3004ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WorkflowLinkDescriptor> getRemoteTaskCommunicationConfiguration_4004ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WorkflowLinkDescriptor> getTaskCommunicationConfiguration_4005ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WorkflowLinkDescriptor> getEmittingTask_2011IncomingLinks(View view) {
+		EmittingTask modelElement = (EmittingTask) view.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataSource_Retrievals_4001(modelElement));
+		result.addAll(getIncomingTypeModelFacetLinks_RemoteTaskCommunicationConfiguration_4004(modelElement,
+				crossReferences));
+		result.addAll(
+				getIncomingTypeModelFacetLinks_TaskCommunicationConfiguration_4005(modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getGithubBigQuery_2002OutgoingLinks(View view) {
-		GithubBigQuery modelElement = (GithubBigQuery) view.getElement();
+	public static List<WorkflowLinkDescriptor> getString_2012IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WorkflowLinkDescriptor> getInteger_2013IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WorkflowLinkDescriptor> getBoolean_2014IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WorkflowLinkDescriptor> getDouble_2015IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WorkflowLinkDescriptor> getTask_2016IncomingLinks(View view) {
+		Task modelElement = (Task) view.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataSource_Retrievals_4001(modelElement));
+		result.addAll(getIncomingTypeModelFacetLinks_RemoteTaskCommunicationConfiguration_4004(modelElement,
+				crossReferences));
+		result.addAll(
+				getIncomingTypeModelFacetLinks_TaskCommunicationConfiguration_4005(modelElement, crossReferences));
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowLinkDescriptor> getString_3001IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowLinkDescriptor> getInteger_3002IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowLinkDescriptor> getBoolean_3003IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowLinkDescriptor> getDouble_3004IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WorkflowLinkDescriptor> getRemoteTaskCommunicationConfiguration_4004IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WorkflowLinkDescriptor> getTaskCommunicationConfiguration_4005IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WorkflowLinkDescriptor> getEmittingTask_2011OutgoingLinks(View view) {
+		EmittingTask modelElement = (EmittingTask) view.getElement();
+		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_RemoteTaskCommunicationConfiguration_4004(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_TaskCommunicationConfiguration_4005(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getGHTorrent_2003OutgoingLinks(View view) {
-		GHTorrent modelElement = (GHTorrent) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataSource_Retrievals_4001(modelElement));
-		return result;
+	public static List<WorkflowLinkDescriptor> getString_2012OutgoingLinks(View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getCommits_2004OutgoingLinks(View view) {
-		Commits modelElement = (Commits) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataRetrieval_Sources_4002(modelElement));
-		return result;
+	public static List<WorkflowLinkDescriptor> getInteger_2013OutgoingLinks(View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getAuthors_2005OutgoingLinks(View view) {
-		Authors modelElement = (Authors) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataRetrieval_Sources_4002(modelElement));
-		return result;
+	public static List<WorkflowLinkDescriptor> getBoolean_2014OutgoingLinks(View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getFiles_2006OutgoingLinks(View view) {
-		Files modelElement = (Files) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataRetrieval_Sources_4002(modelElement));
-		return result;
+	public static List<WorkflowLinkDescriptor> getDouble_2015OutgoingLinks(View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getDataAggregation_2007OutgoingLinks(View view) {
-		DataAggregation modelElement = (DataAggregation) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataManipulation_Sources_4003(modelElement));
-		return result;
+	public static List<WorkflowLinkDescriptor> getTask_2016OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowLinkDescriptor> getString_3001OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowLinkDescriptor> getInteger_3002OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowLinkDescriptor> getBoolean_3003OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowLinkDescriptor> getDouble_3004OutgoingLinks(View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getDataFiltering_2008OutgoingLinks(View view) {
-		DataFiltering modelElement = (DataFiltering) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataManipulation_Sources_4003(modelElement));
-		return result;
+	public static List<WorkflowLinkDescriptor> getRemoteTaskCommunicationConfiguration_4004OutgoingLinks(View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getCustomScript_2009OutgoingLinks(View view) {
-		CustomScript modelElement = (CustomScript) view.getElement();
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataManipulation_Sources_4003(modelElement));
-		return result;
+	public static List<WorkflowLinkDescriptor> getTaskCommunicationConfiguration_4005OutgoingLinks(View view) {
+		return Collections.emptyList();
 	}
 
 	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getDataManipulation_2010OutgoingLinks(View view) {
-		DataManipulation modelElement = (DataManipulation) view.getElement();
+	* @generated
+	*/
+	private static Collection<WorkflowLinkDescriptor> getContainedTypeModelFacetLinks_RemoteTaskCommunicationConfiguration_4004(
+			Workflow container) {
 		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingFeatureModelFacetLinks_DataManipulation_Sources_4003(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	private static Collection<WorkflowLinkDescriptor> getIncomingFeatureModelFacetLinks_DataSource_Retrievals_4001(
-			DataRetrieval target, Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
-		for (EStructuralFeature.Setting setting : settings) {
-			if (setting.getEStructuralFeature() == WorkflowPackage.eINSTANCE.getDataSource_Retrievals()) {
-				result.add(new WorkflowLinkDescriptor(setting.getEObject(), target,
-						WorkflowElementTypes.DataSourceRetrievals_4001, DataSourceRetrievalsEditPart.VISUAL_ID));
+		for (Iterator<?> links = container.getConfigs().iterator(); links.hasNext();) {
+			EObject linkObject = (EObject) links.next();
+			if (false == linkObject instanceof RemoteTaskCommunicationConfiguration) {
+				continue;
 			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	private static Collection<WorkflowLinkDescriptor> getIncomingFeatureModelFacetLinks_DataRetrieval_Sources_4002(
-			DataSource target, Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
-		for (EStructuralFeature.Setting setting : settings) {
-			if (setting.getEStructuralFeature() == WorkflowPackage.eINSTANCE.getDataRetrieval_Sources()) {
-				result.add(new WorkflowLinkDescriptor(setting.getEObject(), target,
-						WorkflowElementTypes.DataRetrievalSources_4002, DataRetrievalSourcesEditPart.VISUAL_ID));
+			RemoteTaskCommunicationConfiguration link = (RemoteTaskCommunicationConfiguration) linkObject;
+			if (RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID != WorkflowVisualIDRegistry
+					.getLinkWithClassVisualID(link)) {
+				continue;
 			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	private static Collection<WorkflowLinkDescriptor> getIncomingFeatureModelFacetLinks_DataManipulation_Sources_4003(
-			DataRetrieval target, Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
-		for (EStructuralFeature.Setting setting : settings) {
-			if (setting.getEStructuralFeature() == WorkflowPackage.eINSTANCE.getDataManipulation_Sources()) {
-				result.add(new WorkflowLinkDescriptor(setting.getEObject(), target,
-						WorkflowElementTypes.DataManipulationSources_4003, DataManipulationSourcesEditPart.VISUAL_ID));
+			List targets = link.getOutgoing();
+			Object theTarget = targets.size() == 1 ? targets.get(0) : null;
+			if (false == theTarget instanceof Task) {
+				continue;
 			}
+			Task dst = (Task) theTarget;
+			List sources = link.getIncoming();
+			Object theSource = sources.size() == 1 ? sources.get(0) : null;
+			if (false == theSource instanceof EmittingTask) {
+				continue;
+			}
+			EmittingTask src = (EmittingTask) theSource;
+			result.add(new WorkflowLinkDescriptor(src, dst, link,
+					WorkflowElementTypes.RemoteTaskCommunicationConfiguration_4004,
+					RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID));
 		}
 		return result;
 	}
@@ -576,13 +606,96 @@ public class WorkflowDiagramUpdater {
 	/**
 	* @generated
 	*/
-	private static Collection<WorkflowLinkDescriptor> getOutgoingFeatureModelFacetLinks_DataSource_Retrievals_4001(
-			DataSource source) {
+	private static Collection<WorkflowLinkDescriptor> getContainedTypeModelFacetLinks_TaskCommunicationConfiguration_4005(
+			Workflow container) {
 		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		for (Iterator<?> destinations = source.getRetrievals().iterator(); destinations.hasNext();) {
-			DataRetrieval destination = (DataRetrieval) destinations.next();
-			result.add(new WorkflowLinkDescriptor(source, destination, WorkflowElementTypes.DataSourceRetrievals_4001,
-					DataSourceRetrievalsEditPart.VISUAL_ID));
+		for (Iterator<?> links = container.getConfigs().iterator(); links.hasNext();) {
+			EObject linkObject = (EObject) links.next();
+			if (false == linkObject instanceof TaskCommunicationConfiguration) {
+				continue;
+			}
+			TaskCommunicationConfiguration link = (TaskCommunicationConfiguration) linkObject;
+			if (TaskCommunicationConfigurationEditPart.VISUAL_ID != WorkflowVisualIDRegistry
+					.getLinkWithClassVisualID(link)) {
+				continue;
+			}
+			List targets = link.getOutgoing();
+			Object theTarget = targets.size() == 1 ? targets.get(0) : null;
+			if (false == theTarget instanceof Task) {
+				continue;
+			}
+			Task dst = (Task) theTarget;
+			List sources = link.getIncoming();
+			Object theSource = sources.size() == 1 ? sources.get(0) : null;
+			if (false == theSource instanceof EmittingTask) {
+				continue;
+			}
+			EmittingTask src = (EmittingTask) theSource;
+			result.add(
+					new WorkflowLinkDescriptor(src, dst, link, WorkflowElementTypes.TaskCommunicationConfiguration_4005,
+							TaskCommunicationConfigurationEditPart.VISUAL_ID));
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	private static Collection<WorkflowLinkDescriptor> getIncomingTypeModelFacetLinks_RemoteTaskCommunicationConfiguration_4004(
+			Task target, Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
+			if (setting.getEStructuralFeature() != WorkflowPackage.eINSTANCE
+					.getTaskCommunicationConfiguration_Outgoing()
+					|| false == setting.getEObject() instanceof RemoteTaskCommunicationConfiguration) {
+				continue;
+			}
+			RemoteTaskCommunicationConfiguration link = (RemoteTaskCommunicationConfiguration) setting.getEObject();
+			if (RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID != WorkflowVisualIDRegistry
+					.getLinkWithClassVisualID(link)) {
+				continue;
+			}
+			List sources = link.getIncoming();
+			Object theSource = sources.size() == 1 ? sources.get(0) : null;
+			if (false == theSource instanceof EmittingTask) {
+				continue;
+			}
+			EmittingTask src = (EmittingTask) theSource;
+			result.add(new WorkflowLinkDescriptor(src, target, link,
+					WorkflowElementTypes.RemoteTaskCommunicationConfiguration_4004,
+					RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID));
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	private static Collection<WorkflowLinkDescriptor> getIncomingTypeModelFacetLinks_TaskCommunicationConfiguration_4005(
+			Task target, Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
+			if (setting.getEStructuralFeature() != WorkflowPackage.eINSTANCE
+					.getTaskCommunicationConfiguration_Outgoing()
+					|| false == setting.getEObject() instanceof TaskCommunicationConfiguration) {
+				continue;
+			}
+			TaskCommunicationConfiguration link = (TaskCommunicationConfiguration) setting.getEObject();
+			if (TaskCommunicationConfigurationEditPart.VISUAL_ID != WorkflowVisualIDRegistry
+					.getLinkWithClassVisualID(link)) {
+				continue;
+			}
+			List sources = link.getIncoming();
+			Object theSource = sources.size() == 1 ? sources.get(0) : null;
+			if (false == theSource instanceof EmittingTask) {
+				continue;
+			}
+			EmittingTask src = (EmittingTask) theSource;
+			result.add(new WorkflowLinkDescriptor(src, target, link,
+					WorkflowElementTypes.TaskCommunicationConfiguration_4005,
+					TaskCommunicationConfigurationEditPart.VISUAL_ID));
 		}
 		return result;
 	}
@@ -590,13 +703,49 @@ public class WorkflowDiagramUpdater {
 	/**
 	* @generated
 	*/
-	private static Collection<WorkflowLinkDescriptor> getOutgoingFeatureModelFacetLinks_DataRetrieval_Sources_4002(
-			DataRetrieval source) {
+	private static Collection<WorkflowLinkDescriptor> getOutgoingTypeModelFacetLinks_RemoteTaskCommunicationConfiguration_4004(
+			EmittingTask source) {
+		Workflow container = null;
+		// Find container element for the link.
+		// Climb up by containment hierarchy starting from the source
+		// and return the first element that is instance of the container class.
+		for (EObject element = source; element != null && container == null; element = element.eContainer()) {
+			if (element instanceof Workflow) {
+				container = (Workflow) element;
+			}
+		}
+		if (container == null) {
+			return Collections.emptyList();
+		}
 		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		for (Iterator<?> destinations = source.getSources().iterator(); destinations.hasNext();) {
-			DataSource destination = (DataSource) destinations.next();
-			result.add(new WorkflowLinkDescriptor(source, destination, WorkflowElementTypes.DataRetrievalSources_4002,
-					DataRetrievalSourcesEditPart.VISUAL_ID));
+		for (Iterator<?> links = container.getConfigs().iterator(); links.hasNext();) {
+			EObject linkObject = (EObject) links.next();
+			if (false == linkObject instanceof RemoteTaskCommunicationConfiguration) {
+				continue;
+			}
+			RemoteTaskCommunicationConfiguration link = (RemoteTaskCommunicationConfiguration) linkObject;
+			if (RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID != WorkflowVisualIDRegistry
+					.getLinkWithClassVisualID(link)) {
+				continue;
+			}
+			List targets = link.getOutgoing();
+			Object theTarget = targets.size() == 1 ? targets.get(0) : null;
+			if (false == theTarget instanceof Task) {
+				continue;
+			}
+			Task dst = (Task) theTarget;
+			List sources = link.getIncoming();
+			Object theSource = sources.size() == 1 ? sources.get(0) : null;
+			if (false == theSource instanceof EmittingTask) {
+				continue;
+			}
+			EmittingTask src = (EmittingTask) theSource;
+			if (src != source) {
+				continue;
+			}
+			result.add(new WorkflowLinkDescriptor(src, dst, link,
+					WorkflowElementTypes.RemoteTaskCommunicationConfiguration_4004,
+					RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID));
 		}
 		return result;
 	}
@@ -604,13 +753,49 @@ public class WorkflowDiagramUpdater {
 	/**
 	* @generated
 	*/
-	private static Collection<WorkflowLinkDescriptor> getOutgoingFeatureModelFacetLinks_DataManipulation_Sources_4003(
-			DataManipulation source) {
+	private static Collection<WorkflowLinkDescriptor> getOutgoingTypeModelFacetLinks_TaskCommunicationConfiguration_4005(
+			EmittingTask source) {
+		Workflow container = null;
+		// Find container element for the link.
+		// Climb up by containment hierarchy starting from the source
+		// and return the first element that is instance of the container class.
+		for (EObject element = source; element != null && container == null; element = element.eContainer()) {
+			if (element instanceof Workflow) {
+				container = (Workflow) element;
+			}
+		}
+		if (container == null) {
+			return Collections.emptyList();
+		}
 		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		for (Iterator<?> destinations = source.getSources().iterator(); destinations.hasNext();) {
-			DataRetrieval destination = (DataRetrieval) destinations.next();
-			result.add(new WorkflowLinkDescriptor(source, destination,
-					WorkflowElementTypes.DataManipulationSources_4003, DataManipulationSourcesEditPart.VISUAL_ID));
+		for (Iterator<?> links = container.getConfigs().iterator(); links.hasNext();) {
+			EObject linkObject = (EObject) links.next();
+			if (false == linkObject instanceof TaskCommunicationConfiguration) {
+				continue;
+			}
+			TaskCommunicationConfiguration link = (TaskCommunicationConfiguration) linkObject;
+			if (TaskCommunicationConfigurationEditPart.VISUAL_ID != WorkflowVisualIDRegistry
+					.getLinkWithClassVisualID(link)) {
+				continue;
+			}
+			List targets = link.getOutgoing();
+			Object theTarget = targets.size() == 1 ? targets.get(0) : null;
+			if (false == theTarget instanceof Task) {
+				continue;
+			}
+			Task dst = (Task) theTarget;
+			List sources = link.getIncoming();
+			Object theSource = sources.size() == 1 ? sources.get(0) : null;
+			if (false == theSource instanceof EmittingTask) {
+				continue;
+			}
+			EmittingTask src = (EmittingTask) theSource;
+			if (src != source) {
+				continue;
+			}
+			result.add(
+					new WorkflowLinkDescriptor(src, dst, link, WorkflowElementTypes.TaskCommunicationConfiguration_4005,
+							TaskCommunicationConfigurationEditPart.VISUAL_ID));
 		}
 		return result;
 	}

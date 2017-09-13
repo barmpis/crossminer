@@ -246,132 +246,92 @@ public class Messages extends NLS {
 	/**
 	* @generated
 	*/
-	public static String Authors1CreationTool_title;
+	public static String Boolean1CreationTool_title;
 
 	/**
 	* @generated
 	*/
-	public static String Authors1CreationTool_desc;
+	public static String Boolean1CreationTool_desc;
 
 	/**
 	* @generated
 	*/
-	public static String Commits2CreationTool_title;
+	public static String Double2CreationTool_title;
 
 	/**
 	* @generated
 	*/
-	public static String Commits2CreationTool_desc;
+	public static String Double2CreationTool_desc;
 
 	/**
 	* @generated
 	*/
-	public static String CustomScript3CreationTool_title;
+	public static String EmittingTask3CreationTool_title;
 
 	/**
 	* @generated
 	*/
-	public static String CustomScript3CreationTool_desc;
+	public static String EmittingTask3CreationTool_desc;
 
 	/**
 	* @generated
 	*/
-	public static String DataAggregation4CreationTool_title;
+	public static String Integer4CreationTool_title;
 
 	/**
 	* @generated
 	*/
-	public static String DataAggregation4CreationTool_desc;
+	public static String Integer4CreationTool_desc;
 
 	/**
 	* @generated
 	*/
-	public static String DataFiltering5CreationTool_title;
+	public static String String5CreationTool_title;
 
 	/**
 	* @generated
 	*/
-	public static String DataFiltering5CreationTool_desc;
+	public static String String5CreationTool_desc;
 
 	/**
 	* @generated
 	*/
-	public static String DataManipulation6CreationTool_title;
+	public static String Task6CreationTool_title;
 
 	/**
 	* @generated
 	*/
-	public static String DataManipulation6CreationTool_desc;
+	public static String Task6CreationTool_desc;
 
 	/**
 	* @generated
 	*/
-	public static String Files7CreationTool_title;
+	public static String RemoteTaskCommunicationConfiguration1CreationTool_title;
 
 	/**
 	* @generated
 	*/
-	public static String Files7CreationTool_desc;
+	public static String RemoteTaskCommunicationConfiguration1CreationTool_desc;
 
 	/**
 	* @generated
 	*/
-	public static String GHTorrent8CreationTool_title;
+	public static String TaskCommunicationConfiguration2CreationTool_title;
 
 	/**
 	* @generated
 	*/
-	public static String GHTorrent8CreationTool_desc;
+	public static String TaskCommunicationConfiguration2CreationTool_desc;
 
 	/**
 	* @generated
 	*/
-	public static String Github9CreationTool_title;
+	public static String EmittingTaskEmittingTaskLocalsCompartmentEditPart_title;
 
 	/**
 	* @generated
 	*/
-	public static String Github9CreationTool_desc;
-
-	/**
-	* @generated
-	*/
-	public static String GithubBigQuery10CreationTool_title;
-
-	/**
-	* @generated
-	*/
-	public static String GithubBigQuery10CreationTool_desc;
-
-	/**
-	* @generated
-	*/
-	public static String Retrievals1CreationTool_title;
-
-	/**
-	* @generated
-	*/
-	public static String Retrievals1CreationTool_desc;
-
-	/**
-	* @generated
-	*/
-	public static String Sources2CreationTool_title;
-
-	/**
-	* @generated
-	*/
-	public static String Sources2CreationTool_desc;
-
-	/**
-	* @generated
-	*/
-	public static String Sources3CreationTool_title;
-
-	/**
-	* @generated
-	*/
-	public static String Sources3CreationTool_desc;
+	public static String TaskTaskLocalsCompartmentEditPart_title;
 
 	/**
 	* @generated
@@ -386,112 +346,37 @@ public class Messages extends NLS {
 	/**
 	* @generated
 	*/
-	public static String NavigatorGroupName_Github_2001_outgoinglinks;
+	public static String NavigatorGroupName_EmittingTask_2011_incominglinks;
 
 	/**
 	* @generated
 	*/
-	public static String NavigatorGroupName_Github_2001_incominglinks;
+	public static String NavigatorGroupName_EmittingTask_2011_outgoinglinks;
 
 	/**
 	* @generated
 	*/
-	public static String NavigatorGroupName_GithubBigQuery_2002_outgoinglinks;
+	public static String NavigatorGroupName_Task_2016_incominglinks;
 
 	/**
 	* @generated
 	*/
-	public static String NavigatorGroupName_GithubBigQuery_2002_incominglinks;
+	public static String NavigatorGroupName_RemoteTaskCommunicationConfiguration_4004_target;
 
 	/**
 	* @generated
 	*/
-	public static String NavigatorGroupName_GHTorrent_2003_outgoinglinks;
+	public static String NavigatorGroupName_RemoteTaskCommunicationConfiguration_4004_source;
 
 	/**
 	* @generated
 	*/
-	public static String NavigatorGroupName_GHTorrent_2003_incominglinks;
+	public static String NavigatorGroupName_TaskCommunicationConfiguration_4005_target;
 
 	/**
 	* @generated
 	*/
-	public static String NavigatorGroupName_Commits_2004_incominglinks;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_Commits_2004_outgoinglinks;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_Authors_2005_incominglinks;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_Authors_2005_outgoinglinks;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_Files_2006_incominglinks;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_Files_2006_outgoinglinks;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_DataAggregation_2007_outgoinglinks;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_DataFiltering_2008_outgoinglinks;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_CustomScript_2009_outgoinglinks;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_DataManipulation_2010_outgoinglinks;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_DataSourceRetrievals_4001_target;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_DataSourceRetrievals_4001_source;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_DataRetrievalSources_4002_target;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_DataRetrievalSources_4002_source;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_DataManipulationSources_4003_target;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_DataManipulationSources_4003_source;
+	public static String NavigatorGroupName_TaskCommunicationConfiguration_4005_source;
 
 	/**
 	* @generated

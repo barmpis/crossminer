@@ -5,53 +5,59 @@
     complianceLevel="6.0" copyrightFields="false">
   <foreignModel>workflow.emf</foreignModel>
   <genPackages prefix="Workflow" disposableProviderFactory="true" ecorePackage="workflow.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="workflow.ecore#//TaskConcurrency">
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//TaskConcurrency/none"/>
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//TaskConcurrency/full"/>
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//TaskConcurrency/partial"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="workflow.ecore#//QueuePersistanceOptions">
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//QueuePersistanceOptions/none"/>
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//QueuePersistanceOptions/full"/>
+      <genEnumLiterals ecoreEnumLiteral="workflow.ecore#//QueuePersistanceOptions/partial"/>
+    </genEnums>
     <genClasses ecoreClass="workflow.ecore#//Workflow">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Workflow/startingPoints"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Workflow/endPoints"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Workflow/contents"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Workflow/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Workflow/tasks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Workflow/configs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Workflow/globals"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="workflow.ecore#//Element"/>
-    <genClasses image="false" ecoreClass="workflow.ecore#//DataSource">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//DataSource/retrievals"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//DataSource/url"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//DataSource/offersPartialData"/>
+    <genClasses ecoreClass="workflow.ecore#//Task">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Task/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Task/concurrency"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Task/implementationFullyQualifiedName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Task/implementationEntryPoint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Task/acceptsPartialData"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//Task/incoming"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflow.ecore#//Task/locals"/>
     </genClasses>
-    <genClasses ecoreClass="workflow.ecore#//Github">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Github/un"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Github/pw"/>
+    <genClasses ecoreClass="workflow.ecore#//EmittingTask">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//EmittingTask/providesPartialData"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//EmittingTask/outgoing"/>
     </genClasses>
-    <genClasses ecoreClass="workflow.ecore#//GithubBigQuery">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//GithubBigQuery/un"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//GithubBigQuery/pw"/>
+    <genClasses ecoreClass="workflow.ecore#//TaskCommunicationConfiguration">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//TaskCommunicationConfiguration/incoming"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//TaskCommunicationConfiguration/outgoing"/>
     </genClasses>
-    <genClasses ecoreClass="workflow.ecore#//GHTorrent">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//GHTorrent/publicKey"/>
+    <genClasses ecoreClass="workflow.ecore#//RemoteTaskCommunicationConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//RemoteTaskCommunicationConfiguration/address"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//RemoteTaskCommunicationConfiguration/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//RemoteTaskCommunicationConfiguration/singleQueue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//RemoteTaskCommunicationConfiguration/queuePersistance"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="workflow.ecore#//DataRetrieval">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//DataRetrieval/sources"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//DataRetrieval/acceptsPartialData"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//DataRetrieval/repoPatterns"/>
+    <genClasses image="false" ecoreClass="workflow.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Variable/name"/>
     </genClasses>
-    <genClasses ecoreClass="workflow.ecore#//Commits">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Commits/patterns"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Commits/startDate"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Commits/endDate"/>
+    <genClasses ecoreClass="workflow.ecore#//String">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//String/value"/>
     </genClasses>
-    <genClasses ecoreClass="workflow.ecore#//Authors">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Authors/patterns"/>
+    <genClasses ecoreClass="workflow.ecore#//Integer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Integer/value"/>
     </genClasses>
-    <genClasses ecoreClass="workflow.ecore#//Files">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Files/patterns"/>
+    <genClasses ecoreClass="workflow.ecore#//Boolean">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Boolean/value"/>
     </genClasses>
-    <genClasses ecoreClass="workflow.ecore#//DataManipulation">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//DataManipulation/temp"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflow.ecore#//DataManipulation/sources"/>
-    </genClasses>
-    <genClasses ecoreClass="workflow.ecore#//DataAggregation"/>
-    <genClasses ecoreClass="workflow.ecore#//DataFiltering"/>
-    <genClasses ecoreClass="workflow.ecore#//CustomScript">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//CustomScript/language"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//CustomScript/code"/>
+    <genClasses ecoreClass="workflow.ecore#//Double">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflow.ecore#//Double/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

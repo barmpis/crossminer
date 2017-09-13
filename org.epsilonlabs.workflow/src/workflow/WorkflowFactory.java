@@ -31,94 +31,76 @@ public interface WorkflowFactory extends EFactory {
 	Workflow createWorkflow();
 
 	/**
-	 * Returns a new object of class '<em>Github</em>'.
+	 * Returns a new object of class '<em>Task</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Github</em>'.
+	 * @return a new object of class '<em>Task</em>'.
 	 * @generated
 	 */
-	Github createGithub();
+	Task createTask();
 
 	/**
-	 * Returns a new object of class '<em>Github Big Query</em>'.
+	 * Returns a new object of class '<em>Emitting Task</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Github Big Query</em>'.
+	 * @return a new object of class '<em>Emitting Task</em>'.
 	 * @generated
 	 */
-	GithubBigQuery createGithubBigQuery();
+	EmittingTask createEmittingTask();
 
 	/**
-	 * Returns a new object of class '<em>GH Torrent</em>'.
+	 * Returns a new object of class '<em>Task Communication Configuration</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>GH Torrent</em>'.
+	 * @return a new object of class '<em>Task Communication Configuration</em>'.
 	 * @generated
 	 */
-	GHTorrent createGHTorrent();
+	TaskCommunicationConfiguration createTaskCommunicationConfiguration();
 
 	/**
-	 * Returns a new object of class '<em>Commits</em>'.
+	 * Returns a new object of class '<em>Remote Task Communication Configuration</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Commits</em>'.
+	 * @return a new object of class '<em>Remote Task Communication Configuration</em>'.
 	 * @generated
 	 */
-	Commits createCommits();
+	RemoteTaskCommunicationConfiguration createRemoteTaskCommunicationConfiguration();
 
 	/**
-	 * Returns a new object of class '<em>Authors</em>'.
+	 * Returns a new object of class '<em>String</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Authors</em>'.
+	 * @return a new object of class '<em>String</em>'.
 	 * @generated
 	 */
-	Authors createAuthors();
+	String createString();
 
 	/**
-	 * Returns a new object of class '<em>Files</em>'.
+	 * Returns a new object of class '<em>Integer</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Files</em>'.
+	 * @return a new object of class '<em>Integer</em>'.
 	 * @generated
 	 */
-	Files createFiles();
+	Integer createInteger();
 
 	/**
-	 * Returns a new object of class '<em>Data Manipulation</em>'.
+	 * Returns a new object of class '<em>Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Manipulation</em>'.
+	 * @return a new object of class '<em>Boolean</em>'.
 	 * @generated
 	 */
-	DataManipulation createDataManipulation();
+	Boolean createBoolean();
 
 	/**
-	 * Returns a new object of class '<em>Data Aggregation</em>'.
+	 * Returns a new object of class '<em>Double</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Aggregation</em>'.
+	 * @return a new object of class '<em>Double</em>'.
 	 * @generated
 	 */
-	DataAggregation createDataAggregation();
-
-	/**
-	 * Returns a new object of class '<em>Data Filtering</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Filtering</em>'.
-	 * @generated
-	 */
-	DataFiltering createDataFiltering();
-
-	/**
-	 * Returns a new object of class '<em>Custom Script</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Custom Script</em>'.
-	 * @generated
-	 */
-	CustomScript createCustomScript();
+	Double createDouble();
 
 	/**
 	 * Returns the package supported by this factory.

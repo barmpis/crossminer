@@ -3,7 +3,6 @@
  */
 package workflow.diagram.part;
 
-import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramActionBarContributor;
 import org.eclipse.gmf.runtime.diagram.ui.printing.render.actions.EnhancedPrintActionHelper;
 import org.eclipse.gmf.runtime.diagram.ui.printing.render.actions.RenderedPrintPreviewAction;
@@ -13,7 +12,6 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
  * @generated
@@ -21,38 +19,23 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 public class WorkflowDiagramActionBarContributor extends DiagramActionBarContributor {
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected Class getEditorClass() {
 		return WorkflowDiagramEditor.class;
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected String getEditorId() {
 		return WorkflowDiagramEditor.ID;
 	}
 
 	/**
-	 * @generated NOT
-	 */
+	* @generated
+	*/
 	public void init(IActionBars bars, IWorkbenchPage page) {
-
-		// System.err.println("...");
-		IAction a = new RunAction(page);
-
-		a.setId("thisisanidipromiseyou");
-		a.setEnabled(true);
-		a.setImageDescriptor(ExtendedImageRegistry.getInstance().getImageDescriptor(
-				AbstractUIPlugin.imageDescriptorFromPlugin("org.epsilonlabs.workflow.diagram", "icons/Go-small.png")));
-		a.setText("Run!");
-		a.setDescription("Execute the workflow.");
-
-		addAction(a);
-		bars.getToolBarManager().add(a);
-		//
-
 		super.init(bars, page);
 		// print preview
 		IMenuManager fileMenu = bars.getMenuManager().findMenuUsingPath(IWorkbenchActionConstants.M_FILE);

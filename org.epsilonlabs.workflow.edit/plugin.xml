@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated workflow -->
       <factory
-            uri="http://workflow"
+            uri="http://org.crossminer.workflow"
             class="workflow.provider.WorkflowItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider

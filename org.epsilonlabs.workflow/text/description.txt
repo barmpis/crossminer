@@ -5,55 +5,58 @@ org.eclipse.emf.examples.generator.validator plug-in to illustrate how EMF's
 code generator can be extended.
 This can be disabled with -vmargs -Dorg.eclipse.emf.examples.generator.validator=false.
 
-Package workflow <http://workflow>
+Package workflow <http://org.crossminer.workflow>
 
   Class Workflow
-    Reference startingPoints : DataSource<<1..*>>
-    Reference endPoints : DataSource<<1..*>>
-    Reference contents : Element<<0..*>>
+    Attribute name : EString
+    Reference tasks : Task<<0..*>>
+    Reference configs : TaskCommunicationConfiguration<<0..*>>
+    Reference globals : Variable<<0..*>>
 
-  Class Element
+  Class Task
+    Attribute name : EString
+    Attribute concurrency : TaskConcurrency<<1..1>>
+    Attribute implementationFullyQualifiedName : EString
+    Attribute implementationEntryPoint : EString
+    Attribute acceptsPartialData : EBoolean<<1..1>>
+    Reference incoming : TaskCommunicationConfiguration<<0..*>>
+    Reference locals : Variable<<0..*>>
 
-  Class DataSource -> Element
-    Reference retrievals : DataRetrieval<<1..*>>
-    Attribute url : EString
-    Attribute offersPartialData : EBoolean
+  Class EmittingTask -> Task
+    Attribute providesPartialData : EBoolean<<1..1>>
+    Reference outgoing : TaskCommunicationConfiguration<<1..*>>
 
-  Class Github -> DataSource
-    Attribute un : EString
-    Attribute pw : EString
+  Class TaskCommunicationConfiguration
+    Reference incoming : EmittingTask<<0..*>>
+    Reference outgoing : Task<<0..*>>
 
-  Class GithubBigQuery -> DataSource
-    Attribute un : EString
-    Attribute pw : EString
+  Class RemoteTaskCommunicationConfiguration -> TaskCommunicationConfiguration
+    Attribute address : EString<<1..1>>
+    Attribute port : EInt<<1..1>>
+    Attribute singleQueue : EBoolean<<1..1>>
+    Attribute queuePersistance : QueuePersistanceOptions<<1..1>>
 
-  Class GHTorrent -> DataSource
-    Attribute publicKey : EString
+  Class Variable
+    Attribute name : EString<<1..1>>
 
-  Class DataRetrieval -> Element
-    Reference sources : DataSource<<1..*>>
-    Attribute acceptsPartialData : EBoolean
-    Attribute repoPatterns : EString
+  Class String -> Variable
+    Attribute value : EString<<1..*>>
 
-  Class Commits -> DataRetrieval
-    Attribute patterns : EString
-    Attribute startDate : EDate
-    Attribute endDate : EDate
+  Class Integer -> Variable
+    Attribute value : EInt<<1..*>>
 
-  Class Authors -> DataRetrieval
-    Attribute patterns : EString
+  Class Boolean -> Variable
+    Attribute value : EBoolean<<1..*>>
 
-  Class Files -> DataRetrieval
-    Attribute patterns : EString
+  Class Double -> Variable
+    Attribute value : EDouble<<1..*>>
 
-  Class DataManipulation -> Element
-    Attribute temp : EString
-    Reference sources : DataRetrieval<<1..*>>
+  Enum TaskConcurrency
+    Literal none = 0
+    Literal full = 1
+    Literal partial = 2
 
-  Class DataAggregation -> DataManipulation
-
-  Class DataFiltering -> DataManipulation
-
-  Class CustomScript -> DataManipulation
-    Attribute language : EString
-    Attribute code : EString
+  Enum QueuePersistanceOptions
+    Literal none = 0
+    Literal full = 1
+    Literal partial = 2
