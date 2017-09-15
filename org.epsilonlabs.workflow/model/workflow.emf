@@ -1,58 +1,43 @@
 @namespace(uri="http://org.crossminer.workflow", prefix="wf")
 package workflow;
 
-@gmf.diagram(onefile="true")
 class Workflow {
-  attr EString name;
+  attr String name;
   val Task[*] tasks;
-  val TaskCommunicationConfiguration[*] configs;
-  val Variable[*] globals;
+  val CommunicationChannel[*] channels;
+  val DataStructure[*] globalVariables;
 }
 
-@gmf.node(label="name")
 class Task {
-  attr EString name;
-  @gmf.label
-  attr TaskConcurrency[1] concurrency;
-  @gmf.label
-  attr EString implementationFullyQualifiedName;
-  @gmf.label
-  attr EString implementationEntryPoint;
-  @gmf.label
-  attr EBoolean[1] acceptsPartialData;
-  ref TaskCommunicationConfiguration[*]#outgoing incoming;
-  @gmf.compartment
-  val Variable[*] locals;
+  attr String name;
+  attr boolean[1] acceptsPartialData;
+  attr boolean[1] providesPartialData;
+  ref CommunicationChannel[*]#outgoing incoming;
+  ref CommunicationChannel[*]#incoming outgoing;
+  val DataStructure[*] localVariables;
 }
 
-class EmittingTask extends Task {
-  @gmf.label
-  attr EBoolean[1] providesPartialData;
-  ref TaskCommunicationConfiguration[+]#incoming outgoing;
+class JavaTask extends Task {
+  attr String implementationFullyQualifiedName;
+  attr String implementationEntryPoint;
 }
 
-@gmf.link(source="incoming", target="outgoing")
-class TaskCommunicationConfiguration {
-  ref EmittingTask[*]#outgoing incoming;
+class ScriptedTask extends Task {
+  attr String scriptType;
+  attr String script;
+}
+
+class CommunicationChannel {
+  ref Task[*]#outgoing incoming;
   ref Task[*]#incoming outgoing;
+  val DataStructure[1] type;
 }
 
-@gmf.link(label="address,port,singleQueue,queuePersistance",style="dot")
-class RemoteTaskCommunicationConfiguration extends TaskCommunicationConfiguration {
-  @gmf.label
-  attr EString[1] address;
-  @gmf.label
-  attr EInt[1] port;
-  @gmf.label
-  attr EBoolean[1] singleQueue;
-  @gmf.label
+class RemoteCommunicationChannel extends CommunicationChannel {
+  attr String[1] address;
+  attr int[1] port;
+  attr boolean[1] singleQueue;
   attr QueuePersistanceOptions[1] queuePersistance;
-}
-
-enum TaskConcurrency {
-  none = 0;
-  full = 1;
-  partial = 2;
 }
 
 enum QueuePersistanceOptions {
@@ -61,28 +46,9 @@ enum QueuePersistanceOptions {
   partial = 2;
 }
 
-@gmf.node(label="name",icon="false")
-abstract class Variable {
-  attr EString[1] name;
-}
-
-class String extends Variable {
-  @gmf.label
-  attr EString[+] value;
-}
-
-class Integer extends Variable {
-  @gmf.label
-  attr EInt[+] value;
-}
-
-class Boolean extends Variable {
-  @gmf.label
-  attr EBoolean[+] value;
-}
-
-class Double extends Variable {
-  @gmf.label
-  attr EDouble[+] value;
+class DataStructure {
+  attr String[1] name;
+  val ecore.EClassifier[1] type;
+  attr boolean[1] isMany;
 }
 
