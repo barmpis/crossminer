@@ -28,62 +28,20 @@ public class WorkflowEditPartFactory implements EditPartFactory {
 			case WorkflowEditPart.VISUAL_ID:
 				return new WorkflowEditPart(view);
 
-			case EmittingTaskEditPart.VISUAL_ID:
-				return new EmittingTaskEditPart(view);
+			case JavaTaskEditPart.VISUAL_ID:
+				return new JavaTaskEditPart(view);
 
-			case EmittingTaskNameEditPart.VISUAL_ID:
-				return new EmittingTaskNameEditPart(view);
+			case JavaTaskNameEditPart.VISUAL_ID:
+				return new JavaTaskNameEditPart(view);
 
-			case EmittingTaskConcurrencyEditPart.VISUAL_ID:
-				return new EmittingTaskConcurrencyEditPart(view);
+			case ScriptedTaskEditPart.VISUAL_ID:
+				return new ScriptedTaskEditPart(view);
 
-			case EmittingTaskImplementationFullyQualEditPart.VISUAL_ID:
-				return new EmittingTaskImplementationFullyQualEditPart(view);
+			case ScriptedTaskNameEditPart.VISUAL_ID:
+				return new ScriptedTaskNameEditPart(view);
 
-			case EmittingTaskImplementationEntryPoinEditPart.VISUAL_ID:
-				return new EmittingTaskImplementationEntryPoinEditPart(view);
-
-			case EmittingTaskAcceptsPartialDataEditPart.VISUAL_ID:
-				return new EmittingTaskAcceptsPartialDataEditPart(view);
-
-			case EmittingTaskProvidesPartialDataEditPart.VISUAL_ID:
-				return new EmittingTaskProvidesPartialDataEditPart(view);
-
-			case StringEditPart.VISUAL_ID:
-				return new StringEditPart(view);
-
-			case StringNameEditPart.VISUAL_ID:
-				return new StringNameEditPart(view);
-
-			case StringValueEditPart.VISUAL_ID:
-				return new StringValueEditPart(view);
-
-			case IntegerEditPart.VISUAL_ID:
-				return new IntegerEditPart(view);
-
-			case IntegerNameEditPart.VISUAL_ID:
-				return new IntegerNameEditPart(view);
-
-			case IntegerValueEditPart.VISUAL_ID:
-				return new IntegerValueEditPart(view);
-
-			case BooleanEditPart.VISUAL_ID:
-				return new BooleanEditPart(view);
-
-			case BooleanNameEditPart.VISUAL_ID:
-				return new BooleanNameEditPart(view);
-
-			case BooleanValueEditPart.VISUAL_ID:
-				return new BooleanValueEditPart(view);
-
-			case DoubleEditPart.VISUAL_ID:
-				return new DoubleEditPart(view);
-
-			case DoubleNameEditPart.VISUAL_ID:
-				return new DoubleNameEditPart(view);
-
-			case DoubleValueEditPart.VISUAL_ID:
-				return new DoubleValueEditPart(view);
+			case RemoteCommunicationChannelEditPart.VISUAL_ID:
+				return new RemoteCommunicationChannelEditPart(view);
 
 			case TaskEditPart.VISUAL_ID:
 				return new TaskEditPart(view);
@@ -91,68 +49,47 @@ public class WorkflowEditPartFactory implements EditPartFactory {
 			case TaskNameEditPart.VISUAL_ID:
 				return new TaskNameEditPart(view);
 
-			case TaskConcurrencyEditPart.VISUAL_ID:
-				return new TaskConcurrencyEditPart(view);
+			case CommunicationChannelEditPart.VISUAL_ID:
+				return new CommunicationChannelEditPart(view);
 
-			case TaskImplementationFullyQualEditPart.VISUAL_ID:
-				return new TaskImplementationFullyQualEditPart(view);
+			case WrappingLabelEditPart.VISUAL_ID:
+				return new WrappingLabelEditPart(view);
 
-			case TaskImplementationEntryPoinEditPart.VISUAL_ID:
-				return new TaskImplementationEntryPoinEditPart(view);
+			case DataStructureEditPart.VISUAL_ID:
+				return new DataStructureEditPart(view);
 
-			case TaskAcceptsPartialDataEditPart.VISUAL_ID:
-				return new TaskAcceptsPartialDataEditPart(view);
+			case DataStructureNameEditPart.VISUAL_ID:
+				return new DataStructureNameEditPart(view);
 
-			case String2EditPart.VISUAL_ID:
-				return new String2EditPart(view);
+			case DataStructure2EditPart.VISUAL_ID:
+				return new DataStructure2EditPart(view);
 
-			case StringName2EditPart.VISUAL_ID:
-				return new StringName2EditPart(view);
+			case DataStructureName2EditPart.VISUAL_ID:
+				return new DataStructureName2EditPart(view);
 
-			case StringValue2EditPart.VISUAL_ID:
-				return new StringValue2EditPart(view);
+			case RemoteCommunicationChannelRemoteCommunicationChannelTypeCompartmentEditPart.VISUAL_ID:
+				return new RemoteCommunicationChannelRemoteCommunicationChannelTypeCompartmentEditPart(view);
 
-			case Integer2EditPart.VISUAL_ID:
-				return new Integer2EditPart(view);
+			case DataStructureDataStructureTypeCompartmentEditPart.VISUAL_ID:
+				return new DataStructureDataStructureTypeCompartmentEditPart(view);
 
-			case IntegerName2EditPart.VISUAL_ID:
-				return new IntegerName2EditPart(view);
+			case CommunicationChannelCommunicationChannelTypeCompartmentEditPart.VISUAL_ID:
+				return new CommunicationChannelCommunicationChannelTypeCompartmentEditPart(view);
 
-			case IntegerValue2EditPart.VISUAL_ID:
-				return new IntegerValue2EditPart(view);
+			case DataStructureDataStructureTypeCompartment2EditPart.VISUAL_ID:
+				return new DataStructureDataStructureTypeCompartment2EditPart(view);
 
-			case Boolean2EditPart.VISUAL_ID:
-				return new Boolean2EditPart(view);
+			case TaskIncomingEditPart.VISUAL_ID:
+				return new TaskIncomingEditPart(view);
 
-			case BooleanName2EditPart.VISUAL_ID:
-				return new BooleanName2EditPart(view);
+			case WrappingLabel2EditPart.VISUAL_ID:
+				return new WrappingLabel2EditPart(view);
 
-			case BooleanValue2EditPart.VISUAL_ID:
-				return new BooleanValue2EditPart(view);
+			case CommunicationChannelIncomingEditPart.VISUAL_ID:
+				return new CommunicationChannelIncomingEditPart(view);
 
-			case Double2EditPart.VISUAL_ID:
-				return new Double2EditPart(view);
-
-			case DoubleName2EditPart.VISUAL_ID:
-				return new DoubleName2EditPart(view);
-
-			case DoubleValue2EditPart.VISUAL_ID:
-				return new DoubleValue2EditPart(view);
-
-			case EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID:
-				return new EmittingTaskEmittingTaskLocalsCompartmentEditPart(view);
-
-			case TaskTaskLocalsCompartmentEditPart.VISUAL_ID:
-				return new TaskTaskLocalsCompartmentEditPart(view);
-
-			case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID:
-				return new RemoteTaskCommunicationConfigurationEditPart(view);
-
-			case RemoteTaskCommunicationConfigurationAddressPortSingleQueueQEditPart.VISUAL_ID:
-				return new RemoteTaskCommunicationConfigurationAddressPortSingleQueueQEditPart(view);
-
-			case TaskCommunicationConfigurationEditPart.VISUAL_ID:
-				return new TaskCommunicationConfigurationEditPart(view);
+			case WrappingLabel3EditPart.VISUAL_ID:
+				return new WrappingLabel3EditPart(view);
 
 			}
 		}

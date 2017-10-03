@@ -40,6 +40,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.epsilonlabs.workflow.edit;visibility:=reexport,
  org.eclipse.emf.validation;visibility:=reexport,
  org.eclipse.gef;visibility:=reexport,
- org.epsilonlabs.workflow.subscription;bundle-version="1.0.0"
+ org.epsilonlabs.workflow.subscription;bundle-version="1.0.0",
+ org.eclipse.ocl.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.eclipse.debug.ui.actions

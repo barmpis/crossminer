@@ -118,164 +118,118 @@ public class WorkflowItemProviderAdapterFactory extends WorkflowAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link workflow.EmittingTask} instances.
+	 * This keeps track of the one adapter used for all {@link workflow.JavaTask} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EmittingTaskItemProvider emittingTaskItemProvider;
+	protected JavaTaskItemProvider javaTaskItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link workflow.EmittingTask}.
+	 * This creates an adapter for a {@link workflow.JavaTask}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createEmittingTaskAdapter() {
-		if (emittingTaskItemProvider == null) {
-			emittingTaskItemProvider = new EmittingTaskItemProvider(this);
+	public Adapter createJavaTaskAdapter() {
+		if (javaTaskItemProvider == null) {
+			javaTaskItemProvider = new JavaTaskItemProvider(this);
 		}
 
-		return emittingTaskItemProvider;
+		return javaTaskItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link workflow.TaskCommunicationConfiguration} instances.
+	 * This keeps track of the one adapter used for all {@link workflow.ScriptedTask} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TaskCommunicationConfigurationItemProvider taskCommunicationConfigurationItemProvider;
+	protected ScriptedTaskItemProvider scriptedTaskItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link workflow.TaskCommunicationConfiguration}.
+	 * This creates an adapter for a {@link workflow.ScriptedTask}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createTaskCommunicationConfigurationAdapter() {
-		if (taskCommunicationConfigurationItemProvider == null) {
-			taskCommunicationConfigurationItemProvider = new TaskCommunicationConfigurationItemProvider(this);
+	public Adapter createScriptedTaskAdapter() {
+		if (scriptedTaskItemProvider == null) {
+			scriptedTaskItemProvider = new ScriptedTaskItemProvider(this);
 		}
 
-		return taskCommunicationConfigurationItemProvider;
+		return scriptedTaskItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link workflow.RemoteTaskCommunicationConfiguration} instances.
+	 * This keeps track of the one adapter used for all {@link workflow.CommunicationChannel} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected RemoteTaskCommunicationConfigurationItemProvider remoteTaskCommunicationConfigurationItemProvider;
+	protected CommunicationChannelItemProvider communicationChannelItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link workflow.RemoteTaskCommunicationConfiguration}.
+	 * This creates an adapter for a {@link workflow.CommunicationChannel}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createRemoteTaskCommunicationConfigurationAdapter() {
-		if (remoteTaskCommunicationConfigurationItemProvider == null) {
-			remoteTaskCommunicationConfigurationItemProvider = new RemoteTaskCommunicationConfigurationItemProvider(this);
+	public Adapter createCommunicationChannelAdapter() {
+		if (communicationChannelItemProvider == null) {
+			communicationChannelItemProvider = new CommunicationChannelItemProvider(this);
 		}
 
-		return remoteTaskCommunicationConfigurationItemProvider;
+		return communicationChannelItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link workflow.String} instances.
+	 * This keeps track of the one adapter used for all {@link workflow.RemoteCommunicationChannel} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StringItemProvider stringItemProvider;
+	protected RemoteCommunicationChannelItemProvider remoteCommunicationChannelItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link workflow.String}.
+	 * This creates an adapter for a {@link workflow.RemoteCommunicationChannel}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createStringAdapter() {
-		if (stringItemProvider == null) {
-			stringItemProvider = new StringItemProvider(this);
+	public Adapter createRemoteCommunicationChannelAdapter() {
+		if (remoteCommunicationChannelItemProvider == null) {
+			remoteCommunicationChannelItemProvider = new RemoteCommunicationChannelItemProvider(this);
 		}
 
-		return stringItemProvider;
+		return remoteCommunicationChannelItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link workflow.Integer} instances.
+	 * This keeps track of the one adapter used for all {@link workflow.DataStructure} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected IntegerItemProvider integerItemProvider;
+	protected DataStructureItemProvider dataStructureItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link workflow.Integer}.
+	 * This creates an adapter for a {@link workflow.DataStructure}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createIntegerAdapter() {
-		if (integerItemProvider == null) {
-			integerItemProvider = new IntegerItemProvider(this);
+	public Adapter createDataStructureAdapter() {
+		if (dataStructureItemProvider == null) {
+			dataStructureItemProvider = new DataStructureItemProvider(this);
 		}
 
-		return integerItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link workflow.Boolean} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected BooleanItemProvider booleanItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link workflow.Boolean}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createBooleanAdapter() {
-		if (booleanItemProvider == null) {
-			booleanItemProvider = new BooleanItemProvider(this);
-		}
-
-		return booleanItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link workflow.Double} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DoubleItemProvider doubleItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link workflow.Double}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDoubleAdapter() {
-		if (doubleItemProvider == null) {
-			doubleItemProvider = new DoubleItemProvider(this);
-		}
-
-		return doubleItemProvider;
+		return dataStructureItemProvider;
 	}
 
 	/**
@@ -379,13 +333,11 @@ public class WorkflowItemProviderAdapterFactory extends WorkflowAdapterFactory i
 	public void dispose() {
 		if (workflowItemProvider != null) workflowItemProvider.dispose();
 		if (taskItemProvider != null) taskItemProvider.dispose();
-		if (emittingTaskItemProvider != null) emittingTaskItemProvider.dispose();
-		if (taskCommunicationConfigurationItemProvider != null) taskCommunicationConfigurationItemProvider.dispose();
-		if (remoteTaskCommunicationConfigurationItemProvider != null) remoteTaskCommunicationConfigurationItemProvider.dispose();
-		if (stringItemProvider != null) stringItemProvider.dispose();
-		if (integerItemProvider != null) integerItemProvider.dispose();
-		if (booleanItemProvider != null) booleanItemProvider.dispose();
-		if (doubleItemProvider != null) doubleItemProvider.dispose();
+		if (javaTaskItemProvider != null) javaTaskItemProvider.dispose();
+		if (scriptedTaskItemProvider != null) scriptedTaskItemProvider.dispose();
+		if (communicationChannelItemProvider != null) communicationChannelItemProvider.dispose();
+		if (remoteCommunicationChannelItemProvider != null) remoteCommunicationChannelItemProvider.dispose();
+		if (dataStructureItemProvider != null) dataStructureItemProvider.dispose();
 	}
 
 }

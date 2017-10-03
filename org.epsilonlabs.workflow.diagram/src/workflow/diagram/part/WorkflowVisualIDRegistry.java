@@ -12,52 +12,30 @@ import org.eclipse.gmf.tooling.runtime.structure.DiagramStructure;
 
 import workflow.Workflow;
 import workflow.WorkflowPackage;
-import workflow.diagram.edit.parts.Boolean2EditPart;
-import workflow.diagram.edit.parts.BooleanEditPart;
-import workflow.diagram.edit.parts.BooleanName2EditPart;
-import workflow.diagram.edit.parts.BooleanNameEditPart;
-import workflow.diagram.edit.parts.BooleanValue2EditPart;
-import workflow.diagram.edit.parts.BooleanValueEditPart;
-import workflow.diagram.edit.parts.Double2EditPart;
-import workflow.diagram.edit.parts.DoubleEditPart;
-import workflow.diagram.edit.parts.DoubleName2EditPart;
-import workflow.diagram.edit.parts.DoubleNameEditPart;
-import workflow.diagram.edit.parts.DoubleValue2EditPart;
-import workflow.diagram.edit.parts.DoubleValueEditPart;
-import workflow.diagram.edit.parts.EmittingTaskAcceptsPartialDataEditPart;
-import workflow.diagram.edit.parts.EmittingTaskConcurrencyEditPart;
-import workflow.diagram.edit.parts.EmittingTaskEditPart;
-import workflow.diagram.edit.parts.EmittingTaskEmittingTaskLocalsCompartmentEditPart;
-import workflow.diagram.edit.parts.EmittingTaskImplementationEntryPoinEditPart;
-import workflow.diagram.edit.parts.EmittingTaskImplementationFullyQualEditPart;
-import workflow.diagram.edit.parts.EmittingTaskNameEditPart;
-import workflow.diagram.edit.parts.EmittingTaskProvidesPartialDataEditPart;
-import workflow.diagram.edit.parts.Integer2EditPart;
-import workflow.diagram.edit.parts.IntegerEditPart;
-import workflow.diagram.edit.parts.IntegerName2EditPart;
-import workflow.diagram.edit.parts.IntegerNameEditPart;
-import workflow.diagram.edit.parts.IntegerValue2EditPart;
-import workflow.diagram.edit.parts.IntegerValueEditPart;
-import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationAddressEditPart;
-import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationAddressPortSingleQueueEditPart;
-import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationAddressPortSingleQueueQEditPart;
-import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationEditPart;
-import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationPortEditPart;
-import workflow.diagram.edit.parts.String2EditPart;
-import workflow.diagram.edit.parts.StringEditPart;
-import workflow.diagram.edit.parts.StringName2EditPart;
-import workflow.diagram.edit.parts.StringNameEditPart;
-import workflow.diagram.edit.parts.StringValue2EditPart;
-import workflow.diagram.edit.parts.StringValueEditPart;
-import workflow.diagram.edit.parts.TaskAcceptsPartialDataEditPart;
-import workflow.diagram.edit.parts.TaskCommunicationConfigurationEditPart;
-import workflow.diagram.edit.parts.TaskConcurrencyEditPart;
+import workflow.diagram.edit.parts.CommunicationChannelCommunicationChannelTypeCompartmentEditPart;
+import workflow.diagram.edit.parts.CommunicationChannelEditPart;
+import workflow.diagram.edit.parts.CommunicationChannelIncomingEditPart;
+import workflow.diagram.edit.parts.CommunicationChannelNEditPart;
+import workflow.diagram.edit.parts.DataStructure2EditPart;
+import workflow.diagram.edit.parts.DataStructureDataStructureTypeCompartment2EditPart;
+import workflow.diagram.edit.parts.DataStructureDataStructureTypeCompartmentEditPart;
+import workflow.diagram.edit.parts.DataStructureEditPart;
+import workflow.diagram.edit.parts.DataStructureName2EditPart;
+import workflow.diagram.edit.parts.DataStructureNameEditPart;
+import workflow.diagram.edit.parts.JavaTaskEditPart;
+import workflow.diagram.edit.parts.JavaTaskNameEditPart;
+import workflow.diagram.edit.parts.RemoteCommunicationChannelEditPart;
+import workflow.diagram.edit.parts.RemoteCommunicationChannelNEditPart;
+import workflow.diagram.edit.parts.RemoteCommunicationChannelRemoteCommunicationChannelTypeCompartmentEditPart;
+import workflow.diagram.edit.parts.ScriptedTaskEditPart;
+import workflow.diagram.edit.parts.ScriptedTaskNameEditPart;
 import workflow.diagram.edit.parts.TaskEditPart;
-import workflow.diagram.edit.parts.TaskImplementationEntryPoinEditPart;
-import workflow.diagram.edit.parts.TaskImplementationFullyQualEditPart;
+import workflow.diagram.edit.parts.TaskIncomingEditPart;
 import workflow.diagram.edit.parts.TaskNameEditPart;
-import workflow.diagram.edit.parts.TaskTaskLocalsCompartmentEditPart;
 import workflow.diagram.edit.parts.WorkflowEditPart;
+import workflow.diagram.edit.parts.WrappingLabel2EditPart;
+import workflow.diagram.edit.parts.WrappingLabel3EditPart;
+import workflow.diagram.edit.parts.WrappingLabelEditPart;
 
 /**
  * This registry is used to determine which type of visual object should be
@@ -161,51 +139,33 @@ public class WorkflowVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case WorkflowEditPart.VISUAL_ID:
-			if (WorkflowPackage.eINSTANCE.getEmittingTask().isSuperTypeOf(domainElement.eClass())) {
-				return EmittingTaskEditPart.VISUAL_ID;
+			if (WorkflowPackage.eINSTANCE.getJavaTask().isSuperTypeOf(domainElement.eClass())) {
+				return JavaTaskEditPart.VISUAL_ID;
 			}
-			if (WorkflowPackage.eINSTANCE.getString().isSuperTypeOf(domainElement.eClass())) {
-				return StringEditPart.VISUAL_ID;
+			if (WorkflowPackage.eINSTANCE.getScriptedTask().isSuperTypeOf(domainElement.eClass())) {
+				return ScriptedTaskEditPart.VISUAL_ID;
 			}
-			if (WorkflowPackage.eINSTANCE.getInteger().isSuperTypeOf(domainElement.eClass())) {
-				return IntegerEditPart.VISUAL_ID;
-			}
-			if (WorkflowPackage.eINSTANCE.getBoolean().isSuperTypeOf(domainElement.eClass())) {
-				return BooleanEditPart.VISUAL_ID;
-			}
-			if (WorkflowPackage.eINSTANCE.getDouble().isSuperTypeOf(domainElement.eClass())) {
-				return DoubleEditPart.VISUAL_ID;
+			if (WorkflowPackage.eINSTANCE.getRemoteCommunicationChannel().isSuperTypeOf(domainElement.eClass())) {
+				return RemoteCommunicationChannelEditPart.VISUAL_ID;
 			}
 			if (WorkflowPackage.eINSTANCE.getTask().isSuperTypeOf(domainElement.eClass())) {
 				return TaskEditPart.VISUAL_ID;
 			}
-			break;
-		case EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID:
-			if (WorkflowPackage.eINSTANCE.getString().isSuperTypeOf(domainElement.eClass())) {
-				return String2EditPart.VISUAL_ID;
+			if (WorkflowPackage.eINSTANCE.getCommunicationChannel().isSuperTypeOf(domainElement.eClass())) {
+				return CommunicationChannelEditPart.VISUAL_ID;
 			}
-			if (WorkflowPackage.eINSTANCE.getInteger().isSuperTypeOf(domainElement.eClass())) {
-				return Integer2EditPart.VISUAL_ID;
-			}
-			if (WorkflowPackage.eINSTANCE.getBoolean().isSuperTypeOf(domainElement.eClass())) {
-				return Boolean2EditPart.VISUAL_ID;
-			}
-			if (WorkflowPackage.eINSTANCE.getDouble().isSuperTypeOf(domainElement.eClass())) {
-				return Double2EditPart.VISUAL_ID;
+			if (WorkflowPackage.eINSTANCE.getDataStructure().isSuperTypeOf(domainElement.eClass())) {
+				return DataStructureEditPart.VISUAL_ID;
 			}
 			break;
-		case TaskTaskLocalsCompartmentEditPart.VISUAL_ID:
-			if (WorkflowPackage.eINSTANCE.getString().isSuperTypeOf(domainElement.eClass())) {
-				return String2EditPart.VISUAL_ID;
+		case RemoteCommunicationChannelRemoteCommunicationChannelTypeCompartmentEditPart.VISUAL_ID:
+			if (WorkflowPackage.eINSTANCE.getDataStructure().isSuperTypeOf(domainElement.eClass())) {
+				return DataStructure2EditPart.VISUAL_ID;
 			}
-			if (WorkflowPackage.eINSTANCE.getInteger().isSuperTypeOf(domainElement.eClass())) {
-				return Integer2EditPart.VISUAL_ID;
-			}
-			if (WorkflowPackage.eINSTANCE.getBoolean().isSuperTypeOf(domainElement.eClass())) {
-				return Boolean2EditPart.VISUAL_ID;
-			}
-			if (WorkflowPackage.eINSTANCE.getDouble().isSuperTypeOf(domainElement.eClass())) {
-				return Double2EditPart.VISUAL_ID;
+			break;
+		case CommunicationChannelCommunicationChannelTypeCompartmentEditPart.VISUAL_ID:
+			if (WorkflowPackage.eINSTANCE.getDataStructure().isSuperTypeOf(domainElement.eClass())) {
+				return DataStructure2EditPart.VISUAL_ID;
 			}
 			break;
 		}
@@ -232,77 +192,37 @@ public class WorkflowVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case WorkflowEditPart.VISUAL_ID:
-			if (EmittingTaskEditPart.VISUAL_ID == nodeVisualID) {
+			if (JavaTaskEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (StringEditPart.VISUAL_ID == nodeVisualID) {
+			if (ScriptedTaskEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (IntegerEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (BooleanEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (DoubleEditPart.VISUAL_ID == nodeVisualID) {
+			if (RemoteCommunicationChannelEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			if (TaskEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			break;
-		case EmittingTaskEditPart.VISUAL_ID:
-			if (EmittingTaskNameEditPart.VISUAL_ID == nodeVisualID) {
+			if (CommunicationChannelEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (EmittingTaskConcurrencyEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (EmittingTaskImplementationFullyQualEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (EmittingTaskImplementationEntryPoinEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (EmittingTaskAcceptsPartialDataEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (EmittingTaskProvidesPartialDataEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID == nodeVisualID) {
+			if (DataStructureEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case StringEditPart.VISUAL_ID:
-			if (StringNameEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (StringValueEditPart.VISUAL_ID == nodeVisualID) {
+		case JavaTaskEditPart.VISUAL_ID:
+			if (JavaTaskNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case IntegerEditPart.VISUAL_ID:
-			if (IntegerNameEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (IntegerValueEditPart.VISUAL_ID == nodeVisualID) {
+		case ScriptedTaskEditPart.VISUAL_ID:
+			if (ScriptedTaskNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case BooleanEditPart.VISUAL_ID:
-			if (BooleanNameEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (BooleanValueEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
-		case DoubleEditPart.VISUAL_ID:
-			if (DoubleNameEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (DoubleValueEditPart.VISUAL_ID == nodeVisualID) {
+		case RemoteCommunicationChannelEditPart.VISUAL_ID:
+			if (RemoteCommunicationChannelRemoteCommunicationChannelTypeCompartmentEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -310,84 +230,48 @@ public class WorkflowVisualIDRegistry {
 			if (TaskNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (TaskConcurrencyEditPart.VISUAL_ID == nodeVisualID) {
+			break;
+		case CommunicationChannelEditPart.VISUAL_ID:
+			if (WrappingLabelEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (TaskImplementationFullyQualEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (TaskImplementationEntryPoinEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (TaskAcceptsPartialDataEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (TaskTaskLocalsCompartmentEditPart.VISUAL_ID == nodeVisualID) {
+			if (CommunicationChannelCommunicationChannelTypeCompartmentEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case String2EditPart.VISUAL_ID:
-			if (StringName2EditPart.VISUAL_ID == nodeVisualID) {
+		case DataStructureEditPart.VISUAL_ID:
+			if (DataStructureNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (StringValue2EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
-		case Integer2EditPart.VISUAL_ID:
-			if (IntegerName2EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (IntegerValue2EditPart.VISUAL_ID == nodeVisualID) {
+			if (DataStructureDataStructureTypeCompartment2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case Boolean2EditPart.VISUAL_ID:
-			if (BooleanName2EditPart.VISUAL_ID == nodeVisualID) {
+		case DataStructure2EditPart.VISUAL_ID:
+			if (DataStructureName2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (BooleanValue2EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
-		case Double2EditPart.VISUAL_ID:
-			if (DoubleName2EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (DoubleValue2EditPart.VISUAL_ID == nodeVisualID) {
+			if (DataStructureDataStructureTypeCompartmentEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID:
-			if (String2EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (Integer2EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (Boolean2EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (Double2EditPart.VISUAL_ID == nodeVisualID) {
+		case RemoteCommunicationChannelRemoteCommunicationChannelTypeCompartmentEditPart.VISUAL_ID:
+			if (DataStructure2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case TaskTaskLocalsCompartmentEditPart.VISUAL_ID:
-			if (String2EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (Integer2EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (Boolean2EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (Double2EditPart.VISUAL_ID == nodeVisualID) {
+		case CommunicationChannelCommunicationChannelTypeCompartmentEditPart.VISUAL_ID:
+			if (DataStructure2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID:
-			if (RemoteTaskCommunicationConfigurationAddressPortSingleQueueQEditPart.VISUAL_ID == nodeVisualID) {
+		case TaskIncomingEditPart.VISUAL_ID:
+			if (WrappingLabel2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case CommunicationChannelIncomingEditPart.VISUAL_ID:
+			if (WrappingLabel3EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -401,12 +285,6 @@ public class WorkflowVisualIDRegistry {
 	public static int getLinkWithClassVisualID(EObject domainElement) {
 		if (domainElement == null) {
 			return -1;
-		}
-		if (WorkflowPackage.eINSTANCE.getRemoteTaskCommunicationConfiguration().isSuperTypeOf(domainElement.eClass())) {
-			return RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID;
-		}
-		if (WorkflowPackage.eINSTANCE.getTaskCommunicationConfiguration().isSuperTypeOf(domainElement.eClass())) {
-			return TaskCommunicationConfigurationEditPart.VISUAL_ID;
 		}
 		return -1;
 	}
@@ -438,8 +316,10 @@ public class WorkflowVisualIDRegistry {
 	*/
 	public static boolean isCompartmentVisualID(int visualID) {
 		switch (visualID) {
-		case EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID:
-		case TaskTaskLocalsCompartmentEditPart.VISUAL_ID:
+		case RemoteCommunicationChannelRemoteCommunicationChannelTypeCompartmentEditPart.VISUAL_ID:
+		case DataStructureDataStructureTypeCompartmentEditPart.VISUAL_ID:
+		case CommunicationChannelCommunicationChannelTypeCompartmentEditPart.VISUAL_ID:
+		case DataStructureDataStructureTypeCompartment2EditPart.VISUAL_ID:
 			return true;
 		default:
 			break;
@@ -454,14 +334,11 @@ public class WorkflowVisualIDRegistry {
 		switch (visualID) {
 		case WorkflowEditPart.VISUAL_ID:
 			return false;
-		case StringEditPart.VISUAL_ID:
-		case IntegerEditPart.VISUAL_ID:
-		case BooleanEditPart.VISUAL_ID:
-		case DoubleEditPart.VISUAL_ID:
-		case String2EditPart.VISUAL_ID:
-		case Integer2EditPart.VISUAL_ID:
-		case Boolean2EditPart.VISUAL_ID:
-		case Double2EditPart.VISUAL_ID:
+		case TaskEditPart.VISUAL_ID:
+		case JavaTaskEditPart.VISUAL_ID:
+		case ScriptedTaskEditPart.VISUAL_ID:
+		case DataStructureEditPart.VISUAL_ID:
+		case DataStructure2EditPart.VISUAL_ID:
 			return true;
 		default:
 			break;

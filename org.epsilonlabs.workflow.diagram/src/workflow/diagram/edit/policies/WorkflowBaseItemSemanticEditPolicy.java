@@ -35,11 +35,8 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.helpers.GeneratedEditHelperBase;
 
-import workflow.EmittingTask;
-import workflow.RemoteTaskCommunicationConfiguration;
+import workflow.CommunicationChannel;
 import workflow.Task;
-import workflow.TaskCommunicationConfiguration;
-import workflow.Workflow;
 import workflow.diagram.part.WorkflowDiagramEditorPlugin;
 import workflow.diagram.part.WorkflowVisualIDRegistry;
 import workflow.diagram.providers.WorkflowElementTypes;
@@ -299,8 +296,8 @@ public class WorkflowBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public static class LinkConstraints {
 
 		/**
@@ -313,32 +310,46 @@ public class WorkflowBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		/**
 		 * @generated
 		 */
-		public boolean canCreateRemoteTaskCommunicationConfiguration_4004(Workflow container, EmittingTask source,
-				Task target) {
-			return canExistRemoteTaskCommunicationConfiguration_4004(container, null, source, target);
+		public boolean canCreateTaskIncoming_4001(Task source, CommunicationChannel target) {
+			if (source != null) {
+				if (source.getIncoming().contains(target)) {
+					return false;
+				}
+			}
+			if (target != null && (target.getOutgoing().contains(target))) {
+				return false;
+			}
+
+			return canExistTaskIncoming_4001(source, target);
 		}
 
 		/**
 		 * @generated
 		 */
-		public boolean canCreateTaskCommunicationConfiguration_4005(Workflow container, EmittingTask source,
-				Task target) {
-			return canExistTaskCommunicationConfiguration_4005(container, null, source, target);
+		public boolean canCreateCommunicationChannelIncoming_4002(CommunicationChannel source, Task target) {
+			if (source != null) {
+				if (source.getIncoming().contains(target)) {
+					return false;
+				}
+			}
+			if (target != null && (target.getOutgoing().contains(target))) {
+				return false;
+			}
+
+			return canExistCommunicationChannelIncoming_4002(source, target);
 		}
 
 		/**
 		* @generated
 		*/
-		public boolean canExistRemoteTaskCommunicationConfiguration_4004(Workflow container,
-				RemoteTaskCommunicationConfiguration linkInstance, EmittingTask source, Task target) {
+		public boolean canExistTaskIncoming_4001(Task source, CommunicationChannel target) {
 			return true;
 		}
 
 		/**
 		* @generated
 		*/
-		public boolean canExistTaskCommunicationConfiguration_4005(Workflow container,
-				TaskCommunicationConfiguration linkInstance, EmittingTask source, Task target) {
+		public boolean canExistCommunicationChannelIncoming_4002(CommunicationChannel source, Task target) {
 			return true;
 		}
 	}

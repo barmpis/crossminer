@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.epsilonlabs.workflow.execution.subscription.WorkflowGraphicalChangeSubscription;
 
+import workflow.Task;
+
 /**
  * @generated NOT
  * @author kb
@@ -68,25 +70,26 @@ public class ExecuteWorkflow extends Job {
 		WorkflowGraphicalChangeSubscription.getinstance().executionStarted();
 
 		TreeIterator<EObject> children = resource.getAllContents();
-		List<DataSource> sources = new LinkedList<>();
+		List<Task> sources = new LinkedList<>();
 
 		while (children.hasNext()) {
 
 			EObject child = children.next();
 
-			if (child instanceof DataSource) {
-				sources.add((DataSource) child);
+			if (child instanceof Task) {
+				if (((Task) child).getIncoming().isEmpty())
+					sources.add((Task) child);
 			}
 
 		}
 
 		//
 
-		for (DataSource d : sources) {
+		for (Task d : sources) {
 
 			// System.out.println(c)
-			System.out
-					.println("(stub) retrieving data from datasource: " + d.eClass().getName() + "  at: " + d.getUrl());
+			System.out.println(
+					"(stub) retrieving data from datasource: " + d.eClass().getName() + "  ofType: " + d.getClass());
 
 			// setInProgressState(child);
 			System.out.println("data retrieval in progress");
@@ -96,7 +99,7 @@ public class ExecuteWorkflow extends Job {
 
 		}
 
-		for (DataSource d : sources) {
+		for (Task d : sources) {
 
 			// setBlockedState(child);
 			System.err.println("data retrieval blocked!");
@@ -106,7 +109,7 @@ public class ExecuteWorkflow extends Job {
 
 		}
 
-		for (DataSource d : sources) {
+		for (Task d : sources) {
 
 			// setComletedState(child);
 			System.out.println("data retrieval complete");
@@ -191,7 +194,7 @@ public class ExecuteWorkflow extends Job {
 
 		long totaltime = System.currentTimeMillis() - init;
 
-		System.out.println("Executed workflow, took: " + totaltime + "s");
+		System.out.println("Executed workflow, took: " + totaltime / 1000 + "s " + totaltime % 1000 + "ms");
 
 	}
 

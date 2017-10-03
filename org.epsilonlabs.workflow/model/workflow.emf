@@ -1,6 +1,8 @@
 @namespace(uri="http://org.crossminer.workflow", prefix="wf")
+@gmf
 package workflow;
 
+@gmf.diagram(onefile="true")
 class Workflow {
   attr String name;
   val Task[*] tasks;
@@ -8,10 +10,12 @@ class Workflow {
   val DataStructure[*] globalVariables;
 }
 
+@gmf.node(label="name")
 class Task {
   attr String name;
   attr boolean[1] acceptsPartialData;
   attr boolean[1] providesPartialData;
+  @gmf.link
   ref CommunicationChannel[*]#outgoing incoming;
   ref CommunicationChannel[*]#incoming outgoing;
   val DataStructure[*] localVariables;
@@ -27,9 +31,13 @@ class ScriptedTask extends Task {
   attr String script;
 }
 
+@gmf.node(label.placement="none")
 class CommunicationChannel {
+  attr String name;
+  @gmf.link
   ref Task[*]#outgoing incoming;
   ref Task[*]#incoming outgoing;
+  @gmf.compartment
   val DataStructure[1] type;
 }
 
@@ -46,9 +54,10 @@ enum QueuePersistanceOptions {
   partial = 2;
 }
 
+@gmf.node(label="name")
 class DataStructure {
   attr String[1] name;
+  @gmf.compartment
   val ecore.EClassifier[1] type;
   attr boolean[1] isMany;
 }
-

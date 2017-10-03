@@ -64,11 +64,10 @@ public class TaskItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addConcurrencyPropertyDescriptor(object);
-			addImplementationFullyQualifiedNamePropertyDescriptor(object);
-			addImplementationEntryPointPropertyDescriptor(object);
 			addAcceptsPartialDataPropertyDescriptor(object);
+			addProvidesPartialDataPropertyDescriptor(object);
 			addIncomingPropertyDescriptor(object);
+			addOutgoingPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -87,72 +86,6 @@ public class TaskItemProvider
 				 getString("_UI_Task_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Task_name_feature", "_UI_Task_type"),
 				 WorkflowPackage.Literals.TASK__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Concurrency feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addConcurrencyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Task_concurrency_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Task_concurrency_feature", "_UI_Task_type"),
-				 WorkflowPackage.Literals.TASK__CONCURRENCY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Implementation Fully Qualified Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addImplementationFullyQualifiedNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Task_implementationFullyQualifiedName_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Task_implementationFullyQualifiedName_feature", "_UI_Task_type"),
-				 WorkflowPackage.Literals.TASK__IMPLEMENTATION_FULLY_QUALIFIED_NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Implementation Entry Point feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addImplementationEntryPointPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Task_implementationEntryPoint_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Task_implementationEntryPoint_feature", "_UI_Task_type"),
-				 WorkflowPackage.Literals.TASK__IMPLEMENTATION_ENTRY_POINT,
 				 true,
 				 false,
 				 false,
@@ -184,6 +117,28 @@ public class TaskItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Provides Partial Data feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addProvidesPartialDataPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Task_providesPartialData_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Task_providesPartialData_feature", "_UI_Task_type"),
+				 WorkflowPackage.Literals.TASK__PROVIDES_PARTIAL_DATA,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Incoming feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -206,6 +161,28 @@ public class TaskItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Outgoing feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOutgoingPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Task_outgoing_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Task_outgoing_feature", "_UI_Task_type"),
+				 WorkflowPackage.Literals.TASK__OUTGOING,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -217,7 +194,7 @@ public class TaskItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(WorkflowPackage.Literals.TASK__LOCALS);
+			childrenFeatures.add(WorkflowPackage.Literals.TASK__LOCAL_VARIABLES);
 		}
 		return childrenFeatures;
 	}
@@ -274,13 +251,11 @@ public class TaskItemProvider
 
 		switch (notification.getFeatureID(Task.class)) {
 			case WorkflowPackage.TASK__NAME:
-			case WorkflowPackage.TASK__CONCURRENCY:
-			case WorkflowPackage.TASK__IMPLEMENTATION_FULLY_QUALIFIED_NAME:
-			case WorkflowPackage.TASK__IMPLEMENTATION_ENTRY_POINT:
 			case WorkflowPackage.TASK__ACCEPTS_PARTIAL_DATA:
+			case WorkflowPackage.TASK__PROVIDES_PARTIAL_DATA:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case WorkflowPackage.TASK__LOCALS:
+			case WorkflowPackage.TASK__LOCAL_VARIABLES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -300,23 +275,8 @@ public class TaskItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(WorkflowPackage.Literals.TASK__LOCALS,
-				 WorkflowFactory.eINSTANCE.createString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(WorkflowPackage.Literals.TASK__LOCALS,
-				 WorkflowFactory.eINSTANCE.createInteger()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(WorkflowPackage.Literals.TASK__LOCALS,
-				 WorkflowFactory.eINSTANCE.createBoolean()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(WorkflowPackage.Literals.TASK__LOCALS,
-				 WorkflowFactory.eINSTANCE.createDouble()));
+				(WorkflowPackage.Literals.TASK__LOCAL_VARIABLES,
+				 WorkflowFactory.eINSTANCE.createDataStructure()));
 	}
 
 	/**

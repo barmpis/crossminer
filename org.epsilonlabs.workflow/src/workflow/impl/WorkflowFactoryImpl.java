@@ -11,15 +11,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import workflow.EmittingTask;
-import workflow.QueuePersistanceOptions;
-import workflow.RemoteTaskCommunicationConfiguration;
-import workflow.Task;
-import workflow.TaskCommunicationConfiguration;
-import workflow.TaskConcurrency;
-import workflow.Workflow;
-import workflow.WorkflowFactory;
-import workflow.WorkflowPackage;
+import workflow.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -67,13 +59,11 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 		switch (eClass.getClassifierID()) {
 			case WorkflowPackage.WORKFLOW: return createWorkflow();
 			case WorkflowPackage.TASK: return createTask();
-			case WorkflowPackage.EMITTING_TASK: return createEmittingTask();
-			case WorkflowPackage.TASK_COMMUNICATION_CONFIGURATION: return createTaskCommunicationConfiguration();
-			case WorkflowPackage.REMOTE_TASK_COMMUNICATION_CONFIGURATION: return createRemoteTaskCommunicationConfiguration();
-			case WorkflowPackage.STRING: return createString();
-			case WorkflowPackage.INTEGER: return createInteger();
-			case WorkflowPackage.BOOLEAN: return createBoolean();
-			case WorkflowPackage.DOUBLE: return createDouble();
+			case WorkflowPackage.JAVA_TASK: return createJavaTask();
+			case WorkflowPackage.SCRIPTED_TASK: return createScriptedTask();
+			case WorkflowPackage.COMMUNICATION_CHANNEL: return createCommunicationChannel();
+			case WorkflowPackage.REMOTE_COMMUNICATION_CHANNEL: return createRemoteCommunicationChannel();
+			case WorkflowPackage.DATA_STRUCTURE: return createDataStructure();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -87,8 +77,6 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case WorkflowPackage.TASK_CONCURRENCY:
-				return createTaskConcurrencyFromString(eDataType, initialValue);
 			case WorkflowPackage.QUEUE_PERSISTANCE_OPTIONS:
 				return createQueuePersistanceOptionsFromString(eDataType, initialValue);
 			default:
@@ -104,8 +92,6 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case WorkflowPackage.TASK_CONCURRENCY:
-				return convertTaskConcurrencyToString(eDataType, instanceValue);
 			case WorkflowPackage.QUEUE_PERSISTANCE_OPTIONS:
 				return convertQueuePersistanceOptionsToString(eDataType, instanceValue);
 			default:
@@ -138,9 +124,9 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EmittingTask createEmittingTask() {
-		EmittingTaskImpl emittingTask = new EmittingTaskImpl();
-		return emittingTask;
+	public JavaTask createJavaTask() {
+		JavaTaskImpl javaTask = new JavaTaskImpl();
+		return javaTask;
 	}
 
 	/**
@@ -148,9 +134,9 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TaskCommunicationConfiguration createTaskCommunicationConfiguration() {
-		TaskCommunicationConfigurationImpl taskCommunicationConfiguration = new TaskCommunicationConfigurationImpl();
-		return taskCommunicationConfiguration;
+	public ScriptedTask createScriptedTask() {
+		ScriptedTaskImpl scriptedTask = new ScriptedTaskImpl();
+		return scriptedTask;
 	}
 
 	/**
@@ -158,9 +144,9 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RemoteTaskCommunicationConfiguration createRemoteTaskCommunicationConfiguration() {
-		RemoteTaskCommunicationConfigurationImpl remoteTaskCommunicationConfiguration = new RemoteTaskCommunicationConfigurationImpl();
-		return remoteTaskCommunicationConfiguration;
+	public CommunicationChannel createCommunicationChannel() {
+		CommunicationChannelImpl communicationChannel = new CommunicationChannelImpl();
+		return communicationChannel;
 	}
 
 	/**
@@ -168,9 +154,9 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public workflow.String createString() {
-		StringImpl string = new StringImpl();
-		return string;
+	public RemoteCommunicationChannel createRemoteCommunicationChannel() {
+		RemoteCommunicationChannelImpl remoteCommunicationChannel = new RemoteCommunicationChannelImpl();
+		return remoteCommunicationChannel;
 	}
 
 	/**
@@ -178,49 +164,9 @@ public class WorkflowFactoryImpl extends EFactoryImpl implements WorkflowFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public workflow.Integer createInteger() {
-		IntegerImpl integer = new IntegerImpl();
-		return integer;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public workflow.Boolean createBoolean() {
-		BooleanImpl boolean_ = new BooleanImpl();
-		return boolean_;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public workflow.Double createDouble() {
-		DoubleImpl double_ = new DoubleImpl();
-		return double_;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TaskConcurrency createTaskConcurrencyFromString(EDataType eDataType, String initialValue) {
-		TaskConcurrency result = TaskConcurrency.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertTaskConcurrencyToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
+	public DataStructure createDataStructure() {
+		DataStructureImpl dataStructure = new DataStructureImpl();
+		return dataStructure;
 	}
 
 	/**

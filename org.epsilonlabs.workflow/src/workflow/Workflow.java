@@ -2,8 +2,6 @@
  */
 package workflow;
 
-import java.lang.String;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -19,8 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link workflow.Workflow#getName <em>Name</em>}</li>
  *   <li>{@link workflow.Workflow#getTasks <em>Tasks</em>}</li>
- *   <li>{@link workflow.Workflow#getConfigs <em>Configs</em>}</li>
- *   <li>{@link workflow.Workflow#getGlobals <em>Globals</em>}</li>
+ *   <li>{@link workflow.Workflow#getChannels <em>Channels</em>}</li>
+ *   <li>{@link workflow.Workflow#getGlobalVariables <em>Global Variables</em>}</li>
  * </ul>
  *
  * @see workflow.WorkflowPackage#getWorkflow()
@@ -71,35 +69,35 @@ public interface Workflow extends EObject {
 	EList<Task> getTasks();
 
 	/**
-	 * Returns the value of the '<em><b>Configs</b></em>' containment reference list.
-	 * The list contents are of type {@link workflow.TaskCommunicationConfiguration}.
+	 * Returns the value of the '<em><b>Channels</b></em>' containment reference list.
+	 * The list contents are of type {@link workflow.CommunicationChannel}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Configs</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Channels</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Configs</em>' containment reference list.
-	 * @see workflow.WorkflowPackage#getWorkflow_Configs()
+	 * @return the value of the '<em>Channels</em>' containment reference list.
+	 * @see workflow.WorkflowPackage#getWorkflow_Channels()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<TaskCommunicationConfiguration> getConfigs();
+	EList<CommunicationChannel> getChannels();
 
 	/**
-	 * Returns the value of the '<em><b>Globals</b></em>' containment reference list.
-	 * The list contents are of type {@link workflow.Variable}.
+	 * Returns the value of the '<em><b>Global Variables</b></em>' containment reference list.
+	 * The list contents are of type {@link workflow.DataStructure}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Globals</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Global Variables</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Globals</em>' containment reference list.
-	 * @see workflow.WorkflowPackage#getWorkflow_Globals()
+	 * @return the value of the '<em>Global Variables</em>' containment reference list.
+	 * @see workflow.WorkflowPackage#getWorkflow_GlobalVariables()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Variable> getGlobals();
+	EList<DataStructure> getGlobalVariables();
 
 } // Workflow

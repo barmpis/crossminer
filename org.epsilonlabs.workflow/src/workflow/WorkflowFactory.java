@@ -40,67 +40,49 @@ public interface WorkflowFactory extends EFactory {
 	Task createTask();
 
 	/**
-	 * Returns a new object of class '<em>Emitting Task</em>'.
+	 * Returns a new object of class '<em>Java Task</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Emitting Task</em>'.
+	 * @return a new object of class '<em>Java Task</em>'.
 	 * @generated
 	 */
-	EmittingTask createEmittingTask();
+	JavaTask createJavaTask();
 
 	/**
-	 * Returns a new object of class '<em>Task Communication Configuration</em>'.
+	 * Returns a new object of class '<em>Scripted Task</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Task Communication Configuration</em>'.
+	 * @return a new object of class '<em>Scripted Task</em>'.
 	 * @generated
 	 */
-	TaskCommunicationConfiguration createTaskCommunicationConfiguration();
+	ScriptedTask createScriptedTask();
 
 	/**
-	 * Returns a new object of class '<em>Remote Task Communication Configuration</em>'.
+	 * Returns a new object of class '<em>Communication Channel</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Remote Task Communication Configuration</em>'.
+	 * @return a new object of class '<em>Communication Channel</em>'.
 	 * @generated
 	 */
-	RemoteTaskCommunicationConfiguration createRemoteTaskCommunicationConfiguration();
+	CommunicationChannel createCommunicationChannel();
 
 	/**
-	 * Returns a new object of class '<em>String</em>'.
+	 * Returns a new object of class '<em>Remote Communication Channel</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>String</em>'.
+	 * @return a new object of class '<em>Remote Communication Channel</em>'.
 	 * @generated
 	 */
-	String createString();
+	RemoteCommunicationChannel createRemoteCommunicationChannel();
 
 	/**
-	 * Returns a new object of class '<em>Integer</em>'.
+	 * Returns a new object of class '<em>Data Structure</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Integer</em>'.
+	 * @return a new object of class '<em>Data Structure</em>'.
 	 * @generated
 	 */
-	Integer createInteger();
-
-	/**
-	 * Returns a new object of class '<em>Boolean</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Boolean</em>'.
-	 * @generated
-	 */
-	Boolean createBoolean();
-
-	/**
-	 * Returns a new object of class '<em>Double</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Double</em>'.
-	 * @generated
-	 */
-	Double createDouble();
+	DataStructure createDataStructure();
 
 	/**
 	 * Returns the package supported by this factory.

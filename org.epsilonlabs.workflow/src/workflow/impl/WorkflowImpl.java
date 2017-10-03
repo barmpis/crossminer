@@ -2,8 +2,6 @@
  */
 package workflow.impl;
 
-import java.lang.String;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -20,9 +18,9 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import workflow.CommunicationChannel;
+import workflow.DataStructure;
 import workflow.Task;
-import workflow.TaskCommunicationConfiguration;
-import workflow.Variable;
 import workflow.Workflow;
 import workflow.WorkflowPackage;
 
@@ -36,8 +34,8 @@ import workflow.WorkflowPackage;
  * <ul>
  *   <li>{@link workflow.impl.WorkflowImpl#getName <em>Name</em>}</li>
  *   <li>{@link workflow.impl.WorkflowImpl#getTasks <em>Tasks</em>}</li>
- *   <li>{@link workflow.impl.WorkflowImpl#getConfigs <em>Configs</em>}</li>
- *   <li>{@link workflow.impl.WorkflowImpl#getGlobals <em>Globals</em>}</li>
+ *   <li>{@link workflow.impl.WorkflowImpl#getChannels <em>Channels</em>}</li>
+ *   <li>{@link workflow.impl.WorkflowImpl#getGlobalVariables <em>Global Variables</em>}</li>
  * </ul>
  *
  * @generated
@@ -74,24 +72,24 @@ public class WorkflowImpl extends EObjectImpl implements Workflow {
 	protected EList<Task> tasks;
 
 	/**
-	 * The cached value of the '{@link #getConfigs() <em>Configs</em>}' containment reference list.
+	 * The cached value of the '{@link #getChannels() <em>Channels</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConfigs()
+	 * @see #getChannels()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TaskCommunicationConfiguration> configs;
+	protected EList<CommunicationChannel> channels;
 
 	/**
-	 * The cached value of the '{@link #getGlobals() <em>Globals</em>}' containment reference list.
+	 * The cached value of the '{@link #getGlobalVariables() <em>Global Variables</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getGlobals()
+	 * @see #getGlobalVariables()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Variable> globals;
+	protected EList<DataStructure> globalVariables;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -150,11 +148,11 @@ public class WorkflowImpl extends EObjectImpl implements Workflow {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TaskCommunicationConfiguration> getConfigs() {
-		if (configs == null) {
-			configs = new EObjectContainmentEList<TaskCommunicationConfiguration>(TaskCommunicationConfiguration.class, this, WorkflowPackage.WORKFLOW__CONFIGS);
+	public EList<CommunicationChannel> getChannels() {
+		if (channels == null) {
+			channels = new EObjectContainmentEList<CommunicationChannel>(CommunicationChannel.class, this, WorkflowPackage.WORKFLOW__CHANNELS);
 		}
-		return configs;
+		return channels;
 	}
 
 	/**
@@ -162,11 +160,11 @@ public class WorkflowImpl extends EObjectImpl implements Workflow {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Variable> getGlobals() {
-		if (globals == null) {
-			globals = new EObjectContainmentEList<Variable>(Variable.class, this, WorkflowPackage.WORKFLOW__GLOBALS);
+	public EList<DataStructure> getGlobalVariables() {
+		if (globalVariables == null) {
+			globalVariables = new EObjectContainmentEList<DataStructure>(DataStructure.class, this, WorkflowPackage.WORKFLOW__GLOBAL_VARIABLES);
 		}
-		return globals;
+		return globalVariables;
 	}
 
 	/**
@@ -179,10 +177,10 @@ public class WorkflowImpl extends EObjectImpl implements Workflow {
 		switch (featureID) {
 			case WorkflowPackage.WORKFLOW__TASKS:
 				return ((InternalEList<?>)getTasks()).basicRemove(otherEnd, msgs);
-			case WorkflowPackage.WORKFLOW__CONFIGS:
-				return ((InternalEList<?>)getConfigs()).basicRemove(otherEnd, msgs);
-			case WorkflowPackage.WORKFLOW__GLOBALS:
-				return ((InternalEList<?>)getGlobals()).basicRemove(otherEnd, msgs);
+			case WorkflowPackage.WORKFLOW__CHANNELS:
+				return ((InternalEList<?>)getChannels()).basicRemove(otherEnd, msgs);
+			case WorkflowPackage.WORKFLOW__GLOBAL_VARIABLES:
+				return ((InternalEList<?>)getGlobalVariables()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -199,10 +197,10 @@ public class WorkflowImpl extends EObjectImpl implements Workflow {
 				return getName();
 			case WorkflowPackage.WORKFLOW__TASKS:
 				return getTasks();
-			case WorkflowPackage.WORKFLOW__CONFIGS:
-				return getConfigs();
-			case WorkflowPackage.WORKFLOW__GLOBALS:
-				return getGlobals();
+			case WorkflowPackage.WORKFLOW__CHANNELS:
+				return getChannels();
+			case WorkflowPackage.WORKFLOW__GLOBAL_VARIABLES:
+				return getGlobalVariables();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -223,13 +221,13 @@ public class WorkflowImpl extends EObjectImpl implements Workflow {
 				getTasks().clear();
 				getTasks().addAll((Collection<? extends Task>)newValue);
 				return;
-			case WorkflowPackage.WORKFLOW__CONFIGS:
-				getConfigs().clear();
-				getConfigs().addAll((Collection<? extends TaskCommunicationConfiguration>)newValue);
+			case WorkflowPackage.WORKFLOW__CHANNELS:
+				getChannels().clear();
+				getChannels().addAll((Collection<? extends CommunicationChannel>)newValue);
 				return;
-			case WorkflowPackage.WORKFLOW__GLOBALS:
-				getGlobals().clear();
-				getGlobals().addAll((Collection<? extends Variable>)newValue);
+			case WorkflowPackage.WORKFLOW__GLOBAL_VARIABLES:
+				getGlobalVariables().clear();
+				getGlobalVariables().addAll((Collection<? extends DataStructure>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -249,11 +247,11 @@ public class WorkflowImpl extends EObjectImpl implements Workflow {
 			case WorkflowPackage.WORKFLOW__TASKS:
 				getTasks().clear();
 				return;
-			case WorkflowPackage.WORKFLOW__CONFIGS:
-				getConfigs().clear();
+			case WorkflowPackage.WORKFLOW__CHANNELS:
+				getChannels().clear();
 				return;
-			case WorkflowPackage.WORKFLOW__GLOBALS:
-				getGlobals().clear();
+			case WorkflowPackage.WORKFLOW__GLOBAL_VARIABLES:
+				getGlobalVariables().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -271,10 +269,10 @@ public class WorkflowImpl extends EObjectImpl implements Workflow {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case WorkflowPackage.WORKFLOW__TASKS:
 				return tasks != null && !tasks.isEmpty();
-			case WorkflowPackage.WORKFLOW__CONFIGS:
-				return configs != null && !configs.isEmpty();
-			case WorkflowPackage.WORKFLOW__GLOBALS:
-				return globals != null && !globals.isEmpty();
+			case WorkflowPackage.WORKFLOW__CHANNELS:
+				return channels != null && !channels.isEmpty();
+			case WorkflowPackage.WORKFLOW__GLOBAL_VARIABLES:
+				return globalVariables != null && !globalVariables.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

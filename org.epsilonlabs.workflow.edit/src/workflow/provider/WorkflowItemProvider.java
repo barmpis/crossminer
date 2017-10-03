@@ -103,8 +103,8 @@ public class WorkflowItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(WorkflowPackage.Literals.WORKFLOW__TASKS);
-			childrenFeatures.add(WorkflowPackage.Literals.WORKFLOW__CONFIGS);
-			childrenFeatures.add(WorkflowPackage.Literals.WORKFLOW__GLOBALS);
+			childrenFeatures.add(WorkflowPackage.Literals.WORKFLOW__CHANNELS);
+			childrenFeatures.add(WorkflowPackage.Literals.WORKFLOW__GLOBAL_VARIABLES);
 		}
 		return childrenFeatures;
 	}
@@ -164,8 +164,8 @@ public class WorkflowItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case WorkflowPackage.WORKFLOW__TASKS:
-			case WorkflowPackage.WORKFLOW__CONFIGS:
-			case WorkflowPackage.WORKFLOW__GLOBALS:
+			case WorkflowPackage.WORKFLOW__CHANNELS:
+			case WorkflowPackage.WORKFLOW__GLOBAL_VARIABLES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -191,37 +191,27 @@ public class WorkflowItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(WorkflowPackage.Literals.WORKFLOW__TASKS,
-				 WorkflowFactory.eINSTANCE.createEmittingTask()));
+				 WorkflowFactory.eINSTANCE.createJavaTask()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__CONFIGS,
-				 WorkflowFactory.eINSTANCE.createTaskCommunicationConfiguration()));
+				(WorkflowPackage.Literals.WORKFLOW__TASKS,
+				 WorkflowFactory.eINSTANCE.createScriptedTask()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__CONFIGS,
-				 WorkflowFactory.eINSTANCE.createRemoteTaskCommunicationConfiguration()));
+				(WorkflowPackage.Literals.WORKFLOW__CHANNELS,
+				 WorkflowFactory.eINSTANCE.createCommunicationChannel()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__GLOBALS,
-				 WorkflowFactory.eINSTANCE.createString()));
+				(WorkflowPackage.Literals.WORKFLOW__CHANNELS,
+				 WorkflowFactory.eINSTANCE.createRemoteCommunicationChannel()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__GLOBALS,
-				 WorkflowFactory.eINSTANCE.createInteger()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__GLOBALS,
-				 WorkflowFactory.eINSTANCE.createBoolean()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(WorkflowPackage.Literals.WORKFLOW__GLOBALS,
-				 WorkflowFactory.eINSTANCE.createDouble()));
+				(WorkflowPackage.Literals.WORKFLOW__GLOBAL_VARIABLES,
+				 WorkflowFactory.eINSTANCE.createDataStructure()));
 	}
 
 	/**

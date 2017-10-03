@@ -7,13 +7,7 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import workflow.EmittingTask;
-import workflow.RemoteTaskCommunicationConfiguration;
-import workflow.Task;
-import workflow.TaskCommunicationConfiguration;
-import workflow.Variable;
-import workflow.Workflow;
-import workflow.WorkflowPackage;
+import workflow.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -84,57 +78,36 @@ public class WorkflowSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkflowPackage.EMITTING_TASK: {
-				EmittingTask emittingTask = (EmittingTask)theEObject;
-				T result = caseEmittingTask(emittingTask);
-				if (result == null) result = caseTask(emittingTask);
+			case WorkflowPackage.JAVA_TASK: {
+				JavaTask javaTask = (JavaTask)theEObject;
+				T result = caseJavaTask(javaTask);
+				if (result == null) result = caseTask(javaTask);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkflowPackage.TASK_COMMUNICATION_CONFIGURATION: {
-				TaskCommunicationConfiguration taskCommunicationConfiguration = (TaskCommunicationConfiguration)theEObject;
-				T result = caseTaskCommunicationConfiguration(taskCommunicationConfiguration);
+			case WorkflowPackage.SCRIPTED_TASK: {
+				ScriptedTask scriptedTask = (ScriptedTask)theEObject;
+				T result = caseScriptedTask(scriptedTask);
+				if (result == null) result = caseTask(scriptedTask);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkflowPackage.REMOTE_TASK_COMMUNICATION_CONFIGURATION: {
-				RemoteTaskCommunicationConfiguration remoteTaskCommunicationConfiguration = (RemoteTaskCommunicationConfiguration)theEObject;
-				T result = caseRemoteTaskCommunicationConfiguration(remoteTaskCommunicationConfiguration);
-				if (result == null) result = caseTaskCommunicationConfiguration(remoteTaskCommunicationConfiguration);
+			case WorkflowPackage.COMMUNICATION_CHANNEL: {
+				CommunicationChannel communicationChannel = (CommunicationChannel)theEObject;
+				T result = caseCommunicationChannel(communicationChannel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkflowPackage.VARIABLE: {
-				Variable variable = (Variable)theEObject;
-				T result = caseVariable(variable);
+			case WorkflowPackage.REMOTE_COMMUNICATION_CHANNEL: {
+				RemoteCommunicationChannel remoteCommunicationChannel = (RemoteCommunicationChannel)theEObject;
+				T result = caseRemoteCommunicationChannel(remoteCommunicationChannel);
+				if (result == null) result = caseCommunicationChannel(remoteCommunicationChannel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkflowPackage.STRING: {
-				workflow.String string = (workflow.String)theEObject;
-				T result = caseString(string);
-				if (result == null) result = caseVariable(string);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WorkflowPackage.INTEGER: {
-				workflow.Integer integer = (workflow.Integer)theEObject;
-				T result = caseInteger(integer);
-				if (result == null) result = caseVariable(integer);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WorkflowPackage.BOOLEAN: {
-				workflow.Boolean boolean_ = (workflow.Boolean)theEObject;
-				T result = caseBoolean(boolean_);
-				if (result == null) result = caseVariable(boolean_);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WorkflowPackage.DOUBLE: {
-				workflow.Double double_ = (workflow.Double)theEObject;
-				T result = caseDouble(double_);
-				if (result == null) result = caseVariable(double_);
+			case WorkflowPackage.DATA_STRUCTURE: {
+				DataStructure dataStructure = (DataStructure)theEObject;
+				T result = caseDataStructure(dataStructure);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -173,122 +146,77 @@ public class WorkflowSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Emitting Task</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Java Task</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Emitting Task</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Java Task</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEmittingTask(EmittingTask object) {
+	public T caseJavaTask(JavaTask object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Task Communication Configuration</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Scripted Task</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Task Communication Configuration</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Scripted Task</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTaskCommunicationConfiguration(TaskCommunicationConfiguration object) {
+	public T caseScriptedTask(ScriptedTask object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Remote Task Communication Configuration</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Communication Channel</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Remote Task Communication Configuration</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Communication Channel</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRemoteTaskCommunicationConfiguration(RemoteTaskCommunicationConfiguration object) {
+	public T caseCommunicationChannel(CommunicationChannel object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Remote Communication Channel</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Remote Communication Channel</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseVariable(Variable object) {
+	public T caseRemoteCommunicationChannel(RemoteCommunicationChannel object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>String</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Data Structure</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>String</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Data Structure</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseString(workflow.String object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Integer</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Integer</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseInteger(workflow.Integer object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBoolean(workflow.Boolean object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Double</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Double</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDouble(workflow.Double object) {
+	public T caseDataStructure(DataStructure object) {
 		return null;
 	}
 

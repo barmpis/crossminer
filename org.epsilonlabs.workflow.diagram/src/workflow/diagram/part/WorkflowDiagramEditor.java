@@ -61,6 +61,7 @@ import org.eclipse.ui.navigator.resources.ProjectExplorer;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
+import org.epsilonlabs.workflow.execution.subscription.WorkflowGraphicalChangeSubscription;
 
 import workflow.diagram.navigator.WorkflowNavigatorItem;
 
@@ -85,10 +86,14 @@ public class WorkflowDiagramEditor extends DiagramDocumentEditor implements IGot
 	private LastClickPositionProvider myLastClickPositionProvider;
 
 	/**
-	* @generated
+	* @generated NOT
 	*/
 	public WorkflowDiagramEditor() {
 		super(true);
+		
+		System.out.println("WorkflowDiagramEditor subscribing to graphical changes.");
+		WorkflowGraphicalChangeSubscription.getinstance().subscribeToGraphicalChanges(this);		
+		
 	}
 
 	/**
@@ -345,11 +350,15 @@ public class WorkflowDiagramEditor extends DiagramDocumentEditor implements IGot
 	}
 
 	/**
-	* @generated
+	* @generated NOT
 	*/
 	@Override
 	public void dispose() {
 		shutDownLastClickPositionProvider();
+		
+		System.out.println("Removing editor from change subscription.");
+		WorkflowGraphicalChangeSubscription.getinstance().cancelSubscription(this);
+		
 		super.dispose();
 	}
 

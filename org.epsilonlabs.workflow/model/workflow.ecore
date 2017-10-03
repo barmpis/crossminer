@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="workflow" nsURI="http://org.crossminer.workflow" nsPrefix="wf">
+  <eAnnotations source="gmf"/>
   <eClassifiers xsi:type="ecore:EClass" name="Workflow">
+    <eAnnotations source="gmf.diagram">
+      <details key="onefile" value="true"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
         eType="#//Task" containment="true"/>
@@ -11,13 +15,18 @@
         eType="#//DataStructure" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="name"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="acceptsPartialData" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="providesPartialData" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="incoming" upperBound="-1"
-        eType="#//CommunicationChannel" eOpposite="#//CommunicationChannel/outgoing"/>
+        eType="#//CommunicationChannel" eOpposite="#//CommunicationChannel/outgoing">
+      <eAnnotations source="gmf.link"/>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
         eType="#//CommunicationChannel" eOpposite="#//CommunicationChannel/incoming"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="localVariables" upperBound="-1"
@@ -34,12 +43,20 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="script" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CommunicationChannel">
+    <eAnnotations source="gmf.node">
+      <details key="label.placement" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="incoming" upperBound="-1"
-        eType="#//Task" eOpposite="#//Task/outgoing"/>
+        eType="#//Task" eOpposite="#//Task/outgoing">
+      <eAnnotations source="gmf.link"/>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
         eType="#//Task" eOpposite="#//Task/incoming"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//DataStructure"
-        containment="true"/>
+        containment="true">
+      <eAnnotations source="gmf.compartment"/>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RemoteCommunicationChannel" eSuperTypes="#//CommunicationChannel">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" lowerBound="1"
@@ -56,13 +73,15 @@
     <eLiterals name="partial" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataStructure">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="name"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClassifier"
-        containment="true"/>
+        containment="true">
+      <eAnnotations source="gmf.compartment"/>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isMany" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//ecore.EClassifier"
-        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ecore.EClassifier" eSuperTypes="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"/>
 </ecore:EPackage>

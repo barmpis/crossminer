@@ -2,8 +2,6 @@
  */
 package workflow;
 
-import java.lang.String;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -18,12 +16,11 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link workflow.Task#getName <em>Name</em>}</li>
- *   <li>{@link workflow.Task#getConcurrency <em>Concurrency</em>}</li>
- *   <li>{@link workflow.Task#getImplementationFullyQualifiedName <em>Implementation Fully Qualified Name</em>}</li>
- *   <li>{@link workflow.Task#getImplementationEntryPoint <em>Implementation Entry Point</em>}</li>
  *   <li>{@link workflow.Task#isAcceptsPartialData <em>Accepts Partial Data</em>}</li>
+ *   <li>{@link workflow.Task#isProvidesPartialData <em>Provides Partial Data</em>}</li>
  *   <li>{@link workflow.Task#getIncoming <em>Incoming</em>}</li>
- *   <li>{@link workflow.Task#getLocals <em>Locals</em>}</li>
+ *   <li>{@link workflow.Task#getOutgoing <em>Outgoing</em>}</li>
+ *   <li>{@link workflow.Task#getLocalVariables <em>Local Variables</em>}</li>
  * </ul>
  *
  * @see workflow.WorkflowPackage#getTask()
@@ -58,87 +55,6 @@ public interface Task extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Concurrency</b></em>' attribute.
-	 * The literals are from the enumeration {@link workflow.TaskConcurrency}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Concurrency</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Concurrency</em>' attribute.
-	 * @see workflow.TaskConcurrency
-	 * @see #setConcurrency(TaskConcurrency)
-	 * @see workflow.WorkflowPackage#getTask_Concurrency()
-	 * @model required="true"
-	 * @generated
-	 */
-	TaskConcurrency getConcurrency();
-
-	/**
-	 * Sets the value of the '{@link workflow.Task#getConcurrency <em>Concurrency</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Concurrency</em>' attribute.
-	 * @see workflow.TaskConcurrency
-	 * @see #getConcurrency()
-	 * @generated
-	 */
-	void setConcurrency(TaskConcurrency value);
-
-	/**
-	 * Returns the value of the '<em><b>Implementation Fully Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Implementation Fully Qualified Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Implementation Fully Qualified Name</em>' attribute.
-	 * @see #setImplementationFullyQualifiedName(String)
-	 * @see workflow.WorkflowPackage#getTask_ImplementationFullyQualifiedName()
-	 * @model
-	 * @generated
-	 */
-	String getImplementationFullyQualifiedName();
-
-	/**
-	 * Sets the value of the '{@link workflow.Task#getImplementationFullyQualifiedName <em>Implementation Fully Qualified Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Implementation Fully Qualified Name</em>' attribute.
-	 * @see #getImplementationFullyQualifiedName()
-	 * @generated
-	 */
-	void setImplementationFullyQualifiedName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Implementation Entry Point</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Implementation Entry Point</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Implementation Entry Point</em>' attribute.
-	 * @see #setImplementationEntryPoint(String)
-	 * @see workflow.WorkflowPackage#getTask_ImplementationEntryPoint()
-	 * @model
-	 * @generated
-	 */
-	String getImplementationEntryPoint();
-
-	/**
-	 * Sets the value of the '{@link workflow.Task#getImplementationEntryPoint <em>Implementation Entry Point</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Implementation Entry Point</em>' attribute.
-	 * @see #getImplementationEntryPoint()
-	 * @generated
-	 */
-	void setImplementationEntryPoint(String value);
-
-	/**
 	 * Returns the value of the '<em><b>Accepts Partial Data</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -165,9 +81,35 @@ public interface Task extends EObject {
 	void setAcceptsPartialData(boolean value);
 
 	/**
+	 * Returns the value of the '<em><b>Provides Partial Data</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Provides Partial Data</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Provides Partial Data</em>' attribute.
+	 * @see #setProvidesPartialData(boolean)
+	 * @see workflow.WorkflowPackage#getTask_ProvidesPartialData()
+	 * @model required="true"
+	 * @generated
+	 */
+	boolean isProvidesPartialData();
+
+	/**
+	 * Sets the value of the '{@link workflow.Task#isProvidesPartialData <em>Provides Partial Data</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Provides Partial Data</em>' attribute.
+	 * @see #isProvidesPartialData()
+	 * @generated
+	 */
+	void setProvidesPartialData(boolean value);
+
+	/**
 	 * Returns the value of the '<em><b>Incoming</b></em>' reference list.
-	 * The list contents are of type {@link workflow.TaskCommunicationConfiguration}.
-	 * It is bidirectional and its opposite is '{@link workflow.TaskCommunicationConfiguration#getOutgoing <em>Outgoing</em>}'.
+	 * The list contents are of type {@link workflow.CommunicationChannel}.
+	 * It is bidirectional and its opposite is '{@link workflow.CommunicationChannel#getOutgoing <em>Outgoing</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Incoming</em>' reference list isn't clear,
@@ -176,26 +118,44 @@ public interface Task extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Incoming</em>' reference list.
 	 * @see workflow.WorkflowPackage#getTask_Incoming()
-	 * @see workflow.TaskCommunicationConfiguration#getOutgoing
+	 * @see workflow.CommunicationChannel#getOutgoing
 	 * @model opposite="outgoing"
 	 * @generated
 	 */
-	EList<TaskCommunicationConfiguration> getIncoming();
+	EList<CommunicationChannel> getIncoming();
 
 	/**
-	 * Returns the value of the '<em><b>Locals</b></em>' containment reference list.
-	 * The list contents are of type {@link workflow.Variable}.
+	 * Returns the value of the '<em><b>Outgoing</b></em>' reference list.
+	 * The list contents are of type {@link workflow.CommunicationChannel}.
+	 * It is bidirectional and its opposite is '{@link workflow.CommunicationChannel#getIncoming <em>Incoming</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Locals</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Outgoing</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Locals</em>' containment reference list.
-	 * @see workflow.WorkflowPackage#getTask_Locals()
+	 * @return the value of the '<em>Outgoing</em>' reference list.
+	 * @see workflow.WorkflowPackage#getTask_Outgoing()
+	 * @see workflow.CommunicationChannel#getIncoming
+	 * @model opposite="incoming"
+	 * @generated
+	 */
+	EList<CommunicationChannel> getOutgoing();
+
+	/**
+	 * Returns the value of the '<em><b>Local Variables</b></em>' containment reference list.
+	 * The list contents are of type {@link workflow.DataStructure}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Local Variables</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Local Variables</em>' containment reference list.
+	 * @see workflow.WorkflowPackage#getTask_LocalVariables()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Variable> getLocals();
+	EList<DataStructure> getLocalVariables();
 
 } // Task

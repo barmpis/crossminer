@@ -10,13 +10,13 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import workflow.EmittingTask;
+import workflow.CommunicationChannel;
+import workflow.DataStructure;
+import workflow.JavaTask;
 import workflow.QueuePersistanceOptions;
-import workflow.RemoteTaskCommunicationConfiguration;
+import workflow.RemoteCommunicationChannel;
+import workflow.ScriptedTask;
 import workflow.Task;
-import workflow.TaskCommunicationConfiguration;
-import workflow.TaskConcurrency;
-import workflow.Variable;
 import workflow.Workflow;
 import workflow.WorkflowFactory;
 import workflow.WorkflowPackage;
@@ -47,63 +47,35 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass emittingTaskEClass = null;
+	private EClass javaTaskEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass taskCommunicationConfigurationEClass = null;
+	private EClass scriptedTaskEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass remoteTaskCommunicationConfigurationEClass = null;
+	private EClass communicationChannelEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass variableEClass = null;
+	private EClass remoteCommunicationChannelEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass stringEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass integerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass booleanEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass doubleEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum taskConcurrencyEEnum = null;
+	private EClass dataStructureEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -205,7 +177,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getWorkflow_Configs() {
+	public EReference getWorkflow_Channels() {
 		return (EReference)workflowEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -214,7 +186,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getWorkflow_Globals() {
+	public EReference getWorkflow_GlobalVariables() {
 		return (EReference)workflowEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -241,7 +213,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTask_Concurrency() {
+	public EAttribute getTask_AcceptsPartialData() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -250,7 +222,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTask_ImplementationFullyQualifiedName() {
+	public EAttribute getTask_ProvidesPartialData() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -259,25 +231,25 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTask_ImplementationEntryPoint() {
-		return (EAttribute)taskEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTask_AcceptsPartialData() {
-		return (EAttribute)taskEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getTask_Incoming() {
+		return (EReference)taskEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTask_Outgoing() {
+		return (EReference)taskEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTask_LocalVariables() {
 		return (EReference)taskEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -286,8 +258,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTask_Locals() {
-		return (EReference)taskEClass.getEStructuralFeatures().get(6);
+	public EClass getJavaTask() {
+		return javaTaskEClass;
 	}
 
 	/**
@@ -295,8 +267,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getEmittingTask() {
-		return emittingTaskEClass;
+	public EAttribute getJavaTask_ImplementationFullyQualifiedName() {
+		return (EAttribute)javaTaskEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -304,8 +276,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEmittingTask_ProvidesPartialData() {
-		return (EAttribute)emittingTaskEClass.getEStructuralFeatures().get(0);
+	public EAttribute getJavaTask_ImplementationEntryPoint() {
+		return (EAttribute)javaTaskEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -313,8 +285,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEmittingTask_Outgoing() {
-		return (EReference)emittingTaskEClass.getEStructuralFeatures().get(1);
+	public EClass getScriptedTask() {
+		return scriptedTaskEClass;
 	}
 
 	/**
@@ -322,8 +294,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTaskCommunicationConfiguration() {
-		return taskCommunicationConfigurationEClass;
+	public EAttribute getScriptedTask_ScriptType() {
+		return (EAttribute)scriptedTaskEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -331,8 +303,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTaskCommunicationConfiguration_Incoming() {
-		return (EReference)taskCommunicationConfigurationEClass.getEStructuralFeatures().get(0);
+	public EAttribute getScriptedTask_Script() {
+		return (EAttribute)scriptedTaskEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -340,8 +312,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTaskCommunicationConfiguration_Outgoing() {
-		return (EReference)taskCommunicationConfigurationEClass.getEStructuralFeatures().get(1);
+	public EClass getCommunicationChannel() {
+		return communicationChannelEClass;
 	}
 
 	/**
@@ -349,8 +321,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getRemoteTaskCommunicationConfiguration() {
-		return remoteTaskCommunicationConfigurationEClass;
+	public EAttribute getCommunicationChannel_Name() {
+		return (EAttribute)communicationChannelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -358,8 +330,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRemoteTaskCommunicationConfiguration_Address() {
-		return (EAttribute)remoteTaskCommunicationConfigurationEClass.getEStructuralFeatures().get(0);
+	public EReference getCommunicationChannel_Incoming() {
+		return (EReference)communicationChannelEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -367,8 +339,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRemoteTaskCommunicationConfiguration_Port() {
-		return (EAttribute)remoteTaskCommunicationConfigurationEClass.getEStructuralFeatures().get(1);
+	public EReference getCommunicationChannel_Outgoing() {
+		return (EReference)communicationChannelEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -376,8 +348,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRemoteTaskCommunicationConfiguration_SingleQueue() {
-		return (EAttribute)remoteTaskCommunicationConfigurationEClass.getEStructuralFeatures().get(2);
+	public EReference getCommunicationChannel_Type() {
+		return (EReference)communicationChannelEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -385,8 +357,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRemoteTaskCommunicationConfiguration_QueuePersistance() {
-		return (EAttribute)remoteTaskCommunicationConfigurationEClass.getEStructuralFeatures().get(3);
+	public EClass getRemoteCommunicationChannel() {
+		return remoteCommunicationChannelEClass;
 	}
 
 	/**
@@ -394,8 +366,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getVariable() {
-		return variableEClass;
+	public EAttribute getRemoteCommunicationChannel_Address() {
+		return (EAttribute)remoteCommunicationChannelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -403,8 +375,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getVariable_Name() {
-		return (EAttribute)variableEClass.getEStructuralFeatures().get(0);
+	public EAttribute getRemoteCommunicationChannel_Port() {
+		return (EAttribute)remoteCommunicationChannelEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -412,8 +384,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getString() {
-		return stringEClass;
+	public EAttribute getRemoteCommunicationChannel_SingleQueue() {
+		return (EAttribute)remoteCommunicationChannelEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -421,8 +393,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getString_Value() {
-		return (EAttribute)stringEClass.getEStructuralFeatures().get(0);
+	public EAttribute getRemoteCommunicationChannel_QueuePersistance() {
+		return (EAttribute)remoteCommunicationChannelEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -430,8 +402,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getInteger() {
-		return integerEClass;
+	public EClass getDataStructure() {
+		return dataStructureEClass;
 	}
 
 	/**
@@ -439,8 +411,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInteger_Value() {
-		return (EAttribute)integerEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDataStructure_Name() {
+		return (EAttribute)dataStructureEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -448,8 +420,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getBoolean() {
-		return booleanEClass;
+	public EReference getDataStructure_Type() {
+		return (EReference)dataStructureEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -457,35 +429,8 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getBoolean_Value() {
-		return (EAttribute)booleanEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getDouble() {
-		return doubleEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getDouble_Value() {
-		return (EAttribute)doubleEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EEnum getTaskConcurrency() {
-		return taskConcurrencyEEnum;
+	public EAttribute getDataStructure_IsMany() {
+		return (EAttribute)dataStructureEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -528,49 +473,43 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 		workflowEClass = createEClass(WORKFLOW);
 		createEAttribute(workflowEClass, WORKFLOW__NAME);
 		createEReference(workflowEClass, WORKFLOW__TASKS);
-		createEReference(workflowEClass, WORKFLOW__CONFIGS);
-		createEReference(workflowEClass, WORKFLOW__GLOBALS);
+		createEReference(workflowEClass, WORKFLOW__CHANNELS);
+		createEReference(workflowEClass, WORKFLOW__GLOBAL_VARIABLES);
 
 		taskEClass = createEClass(TASK);
 		createEAttribute(taskEClass, TASK__NAME);
-		createEAttribute(taskEClass, TASK__CONCURRENCY);
-		createEAttribute(taskEClass, TASK__IMPLEMENTATION_FULLY_QUALIFIED_NAME);
-		createEAttribute(taskEClass, TASK__IMPLEMENTATION_ENTRY_POINT);
 		createEAttribute(taskEClass, TASK__ACCEPTS_PARTIAL_DATA);
+		createEAttribute(taskEClass, TASK__PROVIDES_PARTIAL_DATA);
 		createEReference(taskEClass, TASK__INCOMING);
-		createEReference(taskEClass, TASK__LOCALS);
+		createEReference(taskEClass, TASK__OUTGOING);
+		createEReference(taskEClass, TASK__LOCAL_VARIABLES);
 
-		emittingTaskEClass = createEClass(EMITTING_TASK);
-		createEAttribute(emittingTaskEClass, EMITTING_TASK__PROVIDES_PARTIAL_DATA);
-		createEReference(emittingTaskEClass, EMITTING_TASK__OUTGOING);
+		javaTaskEClass = createEClass(JAVA_TASK);
+		createEAttribute(javaTaskEClass, JAVA_TASK__IMPLEMENTATION_FULLY_QUALIFIED_NAME);
+		createEAttribute(javaTaskEClass, JAVA_TASK__IMPLEMENTATION_ENTRY_POINT);
 
-		taskCommunicationConfigurationEClass = createEClass(TASK_COMMUNICATION_CONFIGURATION);
-		createEReference(taskCommunicationConfigurationEClass, TASK_COMMUNICATION_CONFIGURATION__INCOMING);
-		createEReference(taskCommunicationConfigurationEClass, TASK_COMMUNICATION_CONFIGURATION__OUTGOING);
+		scriptedTaskEClass = createEClass(SCRIPTED_TASK);
+		createEAttribute(scriptedTaskEClass, SCRIPTED_TASK__SCRIPT_TYPE);
+		createEAttribute(scriptedTaskEClass, SCRIPTED_TASK__SCRIPT);
 
-		remoteTaskCommunicationConfigurationEClass = createEClass(REMOTE_TASK_COMMUNICATION_CONFIGURATION);
-		createEAttribute(remoteTaskCommunicationConfigurationEClass, REMOTE_TASK_COMMUNICATION_CONFIGURATION__ADDRESS);
-		createEAttribute(remoteTaskCommunicationConfigurationEClass, REMOTE_TASK_COMMUNICATION_CONFIGURATION__PORT);
-		createEAttribute(remoteTaskCommunicationConfigurationEClass, REMOTE_TASK_COMMUNICATION_CONFIGURATION__SINGLE_QUEUE);
-		createEAttribute(remoteTaskCommunicationConfigurationEClass, REMOTE_TASK_COMMUNICATION_CONFIGURATION__QUEUE_PERSISTANCE);
+		communicationChannelEClass = createEClass(COMMUNICATION_CHANNEL);
+		createEAttribute(communicationChannelEClass, COMMUNICATION_CHANNEL__NAME);
+		createEReference(communicationChannelEClass, COMMUNICATION_CHANNEL__INCOMING);
+		createEReference(communicationChannelEClass, COMMUNICATION_CHANNEL__OUTGOING);
+		createEReference(communicationChannelEClass, COMMUNICATION_CHANNEL__TYPE);
 
-		variableEClass = createEClass(VARIABLE);
-		createEAttribute(variableEClass, VARIABLE__NAME);
+		remoteCommunicationChannelEClass = createEClass(REMOTE_COMMUNICATION_CHANNEL);
+		createEAttribute(remoteCommunicationChannelEClass, REMOTE_COMMUNICATION_CHANNEL__ADDRESS);
+		createEAttribute(remoteCommunicationChannelEClass, REMOTE_COMMUNICATION_CHANNEL__PORT);
+		createEAttribute(remoteCommunicationChannelEClass, REMOTE_COMMUNICATION_CHANNEL__SINGLE_QUEUE);
+		createEAttribute(remoteCommunicationChannelEClass, REMOTE_COMMUNICATION_CHANNEL__QUEUE_PERSISTANCE);
 
-		stringEClass = createEClass(STRING);
-		createEAttribute(stringEClass, STRING__VALUE);
-
-		integerEClass = createEClass(INTEGER);
-		createEAttribute(integerEClass, INTEGER__VALUE);
-
-		booleanEClass = createEClass(BOOLEAN);
-		createEAttribute(booleanEClass, BOOLEAN__VALUE);
-
-		doubleEClass = createEClass(DOUBLE);
-		createEAttribute(doubleEClass, DOUBLE__VALUE);
+		dataStructureEClass = createEClass(DATA_STRUCTURE);
+		createEAttribute(dataStructureEClass, DATA_STRUCTURE__NAME);
+		createEReference(dataStructureEClass, DATA_STRUCTURE__TYPE);
+		createEAttribute(dataStructureEClass, DATA_STRUCTURE__IS_MANY);
 
 		// Create enums
-		taskConcurrencyEEnum = createEEnum(TASK_CONCURRENCY);
 		queuePersistanceOptionsEEnum = createEEnum(QUEUE_PERSISTANCE_OPTIONS);
 	}
 
@@ -602,64 +541,51 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		emittingTaskEClass.getESuperTypes().add(this.getTask());
-		remoteTaskCommunicationConfigurationEClass.getESuperTypes().add(this.getTaskCommunicationConfiguration());
-		stringEClass.getESuperTypes().add(this.getVariable());
-		integerEClass.getESuperTypes().add(this.getVariable());
-		booleanEClass.getESuperTypes().add(this.getVariable());
-		doubleEClass.getESuperTypes().add(this.getVariable());
+		javaTaskEClass.getESuperTypes().add(this.getTask());
+		scriptedTaskEClass.getESuperTypes().add(this.getTask());
+		remoteCommunicationChannelEClass.getESuperTypes().add(this.getCommunicationChannel());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(workflowEClass, Workflow.class, "Workflow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getWorkflow_Name(), ecorePackage.getEString(), "name", null, 0, 1, Workflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWorkflow_Tasks(), this.getTask(), null, "tasks", null, 0, -1, Workflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWorkflow_Configs(), this.getTaskCommunicationConfiguration(), null, "configs", null, 0, -1, Workflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWorkflow_Globals(), this.getVariable(), null, "globals", null, 0, -1, Workflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflow_Channels(), this.getCommunicationChannel(), null, "channels", null, 0, -1, Workflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflow_GlobalVariables(), this.getDataStructure(), null, "globalVariables", null, 0, -1, Workflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTask_Name(), ecorePackage.getEString(), "name", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTask_Concurrency(), this.getTaskConcurrency(), "concurrency", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTask_ImplementationFullyQualifiedName(), ecorePackage.getEString(), "implementationFullyQualifiedName", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTask_ImplementationEntryPoint(), ecorePackage.getEString(), "implementationEntryPoint", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_AcceptsPartialData(), ecorePackage.getEBoolean(), "acceptsPartialData", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTask_Incoming(), this.getTaskCommunicationConfiguration(), this.getTaskCommunicationConfiguration_Outgoing(), "incoming", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTask_Locals(), this.getVariable(), null, "locals", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTask_ProvidesPartialData(), ecorePackage.getEBoolean(), "providesPartialData", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTask_Incoming(), this.getCommunicationChannel(), this.getCommunicationChannel_Outgoing(), "incoming", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTask_Outgoing(), this.getCommunicationChannel(), this.getCommunicationChannel_Incoming(), "outgoing", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTask_LocalVariables(), this.getDataStructure(), null, "localVariables", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(emittingTaskEClass, EmittingTask.class, "EmittingTask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEmittingTask_ProvidesPartialData(), ecorePackage.getEBoolean(), "providesPartialData", null, 1, 1, EmittingTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEmittingTask_Outgoing(), this.getTaskCommunicationConfiguration(), this.getTaskCommunicationConfiguration_Incoming(), "outgoing", null, 1, -1, EmittingTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(javaTaskEClass, JavaTask.class, "JavaTask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getJavaTask_ImplementationFullyQualifiedName(), ecorePackage.getEString(), "implementationFullyQualifiedName", null, 0, 1, JavaTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJavaTask_ImplementationEntryPoint(), ecorePackage.getEString(), "implementationEntryPoint", null, 0, 1, JavaTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(taskCommunicationConfigurationEClass, TaskCommunicationConfiguration.class, "TaskCommunicationConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTaskCommunicationConfiguration_Incoming(), this.getEmittingTask(), this.getEmittingTask_Outgoing(), "incoming", null, 0, -1, TaskCommunicationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTaskCommunicationConfiguration_Outgoing(), this.getTask(), this.getTask_Incoming(), "outgoing", null, 0, -1, TaskCommunicationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(scriptedTaskEClass, ScriptedTask.class, "ScriptedTask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getScriptedTask_ScriptType(), ecorePackage.getEString(), "scriptType", null, 0, 1, ScriptedTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScriptedTask_Script(), ecorePackage.getEString(), "script", null, 0, 1, ScriptedTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(remoteTaskCommunicationConfigurationEClass, RemoteTaskCommunicationConfiguration.class, "RemoteTaskCommunicationConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRemoteTaskCommunicationConfiguration_Address(), ecorePackage.getEString(), "address", null, 1, 1, RemoteTaskCommunicationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRemoteTaskCommunicationConfiguration_Port(), ecorePackage.getEInt(), "port", null, 1, 1, RemoteTaskCommunicationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRemoteTaskCommunicationConfiguration_SingleQueue(), ecorePackage.getEBoolean(), "singleQueue", null, 1, 1, RemoteTaskCommunicationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRemoteTaskCommunicationConfiguration_QueuePersistance(), this.getQueuePersistanceOptions(), "queuePersistance", null, 1, 1, RemoteTaskCommunicationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(communicationChannelEClass, CommunicationChannel.class, "CommunicationChannel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCommunicationChannel_Name(), ecorePackage.getEString(), "name", null, 0, 1, CommunicationChannel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCommunicationChannel_Incoming(), this.getTask(), this.getTask_Outgoing(), "incoming", null, 0, -1, CommunicationChannel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCommunicationChannel_Outgoing(), this.getTask(), this.getTask_Incoming(), "outgoing", null, 0, -1, CommunicationChannel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCommunicationChannel_Type(), this.getDataStructure(), null, "type", null, 1, 1, CommunicationChannel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(variableEClass, Variable.class, "Variable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(remoteCommunicationChannelEClass, RemoteCommunicationChannel.class, "RemoteCommunicationChannel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRemoteCommunicationChannel_Address(), ecorePackage.getEString(), "address", null, 1, 1, RemoteCommunicationChannel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRemoteCommunicationChannel_Port(), ecorePackage.getEInt(), "port", null, 1, 1, RemoteCommunicationChannel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRemoteCommunicationChannel_SingleQueue(), ecorePackage.getEBoolean(), "singleQueue", null, 1, 1, RemoteCommunicationChannel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRemoteCommunicationChannel_QueuePersistance(), this.getQueuePersistanceOptions(), "queuePersistance", null, 1, 1, RemoteCommunicationChannel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(stringEClass, workflow.String.class, "String", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getString_Value(), ecorePackage.getEString(), "value", null, 1, -1, workflow.String.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(integerEClass, workflow.Integer.class, "Integer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getInteger_Value(), ecorePackage.getEInt(), "value", null, 1, -1, workflow.Integer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(booleanEClass, workflow.Boolean.class, "Boolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBoolean_Value(), ecorePackage.getEBoolean(), "value", null, 1, -1, workflow.Boolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(doubleEClass, workflow.Double.class, "Double", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDouble_Value(), ecorePackage.getEDouble(), "value", null, 1, -1, workflow.Double.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(dataStructureEClass, DataStructure.class, "DataStructure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataStructure_Name(), ecorePackage.getEString(), "name", null, 1, 1, DataStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataStructure_Type(), ecorePackage.getEClassifier(), null, "type", null, 1, 1, DataStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataStructure_IsMany(), ecorePackage.getEBoolean(), "isMany", null, 1, 1, DataStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(taskConcurrencyEEnum, TaskConcurrency.class, "TaskConcurrency");
-		addEEnumLiteral(taskConcurrencyEEnum, TaskConcurrency.NONE);
-		addEEnumLiteral(taskConcurrencyEEnum, TaskConcurrency.FULL);
-		addEEnumLiteral(taskConcurrencyEEnum, TaskConcurrency.PARTIAL);
-
 		initEEnum(queuePersistanceOptionsEEnum, QueuePersistanceOptions.class, "QueuePersistanceOptions");
 		addEEnumLiteral(queuePersistanceOptionsEEnum, QueuePersistanceOptions.NONE);
 		addEEnumLiteral(queuePersistanceOptionsEEnum, QueuePersistanceOptions.FULL);
@@ -669,16 +595,31 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 		createResource(eNS_URI);
 
 		// Create annotations
-		// gmf.diagram
+		// gmf
 		createGmfAnnotations();
-		// gmf.node
+		// gmf.diagram
 		createGmf_1Annotations();
-		// gmf.label
+		// gmf.node
 		createGmf_2Annotations();
-		// gmf.compartment
-		createGmf_3Annotations();
 		// gmf.link
+		createGmf_3Annotations();
+		// gmf.compartment
 		createGmf_4Annotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>gmf</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createGmfAnnotations() {
+		String source = "gmf";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 	/**
@@ -687,7 +628,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createGmfAnnotations() {
+	protected void createGmf_1Annotations() {
 		String source = "gmf.diagram";	
 		addAnnotation
 		  (workflowEClass, 
@@ -703,7 +644,7 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createGmf_1Annotations() {
+	protected void createGmf_2Annotations() {
 		String source = "gmf.node";	
 		addAnnotation
 		  (taskEClass, 
@@ -712,84 +653,34 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 			 "label", "name"
 		   });	
 		addAnnotation
-		  (variableEClass, 
+		  (communicationChannelEClass, 
 		   source, 
 		   new String[] {
-			 "label", "name",
-			 "icon", "false"
+			 "label.placement", "none"
+		   });	
+		addAnnotation
+		  (dataStructureEClass, 
+		   source, 
+		   new String[] {
+			 "label", "name"
 		   });
 	}
 
 	/**
-	 * Initializes the annotations for <b>gmf.label</b>.
+	 * Initializes the annotations for <b>gmf.link</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createGmf_2Annotations() {
-		String source = "gmf.label";	
+	protected void createGmf_3Annotations() {
+		String source = "gmf.link";	
 		addAnnotation
-		  (getTask_Concurrency(), 
+		  (getTask_Incoming(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getTask_ImplementationFullyQualifiedName(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getTask_ImplementationEntryPoint(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getTask_AcceptsPartialData(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getEmittingTask_ProvidesPartialData(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getRemoteTaskCommunicationConfiguration_Address(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getRemoteTaskCommunicationConfiguration_Port(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getRemoteTaskCommunicationConfiguration_SingleQueue(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getRemoteTaskCommunicationConfiguration_QueuePersistance(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getString_Value(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getInteger_Value(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getBoolean_Value(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getDouble_Value(), 
+		  (getCommunicationChannel_Incoming(), 
 		   source, 
 		   new String[] {
 		   });
@@ -801,36 +692,17 @@ public class WorkflowPackageImpl extends EPackageImpl implements WorkflowPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createGmf_3Annotations() {
+	protected void createGmf_4Annotations() {
 		String source = "gmf.compartment";	
 		addAnnotation
-		  (getTask_Locals(), 
+		  (getCommunicationChannel_Type(), 
 		   source, 
 		   new String[] {
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>gmf.link</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createGmf_4Annotations() {
-		String source = "gmf.link";	
-		addAnnotation
-		  (taskCommunicationConfigurationEClass, 
-		   source, 
-		   new String[] {
-			 "source", "incoming",
-			 "target", "outgoing"
 		   });	
 		addAnnotation
-		  (remoteTaskCommunicationConfigurationEClass, 
+		  (getDataStructure_Type(), 
 		   source, 
 		   new String[] {
-			 "label", "address,port,singleQueue,queuePersistance",
-			 "style", "dot"
 		   });
 	}
 

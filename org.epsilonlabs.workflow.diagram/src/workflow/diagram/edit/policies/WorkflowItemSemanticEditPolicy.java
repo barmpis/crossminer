@@ -10,11 +10,11 @@ import org.eclipse.gmf.runtime.emf.commands.core.commands.DuplicateEObjectsComma
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
 
-import workflow.diagram.edit.commands.BooleanCreateCommand;
-import workflow.diagram.edit.commands.DoubleCreateCommand;
-import workflow.diagram.edit.commands.EmittingTaskCreateCommand;
-import workflow.diagram.edit.commands.IntegerCreateCommand;
-import workflow.diagram.edit.commands.StringCreateCommand;
+import workflow.diagram.edit.commands.CommunicationChannelCreateCommand;
+import workflow.diagram.edit.commands.DataStructureCreateCommand;
+import workflow.diagram.edit.commands.JavaTaskCreateCommand;
+import workflow.diagram.edit.commands.RemoteCommunicationChannelCreateCommand;
+import workflow.diagram.edit.commands.ScriptedTaskCreateCommand;
 import workflow.diagram.edit.commands.TaskCreateCommand;
 import workflow.diagram.providers.WorkflowElementTypes;
 
@@ -34,23 +34,23 @@ public class WorkflowItemSemanticEditPolicy extends WorkflowBaseItemSemanticEdit
 	* @generated
 	*/
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (WorkflowElementTypes.EmittingTask_2011 == req.getElementType()) {
-			return getGEFWrapper(new EmittingTaskCreateCommand(req));
+		if (WorkflowElementTypes.JavaTask_2017 == req.getElementType()) {
+			return getGEFWrapper(new JavaTaskCreateCommand(req));
 		}
-		if (WorkflowElementTypes.String_2012 == req.getElementType()) {
-			return getGEFWrapper(new StringCreateCommand(req));
+		if (WorkflowElementTypes.ScriptedTask_2018 == req.getElementType()) {
+			return getGEFWrapper(new ScriptedTaskCreateCommand(req));
 		}
-		if (WorkflowElementTypes.Integer_2013 == req.getElementType()) {
-			return getGEFWrapper(new IntegerCreateCommand(req));
-		}
-		if (WorkflowElementTypes.Boolean_2014 == req.getElementType()) {
-			return getGEFWrapper(new BooleanCreateCommand(req));
-		}
-		if (WorkflowElementTypes.Double_2015 == req.getElementType()) {
-			return getGEFWrapper(new DoubleCreateCommand(req));
+		if (WorkflowElementTypes.RemoteCommunicationChannel_2020 == req.getElementType()) {
+			return getGEFWrapper(new RemoteCommunicationChannelCreateCommand(req));
 		}
 		if (WorkflowElementTypes.Task_2016 == req.getElementType()) {
 			return getGEFWrapper(new TaskCreateCommand(req));
+		}
+		if (WorkflowElementTypes.CommunicationChannel_2021 == req.getElementType()) {
+			return getGEFWrapper(new CommunicationChannelCreateCommand(req));
+		}
+		if (WorkflowElementTypes.DataStructure_2019 == req.getElementType()) {
+			return getGEFWrapper(new DataStructureCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

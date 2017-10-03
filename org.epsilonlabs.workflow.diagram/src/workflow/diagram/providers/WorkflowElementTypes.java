@@ -18,18 +18,15 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 
 import workflow.WorkflowPackage;
-import workflow.diagram.edit.parts.Boolean2EditPart;
-import workflow.diagram.edit.parts.BooleanEditPart;
-import workflow.diagram.edit.parts.Double2EditPart;
-import workflow.diagram.edit.parts.DoubleEditPart;
-import workflow.diagram.edit.parts.EmittingTaskEditPart;
-import workflow.diagram.edit.parts.Integer2EditPart;
-import workflow.diagram.edit.parts.IntegerEditPart;
-import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationEditPart;
-import workflow.diagram.edit.parts.String2EditPart;
-import workflow.diagram.edit.parts.StringEditPart;
-import workflow.diagram.edit.parts.TaskCommunicationConfigurationEditPart;
+import workflow.diagram.edit.parts.CommunicationChannelEditPart;
+import workflow.diagram.edit.parts.CommunicationChannelIncomingEditPart;
+import workflow.diagram.edit.parts.DataStructure2EditPart;
+import workflow.diagram.edit.parts.DataStructureEditPart;
+import workflow.diagram.edit.parts.JavaTaskEditPart;
+import workflow.diagram.edit.parts.RemoteCommunicationChannelEditPart;
+import workflow.diagram.edit.parts.ScriptedTaskEditPart;
 import workflow.diagram.edit.parts.TaskEditPart;
+import workflow.diagram.edit.parts.TaskIncomingEditPart;
 import workflow.diagram.edit.parts.WorkflowEditPart;
 import workflow.diagram.part.WorkflowDiagramEditorPlugin;
 
@@ -67,24 +64,17 @@ public class WorkflowElementTypes {
 	/**
 	* @generated
 	*/
-	public static final IElementType EmittingTask_2011 = getElementType(
-			"org.epsilonlabs.workflow.diagram.EmittingTask_2011"); //$NON-NLS-1$
+	public static final IElementType JavaTask_2017 = getElementType("org.epsilonlabs.workflow.diagram.JavaTask_2017"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType String_2012 = getElementType("org.epsilonlabs.workflow.diagram.String_2012"); //$NON-NLS-1$
+	public static final IElementType ScriptedTask_2018 = getElementType(
+			"org.epsilonlabs.workflow.diagram.ScriptedTask_2018"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType Integer_2013 = getElementType("org.epsilonlabs.workflow.diagram.Integer_2013"); //$NON-NLS-1$
-	/**
-	* @generated
-	*/
-	public static final IElementType Boolean_2014 = getElementType("org.epsilonlabs.workflow.diagram.Boolean_2014"); //$NON-NLS-1$
-	/**
-	* @generated
-	*/
-	public static final IElementType Double_2015 = getElementType("org.epsilonlabs.workflow.diagram.Double_2015"); //$NON-NLS-1$
+	public static final IElementType RemoteCommunicationChannel_2020 = getElementType(
+			"org.epsilonlabs.workflow.diagram.RemoteCommunicationChannel_2020"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
@@ -92,33 +82,31 @@ public class WorkflowElementTypes {
 	/**
 	* @generated
 	*/
-	public static final IElementType String_3001 = getElementType("org.epsilonlabs.workflow.diagram.String_3001"); //$NON-NLS-1$
+	public static final IElementType CommunicationChannel_2021 = getElementType(
+			"org.epsilonlabs.workflow.diagram.CommunicationChannel_2021"); //$NON-NLS-1$
+	/**
+	* @generated
+	*/
+	public static final IElementType DataStructure_2019 = getElementType(
+			"org.epsilonlabs.workflow.diagram.DataStructure_2019"); //$NON-NLS-1$
 
 	/**
 	* @generated
 	*/
-	public static final IElementType Integer_3002 = getElementType("org.epsilonlabs.workflow.diagram.Integer_3002"); //$NON-NLS-1$
+	public static final IElementType DataStructure_3001 = getElementType(
+			"org.epsilonlabs.workflow.diagram.DataStructure_3001"); //$NON-NLS-1$
 
 	/**
 	* @generated
 	*/
-	public static final IElementType Boolean_3003 = getElementType("org.epsilonlabs.workflow.diagram.Boolean_3003"); //$NON-NLS-1$
+	public static final IElementType TaskIncoming_4001 = getElementType(
+			"org.epsilonlabs.workflow.diagram.TaskIncoming_4001"); //$NON-NLS-1$
 
 	/**
 	* @generated
 	*/
-	public static final IElementType Double_3004 = getElementType("org.epsilonlabs.workflow.diagram.Double_3004"); //$NON-NLS-1$
-
-	/**
-	* @generated
-	*/
-	public static final IElementType RemoteTaskCommunicationConfiguration_4004 = getElementType(
-			"org.epsilonlabs.workflow.diagram.RemoteTaskCommunicationConfiguration_4004"); //$NON-NLS-1$
-	/**
-	* @generated
-	*/
-	public static final IElementType TaskCommunicationConfiguration_4005 = getElementType(
-			"org.epsilonlabs.workflow.diagram.TaskCommunicationConfiguration_4005"); //$NON-NLS-1$
+	public static final IElementType CommunicationChannelIncoming_4002 = getElementType(
+			"org.epsilonlabs.workflow.diagram.CommunicationChannelIncoming_4002"); //$NON-NLS-1$
 
 	/**
 	* @generated
@@ -160,31 +148,24 @@ public class WorkflowElementTypes {
 
 			elements.put(Workflow_1000, WorkflowPackage.eINSTANCE.getWorkflow());
 
-			elements.put(EmittingTask_2011, WorkflowPackage.eINSTANCE.getEmittingTask());
+			elements.put(JavaTask_2017, WorkflowPackage.eINSTANCE.getJavaTask());
 
-			elements.put(String_2012, WorkflowPackage.eINSTANCE.getString());
+			elements.put(ScriptedTask_2018, WorkflowPackage.eINSTANCE.getScriptedTask());
 
-			elements.put(Integer_2013, WorkflowPackage.eINSTANCE.getInteger());
-
-			elements.put(Boolean_2014, WorkflowPackage.eINSTANCE.getBoolean());
-
-			elements.put(Double_2015, WorkflowPackage.eINSTANCE.getDouble());
+			elements.put(RemoteCommunicationChannel_2020, WorkflowPackage.eINSTANCE.getRemoteCommunicationChannel());
 
 			elements.put(Task_2016, WorkflowPackage.eINSTANCE.getTask());
 
-			elements.put(String_3001, WorkflowPackage.eINSTANCE.getString());
+			elements.put(CommunicationChannel_2021, WorkflowPackage.eINSTANCE.getCommunicationChannel());
 
-			elements.put(Integer_3002, WorkflowPackage.eINSTANCE.getInteger());
+			elements.put(DataStructure_2019, WorkflowPackage.eINSTANCE.getDataStructure());
 
-			elements.put(Boolean_3003, WorkflowPackage.eINSTANCE.getBoolean());
+			elements.put(DataStructure_3001, WorkflowPackage.eINSTANCE.getDataStructure());
 
-			elements.put(Double_3004, WorkflowPackage.eINSTANCE.getDouble());
+			elements.put(TaskIncoming_4001, WorkflowPackage.eINSTANCE.getTask_Incoming());
 
-			elements.put(RemoteTaskCommunicationConfiguration_4004,
-					WorkflowPackage.eINSTANCE.getRemoteTaskCommunicationConfiguration());
-
-			elements.put(TaskCommunicationConfiguration_4005,
-					WorkflowPackage.eINSTANCE.getTaskCommunicationConfiguration());
+			elements.put(CommunicationChannelIncoming_4002,
+					WorkflowPackage.eINSTANCE.getCommunicationChannel_Incoming());
 		}
 		return (ENamedElement) elements.get(type);
 	}
@@ -203,18 +184,15 @@ public class WorkflowElementTypes {
 		if (KNOWN_ELEMENT_TYPES == null) {
 			KNOWN_ELEMENT_TYPES = new HashSet<IElementType>();
 			KNOWN_ELEMENT_TYPES.add(Workflow_1000);
-			KNOWN_ELEMENT_TYPES.add(EmittingTask_2011);
-			KNOWN_ELEMENT_TYPES.add(String_2012);
-			KNOWN_ELEMENT_TYPES.add(Integer_2013);
-			KNOWN_ELEMENT_TYPES.add(Boolean_2014);
-			KNOWN_ELEMENT_TYPES.add(Double_2015);
+			KNOWN_ELEMENT_TYPES.add(JavaTask_2017);
+			KNOWN_ELEMENT_TYPES.add(ScriptedTask_2018);
+			KNOWN_ELEMENT_TYPES.add(RemoteCommunicationChannel_2020);
 			KNOWN_ELEMENT_TYPES.add(Task_2016);
-			KNOWN_ELEMENT_TYPES.add(String_3001);
-			KNOWN_ELEMENT_TYPES.add(Integer_3002);
-			KNOWN_ELEMENT_TYPES.add(Boolean_3003);
-			KNOWN_ELEMENT_TYPES.add(Double_3004);
-			KNOWN_ELEMENT_TYPES.add(RemoteTaskCommunicationConfiguration_4004);
-			KNOWN_ELEMENT_TYPES.add(TaskCommunicationConfiguration_4005);
+			KNOWN_ELEMENT_TYPES.add(CommunicationChannel_2021);
+			KNOWN_ELEMENT_TYPES.add(DataStructure_2019);
+			KNOWN_ELEMENT_TYPES.add(DataStructure_3001);
+			KNOWN_ELEMENT_TYPES.add(TaskIncoming_4001);
+			KNOWN_ELEMENT_TYPES.add(CommunicationChannelIncoming_4002);
 		}
 		return KNOWN_ELEMENT_TYPES.contains(elementType);
 	}
@@ -226,30 +204,24 @@ public class WorkflowElementTypes {
 		switch (visualID) {
 		case WorkflowEditPart.VISUAL_ID:
 			return Workflow_1000;
-		case EmittingTaskEditPart.VISUAL_ID:
-			return EmittingTask_2011;
-		case StringEditPart.VISUAL_ID:
-			return String_2012;
-		case IntegerEditPart.VISUAL_ID:
-			return Integer_2013;
-		case BooleanEditPart.VISUAL_ID:
-			return Boolean_2014;
-		case DoubleEditPart.VISUAL_ID:
-			return Double_2015;
+		case JavaTaskEditPart.VISUAL_ID:
+			return JavaTask_2017;
+		case ScriptedTaskEditPart.VISUAL_ID:
+			return ScriptedTask_2018;
+		case RemoteCommunicationChannelEditPart.VISUAL_ID:
+			return RemoteCommunicationChannel_2020;
 		case TaskEditPart.VISUAL_ID:
 			return Task_2016;
-		case String2EditPart.VISUAL_ID:
-			return String_3001;
-		case Integer2EditPart.VISUAL_ID:
-			return Integer_3002;
-		case Boolean2EditPart.VISUAL_ID:
-			return Boolean_3003;
-		case Double2EditPart.VISUAL_ID:
-			return Double_3004;
-		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID:
-			return RemoteTaskCommunicationConfiguration_4004;
-		case TaskCommunicationConfigurationEditPart.VISUAL_ID:
-			return TaskCommunicationConfiguration_4005;
+		case CommunicationChannelEditPart.VISUAL_ID:
+			return CommunicationChannel_2021;
+		case DataStructureEditPart.VISUAL_ID:
+			return DataStructure_2019;
+		case DataStructure2EditPart.VISUAL_ID:
+			return DataStructure_3001;
+		case TaskIncomingEditPart.VISUAL_ID:
+			return TaskIncoming_4001;
+		case CommunicationChannelIncomingEditPart.VISUAL_ID:
+			return CommunicationChannelIncoming_4002;
 		}
 		return null;
 	}

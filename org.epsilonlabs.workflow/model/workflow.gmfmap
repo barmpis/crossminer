@@ -9,201 +9,72 @@
   <nodes>
     <containmentFeature
         href="workflow.ecore#//Workflow/tasks"/>
-    <ownedChild
-        relatedDiagrams="//@diagram">
+    <ownedChild>
       <domainMetaElement
-          href="workflow.ecore#//EmittingTask"/>
+          href="workflow.ecore#//JavaTask"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
-            href="workflow.gmfgraph#EmittingTaskLabel"/>
+            href="workflow.gmfgraph#JavaTaskLabel"/>
         <features
             href="workflow.ecore#//Task/name"/>
-      </labelMappings>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#TaskConcurrencyLabel"/>
-        <features
-            href="workflow.ecore#//Task/concurrency"/>
-      </labelMappings>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#TaskImplementationFullyQualifiedNameLabel"/>
-        <features
-            href="workflow.ecore#//Task/implementationFullyQualifiedName"/>
-      </labelMappings>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#TaskImplementationEntryPointLabel"/>
-        <features
-            href="workflow.ecore#//Task/implementationEntryPoint"/>
-      </labelMappings>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#TaskAcceptsPartialDataLabel"/>
-        <features
-            href="workflow.ecore#//Task/acceptsPartialData"/>
-      </labelMappings>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#EmittingTaskProvidesPartialDataLabel"/>
-        <features
-            href="workflow.ecore#//EmittingTask/providesPartialData"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
           href="workflow.gmftool#//@palette/@tools.0/@tools.2"/>
       <diagramNode
-          href="workflow.gmfgraph#EmittingTask"/>
-      <children
-          compartment="//@nodes.0/@ownedChild/@compartments.0"
-          referencedChild="//@nodes.1/@ownedChild">
-        <containmentFeature
-            href="workflow.ecore#//Task/locals"/>
-      </children>
-      <children
-          compartment="//@nodes.0/@ownedChild/@compartments.0"
-          referencedChild="//@nodes.2/@ownedChild">
-        <containmentFeature
-            href="workflow.ecore#//Task/locals"/>
-      </children>
-      <children
-          compartment="//@nodes.0/@ownedChild/@compartments.0"
-          referencedChild="//@nodes.3/@ownedChild">
-        <containmentFeature
-            href="workflow.ecore#//Task/locals"/>
-      </children>
-      <children
-          compartment="//@nodes.0/@ownedChild/@compartments.0"
-          referencedChild="//@nodes.4/@ownedChild">
-        <containmentFeature
-            href="workflow.ecore#//Task/locals"/>
-      </children>
-      <compartments
-          children="//@nodes.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.1 //@nodes.0/@ownedChild/@children.2 //@nodes.0/@ownedChild/@children.3">
-        <compartment
-            href="workflow.gmfgraph#EmittingTaskLocalsCompartment"/>
-      </compartments>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="workflow.ecore#//Workflow/globals"/>
-    <ownedChild>
-      <domainMetaElement
-          href="workflow.ecore#//String"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#StringLabel"/>
-        <features
-            href="workflow.ecore#//Variable/name"/>
-      </labelMappings>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#StringValueLabel"/>
-        <features
-            href="workflow.ecore#//String/value"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="workflow.gmftool#//@palette/@tools.0/@tools.4"/>
-      <diagramNode
-          href="workflow.gmfgraph#String"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="workflow.ecore#//Workflow/globals"/>
-    <ownedChild>
-      <domainMetaElement
-          href="workflow.ecore#//Integer"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#IntegerLabel"/>
-        <features
-            href="workflow.ecore#//Variable/name"/>
-      </labelMappings>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#IntegerValueLabel"/>
-        <features
-            href="workflow.ecore#//Integer/value"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="workflow.gmftool#//@palette/@tools.0/@tools.3"/>
-      <diagramNode
-          href="workflow.gmfgraph#Integer"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="workflow.ecore#//Workflow/globals"/>
-    <ownedChild>
-      <domainMetaElement
-          href="workflow.ecore#//Boolean"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#BooleanLabel"/>
-        <features
-            href="workflow.ecore#//Variable/name"/>
-      </labelMappings>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#BooleanValueLabel"/>
-        <features
-            href="workflow.ecore#//Boolean/value"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="workflow.gmftool#//@palette/@tools.0/@tools.0"/>
-      <diagramNode
-          href="workflow.gmfgraph#Boolean"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="workflow.ecore#//Workflow/globals"/>
-    <ownedChild>
-      <domainMetaElement
-          href="workflow.ecore#//Double"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#DoubleLabel"/>
-        <features
-            href="workflow.ecore#//Variable/name"/>
-      </labelMappings>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#DoubleValueLabel"/>
-        <features
-            href="workflow.ecore#//Double/value"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="workflow.gmftool#//@palette/@tools.0/@tools.1"/>
-      <diagramNode
-          href="workflow.gmfgraph#Double"/>
+          href="workflow.gmfgraph#JavaTask"/>
     </ownedChild>
   </nodes>
   <nodes>
     <containmentFeature
         href="workflow.ecore#//Workflow/tasks"/>
+    <ownedChild>
+      <domainMetaElement
+          href="workflow.ecore#//ScriptedTask"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="workflow.gmfgraph#ScriptedTaskLabel"/>
+        <features
+            href="workflow.ecore#//Task/name"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="workflow.gmftool#//@palette/@tools.0/@tools.4"/>
+      <diagramNode
+          href="workflow.gmfgraph#ScriptedTask"/>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="workflow.ecore#//Workflow/channels"/>
     <ownedChild
         relatedDiagrams="//@diagram">
+      <domainMetaElement
+          href="workflow.ecore#//RemoteCommunicationChannel"/>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="workflow.gmftool#//@palette/@tools.0/@tools.3"/>
+      <diagramNode
+          href="workflow.gmfgraph#RemoteCommunicationChannel"/>
+      <children
+          compartment="//@nodes.2/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.5/@ownedChild">
+        <containmentFeature
+            href="workflow.ecore#//CommunicationChannel/type"/>
+      </children>
+      <compartments
+          children="//@nodes.2/@ownedChild/@children.0">
+        <compartment
+            href="workflow.gmfgraph#RemoteCommunicationChannelTypeCompartment"/>
+      </compartments>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="workflow.ecore#//Workflow/tasks"/>
+    <ownedChild>
       <domainMetaElement
           href="workflow.ecore#//Task"/>
       <labelMappings
@@ -213,116 +84,101 @@
         <features
             href="workflow.ecore#//Task/name"/>
       </labelMappings>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#TaskConcurrencyLabel"/>
-        <features
-            href="workflow.ecore#//Task/concurrency"/>
-      </labelMappings>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#TaskImplementationFullyQualifiedNameLabel"/>
-        <features
-            href="workflow.ecore#//Task/implementationFullyQualifiedName"/>
-      </labelMappings>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#TaskImplementationEntryPointLabel"/>
-        <features
-            href="workflow.ecore#//Task/implementationEntryPoint"/>
-      </labelMappings>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="workflow.gmfgraph#TaskAcceptsPartialDataLabel"/>
-        <features
-            href="workflow.ecore#//Task/acceptsPartialData"/>
-      </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
           href="workflow.gmftool#//@palette/@tools.0/@tools.5"/>
       <diagramNode
           href="workflow.gmfgraph#Task"/>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="workflow.ecore#//Workflow/channels"/>
+    <ownedChild
+        relatedDiagrams="//@diagram">
+      <domainMetaElement
+          href="workflow.ecore#//CommunicationChannel"/>
+      <labelMappings
+          xsi:type="gmfmap:ExpressionLabelMapping">
+        <diagramLabel
+            href="workflow.gmfgraph#ABNameLabel"/>
+        <viewExpression
+            body="self.type.name"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="workflow.gmftool#//@palette/@tools.0/@tools.0"/>
+      <diagramNode
+          href="workflow.gmfgraph#CommunicationChannel"/>
       <children
-          compartment="//@nodes.5/@ownedChild/@compartments.0"
-          referencedChild="//@nodes.1/@ownedChild">
+          compartment="//@nodes.4/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.5/@ownedChild">
         <containmentFeature
-            href="workflow.ecore#//Task/locals"/>
-      </children>
-      <children
-          compartment="//@nodes.5/@ownedChild/@compartments.0"
-          referencedChild="//@nodes.2/@ownedChild">
-        <containmentFeature
-            href="workflow.ecore#//Task/locals"/>
-      </children>
-      <children
-          compartment="//@nodes.5/@ownedChild/@compartments.0"
-          referencedChild="//@nodes.3/@ownedChild">
-        <containmentFeature
-            href="workflow.ecore#//Task/locals"/>
-      </children>
-      <children
-          compartment="//@nodes.5/@ownedChild/@compartments.0"
-          referencedChild="//@nodes.4/@ownedChild">
-        <containmentFeature
-            href="workflow.ecore#//Task/locals"/>
+            href="workflow.ecore#//CommunicationChannel/type"/>
       </children>
       <compartments
-          children="//@nodes.5/@ownedChild/@children.0 //@nodes.5/@ownedChild/@children.1 //@nodes.5/@ownedChild/@children.2 //@nodes.5/@ownedChild/@children.3">
+          children="//@nodes.4/@ownedChild/@children.0">
         <compartment
-            href="workflow.gmfgraph#TaskLocalsCompartment"/>
+            href="workflow.gmfgraph#CommunicationChannelTypeCompartment"/>
+      </compartments>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="workflow.ecore#//Workflow/globalVariables"/>
+    <ownedChild
+        relatedDiagrams="//@diagram">
+      <domainMetaElement
+          href="workflow.ecore#//DataStructure"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="workflow.gmfgraph#DataStructureLabel"/>
+        <features
+            href="workflow.ecore#//DataStructure/name"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="workflow.gmftool#//@palette/@tools.0/@tools.1"/>
+      <diagramNode
+          href="workflow.gmfgraph#DataStructure"/>
+      <compartments>
+        <compartment
+            href="workflow.gmfgraph#DataStructureTypeCompartment"/>
       </compartments>
     </ownedChild>
   </nodes>
   <links>
-    <domainMetaElement
-        href="workflow.ecore#//RemoteTaskCommunicationConfiguration"/>
     <labelMappings
-        xsi:type="gmfmap:FeatureLabelMapping">
+        xsi:type="gmfmap:DesignLabelMapping"
+        readOnly="true">
       <diagramLabel
-          href="workflow.gmfgraph#RemoteTaskCommunicationConfigurationLabel"/>
-      <features
-          href="workflow.ecore#//RemoteTaskCommunicationConfiguration/address"/>
-      <features
-          href="workflow.ecore#//RemoteTaskCommunicationConfiguration/port"/>
-      <features
-          href="workflow.ecore#//RemoteTaskCommunicationConfiguration/singleQueue"/>
-      <features
-          href="workflow.ecore#//RemoteTaskCommunicationConfiguration/queuePersistance"/>
+          href="workflow.gmfgraph#TaskIncomingExternalLabel"/>
     </labelMappings>
-    <containmentFeature
-        href="workflow.ecore#//Workflow/configs"/>
     <tool
         xsi:type="gmftool:CreationTool"
         href="workflow.gmftool#//@palette/@tools.1/@tools.0"/>
     <diagramLink
-        href="workflow.gmfgraph#RemoteTaskCommunicationConfiguration"/>
-    <sourceMetaFeature
-        xsi:type="ecore:EReference"
-        href="workflow.ecore#//TaskCommunicationConfiguration/incoming"/>
+        href="workflow.gmfgraph#TaskIncoming"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="workflow.ecore#//TaskCommunicationConfiguration/outgoing"/>
+        href="workflow.ecore#//Task/incoming"/>
   </links>
   <links>
-    <domainMetaElement
-        href="workflow.ecore#//TaskCommunicationConfiguration"/>
-    <containmentFeature
-        href="workflow.ecore#//Workflow/configs"/>
+    <labelMappings
+        xsi:type="gmfmap:DesignLabelMapping"
+        readOnly="true">
+      <diagramLabel
+          href="workflow.gmfgraph#CommunicationChannelIncomingExternalLabel"/>
+    </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
         href="workflow.gmftool#//@palette/@tools.1/@tools.1"/>
     <diagramLink
-        href="workflow.gmfgraph#TaskCommunicationConfiguration"/>
-    <sourceMetaFeature
-        xsi:type="ecore:EReference"
-        href="workflow.ecore#//TaskCommunicationConfiguration/incoming"/>
+        href="workflow.gmfgraph#CommunicationChannelIncoming"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="workflow.ecore#//TaskCommunicationConfiguration/outgoing"/>
+        href="workflow.ecore#//CommunicationChannel/incoming"/>
   </links>
   <diagram>
     <diagramCanvas

@@ -2,9 +2,6 @@
  */
 package workflow.impl;
 
-import java.lang.Boolean;
-import java.lang.String;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -22,10 +19,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import workflow.CommunicationChannel;
+import workflow.DataStructure;
 import workflow.Task;
-import workflow.TaskCommunicationConfiguration;
-import workflow.TaskConcurrency;
-import workflow.Variable;
 import workflow.WorkflowPackage;
 
 /**
@@ -37,12 +33,11 @@ import workflow.WorkflowPackage;
  * </p>
  * <ul>
  *   <li>{@link workflow.impl.TaskImpl#getName <em>Name</em>}</li>
- *   <li>{@link workflow.impl.TaskImpl#getConcurrency <em>Concurrency</em>}</li>
- *   <li>{@link workflow.impl.TaskImpl#getImplementationFullyQualifiedName <em>Implementation Fully Qualified Name</em>}</li>
- *   <li>{@link workflow.impl.TaskImpl#getImplementationEntryPoint <em>Implementation Entry Point</em>}</li>
  *   <li>{@link workflow.impl.TaskImpl#isAcceptsPartialData <em>Accepts Partial Data</em>}</li>
+ *   <li>{@link workflow.impl.TaskImpl#isProvidesPartialData <em>Provides Partial Data</em>}</li>
  *   <li>{@link workflow.impl.TaskImpl#getIncoming <em>Incoming</em>}</li>
- *   <li>{@link workflow.impl.TaskImpl#getLocals <em>Locals</em>}</li>
+ *   <li>{@link workflow.impl.TaskImpl#getOutgoing <em>Outgoing</em>}</li>
+ *   <li>{@link workflow.impl.TaskImpl#getLocalVariables <em>Local Variables</em>}</li>
  * </ul>
  *
  * @generated
@@ -69,66 +64,6 @@ public class TaskImpl extends EObjectImpl implements Task {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getConcurrency() <em>Concurrency</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConcurrency()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final TaskConcurrency CONCURRENCY_EDEFAULT = TaskConcurrency.NONE;
-
-	/**
-	 * The cached value of the '{@link #getConcurrency() <em>Concurrency</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConcurrency()
-	 * @generated
-	 * @ordered
-	 */
-	protected TaskConcurrency concurrency = CONCURRENCY_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getImplementationFullyQualifiedName() <em>Implementation Fully Qualified Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImplementationFullyQualifiedName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String IMPLEMENTATION_FULLY_QUALIFIED_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getImplementationFullyQualifiedName() <em>Implementation Fully Qualified Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImplementationFullyQualifiedName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String implementationFullyQualifiedName = IMPLEMENTATION_FULLY_QUALIFIED_NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getImplementationEntryPoint() <em>Implementation Entry Point</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImplementationEntryPoint()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String IMPLEMENTATION_ENTRY_POINT_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getImplementationEntryPoint() <em>Implementation Entry Point</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImplementationEntryPoint()
-	 * @generated
-	 * @ordered
-	 */
-	protected String implementationEntryPoint = IMPLEMENTATION_ENTRY_POINT_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #isAcceptsPartialData() <em>Accepts Partial Data</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -149,6 +84,26 @@ public class TaskImpl extends EObjectImpl implements Task {
 	protected boolean acceptsPartialData = ACCEPTS_PARTIAL_DATA_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #isProvidesPartialData() <em>Provides Partial Data</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isProvidesPartialData()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean PROVIDES_PARTIAL_DATA_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isProvidesPartialData() <em>Provides Partial Data</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isProvidesPartialData()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean providesPartialData = PROVIDES_PARTIAL_DATA_EDEFAULT;
+
+	/**
 	 * The cached value of the '{@link #getIncoming() <em>Incoming</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -156,17 +111,27 @@ public class TaskImpl extends EObjectImpl implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TaskCommunicationConfiguration> incoming;
+	protected EList<CommunicationChannel> incoming;
 
 	/**
-	 * The cached value of the '{@link #getLocals() <em>Locals</em>}' containment reference list.
+	 * The cached value of the '{@link #getOutgoing() <em>Outgoing</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLocals()
+	 * @see #getOutgoing()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Variable> locals;
+	protected EList<CommunicationChannel> outgoing;
+
+	/**
+	 * The cached value of the '{@link #getLocalVariables() <em>Local Variables</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLocalVariables()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<DataStructure> localVariables;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -213,69 +178,6 @@ public class TaskImpl extends EObjectImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TaskConcurrency getConcurrency() {
-		return concurrency;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setConcurrency(TaskConcurrency newConcurrency) {
-		TaskConcurrency oldConcurrency = concurrency;
-		concurrency = newConcurrency == null ? CONCURRENCY_EDEFAULT : newConcurrency;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WorkflowPackage.TASK__CONCURRENCY, oldConcurrency, concurrency));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getImplementationFullyQualifiedName() {
-		return implementationFullyQualifiedName;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setImplementationFullyQualifiedName(String newImplementationFullyQualifiedName) {
-		String oldImplementationFullyQualifiedName = implementationFullyQualifiedName;
-		implementationFullyQualifiedName = newImplementationFullyQualifiedName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WorkflowPackage.TASK__IMPLEMENTATION_FULLY_QUALIFIED_NAME, oldImplementationFullyQualifiedName, implementationFullyQualifiedName));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getImplementationEntryPoint() {
-		return implementationEntryPoint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setImplementationEntryPoint(String newImplementationEntryPoint) {
-		String oldImplementationEntryPoint = implementationEntryPoint;
-		implementationEntryPoint = newImplementationEntryPoint;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WorkflowPackage.TASK__IMPLEMENTATION_ENTRY_POINT, oldImplementationEntryPoint, implementationEntryPoint));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isAcceptsPartialData() {
 		return acceptsPartialData;
 	}
@@ -297,9 +199,30 @@ public class TaskImpl extends EObjectImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TaskCommunicationConfiguration> getIncoming() {
+	public boolean isProvidesPartialData() {
+		return providesPartialData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProvidesPartialData(boolean newProvidesPartialData) {
+		boolean oldProvidesPartialData = providesPartialData;
+		providesPartialData = newProvidesPartialData;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, WorkflowPackage.TASK__PROVIDES_PARTIAL_DATA, oldProvidesPartialData, providesPartialData));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<CommunicationChannel> getIncoming() {
 		if (incoming == null) {
-			incoming = new EObjectWithInverseResolvingEList.ManyInverse<TaskCommunicationConfiguration>(TaskCommunicationConfiguration.class, this, WorkflowPackage.TASK__INCOMING, WorkflowPackage.TASK_COMMUNICATION_CONFIGURATION__OUTGOING);
+			incoming = new EObjectWithInverseResolvingEList.ManyInverse<CommunicationChannel>(CommunicationChannel.class, this, WorkflowPackage.TASK__INCOMING, WorkflowPackage.COMMUNICATION_CHANNEL__OUTGOING);
 		}
 		return incoming;
 	}
@@ -309,11 +232,23 @@ public class TaskImpl extends EObjectImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Variable> getLocals() {
-		if (locals == null) {
-			locals = new EObjectContainmentEList<Variable>(Variable.class, this, WorkflowPackage.TASK__LOCALS);
+	public EList<CommunicationChannel> getOutgoing() {
+		if (outgoing == null) {
+			outgoing = new EObjectWithInverseResolvingEList.ManyInverse<CommunicationChannel>(CommunicationChannel.class, this, WorkflowPackage.TASK__OUTGOING, WorkflowPackage.COMMUNICATION_CHANNEL__INCOMING);
 		}
-		return locals;
+		return outgoing;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<DataStructure> getLocalVariables() {
+		if (localVariables == null) {
+			localVariables = new EObjectContainmentEList<DataStructure>(DataStructure.class, this, WorkflowPackage.TASK__LOCAL_VARIABLES);
+		}
+		return localVariables;
 	}
 
 	/**
@@ -327,6 +262,8 @@ public class TaskImpl extends EObjectImpl implements Task {
 		switch (featureID) {
 			case WorkflowPackage.TASK__INCOMING:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIncoming()).basicAdd(otherEnd, msgs);
+			case WorkflowPackage.TASK__OUTGOING:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOutgoing()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -341,8 +278,10 @@ public class TaskImpl extends EObjectImpl implements Task {
 		switch (featureID) {
 			case WorkflowPackage.TASK__INCOMING:
 				return ((InternalEList<?>)getIncoming()).basicRemove(otherEnd, msgs);
-			case WorkflowPackage.TASK__LOCALS:
-				return ((InternalEList<?>)getLocals()).basicRemove(otherEnd, msgs);
+			case WorkflowPackage.TASK__OUTGOING:
+				return ((InternalEList<?>)getOutgoing()).basicRemove(otherEnd, msgs);
+			case WorkflowPackage.TASK__LOCAL_VARIABLES:
+				return ((InternalEList<?>)getLocalVariables()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -357,18 +296,16 @@ public class TaskImpl extends EObjectImpl implements Task {
 		switch (featureID) {
 			case WorkflowPackage.TASK__NAME:
 				return getName();
-			case WorkflowPackage.TASK__CONCURRENCY:
-				return getConcurrency();
-			case WorkflowPackage.TASK__IMPLEMENTATION_FULLY_QUALIFIED_NAME:
-				return getImplementationFullyQualifiedName();
-			case WorkflowPackage.TASK__IMPLEMENTATION_ENTRY_POINT:
-				return getImplementationEntryPoint();
 			case WorkflowPackage.TASK__ACCEPTS_PARTIAL_DATA:
 				return isAcceptsPartialData();
+			case WorkflowPackage.TASK__PROVIDES_PARTIAL_DATA:
+				return isProvidesPartialData();
 			case WorkflowPackage.TASK__INCOMING:
 				return getIncoming();
-			case WorkflowPackage.TASK__LOCALS:
-				return getLocals();
+			case WorkflowPackage.TASK__OUTGOING:
+				return getOutgoing();
+			case WorkflowPackage.TASK__LOCAL_VARIABLES:
+				return getLocalVariables();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -385,25 +322,23 @@ public class TaskImpl extends EObjectImpl implements Task {
 			case WorkflowPackage.TASK__NAME:
 				setName((String)newValue);
 				return;
-			case WorkflowPackage.TASK__CONCURRENCY:
-				setConcurrency((TaskConcurrency)newValue);
-				return;
-			case WorkflowPackage.TASK__IMPLEMENTATION_FULLY_QUALIFIED_NAME:
-				setImplementationFullyQualifiedName((String)newValue);
-				return;
-			case WorkflowPackage.TASK__IMPLEMENTATION_ENTRY_POINT:
-				setImplementationEntryPoint((String)newValue);
-				return;
 			case WorkflowPackage.TASK__ACCEPTS_PARTIAL_DATA:
 				setAcceptsPartialData((Boolean)newValue);
 				return;
+			case WorkflowPackage.TASK__PROVIDES_PARTIAL_DATA:
+				setProvidesPartialData((Boolean)newValue);
+				return;
 			case WorkflowPackage.TASK__INCOMING:
 				getIncoming().clear();
-				getIncoming().addAll((Collection<? extends TaskCommunicationConfiguration>)newValue);
+				getIncoming().addAll((Collection<? extends CommunicationChannel>)newValue);
 				return;
-			case WorkflowPackage.TASK__LOCALS:
-				getLocals().clear();
-				getLocals().addAll((Collection<? extends Variable>)newValue);
+			case WorkflowPackage.TASK__OUTGOING:
+				getOutgoing().clear();
+				getOutgoing().addAll((Collection<? extends CommunicationChannel>)newValue);
+				return;
+			case WorkflowPackage.TASK__LOCAL_VARIABLES:
+				getLocalVariables().clear();
+				getLocalVariables().addAll((Collection<? extends DataStructure>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -420,23 +355,20 @@ public class TaskImpl extends EObjectImpl implements Task {
 			case WorkflowPackage.TASK__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case WorkflowPackage.TASK__CONCURRENCY:
-				setConcurrency(CONCURRENCY_EDEFAULT);
-				return;
-			case WorkflowPackage.TASK__IMPLEMENTATION_FULLY_QUALIFIED_NAME:
-				setImplementationFullyQualifiedName(IMPLEMENTATION_FULLY_QUALIFIED_NAME_EDEFAULT);
-				return;
-			case WorkflowPackage.TASK__IMPLEMENTATION_ENTRY_POINT:
-				setImplementationEntryPoint(IMPLEMENTATION_ENTRY_POINT_EDEFAULT);
-				return;
 			case WorkflowPackage.TASK__ACCEPTS_PARTIAL_DATA:
 				setAcceptsPartialData(ACCEPTS_PARTIAL_DATA_EDEFAULT);
+				return;
+			case WorkflowPackage.TASK__PROVIDES_PARTIAL_DATA:
+				setProvidesPartialData(PROVIDES_PARTIAL_DATA_EDEFAULT);
 				return;
 			case WorkflowPackage.TASK__INCOMING:
 				getIncoming().clear();
 				return;
-			case WorkflowPackage.TASK__LOCALS:
-				getLocals().clear();
+			case WorkflowPackage.TASK__OUTGOING:
+				getOutgoing().clear();
+				return;
+			case WorkflowPackage.TASK__LOCAL_VARIABLES:
+				getLocalVariables().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -452,18 +384,16 @@ public class TaskImpl extends EObjectImpl implements Task {
 		switch (featureID) {
 			case WorkflowPackage.TASK__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case WorkflowPackage.TASK__CONCURRENCY:
-				return concurrency != CONCURRENCY_EDEFAULT;
-			case WorkflowPackage.TASK__IMPLEMENTATION_FULLY_QUALIFIED_NAME:
-				return IMPLEMENTATION_FULLY_QUALIFIED_NAME_EDEFAULT == null ? implementationFullyQualifiedName != null : !IMPLEMENTATION_FULLY_QUALIFIED_NAME_EDEFAULT.equals(implementationFullyQualifiedName);
-			case WorkflowPackage.TASK__IMPLEMENTATION_ENTRY_POINT:
-				return IMPLEMENTATION_ENTRY_POINT_EDEFAULT == null ? implementationEntryPoint != null : !IMPLEMENTATION_ENTRY_POINT_EDEFAULT.equals(implementationEntryPoint);
 			case WorkflowPackage.TASK__ACCEPTS_PARTIAL_DATA:
 				return acceptsPartialData != ACCEPTS_PARTIAL_DATA_EDEFAULT;
+			case WorkflowPackage.TASK__PROVIDES_PARTIAL_DATA:
+				return providesPartialData != PROVIDES_PARTIAL_DATA_EDEFAULT;
 			case WorkflowPackage.TASK__INCOMING:
 				return incoming != null && !incoming.isEmpty();
-			case WorkflowPackage.TASK__LOCALS:
-				return locals != null && !locals.isEmpty();
+			case WorkflowPackage.TASK__OUTGOING:
+				return outgoing != null && !outgoing.isEmpty();
+			case WorkflowPackage.TASK__LOCAL_VARIABLES:
+				return localVariables != null && !localVariables.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -480,14 +410,10 @@ public class TaskImpl extends EObjectImpl implements Task {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", concurrency: ");
-		result.append(concurrency);
-		result.append(", implementationFullyQualifiedName: ");
-		result.append(implementationFullyQualifiedName);
-		result.append(", implementationEntryPoint: ");
-		result.append(implementationEntryPoint);
 		result.append(", acceptsPartialData: ");
 		result.append(acceptsPartialData);
+		result.append(", providesPartialData: ");
+		result.append(providesPartialData);
 		result.append(')');
 		return result.toString();
 	}

@@ -12,8 +12,8 @@
         collapsible="true">
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Boolean"
-          description="Create new Boolean">
+          title="CommunicationChannel"
+          description="Create new CommunicationChannel">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -21,8 +21,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Double"
-          description="Create new Double">
+          title="DataStructure"
+          description="Create new DataStructure">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -30,8 +30,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="EmittingTask"
-          description="Create new EmittingTask">
+          title="JavaTask"
+          description="Create new JavaTask">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -39,8 +39,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Integer"
-          description="Create new Integer">
+          title="RemoteCommunicationChannel"
+          description="Create new RemoteCommunicationChannel">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -48,8 +48,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="String"
-          description="Create new String">
+          title="ScriptedTask"
+          description="Create new ScriptedTask">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -71,8 +71,8 @@
         collapsible="true">
       <tools
           xsi:type="gmftool:CreationTool"
-          title="RemoteTaskCommunicationConfiguration"
-          description="Create new RemoteTaskCommunicationConfiguration">
+          title="Incoming"
+          description="Create new Incoming">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -80,8 +80,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="TaskCommunicationConfiguration"
-          description="Create new TaskCommunicationConfiguration">
+          title="Incoming"
+          description="Create new Incoming">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon

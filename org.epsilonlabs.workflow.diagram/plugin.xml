@@ -258,8 +258,8 @@
          </object>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" containerViews="referencing-diagrams"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Workflow"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2011,2012,2013,2014,2015,2016,3001,3002,3003,3004"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4004,4005"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2017,2018,2020,2016,2021,2019,3001"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001,4002"/>
       </viewProvider>
    </extension>
 
@@ -271,16 +271,16 @@
             <method name="getType()" value="Workflow"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2011,2012,2013,2014,2015,2016,3001,3002,3003,3004"/>
+            <method name="getType()" value="2017,2018,2020,2016,2021,2019,3001"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
-            <method name="getType()" value="4004,4005"/>
+            <method name="getType()" value="4001,4002"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5011,5025,5026,5027,5028,5029,5012,5030,5013,5031,5014,5032,5015,5033,5016,5034,5035,5036,5037,5017,5018,5019,5020,5021,5022,5023,5024"/>
+            <method name="getType()" value="5038,5039,5016,5042,5040,5044"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
-            <method name="getType()" value="7001,7002"/>
+            <method name="getType()" value="7001,7003,7002,7004"/>
          </object>
          <context views="generated-diagram,generated-nodes,generated-links,generated-labels,generated-compartments"/>
       </editpartProvider>
@@ -294,55 +294,40 @@
          <object class="workflow.diagram.edit.parts.WorkflowEditPart" id="Workflow_1000"/>
          <context elements="Workflow_1000"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfEmittingTaskEditPart">
+            <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfJavaTaskEditPart">
          <Priority name="Lowest"/>
-         <object class="workflow.diagram.edit.parts.EmittingTaskEditPart" id="EmittingTask_2011"/>
-         <context elements="EmittingTask_2011"/>
+         <object class="workflow.diagram.edit.parts.JavaTaskEditPart" id="JavaTask_2017"/>
+         <context elements="JavaTask_2017"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfStringEditPart">
+            <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfScriptedTaskEditPart">
          <Priority name="Lowest"/>
-         <object class="workflow.diagram.edit.parts.StringEditPart" id="String_2012"/>
-         <context elements="String_2012"/>
+         <object class="workflow.diagram.edit.parts.ScriptedTaskEditPart" id="ScriptedTask_2018"/>
+         <context elements="ScriptedTask_2018"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfIntegerEditPart">
+            <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfRemoteCommunicationChannelEditPart">
          <Priority name="Lowest"/>
-         <object class="workflow.diagram.edit.parts.IntegerEditPart" id="Integer_2013"/>
-         <context elements="Integer_2013"/>
-      </modelingAssistantProvider>
-            <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfBooleanEditPart">
-         <Priority name="Lowest"/>
-         <object class="workflow.diagram.edit.parts.BooleanEditPart" id="Boolean_2014"/>
-         <context elements="Boolean_2014"/>
-      </modelingAssistantProvider>
-            <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfDoubleEditPart">
-         <Priority name="Lowest"/>
-         <object class="workflow.diagram.edit.parts.DoubleEditPart" id="Double_2015"/>
-         <context elements="Double_2015"/>
+         <object class="workflow.diagram.edit.parts.RemoteCommunicationChannelEditPart" id="RemoteCommunicationChannel_2020"/>
+         <context elements="RemoteCommunicationChannel_2020"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfTaskEditPart">
          <Priority name="Lowest"/>
          <object class="workflow.diagram.edit.parts.TaskEditPart" id="Task_2016"/>
          <context elements="Task_2016"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfString2EditPart">
+            <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfCommunicationChannelEditPart">
          <Priority name="Lowest"/>
-         <object class="workflow.diagram.edit.parts.String2EditPart" id="String_3001"/>
-         <context elements="String_3001"/>
+         <object class="workflow.diagram.edit.parts.CommunicationChannelEditPart" id="CommunicationChannel_2021"/>
+         <context elements="CommunicationChannel_2021"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfInteger2EditPart">
+            <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfDataStructureEditPart">
          <Priority name="Lowest"/>
-         <object class="workflow.diagram.edit.parts.Integer2EditPart" id="Integer_3002"/>
-         <context elements="Integer_3002"/>
+         <object class="workflow.diagram.edit.parts.DataStructureEditPart" id="DataStructure_2019"/>
+         <context elements="DataStructure_2019"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfBoolean2EditPart">
+            <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfDataStructure2EditPart">
          <Priority name="Lowest"/>
-         <object class="workflow.diagram.edit.parts.Boolean2EditPart" id="Boolean_3003"/>
-         <context elements="Boolean_3003"/>
-      </modelingAssistantProvider>
-            <modelingAssistantProvider class="workflow.diagram.providers.assistants.WorkflowModelingAssistantProviderOfDouble2EditPart">
-         <Priority name="Lowest"/>
-         <object class="workflow.diagram.edit.parts.Double2EditPart" id="Double_3004"/>
-         <context elements="Double_3004"/>
+         <object class="workflow.diagram.edit.parts.DataStructure2EditPart" id="DataStructure_3001"/>
+         <context elements="DataStructure_3001"/>
       </modelingAssistantProvider>
       
    </extension>
@@ -367,7 +352,7 @@
       <decoratorProvider class="workflow.diagram.providers.WorkflowShortcutsDecoratorProvider">
          <Priority name="Lowest"/>
          <object class="org.eclipse.gmf.runtime.notation.Node(org.eclipse.gmf.runtime.notation)" id="generated-top-nodes">
-            <method name="getType()" value="2011,2012,2013,2014,2015,2016"/>
+            <method name="getType()" value="2017,2018,2020,2016,2021,2019"/>
          </object>
          <context decoratorTargets="generated-top-nodes"/>
       </decoratorProvider>
@@ -387,49 +372,33 @@
       </metamodel>
       <metamodel nsURI="http://org.crossminer.workflow">
          <metamodelType
-               id="org.epsilonlabs.workflow.diagram.EmittingTask_2011"
-               name="%metatype.name.EmittingTask_2011"
+               id="org.epsilonlabs.workflow.diagram.JavaTask_2017"
+               name="%metatype.name.JavaTask_2017"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="EmittingTask"
-               edithelper="workflow.diagram.edit.helpers.EmittingTaskEditHelper">
-            <param name="semanticHint" value="2011"/>
+               eclass="JavaTask"
+               edithelper="workflow.diagram.edit.helpers.JavaTaskEditHelper">
+            <param name="semanticHint" value="2017"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http://org.crossminer.workflow">
-         <specializationType
-               id="org.epsilonlabs.workflow.diagram.String_2012"
-               name="%metatype.name.String_2012"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="org.epsilonlabs.workflow.diagram.String_3001"/>
-            <param name="semanticHint" value="2012"/>
-         </specializationType>
+         <metamodelType
+               id="org.epsilonlabs.workflow.diagram.ScriptedTask_2018"
+               name="%metatype.name.ScriptedTask_2018"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ScriptedTask"
+               edithelper="workflow.diagram.edit.helpers.ScriptedTaskEditHelper">
+            <param name="semanticHint" value="2018"/>
+         </metamodelType>
       </metamodel>
       <metamodel nsURI="http://org.crossminer.workflow">
-         <specializationType
-               id="org.epsilonlabs.workflow.diagram.Integer_2013"
-               name="%metatype.name.Integer_2013"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="org.epsilonlabs.workflow.diagram.Integer_3002"/>
-            <param name="semanticHint" value="2013"/>
-         </specializationType>
-      </metamodel>
-      <metamodel nsURI="http://org.crossminer.workflow">
-         <specializationType
-               id="org.epsilonlabs.workflow.diagram.Boolean_2014"
-               name="%metatype.name.Boolean_2014"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="org.epsilonlabs.workflow.diagram.Boolean_3003"/>
-            <param name="semanticHint" value="2014"/>
-         </specializationType>
-      </metamodel>
-      <metamodel nsURI="http://org.crossminer.workflow">
-         <specializationType
-               id="org.epsilonlabs.workflow.diagram.Double_2015"
-               name="%metatype.name.Double_2015"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="org.epsilonlabs.workflow.diagram.Double_3004"/>
-            <param name="semanticHint" value="2015"/>
-         </specializationType>
+         <metamodelType
+               id="org.epsilonlabs.workflow.diagram.RemoteCommunicationChannel_2020"
+               name="%metatype.name.RemoteCommunicationChannel_2020"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="RemoteCommunicationChannel"
+               edithelper="workflow.diagram.edit.helpers.RemoteCommunicationChannelEditHelper">
+            <param name="semanticHint" value="2020"/>
+         </metamodelType>
       </metamodel>
       <metamodel nsURI="http://org.crossminer.workflow">
          <metamodelType
@@ -443,63 +412,50 @@
       </metamodel>
       <metamodel nsURI="http://org.crossminer.workflow">
          <metamodelType
-               id="org.epsilonlabs.workflow.diagram.String_3001"
-               name="%metatype.name.String_3001"
+               id="org.epsilonlabs.workflow.diagram.CommunicationChannel_2021"
+               name="%metatype.name.CommunicationChannel_2021"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="String"
-               edithelper="workflow.diagram.edit.helpers.StringEditHelper">
+               eclass="CommunicationChannel"
+               edithelper="workflow.diagram.edit.helpers.CommunicationChannelEditHelper">
+            <param name="semanticHint" value="2021"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://org.crossminer.workflow">
+         <specializationType
+               id="org.epsilonlabs.workflow.diagram.DataStructure_2019"
+               name="%metatype.name.DataStructure_2019"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.epsilonlabs.workflow.diagram.DataStructure_3001"/>
+            <param name="semanticHint" value="2019"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://org.crossminer.workflow">
+         <metamodelType
+               id="org.epsilonlabs.workflow.diagram.DataStructure_3001"
+               name="%metatype.name.DataStructure_3001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="DataStructure"
+               edithelper="workflow.diagram.edit.helpers.DataStructureEditHelper">
             <param name="semanticHint" value="3001"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http://org.crossminer.workflow">
-         <metamodelType
-               id="org.epsilonlabs.workflow.diagram.Integer_3002"
-               name="%metatype.name.Integer_3002"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="Integer"
-               edithelper="workflow.diagram.edit.helpers.IntegerEditHelper">
-            <param name="semanticHint" value="3002"/>
-         </metamodelType>
+         <specializationType
+               id="org.epsilonlabs.workflow.diagram.TaskIncoming_4001"
+               name="%metatype.name.TaskIncoming_4001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
+            <param name="semanticHint" value="4001"/>
+         </specializationType>
       </metamodel>
       <metamodel nsURI="http://org.crossminer.workflow">
-         <metamodelType
-               id="org.epsilonlabs.workflow.diagram.Boolean_3003"
-               name="%metatype.name.Boolean_3003"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="Boolean"
-               edithelper="workflow.diagram.edit.helpers.BooleanEditHelper">
-            <param name="semanticHint" value="3003"/>
-         </metamodelType>
-      </metamodel>
-      <metamodel nsURI="http://org.crossminer.workflow">
-         <metamodelType
-               id="org.epsilonlabs.workflow.diagram.Double_3004"
-               name="%metatype.name.Double_3004"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="Double"
-               edithelper="workflow.diagram.edit.helpers.DoubleEditHelper">
-            <param name="semanticHint" value="3004"/>
-         </metamodelType>
-      </metamodel>
-      <metamodel nsURI="http://org.crossminer.workflow">
-         <metamodelType
-               id="org.epsilonlabs.workflow.diagram.RemoteTaskCommunicationConfiguration_4004"
-               name="%metatype.name.RemoteTaskCommunicationConfiguration_4004"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="RemoteTaskCommunicationConfiguration"
-               edithelper="workflow.diagram.edit.helpers.RemoteTaskCommunicationConfigurationEditHelper">
-            <param name="semanticHint" value="4004"/>
-         </metamodelType>
-      </metamodel>
-      <metamodel nsURI="http://org.crossminer.workflow">
-         <metamodelType
-               id="org.epsilonlabs.workflow.diagram.TaskCommunicationConfiguration_4005"
-               name="%metatype.name.TaskCommunicationConfiguration_4005"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="TaskCommunicationConfiguration"
-               edithelper="workflow.diagram.edit.helpers.TaskCommunicationConfigurationEditHelper">
-            <param name="semanticHint" value="4005"/>
-         </metamodelType>
+         <specializationType
+               id="org.epsilonlabs.workflow.diagram.CommunicationChannelIncoming_4002"
+               name="%metatype.name.CommunicationChannelIncoming_4002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
+            <param name="semanticHint" value="4002"/>
+         </specializationType>
       </metamodel>
    </extension>
 
@@ -514,18 +470,15 @@
       </clientContext> 
       <binding context="org.epsilonlabs.workflow.diagram.TypeContext">
          <elementType ref="org.epsilonlabs.workflow.diagram.Workflow_1000"/>
-         <elementType ref="org.epsilonlabs.workflow.diagram.EmittingTask_2011"/>
-         <elementType ref="org.epsilonlabs.workflow.diagram.String_2012"/>
-         <elementType ref="org.epsilonlabs.workflow.diagram.Integer_2013"/>
-         <elementType ref="org.epsilonlabs.workflow.diagram.Boolean_2014"/>
-         <elementType ref="org.epsilonlabs.workflow.diagram.Double_2015"/>
+         <elementType ref="org.epsilonlabs.workflow.diagram.JavaTask_2017"/>
+         <elementType ref="org.epsilonlabs.workflow.diagram.ScriptedTask_2018"/>
+         <elementType ref="org.epsilonlabs.workflow.diagram.RemoteCommunicationChannel_2020"/>
          <elementType ref="org.epsilonlabs.workflow.diagram.Task_2016"/>
-         <elementType ref="org.epsilonlabs.workflow.diagram.String_3001"/>
-         <elementType ref="org.epsilonlabs.workflow.diagram.Integer_3002"/>
-         <elementType ref="org.epsilonlabs.workflow.diagram.Boolean_3003"/>
-         <elementType ref="org.epsilonlabs.workflow.diagram.Double_3004"/>
-         <elementType ref="org.epsilonlabs.workflow.diagram.RemoteTaskCommunicationConfiguration_4004"/>
-         <elementType ref="org.epsilonlabs.workflow.diagram.TaskCommunicationConfiguration_4005"/>
+         <elementType ref="org.epsilonlabs.workflow.diagram.CommunicationChannel_2021"/>
+         <elementType ref="org.epsilonlabs.workflow.diagram.DataStructure_2019"/>
+         <elementType ref="org.epsilonlabs.workflow.diagram.DataStructure_3001"/>
+         <elementType ref="org.epsilonlabs.workflow.diagram.TaskIncoming_4001"/>
+         <elementType ref="org.epsilonlabs.workflow.diagram.CommunicationChannelIncoming_4002"/>
          <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
       </binding>
    </extension>

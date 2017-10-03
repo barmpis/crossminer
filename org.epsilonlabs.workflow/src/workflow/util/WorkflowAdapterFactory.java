@@ -9,13 +9,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import workflow.EmittingTask;
-import workflow.RemoteTaskCommunicationConfiguration;
-import workflow.Task;
-import workflow.TaskCommunicationConfiguration;
-import workflow.Variable;
-import workflow.Workflow;
-import workflow.WorkflowPackage;
+import workflow.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -82,36 +76,24 @@ public class WorkflowAdapterFactory extends AdapterFactoryImpl {
 				return createTaskAdapter();
 			}
 			@Override
-			public Adapter caseEmittingTask(EmittingTask object) {
-				return createEmittingTaskAdapter();
+			public Adapter caseJavaTask(JavaTask object) {
+				return createJavaTaskAdapter();
 			}
 			@Override
-			public Adapter caseTaskCommunicationConfiguration(TaskCommunicationConfiguration object) {
-				return createTaskCommunicationConfigurationAdapter();
+			public Adapter caseScriptedTask(ScriptedTask object) {
+				return createScriptedTaskAdapter();
 			}
 			@Override
-			public Adapter caseRemoteTaskCommunicationConfiguration(RemoteTaskCommunicationConfiguration object) {
-				return createRemoteTaskCommunicationConfigurationAdapter();
+			public Adapter caseCommunicationChannel(CommunicationChannel object) {
+				return createCommunicationChannelAdapter();
 			}
 			@Override
-			public Adapter caseVariable(Variable object) {
-				return createVariableAdapter();
+			public Adapter caseRemoteCommunicationChannel(RemoteCommunicationChannel object) {
+				return createRemoteCommunicationChannelAdapter();
 			}
 			@Override
-			public Adapter caseString(workflow.String object) {
-				return createStringAdapter();
-			}
-			@Override
-			public Adapter caseInteger(workflow.Integer object) {
-				return createIntegerAdapter();
-			}
-			@Override
-			public Adapter caseBoolean(workflow.Boolean object) {
-				return createBooleanAdapter();
-			}
-			@Override
-			public Adapter caseDouble(workflow.Double object) {
-				return createDoubleAdapter();
+			public Adapter caseDataStructure(DataStructure object) {
+				return createDataStructureAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -162,114 +144,72 @@ public class WorkflowAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link workflow.EmittingTask <em>Emitting Task</em>}'.
+	 * Creates a new adapter for an object of class '{@link workflow.JavaTask <em>Java Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see workflow.EmittingTask
+	 * @see workflow.JavaTask
 	 * @generated
 	 */
-	public Adapter createEmittingTaskAdapter() {
+	public Adapter createJavaTaskAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link workflow.TaskCommunicationConfiguration <em>Task Communication Configuration</em>}'.
+	 * Creates a new adapter for an object of class '{@link workflow.ScriptedTask <em>Scripted Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see workflow.TaskCommunicationConfiguration
+	 * @see workflow.ScriptedTask
 	 * @generated
 	 */
-	public Adapter createTaskCommunicationConfigurationAdapter() {
+	public Adapter createScriptedTaskAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link workflow.RemoteTaskCommunicationConfiguration <em>Remote Task Communication Configuration</em>}'.
+	 * Creates a new adapter for an object of class '{@link workflow.CommunicationChannel <em>Communication Channel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see workflow.RemoteTaskCommunicationConfiguration
+	 * @see workflow.CommunicationChannel
 	 * @generated
 	 */
-	public Adapter createRemoteTaskCommunicationConfigurationAdapter() {
+	public Adapter createCommunicationChannelAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link workflow.Variable <em>Variable</em>}'.
+	 * Creates a new adapter for an object of class '{@link workflow.RemoteCommunicationChannel <em>Remote Communication Channel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see workflow.Variable
+	 * @see workflow.RemoteCommunicationChannel
 	 * @generated
 	 */
-	public Adapter createVariableAdapter() {
+	public Adapter createRemoteCommunicationChannelAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link workflow.String <em>String</em>}'.
+	 * Creates a new adapter for an object of class '{@link workflow.DataStructure <em>Data Structure</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see workflow.String
+	 * @see workflow.DataStructure
 	 * @generated
 	 */
-	public Adapter createStringAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link workflow.Integer <em>Integer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see workflow.Integer
-	 * @generated
-	 */
-	public Adapter createIntegerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link workflow.Boolean <em>Boolean</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see workflow.Boolean
-	 * @generated
-	 */
-	public Adapter createBooleanAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link workflow.Double <em>Double</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see workflow.Double
-	 * @generated
-	 */
-	public Adapter createDoubleAdapter() {
+	public Adapter createDataStructureAdapter() {
 		return null;
 	}
 

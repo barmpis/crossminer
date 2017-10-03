@@ -4,7 +4,6 @@
 package workflow.diagram.providers;
 
 import java.util.ArrayList;
-
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
@@ -46,52 +45,30 @@ import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.FontData;
 
-import workflow.diagram.edit.parts.Boolean2EditPart;
-import workflow.diagram.edit.parts.BooleanEditPart;
-import workflow.diagram.edit.parts.BooleanName2EditPart;
-import workflow.diagram.edit.parts.BooleanNameEditPart;
-import workflow.diagram.edit.parts.BooleanValue2EditPart;
-import workflow.diagram.edit.parts.BooleanValueEditPart;
-import workflow.diagram.edit.parts.Double2EditPart;
-import workflow.diagram.edit.parts.DoubleEditPart;
-import workflow.diagram.edit.parts.DoubleName2EditPart;
-import workflow.diagram.edit.parts.DoubleNameEditPart;
-import workflow.diagram.edit.parts.DoubleValue2EditPart;
-import workflow.diagram.edit.parts.DoubleValueEditPart;
-import workflow.diagram.edit.parts.EmittingTaskAcceptsPartialDataEditPart;
-import workflow.diagram.edit.parts.EmittingTaskConcurrencyEditPart;
-import workflow.diagram.edit.parts.EmittingTaskEditPart;
-import workflow.diagram.edit.parts.EmittingTaskEmittingTaskLocalsCompartmentEditPart;
-import workflow.diagram.edit.parts.EmittingTaskImplementationEntryPoinEditPart;
-import workflow.diagram.edit.parts.EmittingTaskImplementationFullyQualEditPart;
-import workflow.diagram.edit.parts.EmittingTaskNameEditPart;
-import workflow.diagram.edit.parts.EmittingTaskProvidesPartialDataEditPart;
-import workflow.diagram.edit.parts.Integer2EditPart;
-import workflow.diagram.edit.parts.IntegerEditPart;
-import workflow.diagram.edit.parts.IntegerName2EditPart;
-import workflow.diagram.edit.parts.IntegerNameEditPart;
-import workflow.diagram.edit.parts.IntegerValue2EditPart;
-import workflow.diagram.edit.parts.IntegerValueEditPart;
-import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationAddressEditPart;
-import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationAddressPortSingleQueueEditPart;
-import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationAddressPortSingleQueueQEditPart;
-import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationEditPart;
-import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationPortEditPart;
-import workflow.diagram.edit.parts.String2EditPart;
-import workflow.diagram.edit.parts.StringEditPart;
-import workflow.diagram.edit.parts.StringName2EditPart;
-import workflow.diagram.edit.parts.StringNameEditPart;
-import workflow.diagram.edit.parts.StringValue2EditPart;
-import workflow.diagram.edit.parts.StringValueEditPart;
-import workflow.diagram.edit.parts.TaskAcceptsPartialDataEditPart;
-import workflow.diagram.edit.parts.TaskCommunicationConfigurationEditPart;
-import workflow.diagram.edit.parts.TaskConcurrencyEditPart;
+import workflow.diagram.edit.parts.CommunicationChannelCommunicationChannelTypeCompartmentEditPart;
+import workflow.diagram.edit.parts.CommunicationChannelEditPart;
+import workflow.diagram.edit.parts.CommunicationChannelIncomingEditPart;
+import workflow.diagram.edit.parts.CommunicationChannelNEditPart;
+import workflow.diagram.edit.parts.DataStructure2EditPart;
+import workflow.diagram.edit.parts.DataStructureDataStructureTypeCompartment2EditPart;
+import workflow.diagram.edit.parts.DataStructureDataStructureTypeCompartmentEditPart;
+import workflow.diagram.edit.parts.DataStructureEditPart;
+import workflow.diagram.edit.parts.DataStructureName2EditPart;
+import workflow.diagram.edit.parts.DataStructureNameEditPart;
+import workflow.diagram.edit.parts.JavaTaskEditPart;
+import workflow.diagram.edit.parts.JavaTaskNameEditPart;
+import workflow.diagram.edit.parts.RemoteCommunicationChannelEditPart;
+import workflow.diagram.edit.parts.RemoteCommunicationChannelNEditPart;
+import workflow.diagram.edit.parts.RemoteCommunicationChannelRemoteCommunicationChannelTypeCompartmentEditPart;
+import workflow.diagram.edit.parts.ScriptedTaskEditPart;
+import workflow.diagram.edit.parts.ScriptedTaskNameEditPart;
 import workflow.diagram.edit.parts.TaskEditPart;
-import workflow.diagram.edit.parts.TaskImplementationEntryPoinEditPart;
-import workflow.diagram.edit.parts.TaskImplementationFullyQualEditPart;
+import workflow.diagram.edit.parts.TaskIncomingEditPart;
 import workflow.diagram.edit.parts.TaskNameEditPart;
-import workflow.diagram.edit.parts.TaskTaskLocalsCompartmentEditPart;
 import workflow.diagram.edit.parts.WorkflowEditPart;
+import workflow.diagram.edit.parts.WrappingLabel2EditPart;
+import workflow.diagram.edit.parts.WrappingLabel3EditPart;
+import workflow.diagram.edit.parts.WrappingLabelEditPart;
 import workflow.diagram.part.WorkflowVisualIDRegistry;
 
 /**
@@ -175,16 +152,13 @@ public class WorkflowViewProvider extends AbstractProvider implements IViewProvi
 					return false; // foreign diagram
 				}
 				switch (visualID) {
-				case EmittingTaskEditPart.VISUAL_ID:
+				case JavaTaskEditPart.VISUAL_ID:
+				case ScriptedTaskEditPart.VISUAL_ID:
+				case RemoteCommunicationChannelEditPart.VISUAL_ID:
 				case TaskEditPart.VISUAL_ID:
-				case String2EditPart.VISUAL_ID:
-				case Integer2EditPart.VISUAL_ID:
-				case Boolean2EditPart.VISUAL_ID:
-				case Double2EditPart.VISUAL_ID:
-				case StringEditPart.VISUAL_ID:
-				case IntegerEditPart.VISUAL_ID:
-				case BooleanEditPart.VISUAL_ID:
-				case DoubleEditPart.VISUAL_ID:
+				case CommunicationChannelEditPart.VISUAL_ID:
+				case DataStructure2EditPart.VISUAL_ID:
+				case DataStructureEditPart.VISUAL_ID:
 					if (domainElement == null || visualID != WorkflowVisualIDRegistry
 							.getNodeVisualID(op.getContainerView(), domainElement)) {
 						return false; // visual id in semantic hint should match visual id for domain element
@@ -195,11 +169,10 @@ public class WorkflowViewProvider extends AbstractProvider implements IViewProvi
 				}
 			}
 		}
-		return EmittingTaskEditPart.VISUAL_ID == visualID || StringEditPart.VISUAL_ID == visualID
-				|| IntegerEditPart.VISUAL_ID == visualID || BooleanEditPart.VISUAL_ID == visualID
-				|| DoubleEditPart.VISUAL_ID == visualID || TaskEditPart.VISUAL_ID == visualID
-				|| String2EditPart.VISUAL_ID == visualID || Integer2EditPart.VISUAL_ID == visualID
-				|| Boolean2EditPart.VISUAL_ID == visualID || Double2EditPart.VISUAL_ID == visualID;
+		return JavaTaskEditPart.VISUAL_ID == visualID || ScriptedTaskEditPart.VISUAL_ID == visualID
+				|| RemoteCommunicationChannelEditPart.VISUAL_ID == visualID || TaskEditPart.VISUAL_ID == visualID
+				|| CommunicationChannelEditPart.VISUAL_ID == visualID || DataStructureEditPart.VISUAL_ID == visualID
+				|| DataStructure2EditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -248,26 +221,21 @@ public class WorkflowViewProvider extends AbstractProvider implements IViewProvi
 			visualID = WorkflowVisualIDRegistry.getVisualID(semanticHint);
 		}
 		switch (visualID) {
-		case EmittingTaskEditPart.VISUAL_ID:
-			return createEmittingTask_2011(domainElement, containerView, index, persisted, preferencesHint);
-		case StringEditPart.VISUAL_ID:
-			return createString_2012(domainElement, containerView, index, persisted, preferencesHint);
-		case IntegerEditPart.VISUAL_ID:
-			return createInteger_2013(domainElement, containerView, index, persisted, preferencesHint);
-		case BooleanEditPart.VISUAL_ID:
-			return createBoolean_2014(domainElement, containerView, index, persisted, preferencesHint);
-		case DoubleEditPart.VISUAL_ID:
-			return createDouble_2015(domainElement, containerView, index, persisted, preferencesHint);
+		case JavaTaskEditPart.VISUAL_ID:
+			return createJavaTask_2017(domainElement, containerView, index, persisted, preferencesHint);
+		case ScriptedTaskEditPart.VISUAL_ID:
+			return createScriptedTask_2018(domainElement, containerView, index, persisted, preferencesHint);
+		case RemoteCommunicationChannelEditPart.VISUAL_ID:
+			return createRemoteCommunicationChannel_2020(domainElement, containerView, index, persisted,
+					preferencesHint);
 		case TaskEditPart.VISUAL_ID:
 			return createTask_2016(domainElement, containerView, index, persisted, preferencesHint);
-		case String2EditPart.VISUAL_ID:
-			return createString_3001(domainElement, containerView, index, persisted, preferencesHint);
-		case Integer2EditPart.VISUAL_ID:
-			return createInteger_3002(domainElement, containerView, index, persisted, preferencesHint);
-		case Boolean2EditPart.VISUAL_ID:
-			return createBoolean_3003(domainElement, containerView, index, persisted, preferencesHint);
-		case Double2EditPart.VISUAL_ID:
-			return createDouble_3004(domainElement, containerView, index, persisted, preferencesHint);
+		case CommunicationChannelEditPart.VISUAL_ID:
+			return createCommunicationChannel_2021(domainElement, containerView, index, persisted, preferencesHint);
+		case DataStructureEditPart.VISUAL_ID:
+			return createDataStructure_2019(domainElement, containerView, index, persisted, preferencesHint);
+		case DataStructure2EditPart.VISUAL_ID:
+			return createDataStructure_3001(domainElement, containerView, index, persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct
 		return null;
@@ -281,12 +249,10 @@ public class WorkflowViewProvider extends AbstractProvider implements IViewProvi
 		IElementType elementType = getSemanticElementType(semanticAdapter);
 		String elementTypeHint = ((IHintedType) elementType).getSemanticHint();
 		switch (WorkflowVisualIDRegistry.getVisualID(elementTypeHint)) {
-		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID:
-			return createRemoteTaskCommunicationConfiguration_4004(getSemanticElement(semanticAdapter), containerView,
-					index, persisted, preferencesHint);
-		case TaskCommunicationConfigurationEditPart.VISUAL_ID:
-			return createTaskCommunicationConfiguration_4005(getSemanticElement(semanticAdapter), containerView, index,
-					persisted, preferencesHint);
+		case TaskIncomingEditPart.VISUAL_ID:
+			return createTaskIncoming_4001(containerView, index, persisted, preferencesHint);
+		case CommunicationChannelIncomingEditPart.VISUAL_ID:
+			return createCommunicationChannelIncoming_4002(containerView, index, persisted, preferencesHint);
 		}
 		// can never happen, provided #provides(CreateEdgeViewOperation) is correct
 		return null;
@@ -295,12 +261,86 @@ public class WorkflowViewProvider extends AbstractProvider implements IViewProvi
 	/**
 	* @generated
 	*/
-	public Node createEmittingTask_2011(EObject domainElement, View containerView, int index, boolean persisted,
+	public Node createJavaTask_2017(EObject domainElement, View containerView, int index, boolean persisted,
 			PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(WorkflowVisualIDRegistry.getType(JavaTaskEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		stampShortcut(containerView, node);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+					IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5038 = createLabel(node, WorkflowVisualIDRegistry.getType(JavaTaskNameEditPart.VISUAL_ID));
+		return node;
+	}
+
+	/**
+	* @generated
+	*/
+	public Node createScriptedTask_2018(EObject domainElement, View containerView, int index, boolean persisted,
+			PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(WorkflowVisualIDRegistry.getType(ScriptedTaskEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		stampShortcut(containerView, node);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+					IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5039 = createLabel(node, WorkflowVisualIDRegistry.getType(ScriptedTaskNameEditPart.VISUAL_ID));
+		return node;
+	}
+
+	/**
+	* @generated
+	*/
+	public Node createRemoteCommunicationChannel_2020(EObject domainElement, View containerView, int index,
+			boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.getStyles().add(NotationFactory.eINSTANCE.createHintedDiagramLinkStyle());
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(WorkflowVisualIDRegistry.getType(EmittingTaskEditPart.VISUAL_ID));
+		node.setType(WorkflowVisualIDRegistry.getType(RemoteCommunicationChannelEditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		stampShortcut(containerView, node);
@@ -326,171 +366,10 @@ public class WorkflowViewProvider extends AbstractProvider implements IViewProvi
 				IPreferenceConstants.PREF_FILL_COLOR);
 		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5011 = createLabel(node, WorkflowVisualIDRegistry.getType(EmittingTaskNameEditPart.VISUAL_ID));
-		Node label5025 = createLabel(node, WorkflowVisualIDRegistry.getType(EmittingTaskConcurrencyEditPart.VISUAL_ID));
-		Node label5026 = createLabel(node,
-				WorkflowVisualIDRegistry.getType(EmittingTaskImplementationFullyQualEditPart.VISUAL_ID));
-		Node label5027 = createLabel(node,
-				WorkflowVisualIDRegistry.getType(EmittingTaskImplementationEntryPoinEditPart.VISUAL_ID));
-		Node label5028 = createLabel(node,
-				WorkflowVisualIDRegistry.getType(EmittingTaskAcceptsPartialDataEditPart.VISUAL_ID));
-		Node label5029 = createLabel(node,
-				WorkflowVisualIDRegistry.getType(EmittingTaskProvidesPartialDataEditPart.VISUAL_ID));
 		createCompartment(node,
-				WorkflowVisualIDRegistry.getType(EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID), true,
-				false, false, false);
-		return node;
-	}
-
-	/**
-	* @generated
-	*/
-	public Node createString_2012(EObject domainElement, View containerView, int index, boolean persisted,
-			PreferencesHint preferencesHint) {
-		Shape node = NotationFactory.eINSTANCE.createShape();
-		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(WorkflowVisualIDRegistry.getType(StringEditPart.VISUAL_ID));
-		ViewUtil.insertChildView(containerView, node, index, persisted);
-		node.setElement(domainElement);
-		stampShortcut(containerView, node);
-		// initializeFromPreferences 
-		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
-
-		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
-				IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
-				FigureUtilities.RGBToInteger(lineRGB));
-		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
-		if (nodeFontStyle != null) {
-			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
-			nodeFontStyle.setFontName(fontData.getName());
-			nodeFontStyle.setFontHeight(fontData.getHeight());
-			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
-			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
-			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
-					IPreferenceConstants.PREF_FONT_COLOR);
-			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
-		}
-		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(prefStore,
-				IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
-				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5012 = createLabel(node, WorkflowVisualIDRegistry.getType(StringNameEditPart.VISUAL_ID));
-		Node label5030 = createLabel(node, WorkflowVisualIDRegistry.getType(StringValueEditPart.VISUAL_ID));
-		return node;
-	}
-
-	/**
-	* @generated
-	*/
-	public Node createInteger_2013(EObject domainElement, View containerView, int index, boolean persisted,
-			PreferencesHint preferencesHint) {
-		Shape node = NotationFactory.eINSTANCE.createShape();
-		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(WorkflowVisualIDRegistry.getType(IntegerEditPart.VISUAL_ID));
-		ViewUtil.insertChildView(containerView, node, index, persisted);
-		node.setElement(domainElement);
-		stampShortcut(containerView, node);
-		// initializeFromPreferences 
-		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
-
-		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
-				IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
-				FigureUtilities.RGBToInteger(lineRGB));
-		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
-		if (nodeFontStyle != null) {
-			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
-			nodeFontStyle.setFontName(fontData.getName());
-			nodeFontStyle.setFontHeight(fontData.getHeight());
-			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
-			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
-			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
-					IPreferenceConstants.PREF_FONT_COLOR);
-			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
-		}
-		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(prefStore,
-				IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
-				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5013 = createLabel(node, WorkflowVisualIDRegistry.getType(IntegerNameEditPart.VISUAL_ID));
-		Node label5031 = createLabel(node, WorkflowVisualIDRegistry.getType(IntegerValueEditPart.VISUAL_ID));
-		return node;
-	}
-
-	/**
-	* @generated
-	*/
-	public Node createBoolean_2014(EObject domainElement, View containerView, int index, boolean persisted,
-			PreferencesHint preferencesHint) {
-		Shape node = NotationFactory.eINSTANCE.createShape();
-		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(WorkflowVisualIDRegistry.getType(BooleanEditPart.VISUAL_ID));
-		ViewUtil.insertChildView(containerView, node, index, persisted);
-		node.setElement(domainElement);
-		stampShortcut(containerView, node);
-		// initializeFromPreferences 
-		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
-
-		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
-				IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
-				FigureUtilities.RGBToInteger(lineRGB));
-		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
-		if (nodeFontStyle != null) {
-			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
-			nodeFontStyle.setFontName(fontData.getName());
-			nodeFontStyle.setFontHeight(fontData.getHeight());
-			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
-			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
-			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
-					IPreferenceConstants.PREF_FONT_COLOR);
-			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
-		}
-		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(prefStore,
-				IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
-				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5014 = createLabel(node, WorkflowVisualIDRegistry.getType(BooleanNameEditPart.VISUAL_ID));
-		Node label5032 = createLabel(node, WorkflowVisualIDRegistry.getType(BooleanValueEditPart.VISUAL_ID));
-		return node;
-	}
-
-	/**
-	* @generated
-	*/
-	public Node createDouble_2015(EObject domainElement, View containerView, int index, boolean persisted,
-			PreferencesHint preferencesHint) {
-		Shape node = NotationFactory.eINSTANCE.createShape();
-		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(WorkflowVisualIDRegistry.getType(DoubleEditPart.VISUAL_ID));
-		ViewUtil.insertChildView(containerView, node, index, persisted);
-		node.setElement(domainElement);
-		stampShortcut(containerView, node);
-		// initializeFromPreferences 
-		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
-
-		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
-				IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
-				FigureUtilities.RGBToInteger(lineRGB));
-		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
-		if (nodeFontStyle != null) {
-			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
-			nodeFontStyle.setFontName(fontData.getName());
-			nodeFontStyle.setFontHeight(fontData.getHeight());
-			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
-			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
-			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
-					IPreferenceConstants.PREF_FONT_COLOR);
-			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
-		}
-		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(prefStore,
-				IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
-				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5015 = createLabel(node, WorkflowVisualIDRegistry.getType(DoubleNameEditPart.VISUAL_ID));
-		Node label5033 = createLabel(node, WorkflowVisualIDRegistry.getType(DoubleValueEditPart.VISUAL_ID));
+				WorkflowVisualIDRegistry
+						.getType(RemoteCommunicationChannelRemoteCommunicationChannelTypeCompartmentEditPart.VISUAL_ID),
+				true, false, false, false);
 		return node;
 	}
 
@@ -500,7 +379,6 @@ public class WorkflowViewProvider extends AbstractProvider implements IViewProvi
 	public Node createTask_2016(EObject domainElement, View containerView, int index, boolean persisted,
 			PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
-		node.getStyles().add(NotationFactory.eINSTANCE.createHintedDiagramLinkStyle());
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
 		node.setType(WorkflowVisualIDRegistry.getType(TaskEditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
@@ -529,13 +407,92 @@ public class WorkflowViewProvider extends AbstractProvider implements IViewProvi
 		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
 		Node label5016 = createLabel(node, WorkflowVisualIDRegistry.getType(TaskNameEditPart.VISUAL_ID));
-		Node label5034 = createLabel(node, WorkflowVisualIDRegistry.getType(TaskConcurrencyEditPart.VISUAL_ID));
-		Node label5035 = createLabel(node,
-				WorkflowVisualIDRegistry.getType(TaskImplementationFullyQualEditPart.VISUAL_ID));
-		Node label5036 = createLabel(node,
-				WorkflowVisualIDRegistry.getType(TaskImplementationEntryPoinEditPart.VISUAL_ID));
-		Node label5037 = createLabel(node, WorkflowVisualIDRegistry.getType(TaskAcceptsPartialDataEditPart.VISUAL_ID));
-		createCompartment(node, WorkflowVisualIDRegistry.getType(TaskTaskLocalsCompartmentEditPart.VISUAL_ID), true,
+		return node;
+	}
+
+	/**
+	* @generated
+	*/
+	public Node createCommunicationChannel_2021(EObject domainElement, View containerView, int index, boolean persisted,
+			PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.getStyles().add(NotationFactory.eINSTANCE.createHintedDiagramLinkStyle());
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(WorkflowVisualIDRegistry.getType(CommunicationChannelEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		stampShortcut(containerView, node);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+					IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5042 = createLabel(node, WorkflowVisualIDRegistry.getType(WrappingLabelEditPart.VISUAL_ID));
+		label5042.setLayoutConstraint(NotationFactory.eINSTANCE.createLocation());
+		Location location5042 = (Location) label5042.getLayoutConstraint();
+		location5042.setX(0);
+		location5042.setY(5);
+		createCompartment(node,
+				WorkflowVisualIDRegistry
+						.getType(CommunicationChannelCommunicationChannelTypeCompartmentEditPart.VISUAL_ID),
+				true, false, false, false);
+		return node;
+	}
+
+	/**
+	* @generated
+	*/
+	public Node createDataStructure_2019(EObject domainElement, View containerView, int index, boolean persisted,
+			PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.getStyles().add(NotationFactory.eINSTANCE.createHintedDiagramLinkStyle());
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(WorkflowVisualIDRegistry.getType(DataStructureEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		stampShortcut(containerView, node);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+					IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5040 = createLabel(node, WorkflowVisualIDRegistry.getType(DataStructureNameEditPart.VISUAL_ID));
+		createCompartment(node,
+				WorkflowVisualIDRegistry.getType(DataStructureDataStructureTypeCompartment2EditPart.VISUAL_ID), true,
 				false, false, false);
 		return node;
 	}
@@ -543,11 +500,12 @@ public class WorkflowViewProvider extends AbstractProvider implements IViewProvi
 	/**
 	* @generated
 	*/
-	public Node createString_3001(EObject domainElement, View containerView, int index, boolean persisted,
+	public Node createDataStructure_3001(EObject domainElement, View containerView, int index, boolean persisted,
 			PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.getStyles().add(NotationFactory.eINSTANCE.createHintedDiagramLinkStyle());
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(WorkflowVisualIDRegistry.getType(String2EditPart.VISUAL_ID));
+		node.setType(WorkflowVisualIDRegistry.getType(DataStructure2EditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		// initializeFromPreferences 
@@ -572,127 +530,18 @@ public class WorkflowViewProvider extends AbstractProvider implements IViewProvi
 				IPreferenceConstants.PREF_FILL_COLOR);
 		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5017 = createLabel(node, WorkflowVisualIDRegistry.getType(StringName2EditPart.VISUAL_ID));
-		Node label5018 = createLabel(node, WorkflowVisualIDRegistry.getType(StringValue2EditPart.VISUAL_ID));
+		Node label5044 = createLabel(node, WorkflowVisualIDRegistry.getType(DataStructureName2EditPart.VISUAL_ID));
+		createCompartment(node,
+				WorkflowVisualIDRegistry.getType(DataStructureDataStructureTypeCompartmentEditPart.VISUAL_ID), true,
+				false, false, false);
 		return node;
 	}
 
 	/**
 	* @generated
 	*/
-	public Node createInteger_3002(EObject domainElement, View containerView, int index, boolean persisted,
+	public Edge createTaskIncoming_4001(View containerView, int index, boolean persisted,
 			PreferencesHint preferencesHint) {
-		Shape node = NotationFactory.eINSTANCE.createShape();
-		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(WorkflowVisualIDRegistry.getType(Integer2EditPart.VISUAL_ID));
-		ViewUtil.insertChildView(containerView, node, index, persisted);
-		node.setElement(domainElement);
-		// initializeFromPreferences 
-		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
-
-		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
-				IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
-				FigureUtilities.RGBToInteger(lineRGB));
-		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
-		if (nodeFontStyle != null) {
-			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
-			nodeFontStyle.setFontName(fontData.getName());
-			nodeFontStyle.setFontHeight(fontData.getHeight());
-			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
-			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
-			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
-					IPreferenceConstants.PREF_FONT_COLOR);
-			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
-		}
-		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(prefStore,
-				IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
-				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5019 = createLabel(node, WorkflowVisualIDRegistry.getType(IntegerName2EditPart.VISUAL_ID));
-		Node label5020 = createLabel(node, WorkflowVisualIDRegistry.getType(IntegerValue2EditPart.VISUAL_ID));
-		return node;
-	}
-
-	/**
-	* @generated
-	*/
-	public Node createBoolean_3003(EObject domainElement, View containerView, int index, boolean persisted,
-			PreferencesHint preferencesHint) {
-		Shape node = NotationFactory.eINSTANCE.createShape();
-		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(WorkflowVisualIDRegistry.getType(Boolean2EditPart.VISUAL_ID));
-		ViewUtil.insertChildView(containerView, node, index, persisted);
-		node.setElement(domainElement);
-		// initializeFromPreferences 
-		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
-
-		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
-				IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
-				FigureUtilities.RGBToInteger(lineRGB));
-		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
-		if (nodeFontStyle != null) {
-			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
-			nodeFontStyle.setFontName(fontData.getName());
-			nodeFontStyle.setFontHeight(fontData.getHeight());
-			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
-			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
-			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
-					IPreferenceConstants.PREF_FONT_COLOR);
-			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
-		}
-		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(prefStore,
-				IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
-				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5021 = createLabel(node, WorkflowVisualIDRegistry.getType(BooleanName2EditPart.VISUAL_ID));
-		Node label5022 = createLabel(node, WorkflowVisualIDRegistry.getType(BooleanValue2EditPart.VISUAL_ID));
-		return node;
-	}
-
-	/**
-	* @generated
-	*/
-	public Node createDouble_3004(EObject domainElement, View containerView, int index, boolean persisted,
-			PreferencesHint preferencesHint) {
-		Shape node = NotationFactory.eINSTANCE.createShape();
-		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(WorkflowVisualIDRegistry.getType(Double2EditPart.VISUAL_ID));
-		ViewUtil.insertChildView(containerView, node, index, persisted);
-		node.setElement(domainElement);
-		// initializeFromPreferences 
-		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
-
-		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
-				IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
-				FigureUtilities.RGBToInteger(lineRGB));
-		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
-		if (nodeFontStyle != null) {
-			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
-			nodeFontStyle.setFontName(fontData.getName());
-			nodeFontStyle.setFontHeight(fontData.getHeight());
-			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
-			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
-			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
-					IPreferenceConstants.PREF_FONT_COLOR);
-			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
-		}
-		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(prefStore,
-				IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
-				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5023 = createLabel(node, WorkflowVisualIDRegistry.getType(DoubleName2EditPart.VISUAL_ID));
-		Node label5024 = createLabel(node, WorkflowVisualIDRegistry.getType(DoubleValue2EditPart.VISUAL_ID));
-		return node;
-	}
-
-	/**
-	* @generated
-	*/
-	public Edge createRemoteTaskCommunicationConfiguration_4004(EObject domainElement, View containerView, int index,
-			boolean persisted, PreferencesHint preferencesHint) {
 		Connector edge = NotationFactory.eINSTANCE.createConnector();
 		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		RelativeBendpoints bendpoints = NotationFactory.eINSTANCE.createRelativeBendpoints();
@@ -702,8 +551,8 @@ public class WorkflowViewProvider extends AbstractProvider implements IViewProvi
 		bendpoints.setPoints(points);
 		edge.setBendpoints(bendpoints);
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
-		edge.setType(WorkflowVisualIDRegistry.getType(RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID));
-		edge.setElement(domainElement);
+		edge.setType(WorkflowVisualIDRegistry.getType(TaskIncomingEditPart.VISUAL_ID));
+		edge.setElement(null);
 		// initializePreferences
 		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
@@ -726,8 +575,8 @@ public class WorkflowViewProvider extends AbstractProvider implements IViewProvi
 		if (routing != null) {
 			ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE.getRoutingStyle_Routing(), routing);
 		}
-		Node label6001 = createLabel(edge, WorkflowVisualIDRegistry
-				.getType(RemoteTaskCommunicationConfigurationAddressPortSingleQueueQEditPart.VISUAL_ID));
+		Node label6001 = createLabel(edge, WorkflowVisualIDRegistry.getType(WrappingLabel2EditPart.VISUAL_ID));
+		label6001.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
 		label6001.setLayoutConstraint(NotationFactory.eINSTANCE.createLocation());
 		Location location6001 = (Location) label6001.getLayoutConstraint();
 		location6001.setX(0);
@@ -738,8 +587,8 @@ public class WorkflowViewProvider extends AbstractProvider implements IViewProvi
 	/**
 	* @generated
 	*/
-	public Edge createTaskCommunicationConfiguration_4005(EObject domainElement, View containerView, int index,
-			boolean persisted, PreferencesHint preferencesHint) {
+	public Edge createCommunicationChannelIncoming_4002(View containerView, int index, boolean persisted,
+			PreferencesHint preferencesHint) {
 		Connector edge = NotationFactory.eINSTANCE.createConnector();
 		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		RelativeBendpoints bendpoints = NotationFactory.eINSTANCE.createRelativeBendpoints();
@@ -749,8 +598,8 @@ public class WorkflowViewProvider extends AbstractProvider implements IViewProvi
 		bendpoints.setPoints(points);
 		edge.setBendpoints(bendpoints);
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
-		edge.setType(WorkflowVisualIDRegistry.getType(TaskCommunicationConfigurationEditPart.VISUAL_ID));
-		edge.setElement(domainElement);
+		edge.setType(WorkflowVisualIDRegistry.getType(CommunicationChannelIncomingEditPart.VISUAL_ID));
+		edge.setElement(null);
 		// initializePreferences
 		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
 
@@ -773,6 +622,12 @@ public class WorkflowViewProvider extends AbstractProvider implements IViewProvi
 		if (routing != null) {
 			ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE.getRoutingStyle_Routing(), routing);
 		}
+		Node label6002 = createLabel(edge, WorkflowVisualIDRegistry.getType(WrappingLabel3EditPart.VISUAL_ID));
+		label6002.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
+		label6002.setLayoutConstraint(NotationFactory.eINSTANCE.createLocation());
+		Location location6002 = (Location) label6002.getLayoutConstraint();
+		location6002.setX(0);
+		location6002.setY(40);
 		return edge;
 	}
 

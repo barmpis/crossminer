@@ -23,6 +23,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 import workflow.diagram.edit.policies.WorkflowBaseItemSemanticEditPolicy;
+import workflow.diagram.expressions.WorkflowOCLFactory;
 import workflow.diagram.providers.ElementInitializers;
 import workflow.provider.WorkflowItemProviderAdapterFactory;
 
@@ -74,6 +75,11 @@ public class WorkflowDiagramEditorPlugin extends AbstractUIPlugin {
 	/**
 	* @generated
 	*/
+	private WorkflowOCLFactory oclFactory;
+
+	/**
+	* @generated
+	*/
 	public WorkflowDiagramEditorPlugin() {
 	}
 
@@ -96,6 +102,7 @@ public class WorkflowDiagramEditorPlugin extends AbstractUIPlugin {
 		adapterFactory = null;
 		linkConstraints = null;
 		initializers = null;
+		oclFactory = null;
 		instance = null;
 		super.stop(context);
 	}
@@ -236,6 +243,20 @@ public class WorkflowDiagramEditorPlugin extends AbstractUIPlugin {
 	*/
 	public void setElementInitializers(ElementInitializers i) {
 		this.initializers = i;
+	}
+
+	/**
+	* @generated
+	*/
+	public WorkflowOCLFactory getWorkflowOCLFactory() {
+		return oclFactory;
+	}
+
+	/**
+	* @generated
+	*/
+	public void setWorkflowOCLFactory(WorkflowOCLFactory f) {
+		this.oclFactory = f;
 	}
 
 	/**

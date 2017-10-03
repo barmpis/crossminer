@@ -8,35 +8,33 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
+import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.update.DiagramUpdater;
 
-import workflow.EmittingTask;
-import workflow.RemoteTaskCommunicationConfiguration;
+import workflow.CommunicationChannel;
+import workflow.DataStructure;
+import workflow.JavaTask;
+import workflow.RemoteCommunicationChannel;
+import workflow.ScriptedTask;
 import workflow.Task;
-import workflow.TaskCommunicationConfiguration;
-import workflow.Variable;
 import workflow.Workflow;
 import workflow.WorkflowPackage;
-import workflow.diagram.edit.parts.Boolean2EditPart;
-import workflow.diagram.edit.parts.BooleanEditPart;
-import workflow.diagram.edit.parts.Double2EditPart;
-import workflow.diagram.edit.parts.DoubleEditPart;
-import workflow.diagram.edit.parts.EmittingTaskEditPart;
-import workflow.diagram.edit.parts.EmittingTaskEmittingTaskLocalsCompartmentEditPart;
-import workflow.diagram.edit.parts.Integer2EditPart;
-import workflow.diagram.edit.parts.IntegerEditPart;
-import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationEditPart;
-import workflow.diagram.edit.parts.String2EditPart;
-import workflow.diagram.edit.parts.StringEditPart;
-import workflow.diagram.edit.parts.TaskCommunicationConfigurationEditPart;
+import workflow.diagram.edit.parts.CommunicationChannelCommunicationChannelTypeCompartmentEditPart;
+import workflow.diagram.edit.parts.CommunicationChannelEditPart;
+import workflow.diagram.edit.parts.CommunicationChannelIncomingEditPart;
+import workflow.diagram.edit.parts.DataStructure2EditPart;
+import workflow.diagram.edit.parts.DataStructureEditPart;
+import workflow.diagram.edit.parts.JavaTaskEditPart;
+import workflow.diagram.edit.parts.RemoteCommunicationChannelEditPart;
+import workflow.diagram.edit.parts.RemoteCommunicationChannelRemoteCommunicationChannelTypeCompartmentEditPart;
+import workflow.diagram.edit.parts.ScriptedTaskEditPart;
 import workflow.diagram.edit.parts.TaskEditPart;
-import workflow.diagram.edit.parts.TaskTaskLocalsCompartmentEditPart;
+import workflow.diagram.edit.parts.TaskIncomingEditPart;
 import workflow.diagram.edit.parts.WorkflowEditPart;
 import workflow.diagram.providers.WorkflowElementTypes;
 
@@ -59,10 +57,10 @@ public class WorkflowDiagramUpdater {
 		switch (WorkflowVisualIDRegistry.getVisualID(view)) {
 		case WorkflowEditPart.VISUAL_ID:
 			return getWorkflow_1000SemanticChildren(view);
-		case EmittingTaskEmittingTaskLocalsCompartmentEditPart.VISUAL_ID:
-			return getEmittingTaskEmittingTaskLocalsCompartment_7001SemanticChildren(view);
-		case TaskTaskLocalsCompartmentEditPart.VISUAL_ID:
-			return getTaskTaskLocalsCompartment_7002SemanticChildren(view);
+		case RemoteCommunicationChannelRemoteCommunicationChannelTypeCompartmentEditPart.VISUAL_ID:
+			return getRemoteCommunicationChannelRemoteCommunicationChannelTypeCompartment_7001SemanticChildren(view);
+		case CommunicationChannelCommunicationChannelTypeCompartmentEditPart.VISUAL_ID:
+			return getCommunicationChannelCommunicationChannelTypeCompartment_7002SemanticChildren(view);
 		}
 		return Collections.emptyList();
 	}
@@ -79,7 +77,11 @@ public class WorkflowDiagramUpdater {
 		for (Iterator<?> it = modelElement.getTasks().iterator(); it.hasNext();) {
 			Task childElement = (Task) it.next();
 			int visualID = WorkflowVisualIDRegistry.getNodeVisualID(view, childElement);
-			if (visualID == EmittingTaskEditPart.VISUAL_ID) {
+			if (visualID == JavaTaskEditPart.VISUAL_ID) {
+				result.add(new WorkflowNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == ScriptedTaskEditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -88,22 +90,22 @@ public class WorkflowDiagramUpdater {
 				continue;
 			}
 		}
-		for (Iterator<?> it = modelElement.getGlobals().iterator(); it.hasNext();) {
-			Variable childElement = (Variable) it.next();
+		for (Iterator<?> it = modelElement.getChannels().iterator(); it.hasNext();) {
+			CommunicationChannel childElement = (CommunicationChannel) it.next();
 			int visualID = WorkflowVisualIDRegistry.getNodeVisualID(view, childElement);
-			if (visualID == StringEditPart.VISUAL_ID) {
+			if (visualID == RemoteCommunicationChannelEditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
 				continue;
 			}
-			if (visualID == IntegerEditPart.VISUAL_ID) {
+			if (visualID == CommunicationChannelEditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
 				continue;
 			}
-			if (visualID == BooleanEditPart.VISUAL_ID) {
-				result.add(new WorkflowNodeDescriptor(childElement, visualID));
-				continue;
-			}
-			if (visualID == DoubleEditPart.VISUAL_ID) {
+		}
+		for (Iterator<?> it = modelElement.getGlobalVariables().iterator(); it.hasNext();) {
+			DataStructure childElement = (DataStructure) it.next();
+			int visualID = WorkflowVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == DataStructureEditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -114,7 +116,7 @@ public class WorkflowDiagramUpdater {
 	/**
 	* @generated
 	*/
-	public static List<WorkflowNodeDescriptor> getEmittingTaskEmittingTaskLocalsCompartment_7001SemanticChildren(
+	public static List<WorkflowNodeDescriptor> getRemoteCommunicationChannelRemoteCommunicationChannelTypeCompartment_7001SemanticChildren(
 			View view) {
 		if (false == view.eContainer() instanceof View) {
 			return Collections.emptyList();
@@ -123,26 +125,13 @@ public class WorkflowDiagramUpdater {
 		if (!containerView.isSetElement()) {
 			return Collections.emptyList();
 		}
-		EmittingTask modelElement = (EmittingTask) containerView.getElement();
+		RemoteCommunicationChannel modelElement = (RemoteCommunicationChannel) containerView.getElement();
 		LinkedList<WorkflowNodeDescriptor> result = new LinkedList<WorkflowNodeDescriptor>();
-		for (Iterator<?> it = modelElement.getLocals().iterator(); it.hasNext();) {
-			Variable childElement = (Variable) it.next();
+		{
+			DataStructure childElement = modelElement.getType();
 			int visualID = WorkflowVisualIDRegistry.getNodeVisualID(view, childElement);
-			if (visualID == String2EditPart.VISUAL_ID) {
+			if (visualID == DataStructure2EditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
-				continue;
-			}
-			if (visualID == Integer2EditPart.VISUAL_ID) {
-				result.add(new WorkflowNodeDescriptor(childElement, visualID));
-				continue;
-			}
-			if (visualID == Boolean2EditPart.VISUAL_ID) {
-				result.add(new WorkflowNodeDescriptor(childElement, visualID));
-				continue;
-			}
-			if (visualID == Double2EditPart.VISUAL_ID) {
-				result.add(new WorkflowNodeDescriptor(childElement, visualID));
-				continue;
 			}
 		}
 		return result;
@@ -151,7 +140,8 @@ public class WorkflowDiagramUpdater {
 	/**
 	* @generated
 	*/
-	public static List<WorkflowNodeDescriptor> getTaskTaskLocalsCompartment_7002SemanticChildren(View view) {
+	public static List<WorkflowNodeDescriptor> getCommunicationChannelCommunicationChannelTypeCompartment_7002SemanticChildren(
+			View view) {
 		if (false == view.eContainer() instanceof View) {
 			return Collections.emptyList();
 		}
@@ -159,26 +149,13 @@ public class WorkflowDiagramUpdater {
 		if (!containerView.isSetElement()) {
 			return Collections.emptyList();
 		}
-		Task modelElement = (Task) containerView.getElement();
+		CommunicationChannel modelElement = (CommunicationChannel) containerView.getElement();
 		LinkedList<WorkflowNodeDescriptor> result = new LinkedList<WorkflowNodeDescriptor>();
-		for (Iterator<?> it = modelElement.getLocals().iterator(); it.hasNext();) {
-			Variable childElement = (Variable) it.next();
+		{
+			DataStructure childElement = modelElement.getType();
 			int visualID = WorkflowVisualIDRegistry.getNodeVisualID(view, childElement);
-			if (visualID == String2EditPart.VISUAL_ID) {
+			if (visualID == DataStructure2EditPart.VISUAL_ID) {
 				result.add(new WorkflowNodeDescriptor(childElement, visualID));
-				continue;
-			}
-			if (visualID == Integer2EditPart.VISUAL_ID) {
-				result.add(new WorkflowNodeDescriptor(childElement, visualID));
-				continue;
-			}
-			if (visualID == Boolean2EditPart.VISUAL_ID) {
-				result.add(new WorkflowNodeDescriptor(childElement, visualID));
-				continue;
-			}
-			if (visualID == Double2EditPart.VISUAL_ID) {
-				result.add(new WorkflowNodeDescriptor(childElement, visualID));
-				continue;
 			}
 		}
 		return result;
@@ -191,30 +168,20 @@ public class WorkflowDiagramUpdater {
 		switch (WorkflowVisualIDRegistry.getVisualID(view)) {
 		case WorkflowEditPart.VISUAL_ID:
 			return getWorkflow_1000ContainedLinks(view);
-		case EmittingTaskEditPart.VISUAL_ID:
-			return getEmittingTask_2011ContainedLinks(view);
-		case StringEditPart.VISUAL_ID:
-			return getString_2012ContainedLinks(view);
-		case IntegerEditPart.VISUAL_ID:
-			return getInteger_2013ContainedLinks(view);
-		case BooleanEditPart.VISUAL_ID:
-			return getBoolean_2014ContainedLinks(view);
-		case DoubleEditPart.VISUAL_ID:
-			return getDouble_2015ContainedLinks(view);
+		case JavaTaskEditPart.VISUAL_ID:
+			return getJavaTask_2017ContainedLinks(view);
+		case ScriptedTaskEditPart.VISUAL_ID:
+			return getScriptedTask_2018ContainedLinks(view);
+		case RemoteCommunicationChannelEditPart.VISUAL_ID:
+			return getRemoteCommunicationChannel_2020ContainedLinks(view);
 		case TaskEditPart.VISUAL_ID:
 			return getTask_2016ContainedLinks(view);
-		case String2EditPart.VISUAL_ID:
-			return getString_3001ContainedLinks(view);
-		case Integer2EditPart.VISUAL_ID:
-			return getInteger_3002ContainedLinks(view);
-		case Boolean2EditPart.VISUAL_ID:
-			return getBoolean_3003ContainedLinks(view);
-		case Double2EditPart.VISUAL_ID:
-			return getDouble_3004ContainedLinks(view);
-		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID:
-			return getRemoteTaskCommunicationConfiguration_4004ContainedLinks(view);
-		case TaskCommunicationConfigurationEditPart.VISUAL_ID:
-			return getTaskCommunicationConfiguration_4005ContainedLinks(view);
+		case CommunicationChannelEditPart.VISUAL_ID:
+			return getCommunicationChannel_2021ContainedLinks(view);
+		case DataStructureEditPart.VISUAL_ID:
+			return getDataStructure_2019ContainedLinks(view);
+		case DataStructure2EditPart.VISUAL_ID:
+			return getDataStructure_3001ContainedLinks(view);
 		}
 		return Collections.emptyList();
 	}
@@ -224,30 +191,20 @@ public class WorkflowDiagramUpdater {
 	*/
 	public static List<WorkflowLinkDescriptor> getIncomingLinks(View view) {
 		switch (WorkflowVisualIDRegistry.getVisualID(view)) {
-		case EmittingTaskEditPart.VISUAL_ID:
-			return getEmittingTask_2011IncomingLinks(view);
-		case StringEditPart.VISUAL_ID:
-			return getString_2012IncomingLinks(view);
-		case IntegerEditPart.VISUAL_ID:
-			return getInteger_2013IncomingLinks(view);
-		case BooleanEditPart.VISUAL_ID:
-			return getBoolean_2014IncomingLinks(view);
-		case DoubleEditPart.VISUAL_ID:
-			return getDouble_2015IncomingLinks(view);
+		case JavaTaskEditPart.VISUAL_ID:
+			return getJavaTask_2017IncomingLinks(view);
+		case ScriptedTaskEditPart.VISUAL_ID:
+			return getScriptedTask_2018IncomingLinks(view);
+		case RemoteCommunicationChannelEditPart.VISUAL_ID:
+			return getRemoteCommunicationChannel_2020IncomingLinks(view);
 		case TaskEditPart.VISUAL_ID:
 			return getTask_2016IncomingLinks(view);
-		case String2EditPart.VISUAL_ID:
-			return getString_3001IncomingLinks(view);
-		case Integer2EditPart.VISUAL_ID:
-			return getInteger_3002IncomingLinks(view);
-		case Boolean2EditPart.VISUAL_ID:
-			return getBoolean_3003IncomingLinks(view);
-		case Double2EditPart.VISUAL_ID:
-			return getDouble_3004IncomingLinks(view);
-		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID:
-			return getRemoteTaskCommunicationConfiguration_4004IncomingLinks(view);
-		case TaskCommunicationConfigurationEditPart.VISUAL_ID:
-			return getTaskCommunicationConfiguration_4005IncomingLinks(view);
+		case CommunicationChannelEditPart.VISUAL_ID:
+			return getCommunicationChannel_2021IncomingLinks(view);
+		case DataStructureEditPart.VISUAL_ID:
+			return getDataStructure_2019IncomingLinks(view);
+		case DataStructure2EditPart.VISUAL_ID:
+			return getDataStructure_3001IncomingLinks(view);
 		}
 		return Collections.emptyList();
 	}
@@ -257,30 +214,20 @@ public class WorkflowDiagramUpdater {
 	*/
 	public static List<WorkflowLinkDescriptor> getOutgoingLinks(View view) {
 		switch (WorkflowVisualIDRegistry.getVisualID(view)) {
-		case EmittingTaskEditPart.VISUAL_ID:
-			return getEmittingTask_2011OutgoingLinks(view);
-		case StringEditPart.VISUAL_ID:
-			return getString_2012OutgoingLinks(view);
-		case IntegerEditPart.VISUAL_ID:
-			return getInteger_2013OutgoingLinks(view);
-		case BooleanEditPart.VISUAL_ID:
-			return getBoolean_2014OutgoingLinks(view);
-		case DoubleEditPart.VISUAL_ID:
-			return getDouble_2015OutgoingLinks(view);
+		case JavaTaskEditPart.VISUAL_ID:
+			return getJavaTask_2017OutgoingLinks(view);
+		case ScriptedTaskEditPart.VISUAL_ID:
+			return getScriptedTask_2018OutgoingLinks(view);
+		case RemoteCommunicationChannelEditPart.VISUAL_ID:
+			return getRemoteCommunicationChannel_2020OutgoingLinks(view);
 		case TaskEditPart.VISUAL_ID:
 			return getTask_2016OutgoingLinks(view);
-		case String2EditPart.VISUAL_ID:
-			return getString_3001OutgoingLinks(view);
-		case Integer2EditPart.VISUAL_ID:
-			return getInteger_3002OutgoingLinks(view);
-		case Boolean2EditPart.VISUAL_ID:
-			return getBoolean_3003OutgoingLinks(view);
-		case Double2EditPart.VISUAL_ID:
-			return getDouble_3004OutgoingLinks(view);
-		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID:
-			return getRemoteTaskCommunicationConfiguration_4004OutgoingLinks(view);
-		case TaskCommunicationConfigurationEditPart.VISUAL_ID:
-			return getTaskCommunicationConfiguration_4005OutgoingLinks(view);
+		case CommunicationChannelEditPart.VISUAL_ID:
+			return getCommunicationChannel_2021OutgoingLinks(view);
+		case DataStructureEditPart.VISUAL_ID:
+			return getDataStructure_2019OutgoingLinks(view);
+		case DataStructure2EditPart.VISUAL_ID:
+			return getDataStructure_3001OutgoingLinks(view);
 		}
 		return Collections.emptyList();
 	}
@@ -289,138 +236,109 @@ public class WorkflowDiagramUpdater {
 	 * @generated
 	 */
 	public static List<WorkflowLinkDescriptor> getWorkflow_1000ContainedLinks(View view) {
-		Workflow modelElement = (Workflow) view.getElement();
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WorkflowLinkDescriptor> getJavaTask_2017ContainedLinks(View view) {
+		JavaTask modelElement = (JavaTask) view.getElement();
 		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getContainedTypeModelFacetLinks_RemoteTaskCommunicationConfiguration_4004(modelElement));
-		result.addAll(getContainedTypeModelFacetLinks_TaskCommunicationConfiguration_4005(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_Task_Incoming_4001(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getEmittingTask_2011ContainedLinks(View view) {
-		return Collections.emptyList();
+	public static List<WorkflowLinkDescriptor> getScriptedTask_2018ContainedLinks(View view) {
+		ScriptedTask modelElement = (ScriptedTask) view.getElement();
+		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Task_Incoming_4001(modelElement));
+		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getString_2012ContainedLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getInteger_2013ContainedLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getBoolean_2014ContainedLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getDouble_2015ContainedLinks(View view) {
-		return Collections.emptyList();
+	public static List<WorkflowLinkDescriptor> getRemoteCommunicationChannel_2020ContainedLinks(View view) {
+		RemoteCommunicationChannel modelElement = (RemoteCommunicationChannel) view.getElement();
+		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_CommunicationChannel_Incoming_4002(modelElement));
+		return result;
 	}
 
 	/**
 	 * @generated
 	 */
 	public static List<WorkflowLinkDescriptor> getTask_2016ContainedLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	* @generated
-	*/
-	public static List<WorkflowLinkDescriptor> getString_3001ContainedLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	* @generated
-	*/
-	public static List<WorkflowLinkDescriptor> getInteger_3002ContainedLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	* @generated
-	*/
-	public static List<WorkflowLinkDescriptor> getBoolean_3003ContainedLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	* @generated
-	*/
-	public static List<WorkflowLinkDescriptor> getDouble_3004ContainedLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getRemoteTaskCommunicationConfiguration_4004ContainedLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getTaskCommunicationConfiguration_4005ContainedLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getEmittingTask_2011IncomingLinks(View view) {
-		EmittingTask modelElement = (EmittingTask) view.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
-				.find(view.eResource().getResourceSet().getResources());
+		Task modelElement = (Task) view.getElement();
 		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_RemoteTaskCommunicationConfiguration_4004(modelElement,
-				crossReferences));
-		result.addAll(
-				getIncomingTypeModelFacetLinks_TaskCommunicationConfiguration_4005(modelElement, crossReferences));
+		result.addAll(getOutgoingFeatureModelFacetLinks_Task_Incoming_4001(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getString_2012IncomingLinks(View view) {
+	public static List<WorkflowLinkDescriptor> getCommunicationChannel_2021ContainedLinks(View view) {
+		CommunicationChannel modelElement = (CommunicationChannel) view.getElement();
+		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_CommunicationChannel_Incoming_4002(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WorkflowLinkDescriptor> getDataStructure_2019ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowLinkDescriptor> getDataStructure_3001ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getInteger_2013IncomingLinks(View view) {
-		return Collections.emptyList();
+	public static List<WorkflowLinkDescriptor> getJavaTask_2017IncomingLinks(View view) {
+		JavaTask modelElement = (JavaTask) view.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
+		result.addAll(
+				getIncomingFeatureModelFacetLinks_CommunicationChannel_Incoming_4002(modelElement, crossReferences));
+		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getBoolean_2014IncomingLinks(View view) {
-		return Collections.emptyList();
+	public static List<WorkflowLinkDescriptor> getScriptedTask_2018IncomingLinks(View view) {
+		ScriptedTask modelElement = (ScriptedTask) view.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
+		result.addAll(
+				getIncomingFeatureModelFacetLinks_CommunicationChannel_Incoming_4002(modelElement, crossReferences));
+		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getDouble_2015IncomingLinks(View view) {
-		return Collections.emptyList();
+	public static List<WorkflowLinkDescriptor> getRemoteCommunicationChannel_2020IncomingLinks(View view) {
+		RemoteCommunicationChannel modelElement = (RemoteCommunicationChannel) view.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
+		result.addAll(getIncomingFeatureModelFacetLinks_Task_Incoming_4001(modelElement, crossReferences));
+		return result;
 	}
 
 	/**
@@ -431,174 +349,113 @@ public class WorkflowDiagramUpdater {
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_RemoteTaskCommunicationConfiguration_4004(modelElement,
-				crossReferences));
 		result.addAll(
-				getIncomingTypeModelFacetLinks_TaskCommunicationConfiguration_4005(modelElement, crossReferences));
+				getIncomingFeatureModelFacetLinks_CommunicationChannel_Incoming_4002(modelElement, crossReferences));
 		return result;
 	}
 
 	/**
-	* @generated
-	*/
-	public static List<WorkflowLinkDescriptor> getString_3001IncomingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	* @generated
-	*/
-	public static List<WorkflowLinkDescriptor> getInteger_3002IncomingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	* @generated
-	*/
-	public static List<WorkflowLinkDescriptor> getBoolean_3003IncomingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	* @generated
-	*/
-	public static List<WorkflowLinkDescriptor> getDouble_3004IncomingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getRemoteTaskCommunicationConfiguration_4004IncomingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getTaskCommunicationConfiguration_4005IncomingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getEmittingTask_2011OutgoingLinks(View view) {
-		EmittingTask modelElement = (EmittingTask) view.getElement();
+	public static List<WorkflowLinkDescriptor> getCommunicationChannel_2021IncomingLinks(View view) {
+		CommunicationChannel modelElement = (CommunicationChannel) view.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		result.addAll(getOutgoingTypeModelFacetLinks_RemoteTaskCommunicationConfiguration_4004(modelElement));
-		result.addAll(getOutgoingTypeModelFacetLinks_TaskCommunicationConfiguration_4005(modelElement));
+		result.addAll(getIncomingFeatureModelFacetLinks_Task_Incoming_4001(modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getString_2012OutgoingLinks(View view) {
+	public static List<WorkflowLinkDescriptor> getDataStructure_2019IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowLinkDescriptor> getDataStructure_3001IncomingLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getInteger_2013OutgoingLinks(View view) {
-		return Collections.emptyList();
+	public static List<WorkflowLinkDescriptor> getJavaTask_2017OutgoingLinks(View view) {
+		JavaTask modelElement = (JavaTask) view.getElement();
+		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Task_Incoming_4001(modelElement));
+		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getBoolean_2014OutgoingLinks(View view) {
-		return Collections.emptyList();
+	public static List<WorkflowLinkDescriptor> getScriptedTask_2018OutgoingLinks(View view) {
+		ScriptedTask modelElement = (ScriptedTask) view.getElement();
+		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_Task_Incoming_4001(modelElement));
+		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<WorkflowLinkDescriptor> getDouble_2015OutgoingLinks(View view) {
-		return Collections.emptyList();
+	public static List<WorkflowLinkDescriptor> getRemoteCommunicationChannel_2020OutgoingLinks(View view) {
+		RemoteCommunicationChannel modelElement = (RemoteCommunicationChannel) view.getElement();
+		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_CommunicationChannel_Incoming_4002(modelElement));
+		return result;
 	}
 
 	/**
 	 * @generated
 	 */
 	public static List<WorkflowLinkDescriptor> getTask_2016OutgoingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	* @generated
-	*/
-	public static List<WorkflowLinkDescriptor> getString_3001OutgoingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	* @generated
-	*/
-	public static List<WorkflowLinkDescriptor> getInteger_3002OutgoingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	* @generated
-	*/
-	public static List<WorkflowLinkDescriptor> getBoolean_3003OutgoingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	* @generated
-	*/
-	public static List<WorkflowLinkDescriptor> getDouble_3004OutgoingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getRemoteTaskCommunicationConfiguration_4004OutgoingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<WorkflowLinkDescriptor> getTaskCommunicationConfiguration_4005OutgoingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	* @generated
-	*/
-	private static Collection<WorkflowLinkDescriptor> getContainedTypeModelFacetLinks_RemoteTaskCommunicationConfiguration_4004(
-			Workflow container) {
+		Task modelElement = (Task) view.getElement();
 		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		for (Iterator<?> links = container.getConfigs().iterator(); links.hasNext();) {
-			EObject linkObject = (EObject) links.next();
-			if (false == linkObject instanceof RemoteTaskCommunicationConfiguration) {
-				continue;
+		result.addAll(getOutgoingFeatureModelFacetLinks_Task_Incoming_4001(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WorkflowLinkDescriptor> getCommunicationChannel_2021OutgoingLinks(View view) {
+		CommunicationChannel modelElement = (CommunicationChannel) view.getElement();
+		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_CommunicationChannel_Incoming_4002(modelElement));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WorkflowLinkDescriptor> getDataStructure_2019OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<WorkflowLinkDescriptor> getDataStructure_3001OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	private static Collection<WorkflowLinkDescriptor> getIncomingFeatureModelFacetLinks_Task_Incoming_4001(
+			CommunicationChannel target, Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
+			if (setting.getEStructuralFeature() == WorkflowPackage.eINSTANCE.getTask_Incoming()) {
+				result.add(new WorkflowLinkDescriptor(setting.getEObject(), target,
+						WorkflowElementTypes.TaskIncoming_4001, TaskIncomingEditPart.VISUAL_ID));
 			}
-			RemoteTaskCommunicationConfiguration link = (RemoteTaskCommunicationConfiguration) linkObject;
-			if (RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID != WorkflowVisualIDRegistry
-					.getLinkWithClassVisualID(link)) {
-				continue;
-			}
-			List targets = link.getOutgoing();
-			Object theTarget = targets.size() == 1 ? targets.get(0) : null;
-			if (false == theTarget instanceof Task) {
-				continue;
-			}
-			Task dst = (Task) theTarget;
-			List sources = link.getIncoming();
-			Object theSource = sources.size() == 1 ? sources.get(0) : null;
-			if (false == theSource instanceof EmittingTask) {
-				continue;
-			}
-			EmittingTask src = (EmittingTask) theSource;
-			result.add(new WorkflowLinkDescriptor(src, dst, link,
-					WorkflowElementTypes.RemoteTaskCommunicationConfiguration_4004,
-					RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID));
 		}
 		return result;
 	}
@@ -606,96 +463,16 @@ public class WorkflowDiagramUpdater {
 	/**
 	* @generated
 	*/
-	private static Collection<WorkflowLinkDescriptor> getContainedTypeModelFacetLinks_TaskCommunicationConfiguration_4005(
-			Workflow container) {
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		for (Iterator<?> links = container.getConfigs().iterator(); links.hasNext();) {
-			EObject linkObject = (EObject) links.next();
-			if (false == linkObject instanceof TaskCommunicationConfiguration) {
-				continue;
-			}
-			TaskCommunicationConfiguration link = (TaskCommunicationConfiguration) linkObject;
-			if (TaskCommunicationConfigurationEditPart.VISUAL_ID != WorkflowVisualIDRegistry
-					.getLinkWithClassVisualID(link)) {
-				continue;
-			}
-			List targets = link.getOutgoing();
-			Object theTarget = targets.size() == 1 ? targets.get(0) : null;
-			if (false == theTarget instanceof Task) {
-				continue;
-			}
-			Task dst = (Task) theTarget;
-			List sources = link.getIncoming();
-			Object theSource = sources.size() == 1 ? sources.get(0) : null;
-			if (false == theSource instanceof EmittingTask) {
-				continue;
-			}
-			EmittingTask src = (EmittingTask) theSource;
-			result.add(
-					new WorkflowLinkDescriptor(src, dst, link, WorkflowElementTypes.TaskCommunicationConfiguration_4005,
-							TaskCommunicationConfigurationEditPart.VISUAL_ID));
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	private static Collection<WorkflowLinkDescriptor> getIncomingTypeModelFacetLinks_RemoteTaskCommunicationConfiguration_4004(
+	private static Collection<WorkflowLinkDescriptor> getIncomingFeatureModelFacetLinks_CommunicationChannel_Incoming_4002(
 			Task target, Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
 		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
 		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
 		for (EStructuralFeature.Setting setting : settings) {
-			if (setting.getEStructuralFeature() != WorkflowPackage.eINSTANCE
-					.getTaskCommunicationConfiguration_Outgoing()
-					|| false == setting.getEObject() instanceof RemoteTaskCommunicationConfiguration) {
-				continue;
+			if (setting.getEStructuralFeature() == WorkflowPackage.eINSTANCE.getCommunicationChannel_Incoming()) {
+				result.add(new WorkflowLinkDescriptor(setting.getEObject(), target,
+						WorkflowElementTypes.CommunicationChannelIncoming_4002,
+						CommunicationChannelIncomingEditPart.VISUAL_ID));
 			}
-			RemoteTaskCommunicationConfiguration link = (RemoteTaskCommunicationConfiguration) setting.getEObject();
-			if (RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID != WorkflowVisualIDRegistry
-					.getLinkWithClassVisualID(link)) {
-				continue;
-			}
-			List sources = link.getIncoming();
-			Object theSource = sources.size() == 1 ? sources.get(0) : null;
-			if (false == theSource instanceof EmittingTask) {
-				continue;
-			}
-			EmittingTask src = (EmittingTask) theSource;
-			result.add(new WorkflowLinkDescriptor(src, target, link,
-					WorkflowElementTypes.RemoteTaskCommunicationConfiguration_4004,
-					RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID));
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	private static Collection<WorkflowLinkDescriptor> getIncomingTypeModelFacetLinks_TaskCommunicationConfiguration_4005(
-			Task target, Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
-		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
-		for (EStructuralFeature.Setting setting : settings) {
-			if (setting.getEStructuralFeature() != WorkflowPackage.eINSTANCE
-					.getTaskCommunicationConfiguration_Outgoing()
-					|| false == setting.getEObject() instanceof TaskCommunicationConfiguration) {
-				continue;
-			}
-			TaskCommunicationConfiguration link = (TaskCommunicationConfiguration) setting.getEObject();
-			if (TaskCommunicationConfigurationEditPart.VISUAL_ID != WorkflowVisualIDRegistry
-					.getLinkWithClassVisualID(link)) {
-				continue;
-			}
-			List sources = link.getIncoming();
-			Object theSource = sources.size() == 1 ? sources.get(0) : null;
-			if (false == theSource instanceof EmittingTask) {
-				continue;
-			}
-			EmittingTask src = (EmittingTask) theSource;
-			result.add(new WorkflowLinkDescriptor(src, target, link,
-					WorkflowElementTypes.TaskCommunicationConfiguration_4005,
-					TaskCommunicationConfigurationEditPart.VISUAL_ID));
 		}
 		return result;
 	}
@@ -703,49 +480,13 @@ public class WorkflowDiagramUpdater {
 	/**
 	* @generated
 	*/
-	private static Collection<WorkflowLinkDescriptor> getOutgoingTypeModelFacetLinks_RemoteTaskCommunicationConfiguration_4004(
-			EmittingTask source) {
-		Workflow container = null;
-		// Find container element for the link.
-		// Climb up by containment hierarchy starting from the source
-		// and return the first element that is instance of the container class.
-		for (EObject element = source; element != null && container == null; element = element.eContainer()) {
-			if (element instanceof Workflow) {
-				container = (Workflow) element;
-			}
-		}
-		if (container == null) {
-			return Collections.emptyList();
-		}
+	private static Collection<WorkflowLinkDescriptor> getOutgoingFeatureModelFacetLinks_Task_Incoming_4001(
+			Task source) {
 		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		for (Iterator<?> links = container.getConfigs().iterator(); links.hasNext();) {
-			EObject linkObject = (EObject) links.next();
-			if (false == linkObject instanceof RemoteTaskCommunicationConfiguration) {
-				continue;
-			}
-			RemoteTaskCommunicationConfiguration link = (RemoteTaskCommunicationConfiguration) linkObject;
-			if (RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID != WorkflowVisualIDRegistry
-					.getLinkWithClassVisualID(link)) {
-				continue;
-			}
-			List targets = link.getOutgoing();
-			Object theTarget = targets.size() == 1 ? targets.get(0) : null;
-			if (false == theTarget instanceof Task) {
-				continue;
-			}
-			Task dst = (Task) theTarget;
-			List sources = link.getIncoming();
-			Object theSource = sources.size() == 1 ? sources.get(0) : null;
-			if (false == theSource instanceof EmittingTask) {
-				continue;
-			}
-			EmittingTask src = (EmittingTask) theSource;
-			if (src != source) {
-				continue;
-			}
-			result.add(new WorkflowLinkDescriptor(src, dst, link,
-					WorkflowElementTypes.RemoteTaskCommunicationConfiguration_4004,
-					RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID));
+		for (Iterator<?> destinations = source.getIncoming().iterator(); destinations.hasNext();) {
+			CommunicationChannel destination = (CommunicationChannel) destinations.next();
+			result.add(new WorkflowLinkDescriptor(source, destination, WorkflowElementTypes.TaskIncoming_4001,
+					TaskIncomingEditPart.VISUAL_ID));
 		}
 		return result;
 	}
@@ -753,49 +494,14 @@ public class WorkflowDiagramUpdater {
 	/**
 	* @generated
 	*/
-	private static Collection<WorkflowLinkDescriptor> getOutgoingTypeModelFacetLinks_TaskCommunicationConfiguration_4005(
-			EmittingTask source) {
-		Workflow container = null;
-		// Find container element for the link.
-		// Climb up by containment hierarchy starting from the source
-		// and return the first element that is instance of the container class.
-		for (EObject element = source; element != null && container == null; element = element.eContainer()) {
-			if (element instanceof Workflow) {
-				container = (Workflow) element;
-			}
-		}
-		if (container == null) {
-			return Collections.emptyList();
-		}
+	private static Collection<WorkflowLinkDescriptor> getOutgoingFeatureModelFacetLinks_CommunicationChannel_Incoming_4002(
+			CommunicationChannel source) {
 		LinkedList<WorkflowLinkDescriptor> result = new LinkedList<WorkflowLinkDescriptor>();
-		for (Iterator<?> links = container.getConfigs().iterator(); links.hasNext();) {
-			EObject linkObject = (EObject) links.next();
-			if (false == linkObject instanceof TaskCommunicationConfiguration) {
-				continue;
-			}
-			TaskCommunicationConfiguration link = (TaskCommunicationConfiguration) linkObject;
-			if (TaskCommunicationConfigurationEditPart.VISUAL_ID != WorkflowVisualIDRegistry
-					.getLinkWithClassVisualID(link)) {
-				continue;
-			}
-			List targets = link.getOutgoing();
-			Object theTarget = targets.size() == 1 ? targets.get(0) : null;
-			if (false == theTarget instanceof Task) {
-				continue;
-			}
-			Task dst = (Task) theTarget;
-			List sources = link.getIncoming();
-			Object theSource = sources.size() == 1 ? sources.get(0) : null;
-			if (false == theSource instanceof EmittingTask) {
-				continue;
-			}
-			EmittingTask src = (EmittingTask) theSource;
-			if (src != source) {
-				continue;
-			}
-			result.add(
-					new WorkflowLinkDescriptor(src, dst, link, WorkflowElementTypes.TaskCommunicationConfiguration_4005,
-							TaskCommunicationConfigurationEditPart.VISUAL_ID));
+		for (Iterator<?> destinations = source.getIncoming().iterator(); destinations.hasNext();) {
+			Task destination = (Task) destinations.next();
+			result.add(new WorkflowLinkDescriptor(source, destination,
+					WorkflowElementTypes.CommunicationChannelIncoming_4002,
+					CommunicationChannelIncomingEditPart.VISUAL_ID));
 		}
 		return result;
 	}

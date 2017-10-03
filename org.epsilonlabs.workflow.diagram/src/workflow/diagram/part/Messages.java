@@ -246,52 +246,52 @@ public class Messages extends NLS {
 	/**
 	* @generated
 	*/
-	public static String Boolean1CreationTool_title;
+	public static String CommunicationChannel1CreationTool_title;
 
 	/**
 	* @generated
 	*/
-	public static String Boolean1CreationTool_desc;
+	public static String CommunicationChannel1CreationTool_desc;
 
 	/**
 	* @generated
 	*/
-	public static String Double2CreationTool_title;
+	public static String DataStructure2CreationTool_title;
 
 	/**
 	* @generated
 	*/
-	public static String Double2CreationTool_desc;
+	public static String DataStructure2CreationTool_desc;
 
 	/**
 	* @generated
 	*/
-	public static String EmittingTask3CreationTool_title;
+	public static String JavaTask3CreationTool_title;
 
 	/**
 	* @generated
 	*/
-	public static String EmittingTask3CreationTool_desc;
+	public static String JavaTask3CreationTool_desc;
 
 	/**
 	* @generated
 	*/
-	public static String Integer4CreationTool_title;
+	public static String RemoteCommunicationChannel4CreationTool_title;
 
 	/**
 	* @generated
 	*/
-	public static String Integer4CreationTool_desc;
+	public static String RemoteCommunicationChannel4CreationTool_desc;
 
 	/**
 	* @generated
 	*/
-	public static String String5CreationTool_title;
+	public static String ScriptedTask5CreationTool_title;
 
 	/**
 	* @generated
 	*/
-	public static String String5CreationTool_desc;
+	public static String ScriptedTask5CreationTool_desc;
 
 	/**
 	* @generated
@@ -306,32 +306,42 @@ public class Messages extends NLS {
 	/**
 	* @generated
 	*/
-	public static String RemoteTaskCommunicationConfiguration1CreationTool_title;
+	public static String Incoming1CreationTool_title;
 
 	/**
 	* @generated
 	*/
-	public static String RemoteTaskCommunicationConfiguration1CreationTool_desc;
+	public static String Incoming1CreationTool_desc;
 
 	/**
 	* @generated
 	*/
-	public static String TaskCommunicationConfiguration2CreationTool_title;
+	public static String Incoming2CreationTool_title;
 
 	/**
 	* @generated
 	*/
-	public static String TaskCommunicationConfiguration2CreationTool_desc;
+	public static String Incoming2CreationTool_desc;
 
 	/**
 	* @generated
 	*/
-	public static String EmittingTaskEmittingTaskLocalsCompartmentEditPart_title;
+	public static String RemoteCommunicationChannelRemoteCommunicationChannelTypeCompartmentEditPart_title;
 
 	/**
 	* @generated
 	*/
-	public static String TaskTaskLocalsCompartmentEditPart_title;
+	public static String DataStructureDataStructureTypeCompartmentEditPart_title;
+
+	/**
+	* @generated
+	*/
+	public static String CommunicationChannelCommunicationChannelTypeCompartmentEditPart_title;
+
+	/**
+	* @generated
+	*/
+	public static String DataStructureDataStructureTypeCompartment2EditPart_title;
 
 	/**
 	* @generated
@@ -346,12 +356,7 @@ public class Messages extends NLS {
 	/**
 	* @generated
 	*/
-	public static String NavigatorGroupName_EmittingTask_2011_incominglinks;
-
-	/**
-	* @generated
-	*/
-	public static String NavigatorGroupName_EmittingTask_2011_outgoinglinks;
+	public static String NavigatorGroupName_Task_2016_outgoinglinks;
 
 	/**
 	* @generated
@@ -361,22 +366,62 @@ public class Messages extends NLS {
 	/**
 	* @generated
 	*/
-	public static String NavigatorGroupName_RemoteTaskCommunicationConfiguration_4004_target;
+	public static String NavigatorGroupName_JavaTask_2017_outgoinglinks;
 
 	/**
 	* @generated
 	*/
-	public static String NavigatorGroupName_RemoteTaskCommunicationConfiguration_4004_source;
+	public static String NavigatorGroupName_JavaTask_2017_incominglinks;
 
 	/**
 	* @generated
 	*/
-	public static String NavigatorGroupName_TaskCommunicationConfiguration_4005_target;
+	public static String NavigatorGroupName_ScriptedTask_2018_outgoinglinks;
 
 	/**
 	* @generated
 	*/
-	public static String NavigatorGroupName_TaskCommunicationConfiguration_4005_source;
+	public static String NavigatorGroupName_ScriptedTask_2018_incominglinks;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_RemoteCommunicationChannel_2020_incominglinks;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_RemoteCommunicationChannel_2020_outgoinglinks;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_CommunicationChannel_2021_incominglinks;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_CommunicationChannel_2021_outgoinglinks;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_TaskIncoming_4001_target;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_TaskIncoming_4001_source;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_CommunicationChannelIncoming_4002_target;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_CommunicationChannelIncoming_4002_source;
 
 	/**
 	* @generated

@@ -24,12 +24,12 @@ public class WorkflowModelingAssistantProviderOfWorkflowEditPart extends Workflo
 
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
 		List<IElementType> types = new ArrayList<IElementType>(6);
-		types.add(WorkflowElementTypes.EmittingTask_2011);
-		types.add(WorkflowElementTypes.String_2012);
-		types.add(WorkflowElementTypes.Integer_2013);
-		types.add(WorkflowElementTypes.Boolean_2014);
-		types.add(WorkflowElementTypes.Double_2015);
+		types.add(WorkflowElementTypes.JavaTask_2017);
+		types.add(WorkflowElementTypes.ScriptedTask_2018);
+		types.add(WorkflowElementTypes.RemoteCommunicationChannel_2020);
 		types.add(WorkflowElementTypes.Task_2016);
+		types.add(WorkflowElementTypes.CommunicationChannel_2021);
+		types.add(WorkflowElementTypes.DataStructure_2019);
 		return types;
 	}
 

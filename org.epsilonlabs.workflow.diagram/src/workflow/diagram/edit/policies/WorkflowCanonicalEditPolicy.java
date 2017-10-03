@@ -32,20 +32,15 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.gmf.tooling.runtime.update.UpdaterLinkDescriptor;
 
+import org.eclipse.gmf.tooling.runtime.update.UpdaterLinkDescriptor;
 import workflow.WorkflowPackage;
-import workflow.diagram.edit.parts.Boolean2EditPart;
-import workflow.diagram.edit.parts.BooleanEditPart;
-import workflow.diagram.edit.parts.Double2EditPart;
-import workflow.diagram.edit.parts.DoubleEditPart;
-import workflow.diagram.edit.parts.EmittingTaskEditPart;
-import workflow.diagram.edit.parts.Integer2EditPart;
-import workflow.diagram.edit.parts.IntegerEditPart;
-import workflow.diagram.edit.parts.RemoteTaskCommunicationConfigurationEditPart;
-import workflow.diagram.edit.parts.String2EditPart;
-import workflow.diagram.edit.parts.StringEditPart;
-import workflow.diagram.edit.parts.TaskCommunicationConfigurationEditPart;
+import workflow.diagram.edit.parts.CommunicationChannelEditPart;
+import workflow.diagram.edit.parts.DataStructure2EditPart;
+import workflow.diagram.edit.parts.DataStructureEditPart;
+import workflow.diagram.edit.parts.JavaTaskEditPart;
+import workflow.diagram.edit.parts.RemoteCommunicationChannelEditPart;
+import workflow.diagram.edit.parts.ScriptedTaskEditPart;
 import workflow.diagram.edit.parts.TaskEditPart;
 import workflow.diagram.edit.parts.WorkflowEditPart;
 import workflow.diagram.part.WorkflowDiagramUpdater;
@@ -82,7 +77,8 @@ public class WorkflowCanonicalEditPolicy extends CanonicalEditPolicy {
 		if (myFeaturesToSynchronize == null) {
 			myFeaturesToSynchronize = new HashSet<EStructuralFeature>();
 			myFeaturesToSynchronize.add(WorkflowPackage.eINSTANCE.getWorkflow_Tasks());
-			myFeaturesToSynchronize.add(WorkflowPackage.eINSTANCE.getWorkflow_Globals());
+			myFeaturesToSynchronize.add(WorkflowPackage.eINSTANCE.getWorkflow_Channels());
+			myFeaturesToSynchronize.add(WorkflowPackage.eINSTANCE.getWorkflow_GlobalVariables());
 		}
 		return myFeaturesToSynchronize;
 	}
@@ -119,12 +115,12 @@ public class WorkflowCanonicalEditPolicy extends CanonicalEditPolicy {
 	private boolean isMyDiagramElement(View view) {
 		int visualID = WorkflowVisualIDRegistry.getVisualID(view);
 		switch (visualID) {
-		case EmittingTaskEditPart.VISUAL_ID:
-		case StringEditPart.VISUAL_ID:
-		case IntegerEditPart.VISUAL_ID:
-		case BooleanEditPart.VISUAL_ID:
-		case DoubleEditPart.VISUAL_ID:
+		case JavaTaskEditPart.VISUAL_ID:
+		case ScriptedTaskEditPart.VISUAL_ID:
+		case RemoteCommunicationChannelEditPart.VISUAL_ID:
 		case TaskEditPart.VISUAL_ID:
+		case CommunicationChannelEditPart.VISUAL_ID:
+		case DataStructureEditPart.VISUAL_ID:
 			return true;
 		}
 		return false;
@@ -284,37 +280,23 @@ public class WorkflowCanonicalEditPolicy extends CanonicalEditPolicy {
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case EmittingTaskEditPart.VISUAL_ID: {
+		case JavaTaskEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getEmittingTask_2011ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getJavaTask_2017ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case StringEditPart.VISUAL_ID: {
+		case ScriptedTaskEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getString_2012ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getScriptedTask_2018ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case IntegerEditPart.VISUAL_ID: {
+		case RemoteCommunicationChannelEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getInteger_2013ContainedLinks(view));
-			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case BooleanEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getBoolean_2014ContainedLinks(view));
-			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case DoubleEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getDouble_2015ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getRemoteCommunicationChannel_2020ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
@@ -326,44 +308,23 @@ public class WorkflowCanonicalEditPolicy extends CanonicalEditPolicy {
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case String2EditPart.VISUAL_ID: {
+		case CommunicationChannelEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getString_3001ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getCommunicationChannel_2021ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case Integer2EditPart.VISUAL_ID: {
+		case DataStructureEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getInteger_3002ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getDataStructure_2019ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case Boolean2EditPart.VISUAL_ID: {
+		case DataStructure2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getBoolean_3003ContainedLinks(view));
-			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case Double2EditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getDouble_3004ContainedLinks(view));
-			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case RemoteTaskCommunicationConfigurationEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getRemoteTaskCommunicationConfiguration_4004ContainedLinks(view));
-			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case TaskCommunicationConfigurationEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(WorkflowDiagramUpdater.getTaskCommunicationConfiguration_4005ContainedLinks(view));
+				result.addAll(WorkflowDiagramUpdater.getDataStructure_3001ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
