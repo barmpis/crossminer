@@ -3,7 +3,8 @@ package org.epsilonlabs.workflow.execution.tests.util;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-import org.epsilonlabs.workflow.execution.tests.util.GithubClient2.Repo;
+import org.epsilonlabs.workflow.execution.github.GithubClient;
+import org.epsilonlabs.workflow.execution.github.GithubClient.Repo;
 
 public class StubGithubData2 {
 
@@ -15,10 +16,8 @@ public class StubGithubData2 {
 	private int fileId = 100;
 	private int authorId = 100;
 
-	private GithubClient2 ref;
-
 	public StubGithubData2() {
-		ref = new GithubClient2();
+
 	}
 
 	/**
@@ -44,19 +43,21 @@ public class StubGithubData2 {
 
 		if (repoId % 4 == 0) {
 			if (repoId % 2 == 0) {
-				data.add(ref.new Repo("repo~" + repoId, "uml", "file~" + fileId + ".uml:author~" + authorId + ";file~"
-						+ (fileId + 1) + ".uml:author~" + (authorId + 1)));
+				data.add((new GithubClient()).new Repo("repo~" + repoId, "uml", "file~" + fileId + ".uml:author~"
+						+ authorId + ";file~" + (fileId + 1) + ".uml:author~" + (authorId + 1)));
 			} else {
-				data.add(ref.new Repo("repo~" + repoId, "xmi", "file~" + fileId + ".xmi:author~" + authorId + ";file~"
-						+ (fileId + 1) + ".xmi:author~" + (authorId + 1)));
+				data.add((new GithubClient()).new Repo("repo~" + repoId, "xmi", "file~" + fileId + ".xmi:author~"
+						+ authorId + ";file~" + (fileId + 1) + ".xmi:author~" + (authorId + 1)));
 			}
 			fileId = fileId + 2;
 			authorId = authorId + 2;
 		} else {
 			if (repoId % 2 == 0) {
-				data.add(ref.new Repo("repo~" + repoId, "uml", "file~" + fileId + ".uml:author~" + authorId));
+				data.add((new GithubClient()).new Repo("repo~" + repoId, "uml",
+						"file~" + fileId + ".uml:author~" + authorId));
 			} else {
-				data.add(ref.new Repo("repo~" + repoId, "xmi", "file~" + fileId + ".xmi:author~" + authorId));
+				data.add((new GithubClient()).new Repo("repo~" + repoId, "xmi",
+						"file~" + fileId + ".xmi:author~" + authorId));
 			}
 			fileId++;
 			authorId++;

@@ -11,11 +11,13 @@
 package org.epsilonlabs.workflow.execution.tests.util;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Set;
 
 import org.epsilonlabs.workflow.execution.WorkflowProviderNode;
+import org.epsilonlabs.workflow.execution.github.GithubClient;
+import org.epsilonlabs.workflow.execution.github.GithubClient.Author;
+import org.epsilonlabs.workflow.execution.github.GithubClient.File;
+import org.epsilonlabs.workflow.execution.github.GithubClient.Repo;
 
 import io.reactivex.Observer;
 import io.reactivex.subjects.PublishSubject;
@@ -40,7 +42,7 @@ public class GithubClient2 implements WorkflowProviderNode {
 		REPOSITORIES, FILES, AUTHORS
 	}
 
-	private Collection<Observer<? super Object>> subscribers = new LinkedList<>();
+	protected Collection<Observer<? super Object>> subscribers = new LinkedList<>();
 
 	protected PublishSubject<Repo> dsr = null;
 	protected PublishSubject<Author> dsa = null;
@@ -50,91 +52,11 @@ public class GithubClient2 implements WorkflowProviderNode {
 
 	}
 
-	public class Repo {
+	public String repoExt = null;
 
-		private String name;
-		private String type;
-		private HashMap<String, String> files = new HashMap<>();
+	public PublishSubject<Repo> getRepositoriesByFileExtension(String ext) throws Exception {
 
-		public Repo(String name, String type, String contents) {
-
-			this.name = name;
-			this.type = type;
-
-			String[] contentSplit = contents.split(";");
-
-			for (String s : contentSplit) {
-
-				String[] fileSplit = s.split(":");
-
-				files.put(fileSplit[0], fileSplit[1]);
-
-			}
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public String getType() {
-			return type;
-		}
-
-		public Set<String> getFiles() {
-			return files.keySet();
-		}
-
-		public String getAuthor(String filename) {
-			return files.get(filename);
-		}
-
-		public boolean equals(Object o) {
-			if (!(o instanceof Repo))
-				return false;
-			return (getName() + "#" + getType()).equals(((Repo) o).getName() + "#" + ((Repo) o).getType());
-		}
-
-		public String toString() {
-			return getName() + "#" + getType();
-		}
-
-	}
-
-	public class File {
-
-		String f;
-		String repo;
-
-		public File(String f, String repo) {
-			this.f = f;
-			this.repo = repo;
-		}
-
-		public String toString() {
-			return f + "#" + repo.toString();
-		}
-
-	}
-
-	public class Author {
-
-		String author;
-		String file;
-
-		public Author(String author, String file) {
-			this.author = author;
-			this.file = file;
-		}
-
-		public String toString() {
-			return author + "#" + file.toString();
-		}
-
-	}
-
-	public PublishSubject<Repo> getRepositoriesByFileExtension(Iterable<String> exts) throws Exception {
-		// TODO dataset likely specific to return type (in this case dataset of
-		// repos?)
+		repoExt = ext;
 		try {
 			if (dsr == null) {
 
@@ -147,9 +69,13 @@ public class GithubClient2 implements WorkflowProviderNode {
 		}
 	}
 
-	public PublishSubject<File> getFilesWithFileExtension(String repo, Iterable<String> exts) throws Exception {
-		// TODO dataset likely specific to return type (in this case dataset of
-		// files?)
+	public String repo = null;
+	public String fileExt = null;
+
+	public PublishSubject<File> getFilesWithFileExtension(String repo, String ext) throws Exception {
+
+		this.repo = repo;
+		fileExt = ext;
 		try {
 			if (dsf == null) {
 
@@ -162,9 +88,11 @@ public class GithubClient2 implements WorkflowProviderNode {
 		}
 	}
 
+	public String file = null;
+
 	public PublishSubject<Author> getAuthors(String file) throws Exception {
-		// TODO dataset likely specific to return type (in this case dataset of
-		// authors?)
+
+		this.file = file;
 		try {
 			if (dsa == null) {
 
@@ -178,40 +106,50 @@ public class GithubClient2 implements WorkflowProviderNode {
 	}
 
 	//
-	public void stubRetrieveRepositoriesByFileExtension(String ext) {
-		System.out.println("(StubResilientGithubWrapper) providing repository containing " + ext + " files...");
+	public void stubRetrieveRepositoriesByFileExtension() {
+		System.out.println("(StubResilientGithubWrapper) providing repository containing " + repoExt + " files...");
 
 		LinkedList<Repo> data = StubGithubData2.getSingle().getData();
 
 		for (Repo repo : data)
-			if (repo.getType().equals(ext))
+			if (repo.getType().equals(repoExt)) {
+				// System.err.println(repo);
 				dsr.onNext(repo);
+			}
 	}
 
 	//
-	public void stubRetrieveAuthorFromFile(String file) {
-		System.out.println("(StubResilientGithubWrapper) providing author of " + file + " files...");
-
-		LinkedList<Repo> data = StubGithubData2.getSingle().getData();
-
-		for (Repo repo : data)
-			for (String f : repo.getFiles())
-				if (f.equals(file.substring(0, file.indexOf("#"))))
-					dsa.onNext(new Author(repo.getAuthor(f), file));
-
-	}
-
-	//
-	public void stubRetrieveFilesInRepo(String repo) {
+	public void stubRetrieveFilesInRepo() {
 		System.out.println("(StubResilientGithubWrapper) providing actual files of " + repo + " repository...");
 
 		LinkedList<Repo> data = StubGithubData2.getSingle().getData();
 
 		for (Repo r : data)
-			if (r.getName().equals(repo.substring(0, repo.indexOf("#"))))
+			if (r.getName().equals(repo))
 				for (String f : r.getFiles())
-					dsf.onNext(new File(f, repo));
+					if (f.endsWith(fileExt))
+						dsf.onNext((new GithubClient()).new File(f, repo));
 
+	}
+
+	//
+	public void stubRetrieveAuthorFromFile() {
+		System.out.println("(StubResilientGithubWrapper) providing author of " + file + " files...");
+
+		LinkedList<Repo> data = StubGithubData2.getSingle().getData();
+
+		String[] split = file.split("#");
+		String repoName = split[1];
+		String fileName = split[0];
+
+		for (Repo repo : data) {
+			if (repo.getName().equals(repoName)) {
+				for (String f : repo.getFiles()) {
+					if (f.equals(fileName))
+						dsa.onNext((new GithubClient()).new Author(repo.getAuthor(f), file));
+				}
+			}
+		}
 	}
 
 	/**

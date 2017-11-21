@@ -5,15 +5,20 @@ import static org.junit.Assert.assertEquals;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.epsilonlabs.workflow.execution.impl.CachedConsumer;
-import org.epsilonlabs.workflow.execution.impl.ConsoleOutput;
-import org.epsilonlabs.workflow.execution.impl.GithubClient;
-import org.epsilonlabs.workflow.execution.impl.GithubClient.File;
-import org.epsilonlabs.workflow.execution.impl.GithubClient.Repo;
-import org.epsilonlabs.workflow.execution.impl.GithubMapper;
-import org.epsilonlabs.workflow.execution.impl.StubGithubData;
+import javax.annotation.Generated;
+
+import org.epsilonlabs.workflow.execution.example.CachedConsumer;
+import org.epsilonlabs.workflow.execution.example.ConsoleOutput;
+import org.epsilonlabs.workflow.execution.example.github.GeneratedConfigToGithubRepos;
+import org.epsilonlabs.workflow.execution.example.github.GeneratedGithubRepoToFiles;
+import org.epsilonlabs.workflow.execution.example.github.StubExecutionCoordinator;
+import org.epsilonlabs.workflow.execution.example.github.StubGithubData;
+import org.epsilonlabs.workflow.execution.generation.*;
+import org.epsilonlabs.workflow.execution.github.GithubClient;
+import org.epsilonlabs.workflow.execution.github.GithubClient.*;
 import org.junit.Test;
 
+import io.reactivex.Observable;
 import io.reactivex.subjects.PublishSubject;
 
 public class StatusTests {
@@ -31,26 +36,31 @@ public class StatusTests {
 		System.out.println("simpleLifeCycleTest");
 
 		//
+		PublishSubject<String> extensions = PublishSubject.create();
 
-		List<String> exts = new LinkedList<String>();
-		exts.add("xmi");
-		exts.add("uml");
-		GithubClient source = new GithubClient();
+		GeneratedConfigToGithubRepos rep = new GeneratedConfigToGithubRepos();
+		extensions.subscribe(rep);
 
 		CachedConsumer c = new CachedConsumer();
-		source.subscribe(c);
+		rep.subscribe(c);
 
-		PublishSubject<Repo> repos = source.getRepositoriesByFileExtension(exts);
+		Observable<Repo> repos = rep.repos();
 
 		repos.subscribe(new ConsoleOutput());
 
 		//
-		for (String ext : exts)
-			source.stubRetrieveRepositoriesByFileExtension(ext);
-		source.stubDenoteCompletion();
+		extensions.onNext("xmi");
+		extensions.onNext("uml");
+		//
+		for (GithubClient cl : StubExecutionCoordinator.getActiveRepoClients())
+			cl.stubRetrieveRepositoriesByFileExtension();
+		//
+		for (GithubClient cl : StubExecutionCoordinator.getClients())
+			cl.stubDenoteCompletion();
+		extensions.onComplete();
 
 		LinkedList<Object> actual = new LinkedList<>();
-		actual.add("providing data: getRepositoriesByFileExtension");
+		actual.add("processed 1 config elements");
 		actual.add("task complete");
 
 		// System.err.println(c.getAndClearContents());
@@ -61,34 +71,45 @@ public class StatusTests {
 	@Test
 	public void mappedLifeCycleTest() throws Exception {
 
-		System.out.println("simpleLifeCycleTest");
+		System.out.println("mappedLifeCycleTest");
 
 		//
+		PublishSubject<String> extensions = PublishSubject.create();
 
-		List<String> exts = new LinkedList<String>();
-		exts.add("xmi");
-		exts.add("uml");
-		GithubClient source = new GithubClient();
-
-		PublishSubject<Repo> repos = source.getRepositoriesByFileExtension(exts);
-
-		GithubMapper m = new GithubMapper();
-		repos.subscribe(m);
+		GeneratedConfigToGithubRepos rep = new GeneratedConfigToGithubRepos();
+		extensions.subscribe(rep);
 
 		CachedConsumer c = new CachedConsumer();
-		m.subscribe(c);
+		rep.subscribe(c);
 
-		PublishSubject<File> d = m.getFilesWithFileExtension(exts);
+		Observable<Repo> repos = rep.repos();
 
-		d.subscribe(new ConsoleOutput());
+		GeneratedGithubRepoToFiles fi = new GeneratedGithubRepoToFiles();
+		repos.subscribe(fi);
+
+		fi.subscribe(c);
+
+		Observable<File> files = fi.files();
+
+		files.subscribe(new ConsoleOutput());
 
 		//
-		for (String ext : exts)
-			source.stubRetrieveRepositoriesByFileExtension(ext);
-		source.stubDenoteCompletion();
+		extensions.onNext("xmi");
+		extensions.onNext("uml");
+		//
+		for (GithubClient cl : StubExecutionCoordinator.getActiveRepoClients())
+			cl.stubRetrieveRepositoriesByFileExtension();
+		for (GithubClient cl : StubExecutionCoordinator.getActiveFileClients())
+			cl.stubRetrieveFilesInRepo();
+
+		for (GithubClient cl : StubExecutionCoordinator.getClients())
+			cl.stubDenoteCompletion();
+		extensions.onComplete();
 
 		LinkedList<Object> actual = new LinkedList<>();
-		actual.add("providing data: getFilesWithFileExtension");
+		actual.add("processed 1 config elements");
+		actual.add("processed 1 repo elements");
+		actual.add("task complete");
 		actual.add("task complete");
 
 		// System.err.println(c.getAndClearContents());

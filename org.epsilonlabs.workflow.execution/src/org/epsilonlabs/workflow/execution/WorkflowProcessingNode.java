@@ -21,7 +21,7 @@ import io.reactivex.Observer;
  * @author kb
  *
  */
-public interface WorkflowMapperNode extends WorkflowProviderNode, WorkflowConsumerNode {
+public interface WorkflowProcessingNode extends WorkflowProviderNode, WorkflowConsumerNode {
 
 	/**
 	 * when notifying interested parties about its progress, a mapper acts as a

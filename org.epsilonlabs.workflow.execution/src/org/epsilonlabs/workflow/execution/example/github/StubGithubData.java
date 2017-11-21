@@ -1,9 +1,10 @@
-package org.epsilonlabs.workflow.execution.impl;
+package org.epsilonlabs.workflow.execution.example.github;
 
 import java.util.HashSet;
 import java.util.LinkedList;
 
-import org.epsilonlabs.workflow.execution.impl.GithubClient.Repo;
+import org.epsilonlabs.workflow.execution.github.GithubClient;
+import org.epsilonlabs.workflow.execution.github.GithubClient.Repo;
 
 public class StubGithubData {
 
@@ -89,7 +90,7 @@ public class StubGithubData {
 		for (Repo r : data) {
 			for (String file : r.getFiles())
 
-				d.add(file + "#" + r.getName() + "#" + r.getType());
+				d.add(file + "#" + r.getName());
 
 		}
 
@@ -103,7 +104,7 @@ public class StubGithubData {
 
 		for (Repo r : data) {
 			for (String file : r.getFiles())
-				d.add(r.getAuthor(file) + "#" + file + "#" + r.getName() + "#" + r.getType());
+				d.add(r.getAuthor(file) + "#" + file + "#" + r.getName());
 		}
 
 		return d;

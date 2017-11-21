@@ -3,19 +3,23 @@ package org.epsilonlabs.workflow.execution.tests;
 import static org.junit.Assert.assertEquals;
 
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 
-import org.epsilonlabs.workflow.execution.impl.GithubClient;
-import org.epsilonlabs.workflow.execution.impl.GithubClient.Author;
-import org.epsilonlabs.workflow.execution.impl.GithubClient.File;
-import org.epsilonlabs.workflow.execution.impl.GithubClient.Repo;
-import org.epsilonlabs.workflow.execution.impl.GithubMapper;
-import org.epsilonlabs.workflow.execution.impl.StubGithubData;
+import org.epsilonlabs.workflow.execution.example.github.GeneratedConfigToGithubRepos;
+import org.epsilonlabs.workflow.execution.example.github.GeneratedFileToAuthors;
+import org.epsilonlabs.workflow.execution.example.github.GeneratedGithubRepoToFiles;
+import org.epsilonlabs.workflow.execution.example.github.StubExecutionCoordinator;
+import org.epsilonlabs.workflow.execution.example.github.StubGithubData;
+import org.epsilonlabs.workflow.execution.github.GithubClient;
+import org.epsilonlabs.workflow.execution.github.GithubClient.Author;
+import org.epsilonlabs.workflow.execution.github.GithubClient.File;
+import org.epsilonlabs.workflow.execution.github.GithubClient.Repo;
+import org.epsilonlabs.workflow.execution.tests.util.GeneratedConfigToGithubRepos2;
 import org.epsilonlabs.workflow.execution.tests.util.GithubClient2;
+import org.epsilonlabs.workflow.execution.tests.util.StubExecutionCoordinator2;
 import org.epsilonlabs.workflow.execution.tests.util.StubGithubData2;
 import org.junit.Test;
 
+import io.reactivex.Observable;
 import io.reactivex.subjects.PublishSubject;
 
 public class DataflowTests {
@@ -35,21 +39,25 @@ public class DataflowTests {
 		HashSet<String> data = new HashSet<>();
 
 		//
+		PublishSubject<String> extensions = PublishSubject.create();
 
-		List<String> exts = new LinkedList<String>();
-		exts.add("xmi");
-		exts.add("uml");
-		GithubClient source = new GithubClient();
-		PublishSubject<Repo> repos = source.getRepositoriesByFileExtension(exts);
+		GeneratedConfigToGithubRepos rep = new GeneratedConfigToGithubRepos();
+		extensions.subscribe(rep);
+
+		Observable<Repo> repos = rep.repos();
 
 		repos.subscribe(t -> data.add(t.toString()));
 
 		//
-		for (String ext : exts)
-			source.stubRetrieveRepositoriesByFileExtension(ext);
-		source.stubDenoteCompletion();
-
-		// System.out.println(data);
+		extensions.onNext("xmi");
+		extensions.onNext("uml");
+		//
+		for (GithubClient cl : StubExecutionCoordinator.getActiveRepoClients())
+			cl.stubRetrieveRepositoriesByFileExtension();
+		//
+		for (GithubClient cl : StubExecutionCoordinator.getClients())
+			cl.stubDenoteCompletion();
+		extensions.onComplete();
 
 		assertEquals(StubGithubData.getSingle().getRepoData(), data);
 	}
@@ -61,25 +69,33 @@ public class DataflowTests {
 		HashSet<String> data = new HashSet<>();
 
 		//
+		PublishSubject<String> extensions = PublishSubject.create();
 
-		List<String> exts = new LinkedList<String>();
-		exts.add("xmi");
-		exts.add("uml");
-		GithubClient source = new GithubClient();
-		PublishSubject<Repo> repos = source.getRepositoriesByFileExtension(exts);
+		GeneratedConfigToGithubRepos rep = new GeneratedConfigToGithubRepos();
+		extensions.subscribe(rep);
 
-		GithubMapper m1 = new GithubMapper();
-		repos.subscribe(m1);
-		PublishSubject<File> files = m1.getFilesWithFileExtension(exts);
+		Observable<Repo> repos = rep.repos();
+
+		GeneratedGithubRepoToFiles fi = new GeneratedGithubRepoToFiles();
+		repos.subscribe(fi);
+
+		Observable<File> files = fi.files();
 
 		files.subscribe(t -> data.add(t.toString()));
 
 		//
-		for (String ext : exts)
-			source.stubRetrieveRepositoriesByFileExtension(ext);
-		source.stubDenoteCompletion();
+		extensions.onNext("xmi");
+		extensions.onNext("uml");
+		//
+		for (GithubClient cl : StubExecutionCoordinator.getActiveRepoClients())
+			cl.stubRetrieveRepositoriesByFileExtension();
+		for (GithubClient cl : StubExecutionCoordinator.getActiveFileClients())
+			cl.stubRetrieveFilesInRepo();
 
-		// System.out.println(data);
+		//
+		for (GithubClient cl : StubExecutionCoordinator.getClients())
+			cl.stubDenoteCompletion();
+		extensions.onComplete();
 
 		assertEquals(StubGithubData.getSingle().getFileData(), data);
 	}
@@ -93,35 +109,46 @@ public class DataflowTests {
 
 		//
 
-		List<String> exts = new LinkedList<String>();
-		exts.add("xmi");
-		exts.add("uml");
-		GithubClient source = new GithubClient();
-		PublishSubject<Repo> repos = source.getRepositoriesByFileExtension(exts);
+		PublishSubject<String> extensions = PublishSubject.create();
 
-		GithubMapper m1 = new GithubMapper();
-		repos.subscribe(m1);
-		PublishSubject<File> files1 = m1.getFilesWithFileExtension(exts);
+		GeneratedConfigToGithubRepos rep = new GeneratedConfigToGithubRepos();
+		extensions.subscribe(rep);
+
+		Observable<Repo> repos = rep.repos();
+
+		GeneratedGithubRepoToFiles fi1 = new GeneratedGithubRepoToFiles();
+		repos.subscribe(fi1);
+
+		Observable<File> files1 = fi1.files();
 
 		files1.subscribe(t -> data1.add(t.toString()));
 
-		GithubMapper m2 = new GithubMapper();
-		repos.subscribe(m2);
-		PublishSubject<File> files2 = m2.getFilesWithFileExtension(exts);
+		GeneratedGithubRepoToFiles fi2 = new GeneratedGithubRepoToFiles();
+		repos.subscribe(fi2);
 
-		GithubMapper m3 = new GithubMapper();
-		files2.subscribe(m3);
-		PublishSubject<Author> authors = m3.getAuthors();
+		Observable<File> files2 = fi2.files();
+
+		GeneratedFileToAuthors auth = new GeneratedFileToAuthors();
+		files2.subscribe(auth);
+
+		Observable<Author> authors = auth.authors();
 
 		authors.subscribe(t -> data2.add(t.toString()));
 
 		//
-		for (String ext : exts)
-			source.stubRetrieveRepositoriesByFileExtension(ext);
-		source.stubDenoteCompletion();
+		extensions.onNext("xmi");
+		extensions.onNext("uml");
+		//
+		for (GithubClient cl : StubExecutionCoordinator.getActiveRepoClients())
+			cl.stubRetrieveRepositoriesByFileExtension();
+		for (GithubClient cl : StubExecutionCoordinator.getActiveFileClients())
+			cl.stubRetrieveFilesInRepo();
+		for (GithubClient cl : StubExecutionCoordinator.getActiveAuthorClients())
+			cl.stubRetrieveAuthorFromFile();
 
-		// System.out.println("1: " + data1);
-		// System.out.println("2: " + data2);
+		for (GithubClient cl : StubExecutionCoordinator.getClients())
+			cl.stubDenoteCompletion();
+		extensions.onComplete();
 
 		assertEquals(StubGithubData.getSingle().getFileData(), data1);
 		assertEquals(StubGithubData.getSingle().getAuthorData(), data2);
@@ -135,35 +162,42 @@ public class DataflowTests {
 		HashSet<String> data = new HashSet<>();
 
 		//
+		PublishSubject<String> extensions = PublishSubject.create();
 
-		List<String> exts = new LinkedList<String>();
-		exts.add("xmi");
-		exts.add("uml");
+		GeneratedConfigToGithubRepos rep1 = new GeneratedConfigToGithubRepos();
+		extensions.subscribe(rep1);
 
-		GithubClient source1 = new GithubClient();
-		PublishSubject<Repo> repos1 = source1.getRepositoriesByFileExtension(exts);
-		GithubClient2 source2 = new GithubClient2();
-		PublishSubject<org.epsilonlabs.workflow.execution.tests.util.GithubClient2.Repo> repos2 = source2
-				.getRepositoriesByFileExtension(exts);
+		GeneratedConfigToGithubRepos2 rep2 = new GeneratedConfigToGithubRepos2();
+		extensions.subscribe(rep2);
+
+		Observable<Repo> repos1 = rep1.repos();
+		Observable<Repo> repos2 = rep2.repos();
 
 		repos1.subscribe(t -> data.add(t.toString()));
 		repos2.subscribe(t -> data.add(t.toString()));
 
 		//
-		for (String ext : exts) {
-			source1.stubRetrieveRepositoriesByFileExtension(ext);
-			source2.stubRetrieveRepositoriesByFileExtension(ext);
-		}
-		source1.stubDenoteCompletion();
-		source2.stubDenoteCompletion();
+		extensions.onNext("xmi");
+		extensions.onNext("uml");
+		//
+		for (GithubClient cl : StubExecutionCoordinator.getActiveRepoClients())
+			cl.stubRetrieveRepositoriesByFileExtension();
+		for (GithubClient2 cl : StubExecutionCoordinator2.getActiveRepoClients())
+			cl.stubRetrieveRepositoriesByFileExtension();
+		//
+		for (GithubClient cl : StubExecutionCoordinator.getClients())
+			cl.stubDenoteCompletion();
+		for (GithubClient2 cl : StubExecutionCoordinator2.getClients())
+			cl.stubDenoteCompletion();
+		extensions.onComplete();
 
-		//System.out.println(data);
+		// System.out.println(data);
 
 		HashSet<String> d = new HashSet<>();
 		d.addAll(StubGithubData.getSingle().getRepoData());
 		d.addAll(StubGithubData2.getSingle().getRepoData());
 
-		//System.out.println(d);
+		// System.out.println(d);
 
 		assertEquals(d, data);
 

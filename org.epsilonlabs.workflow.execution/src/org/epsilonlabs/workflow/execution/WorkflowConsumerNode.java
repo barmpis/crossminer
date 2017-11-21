@@ -12,7 +12,6 @@ package org.epsilonlabs.workflow.execution;
 
 import java.util.Collection;
 
-import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 
 /**
@@ -23,7 +22,7 @@ import io.reactivex.Observer;
  * @author kb
  *
  */
-public interface WorkflowConsumerNode extends Observer<Object>, ObservableSource<Object> {
+public interface WorkflowConsumerNode extends Observer<Object> {
 
 	/**
 	 * subscription of editors or other interested parties for progress updates

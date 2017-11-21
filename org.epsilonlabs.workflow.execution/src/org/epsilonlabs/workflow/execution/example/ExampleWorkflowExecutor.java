@@ -8,14 +8,19 @@
  * Contributors:
  *     Konstantinos Barmpis - initial API and implementation
  ******************************************************************************/
-package org.epsilonlabs.workflow.execution.impl;
+package org.epsilonlabs.workflow.execution.example;
 
 import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
-import java.util.List;
 
 import org.epsilonlabs.workflow.execution.WorkflowExecutor;
+import org.epsilonlabs.workflow.execution.example.github.GeneratedConfigToGithubRepos;
+import org.epsilonlabs.workflow.execution.example.github.GeneratedFileToAuthors;
+import org.epsilonlabs.workflow.execution.example.github.GeneratedGithubRepoToFiles;
+import org.epsilonlabs.workflow.execution.example.github.StubExecutionCoordinator;
+import org.epsilonlabs.workflow.execution.example.github.StubGithubData;
+import org.epsilonlabs.workflow.execution.github.GithubClient;
 import org.ossmeter.platform.delta.bugtrackingsystem.BugTrackingSystemComment;
 
 import io.reactivex.Observable;
@@ -37,7 +42,7 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 		// new ExampleWorkflowExecutor().executeClassificationWorkflow();
 	}
 
-	private void executeClassificationWorkflow() {
+	public void executeClassificationWorkflow() {
 
 		BugTrackingSystemExampleProvider p = new BugTrackingSystemExampleProvider();
 		PublishSubject<Object> btc = p.getComments();
@@ -77,30 +82,31 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 
 	public void executeWorkflow() throws Exception {
 
-		System.out.println("executing workflow...");
+		System.out.println("executing generated workflow...");
 
 		// define file extensions we are interested in
-		List<String> exts = new LinkedList<String>();
-		exts.add("xmi");
-		exts.add("uml");
+		PublishSubject<String> extobs = PublishSubject.create();
 
-		// find repositories in github by file extension
-		GithubClient source = new GithubClient();
+		GeneratedConfigToGithubRepos ext2repo = new GeneratedConfigToGithubRepos();
+		// format: source . subscribe ( consumer ) ;
+		extobs.subscribe(ext2repo);
 
-		Observable<?> repoData = source.getRepositoriesByFileExtension(exts);
+		Observable<GithubClient.Repo> repoData = ext2repo.repos();
 
 		// from the repositories obtained in the previous step, retrieve the
 		// files with the extensions we are interested in
-		GithubMapper mapper = new GithubMapper();
-		repoData.subscribe(mapper);
-		Observable<?> fileData = mapper.getFilesWithFileExtension(exts);
+
+		GeneratedGithubRepoToFiles repo2files = new GeneratedGithubRepoToFiles();
+		repoData.subscribe(repo2files);
+
+		Observable<?> fileData = repo2files.files();
 
 		// from the files obtained in the previous step, retrieve the authors
 		// (using no filters)
-		GithubMapper mapper2 = new GithubMapper();
-		fileData.subscribe(mapper2);
+		GeneratedFileToAuthors file2authors = new GeneratedFileToAuthors();
+		fileData.subscribe(file2authors);
 
-		Observable<?> authorData = mapper2.getAuthors();
+		Observable<?> authorData = file2authors.authors();
 
 		// print these files
 		ConsoleOutput out = new ConsoleOutput();
@@ -108,15 +114,34 @@ public class ExampleWorkflowExecutor implements WorkflowExecutor {
 
 		//
 		// STUB EXECUTION OF DATA RETRIEVAL
-		StubGithubData.getSingle().addStubGithubData(2);
-		for (String ext : exts) {
-			source.stubRetrieveRepositoriesByFileExtension(ext);
-			System.out.println("RATE LIMIT REACHED! waiting 59minutes...");
-
-			Thread.sleep(2000);
-		}
+		extobs.onNext("xmi");
+		extobs.onNext("uml");
 		//
-		source.stubDenoteCompletion();
+		StubGithubData.getSingle().addStubGithubData(2);
+		for (GithubClient c : StubExecutionCoordinator.getActiveRepoClients()) {
+			c.stubRetrieveRepositoriesByFileExtension();
+			System.out.println("r: RATE LIMIT REACHED! waiting 1 second(s)...");
+			//
+			Thread.sleep(1);
+		}
+		for (GithubClient c : StubExecutionCoordinator.getActiveFileClients()) {
+			c.stubRetrieveFilesInRepo();
+			System.out.println("f: RATE LIMIT REACHED! waiting 1 second(s)...");
+			//
+			Thread.sleep(1);
+		}
+		for (GithubClient c : StubExecutionCoordinator.getActiveAuthorClients()) {
+			c.stubRetrieveAuthorFromFile();
+			System.out.println("a: RATE LIMIT REACHED! waiting 1 second(s)...");
+			//
+			Thread.sleep(1);
+		}
+		// on complete triggers
+		extobs.onComplete();
+		//
+		for (GithubClient c : StubExecutionCoordinator.getClients()) {
+			c.stubDenoteCompletion();
+		}
 		//
 
 		System.out.println("workflow executed.");

@@ -8,7 +8,7 @@
  * Contributors:
  *     Konstantinos Barmpis - initial API and implementation
  ******************************************************************************/
-package org.epsilonlabs.workflow.execution.impl;
+package org.epsilonlabs.workflow.execution.github;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -16,6 +16,7 @@ import java.util.LinkedList;
 import java.util.Set;
 
 import org.epsilonlabs.workflow.execution.WorkflowProviderNode;
+import org.epsilonlabs.workflow.execution.example.github.StubGithubData;
 
 import io.reactivex.Observer;
 import io.reactivex.subjects.PublishSubject;
@@ -40,7 +41,7 @@ public class GithubClient implements WorkflowProviderNode {
 		REPOSITORIES, FILES, AUTHORS
 	}
 
-	private Collection<Observer<? super Object>> subscribers = new LinkedList<>();
+	protected Collection<Observer<? super Object>> subscribers = new LinkedList<>();
 
 	protected PublishSubject<Repo> dsr = null;
 	protected PublishSubject<Author> dsa = null;
@@ -132,9 +133,11 @@ public class GithubClient implements WorkflowProviderNode {
 
 	}
 
-	public PublishSubject<Repo> getRepositoriesByFileExtension(Iterable<String> exts) throws Exception {
-		// TODO dataset likely specific to return type (in this case dataset of
-		// repos?)
+	public String repoExt = null;
+
+	public PublishSubject<Repo> getRepositoriesByFileExtension(String ext) throws Exception {
+
+		repoExt = ext;
 		try {
 			if (dsr == null) {
 
@@ -147,9 +150,13 @@ public class GithubClient implements WorkflowProviderNode {
 		}
 	}
 
-	public PublishSubject<File> getFilesWithFileExtension(String repo, Iterable<String> exts) throws Exception {
-		// TODO dataset likely specific to return type (in this case dataset of
-		// files?)
+	public String repo = null;
+	public String fileExt = null;
+
+	public PublishSubject<File> getFilesWithFileExtension(String repo, String ext) throws Exception {
+
+		this.repo = repo;
+		fileExt = ext;
 		try {
 			if (dsf == null) {
 
@@ -162,9 +169,11 @@ public class GithubClient implements WorkflowProviderNode {
 		}
 	}
 
+	public String file = null;
+
 	public PublishSubject<Author> getAuthors(String file) throws Exception {
-		// TODO dataset likely specific to return type (in this case dataset of
-		// authors?)
+
+		this.file = file;
 		try {
 			if (dsa == null) {
 
@@ -178,40 +187,50 @@ public class GithubClient implements WorkflowProviderNode {
 	}
 
 	//
-	public void stubRetrieveRepositoriesByFileExtension(String ext) {
-		System.out.println("(StubResilientGithubWrapper) providing repository containing " + ext + " files...");
+	public void stubRetrieveRepositoriesByFileExtension() {
+		System.out.println("(StubResilientGithubWrapper) providing repository containing " + repoExt + " files...");
 
 		LinkedList<Repo> data = StubGithubData.getSingle().getData();
 
 		for (Repo repo : data)
-			if (repo.getType().equals(ext))
+			if (repo.getType().equals(repoExt)) {
+				// System.err.println(repo);
 				dsr.onNext(repo);
+			}
 	}
 
 	//
-	public void stubRetrieveAuthorFromFile(String file) {
-		System.out.println("(StubResilientGithubWrapper) providing author of " + file + " files...");
-
-		LinkedList<Repo> data = StubGithubData.getSingle().getData();
-
-		for (Repo repo : data)
-			for (String f : repo.getFiles())
-				if (f.equals(file.substring(0, file.indexOf("#"))))
-					dsa.onNext(new Author(repo.getAuthor(f), file));
-
-	}
-
-	//
-	public void stubRetrieveFilesInRepo(String repo) {
+	public void stubRetrieveFilesInRepo() {
 		System.out.println("(StubResilientGithubWrapper) providing actual files of " + repo + " repository...");
 
 		LinkedList<Repo> data = StubGithubData.getSingle().getData();
 
 		for (Repo r : data)
-			if (r.getName().equals(repo.substring(0, repo.indexOf("#"))))
+			if (r.getName().equals(repo))
 				for (String f : r.getFiles())
-					dsf.onNext(new File(f, repo));
+					if (f.endsWith(fileExt))
+						dsf.onNext(new File(f, repo));
 
+	}
+
+	//
+	public void stubRetrieveAuthorFromFile() {
+		System.out.println("(StubResilientGithubWrapper) providing author of " + file + " files...");
+
+		LinkedList<Repo> data = StubGithubData.getSingle().getData();
+
+		String[] split = file.split("#");
+		String repoName = split[1];
+		String fileName = split[0];
+
+		for (Repo repo : data) {
+			if (repo.getName().equals(repoName)) {
+				for (String f : repo.getFiles()) {
+					if (f.equals(fileName))
+						dsa.onNext(new Author(repo.getAuthor(f), file));
+				}
+			}
+		}
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *     Konstantinos Barmpis - initial API and implementation
  ******************************************************************************/
-package org.epsilonlabs.workflow.execution.impl;
+package org.epsilonlabs.workflow.execution.example;
 
 import java.util.Collection;
 import java.util.LinkedList;

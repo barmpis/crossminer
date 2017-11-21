@@ -17,8 +17,11 @@ Require-Bundle: org.eclipse.equinox.registry,
  org.eclipse.debug.ui,
  org.eclipse.swt,
  org.ossmeter.repository.model,
- org.ossmeter.repository.model.bts.bugzilla;bundle-version="1.0.0"
+ org.ossmeter.repository.model.bts.bugzilla;bundle-version="1.0.0",
+ org.junit
 Export-Package: org.epsilonlabs.workflow.execution,
- org.epsilonlabs.workflow.execution.impl
+ org.epsilonlabs.workflow.execution.example,
+ org.epsilonlabs.workflow.execution.example.github,
+ org.epsilonlabs.workflow.execution.github
 Import-Package: org.ossmeter.platform.delta.bugtrackingsystem,
  org.ossmeter.sentimentclassifier.opennlptartarus.libsvm
