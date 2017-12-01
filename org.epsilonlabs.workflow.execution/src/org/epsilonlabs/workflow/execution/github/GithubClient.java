@@ -62,15 +62,22 @@ public class GithubClient implements WorkflowProviderNode {
 			this.name = name;
 			this.type = type;
 
-			String[] contentSplit = contents.split(";");
+			if (contents != null && contents.length() > 0) {
 
-			for (String s : contentSplit) {
+				String[] contentSplit = contents.split(";");
 
-				String[] fileSplit = s.split(":");
+				for (String s : contentSplit) {
 
-				files.put(fileSplit[0], fileSplit[1]);
+					String[] fileSplit = s.split(":");
 
+					files.put(fileSplit[0], fileSplit[1]);
+
+				}
 			}
+		}
+
+		public void addFile(String key, String value) {
+			files.put(key, value);
 		}
 
 		public String getName() {
@@ -103,16 +110,24 @@ public class GithubClient implements WorkflowProviderNode {
 
 	public class File {
 
-		String f;
+		String name;
 		String repo;
 
-		public File(String f, String repo) {
-			this.f = f;
+		public File(String name, String repo) {
+			this.name = name;
 			this.repo = repo;
 		}
 
 		public String toString() {
-			return f + "#" + repo.toString();
+			return name + "#" + repo.toString();
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public String getRepo() {
+			return repo;
 		}
 
 	}
