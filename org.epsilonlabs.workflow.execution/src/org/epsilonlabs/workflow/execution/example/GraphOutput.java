@@ -147,7 +147,7 @@ public class GraphOutput extends ApplicationFrame implements WorkflowConsumerNod
 		System.out.println("DATA STREAM ENDED");
 		notifyObserversOfStatusChange("task complete");
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

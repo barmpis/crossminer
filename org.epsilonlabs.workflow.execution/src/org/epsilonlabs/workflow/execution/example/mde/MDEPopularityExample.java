@@ -91,7 +91,7 @@ public class MDEPopularityExample {
 		repoentrydata.subscribe(repospertech);
 
 		// start stub data provision
-		Thread.sleep(5);
+		Thread.sleep(5000);
 		//
 		reader.connect();
 		//

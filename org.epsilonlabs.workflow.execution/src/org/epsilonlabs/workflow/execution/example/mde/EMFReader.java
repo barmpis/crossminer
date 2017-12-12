@@ -138,7 +138,7 @@ public class EMFReader implements WorkflowProviderNode {
 		// yeah...
 		EPackage mmp = (EPackage) mmr.getContents().get(0);
 		//
-		resourceSet.getPackageRegistry().put(mmp.getName(), mmp);
+		resourceSet.getPackageRegistry().put(mmp.getNsURI(), mmp);
 
 		mr = resourceSet.createResource(URI.createFileURI(murl.getPath()));
 		mr.load(null);
