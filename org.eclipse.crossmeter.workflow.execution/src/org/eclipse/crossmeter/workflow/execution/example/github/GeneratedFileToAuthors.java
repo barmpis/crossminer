@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 import org.eclipse.crossmeter.workflow.execution.WorkflowProcessingNode;
-import org.eclipse.crossmeter.workflow.execution.examples.github.GithubClient.Author;
+import org.eclipse.crossmeter.workflow.execution.example.github.GithubClient.Author;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;

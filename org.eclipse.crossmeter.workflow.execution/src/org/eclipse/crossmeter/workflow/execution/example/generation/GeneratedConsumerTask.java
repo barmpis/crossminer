@@ -13,7 +13,7 @@ package org.eclipse.crossmeter.workflow.execution.example.generation;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import org.eclipse.crossmeter.workflow.execution.stubs.execution.WorkflowConsumerNode;
+import org.eclipse.crossmeter.workflow.execution.WorkflowConsumerNode;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;

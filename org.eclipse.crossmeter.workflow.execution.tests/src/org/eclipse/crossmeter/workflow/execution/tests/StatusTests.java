@@ -7,15 +7,15 @@ import java.util.List;
 
 import javax.annotation.Generated;
 
-import org.eclipse.crossmeter.workflow.execution.examples.generation.*;
-import org.eclipse.crossmeter.workflow.execution.examples.github.GithubClient;
-import org.eclipse.crossmeter.workflow.execution.examples.github.GithubClient.*;
-import org.eclipse.crossmeter.workflow.execution.stubs.execution.example.CachedConsumer;
-import org.eclipse.crossmeter.workflow.execution.stubs.execution.example.ConsoleOutput;
-import org.eclipse.crossmeter.workflow.execution.stubs.execution.example.github.GeneratedConfigToGithubRepos;
-import org.eclipse.crossmeter.workflow.execution.stubs.execution.example.github.GeneratedGithubRepoToFiles;
-import org.eclipse.crossmeter.workflow.execution.stubs.execution.example.github.StubExecutionCoordinator;
-import org.eclipse.crossmeter.workflow.execution.stubs.execution.example.github.StubGithubData;
+import org.eclipse.crossmeter.workflow.execution.example.generation.*;
+import org.eclipse.crossmeter.workflow.execution.example.github.GithubClient;
+import org.eclipse.crossmeter.workflow.execution.example.github.GithubClient.*;
+import org.eclipse.crossmeter.workflow.execution.example.CachedConsumer;
+import org.eclipse.crossmeter.workflow.execution.example.ConsoleOutput;
+import org.eclipse.crossmeter.workflow.execution.example.github.GeneratedConfigToGithubRepos;
+import org.eclipse.crossmeter.workflow.execution.example.github.GeneratedGithubRepoToFiles;
+import org.eclipse.crossmeter.workflow.execution.example.github.StubExecutionCoordinator;
+import org.eclipse.crossmeter.workflow.execution.example.github.StubGithubData;
 import org.junit.Test;
 
 import io.reactivex.Observable;

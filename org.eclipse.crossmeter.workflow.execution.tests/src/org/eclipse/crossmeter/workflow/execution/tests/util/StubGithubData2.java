@@ -3,8 +3,8 @@ package org.eclipse.crossmeter.workflow.execution.tests.util;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-import org.eclipse.crossmeter.workflow.execution.examples.github.GithubClient;
-import org.eclipse.crossmeter.workflow.execution.examples.github.GithubClient.Repo;
+import org.eclipse.crossmeter.workflow.execution.example.github.GithubClient;
+import org.eclipse.crossmeter.workflow.execution.example.github.GithubClient.Repo;
 
 public class StubGithubData2 {
 

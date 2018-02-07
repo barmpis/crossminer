@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 
-import org.eclipse.crossmeter.workflow.execution.examples.GraphOutput;
+import org.eclipse.crossmeter.workflow.execution.example.GraphOutput;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.jfree.ui.RefineryUtilities;

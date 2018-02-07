@@ -13,11 +13,11 @@ package org.eclipse.crossmeter.workflow.execution.tests.util;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import org.eclipse.crossmeter.workflow.execution.examples.github.GithubClient;
-import org.eclipse.crossmeter.workflow.execution.examples.github.GithubClient.Author;
-import org.eclipse.crossmeter.workflow.execution.examples.github.GithubClient.File;
-import org.eclipse.crossmeter.workflow.execution.examples.github.GithubClient.Repo;
-import org.eclipse.crossmeter.workflow.execution.stubs.execution.WorkflowProviderNode;
+import org.eclipse.crossmeter.workflow.execution.example.github.GithubClient;
+import org.eclipse.crossmeter.workflow.execution.example.github.GithubClient.Author;
+import org.eclipse.crossmeter.workflow.execution.example.github.GithubClient.File;
+import org.eclipse.crossmeter.workflow.execution.example.github.GithubClient.Repo;
+import org.eclipse.crossmeter.workflow.execution.WorkflowProviderNode;
 
 import io.reactivex.Observer;
 import io.reactivex.subjects.PublishSubject;

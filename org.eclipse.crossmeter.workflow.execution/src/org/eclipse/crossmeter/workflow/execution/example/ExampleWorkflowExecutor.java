@@ -15,12 +15,12 @@ import java.util.Date;
 import java.util.LinkedList;
 
 import org.eclipse.crossmeter.workflow.execution.WorkflowExecutor;
-import org.eclipse.crossmeter.workflow.execution.examples.github.GeneratedConfigToGithubRepos;
-import org.eclipse.crossmeter.workflow.execution.examples.github.GeneratedFileToAuthors;
-import org.eclipse.crossmeter.workflow.execution.examples.github.GeneratedGithubRepoToFiles;
-import org.eclipse.crossmeter.workflow.execution.examples.github.GithubClient;
-import org.eclipse.crossmeter.workflow.execution.examples.github.StubExecutionCoordinator;
-import org.eclipse.crossmeter.workflow.execution.examples.github.StubGithubData;
+import org.eclipse.crossmeter.workflow.execution.example.github.GeneratedConfigToGithubRepos;
+import org.eclipse.crossmeter.workflow.execution.example.github.GeneratedFileToAuthors;
+import org.eclipse.crossmeter.workflow.execution.example.github.GeneratedGithubRepoToFiles;
+import org.eclipse.crossmeter.workflow.execution.example.github.GithubClient;
+import org.eclipse.crossmeter.workflow.execution.example.github.StubExecutionCoordinator;
+import org.eclipse.crossmeter.workflow.execution.example.github.StubGithubData;
 import org.ossmeter.platform.delta.bugtrackingsystem.BugTrackingSystemComment;
 
 import io.reactivex.Observable;

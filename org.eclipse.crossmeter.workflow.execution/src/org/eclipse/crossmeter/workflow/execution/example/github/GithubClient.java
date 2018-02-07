@@ -16,7 +16,7 @@ import java.util.LinkedList;
 import java.util.Set;
 
 import org.eclipse.crossmeter.workflow.execution.WorkflowProviderNode;
-import org.eclipse.crossmeter.workflow.execution.examples.github.StubGithubData;
+import org.eclipse.crossmeter.workflow.execution.example.github.StubGithubData;
 
 import io.reactivex.Observer;
 import io.reactivex.subjects.PublishSubject;

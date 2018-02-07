@@ -4,15 +4,15 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.HashSet;
 
-import org.eclipse.crossmeter.workflow.execution.examples.github.GithubClient;
-import org.eclipse.crossmeter.workflow.execution.examples.github.GithubClient.Author;
-import org.eclipse.crossmeter.workflow.execution.examples.github.GithubClient.File;
-import org.eclipse.crossmeter.workflow.execution.examples.github.GithubClient.Repo;
-import org.eclipse.crossmeter.workflow.execution.stubs.execution.example.github.GeneratedConfigToGithubRepos;
-import org.eclipse.crossmeter.workflow.execution.stubs.execution.example.github.GeneratedFileToAuthors;
-import org.eclipse.crossmeter.workflow.execution.stubs.execution.example.github.GeneratedGithubRepoToFiles;
-import org.eclipse.crossmeter.workflow.execution.stubs.execution.example.github.StubExecutionCoordinator;
-import org.eclipse.crossmeter.workflow.execution.stubs.execution.example.github.StubGithubData;
+import org.eclipse.crossmeter.workflow.execution.example.github.GithubClient;
+import org.eclipse.crossmeter.workflow.execution.example.github.GithubClient.Author;
+import org.eclipse.crossmeter.workflow.execution.example.github.GithubClient.File;
+import org.eclipse.crossmeter.workflow.execution.example.github.GithubClient.Repo;
+import org.eclipse.crossmeter.workflow.execution.example.github.GeneratedConfigToGithubRepos;
+import org.eclipse.crossmeter.workflow.execution.example.github.GeneratedFileToAuthors;
+import org.eclipse.crossmeter.workflow.execution.example.github.GeneratedGithubRepoToFiles;
+import org.eclipse.crossmeter.workflow.execution.example.github.StubExecutionCoordinator;
+import org.eclipse.crossmeter.workflow.execution.example.github.StubGithubData;
 import org.eclipse.crossmeter.workflow.execution.tests.util.GeneratedConfigToGithubRepos2;
 import org.eclipse.crossmeter.workflow.execution.tests.util.GithubClient2;
 import org.eclipse.crossmeter.workflow.execution.tests.util.StubExecutionCoordinator2;
